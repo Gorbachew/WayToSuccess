@@ -1,0 +1,314 @@
+<resources>
+    <string name="app_name">Way To Success</string>
+    <!--Меню-->
+    <string name="main_title">Путь к Успеху</string>
+    <string name="New_Game">Новая игра</string>
+    <string name="Cont_game">Продолжить игру</string>
+    <string name="Options">Настройки</string>
+    <string name="Exit">Выход</string>
+
+    <!--Старт-->
+    <string name="StartText1">Выбери свою судьбу!</string>
+    <string name="StartText2">Имя:</string>
+    <string name="StartText3">Введите ваше имя</string>
+    <string name="StartText4">Возраст:</string>
+    <string name="textPoll1">Ваш отец был:</string>
+    <string name="textPoll2">Ваша мать была:</string>
+    <string name="textPoll3">В детстве вы были:</string>
+    <string name="textPoll4">В юношестве вы были:</string>
+    <string name="textPoll5">После школы вы стали:</string>
+    <string name="textPoll6">Ваша цель в жизни:</string>
+    <string name="textPoll7">Что заставило переехать в другой город?</string>
+    <string name="btnHeroPast">История</string>
+    <string name="btnChoiceHeroPast">Изменить</string>
+    <string name="btnStartGame">Начать</string>
+    <string name="UserName">Безымянный</string>
+    <string-array name="SpinnerAge">
+        <item>18</item>
+        <item>19</item>
+        <item>20</item>
+        <item>21</item>
+        <item>22</item>
+        <item>23</item>
+        <item>24</item>
+        <item>25</item>
+        <item>26</item>
+        <item>27</item>
+        <item>28</item>
+        <item>29</item>
+        <item>30</item>
+        <item>31</item>
+        <item>32</item>
+        <item>33</item>
+        <item>34</item>
+        <item>35</item>
+        <item>36</item>
+        <item>37</item>
+        <item>38</item>
+        <item>39</item>
+        <item>40</item>
+    </string-array>
+    <string-array name="SpinnerPull1">
+        <item>Военным</item>
+        <item>Ученым</item>
+        <item>Инженером</item>
+        <item>Рабочим</item>
+        <item>Преступником</item>
+        <item>Бездомным</item>
+        <item>Его не было</item>
+    </string-array>
+    <string-array name="SpinnerPull2">
+        <item>Военным</item>
+        <item>Ученым</item>
+        <item>Инженером</item>
+        <item>Рабочим</item>
+        <item>Преступником</item>
+        <item>Бездомным</item>
+        <item>Еe не было</item>
+    </string-array>
+    <string-array name="SpinnerPull3">
+        <item>Любимчиком</item>
+        <item>Тихоней</item>
+        <item>Активным</item>
+        <item>Шутом</item>
+    </string-array>
+    <string-array name="SpinnerPull4">
+        <item>Самоучкой</item>
+        <item>Воришкой</item>
+        <item>Волонтёром</item>
+    </string-array>
+    <string-array name="SpinnerPull5">
+        <item>Солдатом</item>
+        <item>Студентом</item>
+        <item>Рабочим</item>
+        <item>Лентяем</item>
+    </string-array>
+    <string-array name="SpinnerPull6">
+        <item>Богатство</item>
+        <item>Власть</item>
+        <item>Бесконечная игра</item>
+    </string-array>
+    <string-array name="SpinnerPull7">
+        <item>Смерть близкого человека</item>
+        <item>Увольнение с работы</item>
+        <item>Заведение уголовного дела</item>
+    </string-array>
+
+
+    <string name="HistoryText1">Ваша история</string>
+    <string name="FatherHistArmy">Вы родились в семье Прапорщика</string>
+    <string name="FatherHistSci">Вы родились в семье Математика</string>
+    <string name="FatherHistEng">Вы родились в семье Архитектора</string>
+    <string name="FatherHistWork">Вы родились в семье Обычного работяги</string>
+    <string name="FatherHistCri">Вы родились в семье Автогонщика</string>
+    <string name="FatherHistBum">Вы родились в семье Бомжа</string>
+    <string name="FatherHistNo">Вы родились в семье Без отца</string>
+
+    <string name="MotherHistArmy">и Лейтенанта</string>
+    <string name="MotherHistSci">и Биолога</string>
+    <string name="MotherHistEng">и Программиста</string>
+    <string name="MotherHistWork">и Бухгалтера</string>
+    <string name="MotherHistCri">и Воровки</string>
+    <string name="MotherHistBum">и Бомжихи</string>
+    <string name="MotherHistNo">Матери у вас не было</string>
+
+    <string name="FAMHistBum">Вы родились в семье Бомжей</string>
+    <string name="FAMHistNo">Вас отдали в детдом</string>
+
+    <string name="ChildHistLove">Вас любили и оберегали от невзгод любящие родители</string>
+    <string name="ChildHistSil">Вы сторонились общественности имея всего одного друга</string>
+    <string name="ChildHistActive">Проводили на площадке со своими друзьями</string>
+    <string name="ChildHistJoker">Вы выступали в роли посмешища перед своими сверстниками</string>
+
+    <string name="YouthSelfEduc">Но детство рано или поздно закончилось и повзрослев вас влекло к неизвестности, вы дни напролет проводили с книжками и научными статьями став отличником в школе</string>
+    <string name="YouthCri">Но детство рано или поздно закончилось и повзрослев вас влекло к бесплатному приобретению всего и вся. Все охранники знали вас в лицо и не пускали в заведения</string>
+    <string name="YouthVol">Но детство рано или поздно закончилось и повзрослев вас влекло к помощи нуждающимся, вы постоянно состояли в молодежных организациях помогая старикам и инвалидам</string>
+
+    <string name="AftSchoolSold">После школы вам сразу же пришла повестка, прибыв в военкомат вас сразу же забрали в армию. За год вы научились всем хитростям выживания в самых нелегких для человека условиях</string>
+    <string name="AftSchoolStud">После школы вы поступили в Университет в надежде стать значимым для общества человеком</string>
+    <string name="AftSchoolWork">После школы вы решили не продолжать учиться, а сразу приступить к практике. Вы нашли работу поближе к дому и начали жизнь взрослого человека</string>
+    <string name="AftSchoolLazy">После школы вы забили на учебу и работу. Засев дома вы смотрели сериалы и играли в компьютерные игры</string>
+
+    <string name="PurposeWheal">Вас всегда влекли деньги и хотелось получить их все</string>
+    <string name="PurposePower">Вас всегда влекла власть, каждый раз перед зеркалом вы представляли себя как президента своей страны вещающий на огромные массы</string>
+    <string name="PurposeNoEnd">У вас нет цели, вы просто делаете что в ваших силах</string>
+    
+    <string name="WhyDead">Бросить все вас заставила смерть отца, вы не смогли больше жить на месте, которое напоминает вам о нем. Вы бросили все и отправились на встречу к приключениям</string>
+    <string name="WhyJob">Вы начали добиваться определенных успехов на работе. Но в один день вас подставил коллега желающий получить вашу должность. Он обвинил вас в воровстве и начальство приняло его сторону. Работать в вашем городе больше не составилось возможным, по этому собрав оставшиеся вещи вы поехали на встречу к приключениям</string>
+    <string name="WhyWanted">К вашему несчастью, за ваше прошлое на вас было составлено уголовное дело. Находиться в своем родном городе не было возможности, поэтому схватив первые под руку вещи вы отправились куда подальше</string>
+
+    <!--Игра-->
+    <!--Названия фрагментов-->
+    <string name="NFPass">Паспорт</string>
+    <string name="NFFood">Еда</string>
+    <string name="NFMood">Настроение</string>
+    <string name="NFHealth">Здоровье</string>
+    <string name="NFFreelance">Халтура</string>
+    <string name="NFWork">Работа</string>
+    <string name="NFBusiness">Бизнес</string>
+    <string name="NFEducation">Образование</string>
+    <string name="NFProperty">Имущество</string>
+    <string name="NFHolding">Недвижимость</string>
+    <!--Паспорт-->
+    <string name="PFName">Имя:</string>
+    <string name="PFAge">Возраст:</string>
+    <string name="PFClothes">Одежда:</string>
+    <string name="PFTransport">Транспорт:</string>
+    <string name="PFProperty">Недвижимость:</string>
+    <string name="PFJob">Работа:</string>
+    <string name="PFRank">Должность:</string>
+    <string name="PFBusiness">Бизнес:</string>
+    <string name="PFWife">Жена:</string>
+    <string name="PFChild">Ребенок:</string>
+
+    <string name="PFSclothes0">Обмотки</string>
+    <string name="PFSclothes1">Резиновые сапоги</string>
+    <string name="PFSclothes2">Из секондхенда</string>
+    <string name="PFSclothes3">Брендовая</string>
+    <string name="PFSclothes4">Костюм</string>
+
+
+    <string name="PFStransport0">Мечтаешь о колесах</string>
+    <string name="PFStransport1">Велосипед</string>
+    <string name="PFStransport2">Машина</string>
+    <string name="PFStransport3">Вертолет</string>
+    <string name="PFStransport4">Яхта</string>
+
+    <string name="PFSholding0">Кусты</string>
+    <string name="PFSholding1">Картонная коробка</string>
+    <string name="PFSholding2">Палатка</string>
+    <string name="PFSholding3">Съемная комната</string>
+    <string name="PFSholding4">Квартира</string>
+    <string name="PFSholding5">Дом</string>
+    <string name="PFSholding6">Особняк</string>
+
+    <string name="PFSjob0">Безработный</string>
+    <string name="PFSjob1">Завод</string>
+
+
+
+    <string name="PFSrankJob0">Отсутсвует</string>
+
+    <string name="PFSbusiness0">Нет</string>
+    <string name="PFSbusiness1">Пункт приема металла</string>
+    <string name="PFSbusiness2">Кафе</string>
+
+    <string name="PFSwife0">Хочется</string>
+
+    <string name="PFSchild0">В планах</string>
+
+
+    <!--Еда-->
+    <string name="FFtrash">Покопаться в помойке</string>
+    <string name="FFhunt">Охотиться на голубей</string>
+    <string name="FFrobKiosk">Ограбить ларек</string>
+    <string name="FFbuyKiosk">Закупиться в ларьке</string>
+    <string name="FFeatCoffee">Поесть в кафе</string>
+    <string name="FFbuyStore">Закупиться в магазине</string>
+    <string name="FFeatRestaurant">Поесть в ресторане</string>
+    <string name="FFpersonalChef">Личный повар</string>
+
+    <!--Здоровье-->
+    <string name="HFgrass">Найти подорожник</string>
+    <string name="HFrobPharmacy">Ограбить аптеку</string>
+    <string name="HFdistrictHospital">Сходить в районную больницу</string>
+    <string name="HFbuyPharmacy">Закупиться в аптеке</string>
+    <string name="HFprivateHospital">Сходить в частную больницу</string>
+    <string name="HFpersonalDoctor">Личный врач</string>
+    <!--Настроение-->
+    <string name="MFwatchAnimals">Смотреть на голубей</string>
+    <string name="MFdrinkBeer">Выпить пива</string>
+    <string name="MFdrinkVodka">Выпить водки</string>
+    <string name="MFgoCinema">Сходить в кинотеатр</string>
+    <string name="MFwatchTV">Смотреть телевизор</string>
+    <string name="MFplayPC">Играть в компьютерные игры</string>
+    <string name="MFgoConcert">Сходить на концерт</string>
+    <string name="MForderComedian">Заказать комика</string>
+    <string name="MFpersonalComedian">Личный комик</string>
+    <!--Халтура-->
+    <string name="FrFScrap">Искать металлолом</string>
+    <string name="FrFSellScrap">Сдать металлолом</string>
+
+    <string name="FrFSupportScrapQuantity">Кг металла:</string>
+    <string name="FrFSupportScrapCourse">Курс:</string>
+    <string name="FrFLotScrap">Вам негде больше складировать металлолом, купите помещение побольше</string>
+
+
+
+    <string name="FrFBegForMoney">Просить милостыню</string>
+    <string name="FrFHelpOld">Помочь бабке по хозяйству</string>
+    <string name="FrFDistributeFlyers">Раздавать листовки</string>
+    <string name="FrFRepairFlat">Ремонтировать квартиру по обьявлению</string>
+    <string name="FrFTaxi">Таксовать</string>
+
+    <!--Работа-->
+    <string name="WFInFactory">Работать на заводе</string>
+    <string name="WFInAutoService">Работать в автосервисе</string>
+    <string name="WFInManagerForSale">Работать менеджером по продажам</string>
+    <string name="WFInEngineer">Работать иженером</string>
+    <string name="WFInHeadOfDepartment">Работать начальником отдела</string>
+    <!--Бизнесс-->
+    <!--Металл-->
+    <string name="BmFUPStock">Улучшить склад</string>
+    <string name="BmFUPAdvertising">Купить рекламу|500р</string>
+    <string name="BmFNewWorker">Нанять рабочего</string>
+    <string name="BmFSellMetal">Продать метал</string>
+    <string name="BmFAutomatic">Работать автоматически</string>
+    <string name="BmFLS">Низкая зарплата</string>
+    <string name="BmFNS">Нормальная зарплата</string>
+    <string name="BmFHS">Высокая зарплата</string>
+    <string name="BmFSellBusiness">Продать бизнес</string>
+    <string name="BmFWork">Работать</string>
+    <string name="BmFBuyMetal">Купить Пункт по приему метала | 50000р </string>
+    <string name="BmFDontFindMetal">Вы покопались и ничего не нашли</string>
+    <string name="BmFLowStock">Вам негде больше складировать металлолом, купите помещение побольше</string>
+    <string name="BmPayDay">Вы заплатили рабочим за месяц</string>
+    <string name="NoUpdate">Нет улучшений</string>
+
+    <!-- Кафе -->
+    <string name="BCBuyCafe">Купить кафе | 50000$</string>
+    <string name="BCbuyAd">Купить рекламу|100$</string>
+    <string name="BCbuyRoom">Увеличить помещение</string>
+    <string name="BCbuyTable">Купить стол|5000р</string>
+    <string name="BCbuyWaiter">Нанять офицантов</string>
+    <string name="BCbuyCook">Нанять поваров</string>
+    <string name="BCvisitorsLastWeek">Посетителей за прошлую неделю:</string>
+    <string name="BCvisitors">Посетителей за текущую неделю:</string>
+    <string name="BCprofit">Прибыль за прошлый день:</string>
+    <string name="BCerrorTable">У вас нехватает офицантов, 1 офицант - 2 стола</string>
+    <string name="BCerrorWaiter">У вас нехватает поваров, 1 повар - 3 офицанта</string>
+    <string name="BCerrorCook">У вас маленькое помещение, 1 помещение - 2 повара</string>
+    <string name="BCPayDay">Вы заплатили рабочим за месяц</string>
+    <string name="BCdontTime">Вы не можете купить еще 1 бизнес, вам не хватит времени следить за всем</string>
+
+
+    <string name="BFMetalReceptionPoint">Пункт приема металла</string>
+    <string name="BFComputerRepairShop">Мастерская по ремонту компьютеров</string>
+    <string name="BFCafe">Кафе</string>
+    <string name="BFCarRepairShop">Автомастерская</string>
+    <string name="BFClub">Клуб</string>
+    <!--Образование-->
+    <string name="EFSchool">Школа</string>
+    <string name="EFCollege">Коледж</string>
+    <string name="EFUniversity">Университет</string>
+    <string name="EFOverseasUniversity">Заграничный университет</string>
+    <!--Имущество-->
+    <string name="PrFRubberBoots">Резиновые сапоги</string>
+    <string name="PrFCheapClothes">Дешевая одежда</string>
+    <string name="PrFBicycle">Велосипед</string>
+    <string name="PrFNormalClothes">Нормальная одежда</string>
+    <string name="PrFCar">Машина</string>
+    <string name="PrFSuit">Костюм</string>
+    <string name="PrFWeapons">Оружие</string>
+    <string name="PrFTV">Телевизор</string>
+    <string name="PrFPC">Компьютер</string>
+    <string name="PrFHelicopter">Вертолет</string>
+    <string name="PrFYacht">Яхта</string>
+    <!--Недвижимость-->
+    <string name="HoFCardboardBox">Картонная коробка</string>
+    <string name="HoFCamp">Палатка</string>
+    <string name="HoFRentRoom">Снимать комнату</string>
+    <string name="HoFbuyApartment">Купить квартиру</string>
+    <string name="HoFbuyHome">Купить дом</string>
+    <string name="HoFbuyMansion">Купить особняк</string>
+</resources>

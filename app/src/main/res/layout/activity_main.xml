@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:theme="@android:style/Theme.Light.NoTitleBar"
+    tools:context=".MainActivity"
+    android:gravity="center_horizontal"
+    android:layout_marginTop="100dp">
+
+    <TextView
+        android:id="@+id/textView"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/main_title"
+        android:textColor="@android:color/holo_orange_dark"
+        android:textSize="30sp" />
+
+    <Button
+        android:id="@+id/BtnStartGame"
+        android:layout_width="200dp"
+        android:layout_height="wrap_content"
+        android:text="@string/New_Game"
+        />
+
+    <Button
+        android:id="@+id/BtnMenuContGame"
+        android:layout_width="200dp"
+        android:layout_height="wrap_content"
+
+        android:text="@string/Cont_game" />
+
+    <Button
+        android:id="@+id/BtnMenuOptions"
+        android:layout_width="200dp"
+        android:layout_height="wrap_content"
+        android:text="@string/Options"
+        />
+
+    <Button
+        android:id="@+id/BtnMenuExit"
+        android:layout_width="200dp"
+        android:layout_height="wrap_content"
+        android:text="@string/Exit"
+        />
+
+    <ImageView
+        android:id="@+id/imageView"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+       />
+
+</LinearLayout>

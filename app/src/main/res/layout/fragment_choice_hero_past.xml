@@ -1,0 +1,146 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".ChoiceHeroPast"
+    >
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical"
+        android:gravity="center_horizontal">
+
+        <TextView
+            android:id="@+id/textView2"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/StartText1"
+            android:textSize="30dp"
+            android:layout_gravity="center"
+            />
+        <TextView
+            android:id="@+id/textName"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/StartText2"
+            android:textSize="18sp"
+            />
+        <EditText
+            android:id="@+id/StartName"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:hint="@string/StartText3"
+            android:inputType="textPersonName"
+            />
+        <TextView
+            android:id="@+id/TextAge"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/StartText4"
+            android:textSize="18sp"
+           />
+        <Spinner
+            android:id="@+id/SpinnerStartAge"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+
+            />
+
+        <TextView
+            android:id="@+id/textPoll1"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/textPoll1"
+            android:textSize="18sp"
+            />
+        <Spinner
+            android:id="@+id/spinnerPoll1"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+
+            />
+        <TextView
+            android:id="@+id/textPoll2"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/textPoll2"
+            android:textSize="18sp"
+            />
+        <Spinner
+            android:id="@+id/spinnerPoll2"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+
+            />
+        <TextView
+            android:id="@+id/textPoll3"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/textPoll3"
+            android:textSize="18sp"
+            />
+        <Spinner
+            android:id="@+id/spinnerPoll3"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+
+            />
+        <TextView
+            android:id="@+id/textPoll4"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/textPoll4"
+            android:textSize="18sp"
+            />
+        <Spinner
+            android:id="@+id/spinnerPoll4"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+
+            />
+        <TextView
+            android:id="@+id/textPoll5"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/textPoll5"
+            android:textSize="18sp"
+            />
+        <Spinner
+            android:id="@+id/spinnerPoll5"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+
+            />
+        <TextView
+            android:id="@+id/textPoll6"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/textPoll6"
+            android:textSize="18sp"
+            />
+        <Spinner
+            android:id="@+id/spinnerPoll6"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+
+            />
+        <TextView
+            android:id="@+id/textPoll7"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/textPoll7"
+            android:textSize="18sp"
+            />
+        <Spinner
+            android:id="@+id/spinnerPoll7"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+
+            />
+    </LinearLayout>
+
+
+
+</FrameLayout>

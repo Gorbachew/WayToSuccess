@@ -1,0 +1,75 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".Freelance">
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical" >
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                android:orientation="horizontal">
+
+                <Button
+                    android:id="@+id/btnFreelanceScrap"
+                    android:layout_width="match_parent"
+                    android:layout_height="70dp"
+                    android:layout_weight="1"
+                    android:text="@string/FrFScrap" />
+
+                <Button
+                    android:id="@+id/btnFreelanceSellScrap"
+                    android:layout_width="match_parent"
+                    android:layout_height="70dp"
+                    android:layout_weight="1"
+                    android:text="@string/FrFSellScrap" />
+            </LinearLayout>
+
+            <Button
+                android:id="@+id/btnFreelanceBegForMoney"
+                android:layout_width="match_parent"
+                android:layout_height="70dp"
+                android:layout_weight="1"
+                android:text="@string/FrFBegForMoney" />
+
+            <Button
+                android:id="@+id/btnFreelanceHelpOld"
+                android:layout_width="match_parent"
+                android:layout_height="70dp"
+                android:layout_weight="1"
+                android:text="@string/FrFHelpOld" />
+
+            <Button
+                android:id="@+id/btnFreelanceDistributeFlyers"
+                android:layout_width="match_parent"
+                android:layout_height="70dp"
+                android:layout_weight="1"
+                android:text="@string/FrFDistributeFlyers" />
+
+            <Button
+                android:id="@+id/btnFreelanceRepairFlat"
+                android:layout_width="match_parent"
+                android:layout_height="70dp"
+                android:layout_weight="1"
+                android:text="@string/FrFRepairFlat" />
+
+            <Button
+                android:id="@+id/btnFreelanceTaxi"
+                android:layout_width="match_parent"
+                android:layout_height="70dp"
+                android:layout_weight="1"
+                android:text="@string/FrFTaxi" />
+        </LinearLayout>
+    </ScrollView>
+
+</FrameLayout>

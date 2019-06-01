@@ -1,0 +1,97 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".Property">
+
+    <!-- TODO: Update blank fragment layout -->
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical" >
+
+            <Button
+                android:id="@+id/btnPropertyRubberBoots"
+                android:layout_width="match_parent"
+                android:layout_height="70dp"
+
+                android:text="@string/PrFRubberBoots" />
+
+            <Button
+                android:id="@+id/btnPropertyCheapClothes"
+                android:layout_width="match_parent"
+                android:layout_height="70dp"
+
+                android:text="@string/PrFCheapClothes" />
+
+            <Button
+                android:id="@+id/btnPropertyBicycle"
+                android:layout_width="match_parent"
+                android:layout_height="70dp"
+
+                android:text="@string/PrFBicycle" />
+
+            <Button
+                android:id="@+id/btnPropertyNormalClothes"
+                android:layout_width="match_parent"
+                android:layout_height="70dp"
+
+                android:text="@string/PrFNormalClothes" />
+
+            <Button
+                android:id="@+id/btnPropertyCar"
+                android:layout_width="match_parent"
+                android:layout_height="70dp"
+
+                android:text="@string/PrFCar" />
+
+            <Button
+                android:id="@+id/btnPropertySuit"
+                android:layout_width="match_parent"
+                android:layout_height="70dp"
+
+                android:text="@string/PrFSuit" />
+
+            <Button
+                android:id="@+id/btnPropertyWeapons"
+                android:layout_width="match_parent"
+                android:layout_height="70dp"
+
+                android:text="@string/PrFWeapons" />
+
+            <Button
+                android:id="@+id/btnPropertyTV"
+                android:layout_width="match_parent"
+                android:layout_height="70dp"
+
+                android:text="@string/PrFTV" />
+
+            <Button
+                android:id="@+id/btnPropertyPC"
+                android:layout_width="match_parent"
+                android:layout_height="70dp"
+
+                android:text="@string/PrFPC" />
+
+            <Button
+                android:id="@+id/btnPropertyHelicopter"
+                android:layout_width="match_parent"
+                android:layout_height="70dp"
+
+                android:text="@string/PrFHelicopter" />
+
+            <Button
+                android:id="@+id/btnPropertyYacht"
+                android:layout_width="match_parent"
+                android:layout_height="70dp"
+
+                android:text="@string/PrFYacht" />
+        </LinearLayout>
+    </ScrollView>
+
+</FrameLayout>

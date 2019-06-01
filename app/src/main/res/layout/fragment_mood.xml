@@ -1,0 +1,83 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".Mood"
+    android:background="@color/white">
+
+    <!-- TODO: Update blank fragment layout -->
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_weight="1">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical" >
+            <Button
+                android:id="@+id/btnMoodWatchAnimals"
+                android:layout_width="match_parent"
+                android:layout_height="70dp"
+                android:layout_weight="1"
+                android:text="@string/MFwatchAnimals" />
+            <Button
+                android:id="@+id/btnMoodDrinkBeer"
+                android:layout_width="match_parent"
+                android:layout_height="70dp"
+                android:layout_weight="1"
+                android:text="@string/MFdrinkBeer" />
+
+            <Button
+                android:id="@+id/btnMoodDrinkVodka"
+                android:layout_width="match_parent"
+                android:layout_height="70dp"
+                android:layout_weight="1"
+                android:text="@string/MFdrinkVodka" />
+
+
+
+            <Button
+                android:id="@+id/btnMoodGoCinema"
+                android:layout_width="match_parent"
+                android:layout_height="70dp"
+                android:layout_weight="1"
+                android:text="@string/MFgoCinema" />
+
+            <Button
+                android:id="@+id/btnMoodWatchTV"
+                android:layout_width="match_parent"
+                android:layout_height="70dp"
+                android:layout_weight="1"
+                android:text="@string/MFwatchTV" />
+
+            <Button
+                android:id="@+id/btnMoodPlayPC"
+                android:layout_width="match_parent"
+                android:layout_height="70dp"
+                android:layout_weight="1"
+                android:text="@string/MFplayPC" />
+            <Button
+                android:id="@+id/btnMoodgoConcert"
+                android:layout_width="match_parent"
+                android:layout_height="70dp"
+                android:layout_weight="1"
+                android:text="@string/MFgoConcert" />
+            <Button
+                android:id="@+id/btnMoodOrderComedian"
+                android:layout_width="match_parent"
+                android:layout_height="70dp"
+                android:layout_weight="1"
+                android:text="@string/MForderComedian" />
+            <Button
+                android:id="@+id/btnMoodPersonalComedian"
+                android:layout_width="match_parent"
+                android:layout_height="70dp"
+                android:layout_weight="1"
+                android:text="@string/MFpersonalComedian" />
+
+        </LinearLayout>
+    </ScrollView>
+
+</FrameLayout>

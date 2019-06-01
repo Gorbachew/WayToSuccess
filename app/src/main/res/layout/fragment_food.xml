@@ -1,0 +1,77 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/white"
+    android:orientation="vertical"
+    tools:context=".Food">
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_weight="1">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical" >
+            <Button
+                android:id="@+id/btnFoodTrash"
+                android:layout_width="match_parent"
+                android:layout_height="70dp"
+                android:layout_weight="1"
+                android:text="@string/FFtrash" />
+            <Button
+                android:id="@+id/btnFoodHunt"
+                android:layout_width="match_parent"
+                android:layout_height="70dp"
+                android:layout_weight="1"
+                android:text="@string/FFhunt" />
+
+            <Button
+                android:id="@+id/btnFoodRobKiosk"
+                android:layout_width="match_parent"
+                android:layout_height="70dp"
+                android:layout_weight="1"
+                android:text="@string/FFrobKiosk" />
+
+            <Button
+                android:id="@+id/btnFoodBuyKiosk"
+                android:layout_width="match_parent"
+                android:layout_height="70dp"
+                android:layout_weight="1"
+                android:text="@string/FFbuyKiosk" />
+
+            <Button
+                android:id="@+id/btnFoodEatCoffee"
+                android:layout_width="match_parent"
+                android:layout_height="70dp"
+                android:layout_weight="1"
+                android:text="@string/FFeatCoffee" />
+
+            <Button
+                android:id="@+id/btnFoodbuyStore"
+                android:layout_width="match_parent"
+                android:layout_height="70dp"
+                android:layout_weight="1"
+                android:text="@string/FFbuyStore" />
+
+            <Button
+                android:id="@+id/btnFoodEatRestaurant"
+                android:layout_width="match_parent"
+                android:layout_height="70dp"
+                android:layout_weight="1"
+                android:text="@string/FFeatRestaurant" />
+
+            <Button
+                android:id="@+id/btnFoodPersonalChef"
+                android:layout_width="match_parent"
+                android:layout_height="70dp"
+                android:layout_weight="1"
+                android:text="@string/FFpersonalChef" />
+        </LinearLayout>
+    </ScrollView>
+
+
+</LinearLayout>
