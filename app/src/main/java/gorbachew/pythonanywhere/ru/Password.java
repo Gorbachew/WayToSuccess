@@ -17,7 +17,7 @@ public class Password extends Fragment {
 
 
 
-    TextView textName,textAge,actAge,textClothes,textTransport,textHolding,textJob,textRankJob,textBusiness,textWife,textChild;
+    TextView textName,textAge,actAge,textClothes,textTransport,textHolding,textJob,textRankJob,textBusiness,textEducation,textChild;
     SharedPreferences sPref;
     final String SAVED_AGE = "Age";
     final String SAVED_CLOTCHES = "Clothes";
@@ -26,8 +26,9 @@ public class Password extends Fragment {
     final String SAVED_JOB = "Job";
     final String SAVED_RANKJOB = "RankJob";
     final String SAVED_BUSINESS = "Business";
+    final String SAVED_EDUCATION = "Education";
 
-    String VarAge,VarClothes,VarTransport, VarHolding, VarJob, VarRankJob, VarBusiness,VarWife, VarChild;
+    String VarAge,VarClothes,VarTransport, VarHolding, VarJob, VarRankJob, VarBusiness,VarEducation, VarChild;
     int RestAge;
 
     @Override
@@ -43,8 +44,9 @@ public class Password extends Fragment {
         textTransport = PassFr.findViewById(R.id.passTransport);
         textHolding = PassFr.findViewById(R.id.passHolding);
         textJob = PassFr.findViewById(R.id.passJob);
-        textRankJob = PassFr.findViewById(R.id.passRank);
+        //textRankJob = PassFr.findViewById(R.id.passRank);
         textBusiness = PassFr.findViewById(R.id.passBusiness);
+        textEducation = PassFr.findViewById(R.id.passEducation);
 
         return PassFr;
     }
@@ -69,6 +71,30 @@ public class Password extends Fragment {
             VarAge = String.valueOf(Integer.parseInt(VarAge)+1);
         }
         textAge.setText(VarAge + " лет и " + String.valueOf(RestAge) + " День");
+
+        //Образование
+        VarEducation = sPref.getString(SAVED_EDUCATION,"");
+
+        switch (VarEducation){
+            case "0":
+                textEducation.setText(getResources().getString(R.string.PFSeducation0));
+                break;
+            case "1":
+                textEducation.setText(getResources().getString(R.string.PFSeducation1));
+                break;
+            case "2":
+                textEducation.setText(getResources().getString(R.string.PFSeducation2));
+                break;
+            case "3":
+                textEducation.setText(getResources().getString(R.string.PFSeducation3));
+                break;
+            case "4":
+                textEducation.setText(getResources().getString(R.string.PFSeducation4));
+                break;
+            case "5":
+                textEducation.setText(getResources().getString(R.string.PFSeducation5));
+                break;
+        }
 
         //Одежда
         VarClothes = sPref.getString(SAVED_CLOTCHES,"");
@@ -153,6 +179,7 @@ public class Password extends Fragment {
 
         }
         //Должность
+        /*
         VarRankJob = sPref.getString(SAVED_RANKJOB,"");
 
         switch (VarRankJob){
@@ -160,7 +187,7 @@ public class Password extends Fragment {
                 textRankJob.setText(getResources().getString(R.string.PFSrankJob0));
                 break;
 
-        }
+        }*/
         //Бизнес
         VarBusiness = sPref.getString(SAVED_BUSINESS,"");
 

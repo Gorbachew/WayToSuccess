@@ -200,6 +200,27 @@
                 android:layout_weight="1"
                 android:onClick="ChangeFragments"
                 android:src="@drawable/respico2" />
+            <ImageButton
+                android:id="@+id/btnBank"
+                android:layout_width="50dp"
+                android:layout_height="50dp"
+                android:layout_weight="1"
+                android:onClick="ChangeFragments"
+                android:src="@drawable/respico2" />
+            <ImageButton
+                android:id="@+id/btnCasino"
+                android:layout_width="50dp"
+                android:layout_height="50dp"
+                android:layout_weight="1"
+                android:onClick="ChangeFragments"
+                android:src="@drawable/respico2" />
+            <ImageButton
+                android:id="@+id/btnAchivment"
+                android:layout_width="50dp"
+                android:layout_height="50dp"
+                android:layout_weight="1"
+                android:onClick="ChangeFragments"
+                android:src="@drawable/respico2" />
         </LinearLayout>
     </HorizontalScrollView>
 

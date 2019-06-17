@@ -1,0 +1,211 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".Achivment">
+
+    <android.support.v4.widget.NestedScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:fillViewport="true">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical" >
+
+
+            <FrameLayout
+                android:layout_width="match_parent"
+                android:layout_height="80dp"
+                android:background="@xml/border">
+
+                <TextView
+                    android:id="@+id/Achivment1text"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_marginLeft="80dp"
+                    android:gravity="top"
+                    android:text="TextView"
+                    android:textSize="20dp" />
+                <TextView
+                    android:id="@+id/Achivment1text2"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_marginLeft="80dp"
+                    android:layout_marginTop="30dp"
+                    android:text="TextView"
+                    android:textSize="15dp" />
+                <ImageView
+                    android:id="@+id/Achivment1"
+                    android:layout_width="80dp"
+                    android:layout_height="80dp"
+                    android:src="@drawable/menupicture" />
+            </FrameLayout>
+            <FrameLayout
+                android:layout_width="match_parent"
+                android:layout_height="80dp"
+                android:background="@xml/border">
+
+                <TextView
+                    android:id="@+id/Achivment2text"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_marginLeft="80dp"
+                    android:gravity="top"
+                    android:text="TextView"
+                    android:textSize="20dp" />
+                <TextView
+                    android:id="@+id/Achivment2text2"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_marginLeft="80dp"
+                    android:layout_marginTop="30dp"
+                    android:text="TextView"
+                    android:textSize="15dp" />
+                <ImageView
+                    android:id="@+id/Achivment2"
+                    android:layout_width="80dp"
+                    android:layout_height="80dp"
+                    android:src="@drawable/menupicture" />
+            </FrameLayout>
+            <FrameLayout
+                android:layout_width="match_parent"
+                android:layout_height="80dp"
+                android:background="@xml/border">
+
+                <TextView
+                    android:id="@+id/Achivment3text"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_marginLeft="80dp"
+                    android:gravity="top"
+                    android:text="TextView"
+                    android:textSize="20dp" />
+                <TextView
+                    android:id="@+id/Achivment3text2"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_marginLeft="80dp"
+                    android:layout_marginTop="30dp"
+                    android:text="TextView"
+                    android:textSize="15dp" />
+                <ImageView
+                    android:id="@+id/Achivment3"
+                    android:layout_width="80dp"
+                    android:layout_height="80dp"
+                    android:src="@drawable/menupicture" />
+            </FrameLayout>
+            <FrameLayout
+                android:layout_width="match_parent"
+                android:layout_height="80dp"
+                android:background="@xml/border">
+
+                <TextView
+                    android:id="@+id/Achivment4text"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_marginLeft="80dp"
+                    android:gravity="top"
+                    android:text="TextView"
+                    android:textSize="20dp" />
+                <TextView
+                    android:id="@+id/Achivment4text2"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_marginLeft="80dp"
+                    android:layout_marginTop="30dp"
+                    android:text="TextView"
+                    android:textSize="15dp" />
+                <ImageView
+                    android:id="@+id/Achivment4"
+                    android:layout_width="80dp"
+                    android:layout_height="80dp"
+                    android:src="@drawable/menupicture" />
+            </FrameLayout>
+            <FrameLayout
+                android:layout_width="match_parent"
+                android:layout_height="80dp"
+                android:background="@xml/border">
+
+                <TextView
+                    android:id="@+id/Achivment5text"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_marginLeft="80dp"
+                    android:gravity="top"
+                    android:text="TextView"
+                    android:textSize="20dp" />
+                <TextView
+                    android:id="@+id/Achivment5text2"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_marginLeft="80dp"
+                    android:layout_marginTop="30dp"
+                    android:text="TextView"
+                    android:textSize="15dp" />
+                <ImageView
+                    android:id="@+id/Achivment5"
+                    android:layout_width="80dp"
+                    android:layout_height="80dp"
+                    android:src="@drawable/menupicture" />
+            </FrameLayout>
+            <FrameLayout
+                android:layout_width="match_parent"
+                android:layout_height="80dp"
+                android:background="@xml/border">
+
+                <TextView
+                    android:id="@+id/Achivment6text"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_marginLeft="80dp"
+                    android:gravity="top"
+                    android:text="TextView"
+                    android:textSize="20dp" />
+                <TextView
+                    android:id="@+id/Achivment6text2"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_marginLeft="80dp"
+                    android:layout_marginTop="30dp"
+                    android:text="TextView"
+                    android:textSize="15dp" />
+                <ImageView
+                    android:id="@+id/Achivment6"
+                    android:layout_width="80dp"
+                    android:layout_height="80dp"
+                    android:src="@drawable/menupicture" />
+            </FrameLayout>
+            <FrameLayout
+                android:layout_width="match_parent"
+                android:layout_height="80dp"
+                android:background="@xml/border">
+
+                <TextView
+                    android:id="@+id/Achivment7text"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_marginLeft="80dp"
+                    android:gravity="top"
+                    android:text="TextView"
+                    android:textSize="20dp" />
+                <TextView
+                    android:id="@+id/Achivment7text2"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_marginLeft="80dp"
+                    android:layout_marginTop="30dp"
+                    android:text="TextView"
+                    android:textSize="15dp" />
+                <ImageView
+                    android:id="@+id/Achivment7"
+                    android:layout_width="80dp"
+                    android:layout_height="80dp"
+                    android:src="@drawable/menupicture" />
+            </FrameLayout>
+        </LinearLayout>
+    </android.support.v4.widget.NestedScrollView>
+</FrameLayout>

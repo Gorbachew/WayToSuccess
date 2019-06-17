@@ -149,9 +149,14 @@
     <string name="NFEducation">Образование</string>
     <string name="NFProperty">Имущество</string>
     <string name="NFHolding">Недвижимость</string>
+    <string name="NFRespect">Уважение</string>
+    <string name="NFBank">Банк</string>
+    <string name="NFAchivment">Достижения</string>
+    <string name="NFCasino">Казино</string>
     <!--Паспорт-->
     <string name="PFName">Имя:</string>
     <string name="PFAge">Возраст:</string>
+    <string name="PFEducation">Образование:</string>
     <string name="PFClothes">Одежда:</string>
     <string name="PFTransport">Транспорт:</string>
     <string name="PFProperty">Недвижимость:</string>
@@ -160,6 +165,15 @@
     <string name="PFBusiness">Бизнес:</string>
     <string name="PFWife">Жена:</string>
     <string name="PFChild">Ребенок:</string>
+
+
+
+    <string name="PFSeducation0">Без аттестата</string>
+    <string name="PFSeducation1">Аттестат</string>
+    <string name="PFSeducation2">Диплом СПО</string>
+    <string name="PFSeducation3">Диплом с курсов</string>
+    <string name="PFSeducation4">Диплом МГУ</string>
+    <string name="PFSeducation5">Диплом Гарварда</string>
 
     <string name="PFSclothes0">Обмотки</string>
     <string name="PFSclothes1">Резиновые сапоги</string>
@@ -199,32 +213,86 @@
 
 
     <!--Еда-->
-    <string name="FFtrash">Покопаться в помойке</string>
-    <string name="FFhunt">Охотиться на голубей</string>
-    <string name="FFrobKiosk">Ограбить ларек</string>
-    <string name="FFbuyKiosk">Закупиться в ларьке</string>
-    <string name="FFeatCoffee">Поесть в кафе</string>
-    <string name="FFbuyStore">Закупиться в магазине</string>
-    <string name="FFeatRestaurant">Поесть в ресторане</string>
-    <string name="FFpersonalChef">Личный повар</string>
+    <string name="FFtrash">Покопаться в помойке|0р</string>
+    <string name="FFhunt">Охотиться на голубей|0р</string>
+    <string name="FFrobKiosk">Ограбить ларек|0р</string>
+    <string name="FFbuyKiosk">Закупиться в ларьке|500р</string>
+    <string name="FFeatCoffee">Поесть в кафе|1500р</string>
+    <string name="FFbuyStore">Закупиться в магазине|3000р</string>
+    <string name="FFeatRestaurant">Поесть в ресторане|7500р</string>
+    <string name="FFpersonalChef">Личный повар|50000р/м</string>
+    <string name="FFfiredChef">Уволить повара</string>
+
+    <string name="FFerror1">Вы не сможете догнать голубей босиком, вам нужны хотя бы сапоги</string>
+    <string name="FFerror2">Вас догнал охранник и отобрал награбленное</string>
+    <string name="FFerror3">Смотря на ваши лохмотья вам отказались продавать еду </string>
+    <string name="FFerror4">Охранник подумал, что вы наркоман в дешевой одежде и попросил выйти</string>
+    <string name="FFerror5">Вы не смогли донести в руках еду до дома, вам нужна машина</string>
+    <string name="FFerror6">Охранник даже не пустил вас во внутрь поскольку у вас нет костюма</string>
+    <string name="FFerror7">Повар спросил, где он будет жить, вы не смогли ответить. Вам нужен дом побольше</string>
 
     <!--Здоровье-->
-    <string name="HFgrass">Найти подорожник</string>
-    <string name="HFrobPharmacy">Ограбить аптеку</string>
-    <string name="HFdistrictHospital">Сходить в районную больницу</string>
-    <string name="HFbuyPharmacy">Закупиться в аптеке</string>
-    <string name="HFprivateHospital">Сходить в частную больницу</string>
-    <string name="HFpersonalDoctor">Личный врач</string>
+    <string name="HFgrass">Найти подорожник|0р</string>
+    <string name="HFrobPharmacy">Ограбить аптеку|0р</string>
+    <string name="HFdistrictHospital">Сходить в районную больницу|300р</string>
+    <string name="HFbuyPharmacy">Закупиться в аптеке|1000р</string>
+    <string name="HFprivateHospital">Сходить в частную больницу|1000$</string>
+    <string name="HFpersonalDoctor">Личный врач|70000р/м</string>
+    <string name="HFfiredDoctor">Уволить врача</string>
+
+    <string name="HFerror1">В аптеке подумали, что вы пришли за боярышником и прогнали. Вам нужно выглядеть солиднее</string>
+    <string name="HFerror2">Без прописки вас послали на 3 буквы, вам нужно хотя бы снимать комнату</string>
+    <string name="HFerror3">В частную клинику можно попасть только на машине</string>
+    <string name="HFerror4">Доктор поинтересовался об оборудованном помещении.Вы сказали, что у вас такого нет. Вам нужен дом побольше</string>
+
+
     <!--Настроение-->
-    <string name="MFwatchAnimals">Смотреть на голубей</string>
-    <string name="MFdrinkBeer">Выпить пива</string>
-    <string name="MFdrinkVodka">Выпить водки</string>
-    <string name="MFgoCinema">Сходить в кинотеатр</string>
-    <string name="MFwatchTV">Смотреть телевизор</string>
-    <string name="MFplayPC">Играть в компьютерные игры</string>
-    <string name="MFgoConcert">Сходить на концерт</string>
-    <string name="MForderComedian">Заказать комика</string>
-    <string name="MFpersonalComedian">Личный комик</string>
+    <string name="MFwatchAnimals">Смотреть на голубей|0р</string>
+    <string name="MFdrinkBeer">Выпить пива|50р</string>
+    <string name="MFdrinkVodka">Выпить водки|200р</string>
+    <string name="MFgoCinema">Сходить в кинотеатр|500р</string>
+    <string name="MFwatchTV">Смотреть телевизор|100р</string>
+    <string name="MFplayPC">Играть в компьютерные игры|300р</string>
+    <string name="MFgoConcert">Сходить на концерт|7000р</string>
+    <string name="MForderComedian">Заказать комика|15000р</string>
+    <string name="MFpersonalComedian">Личный комик|50000р/м</string>
+    <string name="MFfiredComedian">Уволить комика</string>
+
+    <string name="MFerror1">Вы взяли бутылочку пива, но Лев против сразу же отобрали ее. Вам нужна хотя бы картонная коробка, чтобы спрятаться</string>
+    <string name="MFerror2">Вы взяли бутылку водки и выпив ее вам негде было переночевать. Вы чуть не умерли ночуя под открытым небом</string>
+    <string name="MFerror3">Вы пришли в кинотеатр, но понюхав вас охранник предложил выйти. Вам нужно одеться получше</string>
+
+    <string name="MFerror4">У вас нет телевизора</string>
+    <string name="MFerror5">У вас нет компьютера</string>
+
+    <string name="MFerror6">Комик подумал, что вы хотите его ограбить и убежал. Купите костюм, чтобы выглядеть солидно</string>
+    <string name="MFerror7">Комик спросил, есть ли в вашем доме сцена, вы расплакались и он ушел</string>
+
+
+
+
+    <!-- Респект -->
+    <string name="RFsing">Петь около остановки|0р</string>
+    <string name="RFvideoPresident">Записать видео обращение к президенту|0р</string>
+    <string name="RFstream">Стримить маинкрафт|300р</string>
+    <string name="RFtraining">Посетить тренинг|10000р</string>
+    <string name="RFbusinesslunch">Обедать с бизнессменами|3000$</string>
+    <string name="RFbecameMem">Стать мемом|100000р</string>
+    <string name="RFmeetingPresident">Встретиться с президентом|50000$</string>
+    <string name="RFbecameMP">Стать депутатом|50000$/м</string>
+
+
+    <string name="RFerror1">Вы нашли красивое место для сьемки видео, но обнаружили, что у вас нет камеры</string>
+    <string name="RFerror2">Подумав о квадратном мире вы осознали, что у вас негде его создавать</string>
+    <string name="RFerror3">Вас засмеяли на подходе к тренингу, оденьтесь по приличнее</string>
+    <string name="RFerror4">Богатые люди в красивой одежде предпочли другой ресторан, вы остались на едине с самим собой</string>
+    <string name="RFsuccess">Вас стали узнавать на улицах</string>
+    <string name="RFerror5">Ваше видео не зафорсилось, попробуйте еще раз</string>
+    <string name="RFerror6">Вас не восприняли как влиятельного человека, кажется личный вертолет исправит положение</string>
+    <string name="RFerror7">Какой вы депутат без яхты</string>
+
+
+
     <!--Халтура-->
     <string name="FrFScrap">Искать металлолом</string>
     <string name="FrFSellScrap">Сдать металлолом</string>
@@ -232,6 +300,12 @@
     <string name="FrFSupportScrapQuantity">Кг металла:</string>
     <string name="FrFSupportScrapCourse">Курс:</string>
     <string name="FrFLotScrap">Вам негде больше складировать металлолом, купите помещение побольше</string>
+
+    <string name="FrFerror1">Без картонной коробки и уважения от местных бандитов вам никто не даст просить милостыню</string>
+    <string name="FrFerror2">Без резиновых сапог вы не смогли активно бегать по грядкам</string>
+    <string name="FrFerror3">У вас нехватает уважения.Работодатель кинул вас на деньги</string>
+    <string name="FrFerror4">Без уважения вам никто не доверяет на площадке с заказами</string>
+    <string name="FrFerror5">Пока вы не найдете машину, вы не сможете таксовать</string>
 
 
 
@@ -245,7 +319,7 @@
     <string name="WFInFactory">Работать на заводе</string>
     <string name="WFInAutoService">Работать в автосервисе</string>
     <string name="WFInManagerForSale">Работать менеджером по продажам</string>
-    <string name="WFInEngineer">Работать иженером</string>
+    <string name="WFInEngineer">Работать программистом</string>
     <string name="WFInHeadOfDepartment">Работать начальником отдела</string>
     <!--Бизнесс-->
     <!--Металл-->
@@ -289,26 +363,62 @@
     <string name="BFClub">Клуб</string>
     <!--Образование-->
     <string name="EFSchool">Школа</string>
-    <string name="EFCollege">Коледж</string>
+    <string name="EFSchoolError">Сначала окончите школу</string>
+    <string name="EFSchoolEnd">Ты окончил школу</string>
+    <string name="EFCollege">Колледж</string>
+    <string name="EFCollegeError">Сначала окончите колледж</string>
+    <string name="EFCollegeEnd">Ты окончил колледж</string>
     <string name="EFUniversity">Университет</string>
+    <string name="EFUniversityEnd">Ты окончил университет</string>
+    <string name="EFUniversityError">Сначала окончите университет</string>
     <string name="EFOverseasUniversity">Заграничный университет</string>
+    <string name="EFOverseasUniversityEnd">Ты окончил заграничный университет</string>
+    <string name="EFOverseasUniversityError">Сначала окончите заграничный университет</string>
+    <string name="EFCourses">Бизнес тренинг</string>
+    <string name="EFCoursesEnd">Ты окончил бизнес тренинг</string>
+    <string name="EFCoursesError">Сначала окончите бизнес тренинг</string>
     <!--Имущество-->
-    <string name="PrFRubberBoots">Резиновые сапоги</string>
-    <string name="PrFCheapClothes">Дешевая одежда</string>
-    <string name="PrFBicycle">Велосипед</string>
-    <string name="PrFNormalClothes">Нормальная одежда</string>
-    <string name="PrFCar">Машина</string>
-    <string name="PrFSuit">Костюм</string>
-    <string name="PrFWeapons">Оружие</string>
-    <string name="PrFTV">Телевизор</string>
-    <string name="PrFPC">Компьютер</string>
-    <string name="PrFHelicopter">Вертолет</string>
-    <string name="PrFYacht">Яхта</string>
+    <string name="PrFRubberBoots">Резиновые сапоги|500р</string>
+    <string name="PrFCheapClothes">Дешевая одежда|2000р</string>
+    <string name="PrFCamera">Камера|5000р</string>
+    <string name="PrFBicycle">Велосипед|5000р</string>
+    <string name="PrFNormalClothes">Нормальная одежда|15000р</string>
+    <string name="PrFCar">Машина|200000р</string>
+    <string name="PrFSuit">Костюм|3000$</string>
+    <string name="PrFWeapons">Оружие|4000$</string>
+    <string name="PrFTV">Телевизор|70000р</string>
+    <string name="PrFPC">Компьютер|120000р</string>
+    <string name="PrFHelicopter">Вертолет|550000$</string>
+    <string name="PrFYacht">Яхта|1500000$</string>
     <!--Недвижимость-->
-    <string name="HoFCardboardBox">Картонная коробка</string>
-    <string name="HoFCamp">Палатка</string>
-    <string name="HoFRentRoom">Снимать комнату</string>
-    <string name="HoFbuyApartment">Купить квартиру</string>
-    <string name="HoFbuyHome">Купить дом</string>
-    <string name="HoFbuyMansion">Купить особняк</string>
+    <string name="HoFCardboardBox">Картонная коробка|300р</string>
+    <string name="HoFCamp">Палатка|3000р</string>
+    <string name="HoFRentRoom">Снимать комнату|25000р/м</string>
+    <string name="HoFRentRoomOff">Перестать снимать комнату</string>
+    <string name="HoFbuyApartment">Купить квартиру|1500000р</string>
+    <string name="HoFbuyHome">Купить дом|3000000р</string>
+    <string name="HoFbuyMansion">Купить особняк|3000000$</string>
+    <!--Банк-->
+    <string name="BFtext1">КУРС</string>
+    <string name="BFbtn1">Купить</string>
+    <string name="BFbtn2">Продать</string>
+    <string-array name="BFspin">
+        <item>1</item>
+        <item>5</item>
+        <item>10</item>
+        <item>50</item>
+        <item>100</item>
+        <item>500</item>
+        <item>1000</item>
+        <item>5000</item>
+        <item>10000</item>
+        <item>50000</item>
+        <item>100000</item>
+        <item>500000</item>
+        <item>1000000</item>
+    </string-array>
+    <!--Достижения-->
+    <string name="AF1">КУРС</string>
+    <string name="AF1dop">КУРС</string>
+
 </resources>

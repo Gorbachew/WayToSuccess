@@ -60,7 +60,7 @@ public class BusinessCafe extends Fragment {
 
 
 
-        Button work = BusinessCafe.findViewById(R.id.btnBCWork);
+//        Button work = BusinessCafe.findViewById(R.id.btnBCWork);
         btnCook = BusinessCafe.findViewById(R.id.btnBCcook);
         btnWaiter = BusinessCafe.findViewById(R.id.btnBCwaiter);
         btnRoom = BusinessCafe.findViewById(R.id.btnBCroom);
@@ -68,13 +68,13 @@ public class BusinessCafe extends Fragment {
         btnAd = BusinessCafe.findViewById(R.id.btnBCad);
         btnBCSellBusiness = BusinessCafe.findViewById(R.id.btnBCSellBusiness);
 
-        work.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                ((Game)getActivity()).NextDay();
-                load_info();
-            }
-        });
+//        work.setOnClickListener(new View.OnClickListener() {
+//            @Override
+//            public void onClick(View v) {
+//                ((Game)getActivity()).NextDay();
+//                load_info();
+//            }
+//        });
 
 
         btnBСBuyCafe.setOnClickListener(new View.OnClickListener() {

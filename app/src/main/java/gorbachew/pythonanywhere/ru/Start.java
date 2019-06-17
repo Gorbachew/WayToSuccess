@@ -275,6 +275,7 @@ public class Start extends AppCompatActivity{
         ed.putString(SAVED_SP,String.valueOf(TotalSP));
         ed.putString(SAVED_RUB,String.valueOf(RUB));
         ed.putString("USD","0");
+        ed.putString("CourseUSD","20");
         ed.putString("RESPECT","0");
         ed.putString("DAY","1");
         ed.putString("HP","100");
@@ -295,6 +296,21 @@ public class Start extends AppCompatActivity{
 
         ed.putString("BusinessPC","0");
         ed.putString("Clothes","0");
+        ed.putString("Education","0");
+
+        ed.putString("EducationSchool","0");
+        ed.putString("EducationSchoolHour","720");
+        ed.putString("EducationCollage","0");
+        ed.putString("EducationCollageHour","1440");
+        ed.putString("EducationCourses","0");
+        ed.putString("EducationCoursesHour","720");
+        ed.putString("EducationUniversity","0");
+        ed.putString("EducationUniversityHour","2160");
+        ed.putString("EducationOverseasUniversity","0");
+        ed.putString("EducationOverseasUniversityHour","2400");
+
+
+
         ed.putString("Transport","0");
         ed.putString("Holding","0");
         ed.putString("Job","0");
@@ -319,6 +335,17 @@ public class Start extends AppCompatActivity{
         ed.putString("BCPriceCook","3000");
 
         ed.putString("BCPriceBusiness","0");
+
+        ed.putString("BuffCook","0");
+        ed.putString("BuffComic","0");
+        ed.putString("BuffDock","0");
+        ed.putString("BuffMP","0");
+
+        ed.putString("PropertyTV","0");
+        ed.putString("PropertyCamera","0");
+        ed.putString("PropertyPC","0");
+        ed.putString("PropertyWeapon","0");
+
 
 
 

@@ -201,13 +201,14 @@
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
                 android:text="@string/BmFSellBusiness" />
-
+            <!--
             <Button
                 android:id="@+id/btnBCWork"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
                 android:text="@string/BmFWork" />
+                -->
         </LinearLayout>
 
 

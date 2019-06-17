@@ -22,9 +22,10 @@ public class Game extends AppCompatActivity {
     final String LOAD_NAME = "Name";
     final String LOAD_RUB = "RUB";
     final String LOAD_USD = "USD";
+    final String LOAD_CourseUSD = "CourseUSD";
     final String LOAD_RESPECT = "RESPECT";
     final String LOAD_DAY = "DAY";
-    final String LOAD_AGE = "Age";
+    final String SAVED_HOLDING = "Holding";
     final String LOAD_TotalHP = "TotalHP";
     final String LOAD_TotalMP = "TotalMP";
     final String LOAD_TotalSP = "TotalSP";
@@ -54,11 +55,17 @@ public class Game extends AppCompatActivity {
     final String LOAD_BCW = "BCwaiter";
     final String LOAD_BCC = "BCcook";
 
+    final String LOAD_BUFFCOOK = "BuffCook";
+    final String LOAD_BUFFCOMIC = "BuffComic";
+    final String LOAD_BUFFDOCK = "BuffDock";
+    final String LOAD_BUFFMP = "BuffMP";
+
+
     final Random random = new Random();
 
     String NameGamer,TotalRub,TotalUsd,TotalResp,TotalDay,TotalHP,TotalSP,TotalMP,HP,SP,MP,SCRAP,LoadCourseScrap;
     FragmentTransaction fTrans;
-    Fragment FragmentPass,FragmentFood,FragmentMood,FragmentHealth,FragmentFreelance,FragmentWork,FragmentBusinessMetal,FragmentBusinessPC,FragmentBusinessCafe,FragmentProperty,FragmentHolding,FragmentEducation;
+    Fragment FragmentPass,FragmentFood,FragmentMood,FragmentHealth,FragmentFreelance,FragmentWork,FragmentBusinessMetal,FragmentRespect,FragmentBusinessCafe,FragmentProperty,FragmentHolding,FragmentEducation,FragmentAchivment,FragmentBank,FragmentCasino;
     ImageView ivimgDay;
     LinearLayout LayoutScrap;
     HorizontalScrollView ScrollBusiness;
@@ -113,6 +120,10 @@ public class Game extends AppCompatActivity {
         FragmentHolding = new Holding();
         FragmentEducation = new Education();
         FragmentProperty = new Property();
+        FragmentRespect = new Respect();
+        FragmentAchivment = new Achivment();
+        FragmentBank = new Bank();
+        FragmentCasino = new Casino();
 
 
 
@@ -134,6 +145,76 @@ public class Game extends AppCompatActivity {
         fTrans.replace(R.id.MainFragmentsWindow,FragmentPass);
         fTrans.commit();
     }
+
+    public void ChangeCourseUSD(){
+        int course = Integer.parseInt(sPref.getString(LOAD_CourseUSD,""));
+        int rand = random.nextInt(6);
+
+        switch (rand){
+            case 0:
+                course -= 1;
+                break;
+            case 1:
+                course -= 2;
+                break;
+            case 2:
+                course -= 3;
+                break;
+            case 3:
+                course += 1;
+                break;
+            case 4:
+                course += 2;
+                break;
+            case 5:
+                course += 3;
+                break;
+        }
+        SharedPreferences.Editor ed = sPref.edit();
+        ed.putString(LOAD_CourseUSD,String.valueOf(course));
+        ed.commit();
+    }
+
+    public void CheckBuff(){
+        String cook = sPref.getString(LOAD_BUFFCOOK,"");
+        String dock = sPref.getString(LOAD_BUFFDOCK,"");
+        String comic = sPref.getString(LOAD_BUFFCOMIC,"");
+        String mp = sPref.getString(LOAD_BUFFMP,"");
+        String rent = sPref.getString(SAVED_HOLDING,"");
+        int day = Integer.parseInt(sPref.getString(LOAD_DAY,""));
+        if(cook.equals("1")){
+            RandomStats("SP","+",10,50);
+
+            if(day % 30 == 0){
+                transaction("rub","-",50000);
+            }
+        }
+        if(dock.equals("1")){
+            RandomStats("HP","+",10,50);
+            if(day % 30 == 0){
+                transaction("rub","-",70000);
+            }
+        }
+        if(comic.equals("1")){
+            RandomStats("MP","+",10,50);
+            if(day % 30 == 0){
+                transaction("rub","-",70000);
+            }
+        }
+        if(mp.equals("1")){
+            RandomStats("RESP","+",0,100);
+            if(day % 30 == 0){
+                transaction("usd","-",50000);
+            }
+        }
+        if(rent.equals("3")){
+            if(day % 30 == 0){
+                transaction("rub","-",25000);
+            }
+        }
+
+    }
+
 
 
     public void BCafe(){
@@ -276,7 +357,7 @@ public class Game extends AppCompatActivity {
         switch (Stat){
             case "HP":
                 int varStatHP = ProgBarHP.getProgress();
-                if(Sign.equals("Plus")){
+                if(Sign.equals("+")){
 
                     varStatHP = varStatHP + ExactChangeStat + random.nextInt(RandChangeStat);
 
@@ -286,7 +367,7 @@ public class Game extends AppCompatActivity {
 
                     totaltexthp.setText(ProgBarHP.getProgress() + "/" +ProgBarHP.getMax());*/
                 }
-                if(Sign.equals("Minus")){
+                if(Sign.equals("-")){
                     varStatHP = varStatHP - ExactChangeStat - random.nextInt(RandChangeStat);
                     ed.putString(LOAD_HP,String.valueOf(varStatHP));
                     /*
@@ -296,24 +377,35 @@ public class Game extends AppCompatActivity {
                 break;
             case "MP":
                 int varStatMP = ProgBarMP.getProgress();
-                if(Sign.equals("Plus")){
+                if(Sign.equals("+")){
                     varStatMP = varStatMP + ExactChangeStat + random.nextInt(RandChangeStat);
                     ed.putString(LOAD_MP,String.valueOf(varStatMP));
                 }
-                if(Sign.equals("Minus")){
+                if(Sign.equals("-")){
                     varStatMP = varStatMP - ExactChangeStat - random.nextInt(RandChangeStat);
                     ed.putString(LOAD_MP,String.valueOf(varStatMP));
                 }
                 break;
             case "SP":
                 int varStatSP = ProgBarSP.getProgress();
-                if(Sign.equals("Plus")){
+                if(Sign.equals("+")){
                     varStatSP = varStatSP + ExactChangeStat + random.nextInt(RandChangeStat);
                     ed.putString(LOAD_SP,String.valueOf(varStatSP));
                 }
-                if(Sign.equals("Minus")){
+                if(Sign.equals("-")){
                     varStatSP = varStatSP - ExactChangeStat - random.nextInt(RandChangeStat);
                     ed.putString(LOAD_SP,String.valueOf(varStatSP));
+                }
+                break;
+            case "RESP":
+                int var = Integer.parseInt(sPref.getString(LOAD_RESPECT,""));
+                if(Sign.equals("+")){
+                    varStatSP = var + ExactChangeStat + random.nextInt(RandChangeStat);
+                    ed.putString(LOAD_RESPECT,String.valueOf(varStatSP));
+                }
+                if(Sign.equals("-")){
+                    varStatSP = var - ExactChangeStat - random.nextInt(RandChangeStat);
+                    ed.putString(LOAD_RESPECT,String.valueOf(varStatSP));
                 }
                 break;
         }
@@ -345,6 +437,11 @@ public class Game extends AppCompatActivity {
             ivimgDay.setImageResource(R.drawable.day6);
             tvHours.setText("6");
 
+            RandomStats("HP","-",0,5);
+            RandomStats("SP","-",0,5);
+            RandomStats("MP","-",0,5);
+
+
             int load = Integer.parseInt(sPref.getString(LOAD_DAY,""));
             SharedPreferences.Editor ed = sPref.edit();
             ed.putString(LOAD_DAY,String.valueOf(load + 1));
@@ -352,8 +449,11 @@ public class Game extends AppCompatActivity {
 
             BMWorker();
             BCafe();
+            CheckBuff();
         }
+
         CourseScrap();
+        ChangeCourseUSD();
         loadGame();
     }
 
@@ -456,6 +556,22 @@ public class Game extends AppCompatActivity {
                 namefragments.setText(getResources().getString(R.string.NFHolding));
                 fTrans.replace(R.id.MainFragmentsWindow,FragmentHolding);
                 break;
+            case R.id.btnRespect:
+                namefragments.setText(getResources().getString(R.string.NFRespect));
+                fTrans.replace(R.id.MainFragmentsWindow,FragmentRespect);
+                break;
+            case R.id.btnBank:
+                namefragments.setText(getResources().getString(R.string.NFBank));
+                fTrans.replace(R.id.MainFragmentsWindow,FragmentBank);
+                break;
+            case R.id.btnCasino:
+                namefragments.setText(getResources().getString(R.string.NFCasino));
+                fTrans.replace(R.id.MainFragmentsWindow,FragmentCasino);
+                break;
+            case R.id.btnAchivment:
+                namefragments.setText(getResources().getString(R.string.NFAchivment));
+                fTrans.replace(R.id.MainFragmentsWindow,FragmentAchivment);
+                break;
 
         }
         fTrans.commit();
@@ -512,7 +628,6 @@ public class Game extends AppCompatActivity {
         //Загрузка Металлолома
         textKgScrap.setText(getResources().getString(R.string.FrFSupportScrapQuantity));
         textCourseScrap.setText(getResources().getString(R.string.FrFSupportScrapCourse));
-        namefragments.setText(getResources().getString(R.string.NFFreelance));
         KgScrap.setText(SCRAP);
         CourseScrap.setText(LoadCourseScrap);
 

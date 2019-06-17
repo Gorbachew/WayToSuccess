@@ -34,7 +34,12 @@
                     android:layout_weight="1"
                     android:text="@string/FrFSellScrap" />
             </LinearLayout>
-
+            <Button
+                android:id="@+id/btnFreelanceHelpOld"
+                android:layout_width="match_parent"
+                android:layout_height="70dp"
+                android:layout_weight="1"
+                android:text="@string/FrFHelpOld" />
             <Button
                 android:id="@+id/btnFreelanceBegForMoney"
                 android:layout_width="match_parent"
@@ -42,12 +47,7 @@
                 android:layout_weight="1"
                 android:text="@string/FrFBegForMoney" />
 
-            <Button
-                android:id="@+id/btnFreelanceHelpOld"
-                android:layout_width="match_parent"
-                android:layout_height="70dp"
-                android:layout_weight="1"
-                android:text="@string/FrFHelpOld" />
+
 
             <Button
                 android:id="@+id/btnFreelanceDistributeFlyers"

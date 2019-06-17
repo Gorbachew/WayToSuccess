@@ -28,7 +28,12 @@
                 android:layout_height="70dp"
                 android:layout_weight="1"
                 android:text="@string/HFrobPharmacy" />
-
+            <Button
+                android:id="@+id/btnHealthBuyPharmacy"
+                android:layout_width="match_parent"
+                android:layout_height="70dp"
+                android:layout_weight="1"
+                android:text="@string/HFbuyPharmacy" />
             <Button
                 android:id="@+id/btnHealthDistrictHospital"
                 android:layout_width="match_parent"
@@ -38,12 +43,7 @@
 
 
 
-            <Button
-                android:id="@+id/btnHealthBuyPharmacy"
-                android:layout_width="match_parent"
-                android:layout_height="70dp"
-                android:layout_weight="1"
-                android:text="@string/HFbuyPharmacy" />
+
 
             <Button
                 android:id="@+id/btnHealthPrivateHospital"
