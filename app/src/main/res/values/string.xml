@@ -420,5 +420,9 @@
     <!--Достижения-->
     <string name="AF1">КУРС</string>
     <string name="AF1dop">КУРС</string>
-
+    <!-- Казино -->
+    <string name="CFyouZero">Вы ничего не выиграли</string>
+    <string name="CFyouWin">Вы выиграли</string>
+    <string name="CFyouLose">Вы проиграли</string>
+    <string name="CFdollar">Долларов</string>
 </resources>
