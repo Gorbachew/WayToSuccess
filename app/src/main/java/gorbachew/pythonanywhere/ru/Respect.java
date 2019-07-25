@@ -21,6 +21,8 @@ public class Respect extends Fragment {
     final String LOAD_PRPC = "PropertyPC";
     final String SAVED_CLOTCHES = "Clothes";
     final String SAVED_TRANSPORT = "Transport";
+    final String LOAD_RUB = "RUB";
+    final String LOAD_USD = "USD";
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
@@ -48,6 +50,7 @@ public class Respect extends Fragment {
         RFvideoPresident.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+
                 int var = Integer.parseInt(sPref.getString(LOAD_PRCAMERA,""));
                 if(var >= 1){
                     ((Game)getActivity()).RandomStats("RESP","+",3,5);
@@ -62,91 +65,109 @@ public class Respect extends Fragment {
         RFstream.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                int var = Integer.parseInt(sPref.getString(LOAD_PRPC,""));
-                if(var >= 1){
-                    ((Game)getActivity()).RandomStats("RESP","+",7,5);
-                    ((Game)getActivity()).transaction("rub","-",300);
+                if (Integer.parseInt(sPref.getString(LOAD_RUB, "")) < 300) {
+                    ((Game) getActivity()).LowMoney("rub");
+                } else {
+                    int var = Integer.parseInt(sPref.getString(LOAD_PRPC, ""));
+                    if (var >= 1) {
+                        ((Game) getActivity()).RandomStats("RESP", "+", 7, 5);
+                        ((Game) getActivity()).transaction("rub", "-", 300);
 
+                    } else {
+                        Toast.makeText(getActivity(), getResources().getString(R.string.RFerror2), Toast.LENGTH_LONG).show();
+                    }
+                    ((Game) getActivity()).NextDay();
                 }
-                else {
-                    Toast.makeText(getActivity(),getResources().getString(R.string.RFerror2),Toast.LENGTH_LONG).show();
-                }
-                ((Game)getActivity()).NextDay();
             }
         });
         RFtraining.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                int var = Integer.parseInt(sPref.getString(SAVED_CLOTCHES,""));
-                if(var >= 3){
-                    ((Game)getActivity()).RandomStats("RESP","+",20,5);
-                    ((Game)getActivity()).transaction("rub","-",10000);
+                if (Integer.parseInt(sPref.getString(LOAD_RUB, "")) < 10000) {
+                    ((Game) getActivity()).LowMoney("rub");
+                } else {
+                    int var = Integer.parseInt(sPref.getString(SAVED_CLOTCHES, ""));
+                    if (var >= 3) {
+                        ((Game) getActivity()).RandomStats("RESP", "+", 20, 5);
+                        ((Game) getActivity()).transaction("rub", "-", 10000);
 
+                    } else {
+                        Toast.makeText(getActivity(), getResources().getString(R.string.RFerror3), Toast.LENGTH_LONG).show();
+                    }
+                    ((Game) getActivity()).NextDay();
                 }
-                else {
-                    Toast.makeText(getActivity(),getResources().getString(R.string.RFerror3),Toast.LENGTH_LONG).show();
-                }
-                ((Game)getActivity()).NextDay();
             }
         });
         RFbusinesslunch.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                int var = Integer.parseInt(sPref.getString(SAVED_CLOTCHES,""));
-                if(var >= 4){
-                    ((Game)getActivity()).RandomStats("RESP","+",30,5);
-                    ((Game)getActivity()).transaction("usd","-",3000);
+                if (Integer.parseInt(sPref.getString(LOAD_USD, "")) < 3000) {
+                    ((Game) getActivity()).LowMoney("usd");
+                } else {
+                    int var = Integer.parseInt(sPref.getString(SAVED_CLOTCHES, ""));
+                    if (var >= 4) {
+                        ((Game) getActivity()).RandomStats("RESP", "+", 30, 5);
+                        ((Game) getActivity()).transaction("usd", "-", 3000);
+                    } else {
+                        Toast.makeText(getActivity(), getResources().getString(R.string.RFerror4), Toast.LENGTH_LONG).show();
+                    }
+                    ((Game) getActivity()).NextDay();
                 }
-                else {
-                    Toast.makeText(getActivity(),getResources().getString(R.string.RFerror4),Toast.LENGTH_LONG).show();
-                }
-                ((Game)getActivity()).NextDay();
             }
         });
         RFbecameMem.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Random random = new Random();
-                int rand = random.nextInt(10);
+                if (Integer.parseInt(sPref.getString(LOAD_RUB, "")) < 100000) {
+                    ((Game) getActivity()).LowMoney("rub");
+                } else {
+                    Random random = new Random();
+                    int rand = random.nextInt(10);
 
-                if(rand == 1){
-                    ((Game)getActivity()).RandomStats("RESP","+",40,5);
-                    Toast.makeText(getActivity(),getResources().getString(R.string.RFsuccess),Toast.LENGTH_LONG).show();
-                    ((Game)getActivity()).transaction("rub","-",100000);
+                    if (rand == 1) {
+                        ((Game) getActivity()).RandomStats("RESP", "+", 40, 5);
+                        Toast.makeText(getActivity(), getResources().getString(R.string.RFsuccess), Toast.LENGTH_LONG).show();
+                        ((Game) getActivity()).transaction("rub", "-", 100000);
 
+                    } else {
+                        Toast.makeText(getActivity(), getResources().getString(R.string.RFerror5), Toast.LENGTH_LONG).show();
+                    }
+                    ((Game) getActivity()).NextDay();
                 }
-                else {
-                    Toast.makeText(getActivity(),getResources().getString(R.string.RFerror5),Toast.LENGTH_LONG).show();
-                }
-                ((Game)getActivity()).NextDay();
             }
         });
         RFmeetingPresident.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                int var = Integer.parseInt(sPref.getString(SAVED_TRANSPORT,""));
-                if(var >= 3){
-                    ((Game)getActivity()).RandomStats("RESP","+",100,5);
-                    ((Game)getActivity()).transaction("usd","-",50000);
+                if (Integer.parseInt(sPref.getString(LOAD_USD, "")) < 50000) {
+                    ((Game) getActivity()).LowMoney("usd");
+                } else {
+                    int var = Integer.parseInt(sPref.getString(SAVED_TRANSPORT, ""));
+                    if (var >= 3) {
+                        ((Game) getActivity()).RandomStats("RESP", "+", 100, 5);
+                        ((Game) getActivity()).transaction("usd", "-", 50000);
+                    } else {
+                        Toast.makeText(getActivity(), getResources().getString(R.string.RFerror6), Toast.LENGTH_LONG).show();
+                    }
+                    ((Game) getActivity()).NextDay();
                 }
-                else {
-                    Toast.makeText(getActivity(),getResources().getString(R.string.RFerror6),Toast.LENGTH_LONG).show();
-                }
-                ((Game)getActivity()).NextDay();
             }
         });
         RFbecameMP.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                int var = Integer.parseInt(sPref.getString(SAVED_TRANSPORT,""));
-                if(var >= 4){
-                    ((Game)getActivity()).RandomStats("RESP","+",500,5);
-                    ((Game)getActivity()).transaction("usd","-",50000);
+                if (Integer.parseInt(sPref.getString(LOAD_USD, "")) < 50000) {
+                    ((Game) getActivity()).LowMoney("usd");
+                } else {
+                    int var = Integer.parseInt(sPref.getString(SAVED_TRANSPORT, ""));
+                    if (var >= 4) {
+                        ((Game) getActivity()).RandomStats("RESP", "+", 500, 5);
+                        ((Game) getActivity()).transaction("usd", "-", 50000);
+                    } else {
+                        Toast.makeText(getActivity(), getResources().getString(R.string.RFerror7), Toast.LENGTH_LONG).show();
+                    }
+                    ((Game) getActivity()).NextDay();
                 }
-                else {
-                    Toast.makeText(getActivity(),getResources().getString(R.string.RFerror7),Toast.LENGTH_LONG).show();
-                }
-                ((Game)getActivity()).NextDay();
             }
         });
         return RespectFragment;

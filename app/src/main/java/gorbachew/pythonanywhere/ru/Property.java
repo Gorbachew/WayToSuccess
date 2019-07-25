@@ -25,7 +25,8 @@ public class Property extends Fragment {
     final String LOAD_PRPC = "PropertyPC";
     final String LOAD_PRWEAPON = "PropertyWeapon";
     final String LOAD_PRCAMERA = "PropertyCamera";
-
+    final String LOAD_RUB = "RUB";
+    final String LOAD_USD = "USD";
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
@@ -48,122 +49,172 @@ public class Property extends Fragment {
         btnRubberBoots.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                SharedPreferences.Editor ed = sPref.edit();
-                ed.putString(SAVED_CLOTCHES,"1");
+                if (Integer.parseInt(sPref.getString(LOAD_RUB, "")) < 500) {
+                    ((Game) getActivity()).LowMoney("rub");
+                }
+                else {
+                    SharedPreferences.Editor ed = sPref.edit();
+                    ed.putString(SAVED_CLOTCHES, "1");
 
-                ed.commit();
-                ((Game)getActivity()).transaction("rub","-",500);
-                ((Game)getActivity()).NextDay();
+                    ed.commit();
+                    ((Game) getActivity()).transaction("rub", "-", 500);
+                    ((Game) getActivity()).NextDay();
+                }
             }
         });
         btnCheapClothes.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                SharedPreferences.Editor ed = sPref.edit();
-                ed.putString(SAVED_CLOTCHES,"2");
-                ed.commit();
-                ((Game)getActivity()).transaction("rub","-",2000);
-                ((Game)getActivity()).NextDay();
+                if (Integer.parseInt(sPref.getString(LOAD_RUB, "")) < 2000) {
+                    ((Game) getActivity()).LowMoney("rub");
+                } else {
+                    SharedPreferences.Editor ed = sPref.edit();
+                    ed.putString(SAVED_CLOTCHES, "2");
+                    ed.commit();
+                    ((Game) getActivity()).transaction("rub", "-", 2000);
+                    ((Game) getActivity()).NextDay();
+                }
             }
         });
         btnCamera.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                SharedPreferences.Editor ed = sPref.edit();
-                ed.putString(LOAD_PRCAMERA,"1");
-                ed.commit();
-                ((Game)getActivity()).transaction("rub","-",5000);
-                ((Game)getActivity()).NextDay();
+                if (Integer.parseInt(sPref.getString(LOAD_RUB, "")) < 5000) {
+                    ((Game) getActivity()).LowMoney("rub");
+                } else {
+                    SharedPreferences.Editor ed = sPref.edit();
+                    ed.putString(LOAD_PRCAMERA, "1");
+                    ed.commit();
+                    ((Game) getActivity()).transaction("rub", "-", 5000);
+                    ((Game) getActivity()).NextDay();
+                }
             }
+
         });
         btnBicycle.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                SharedPreferences.Editor ed = sPref.edit();
-                ed.putString(SAVED_TRANSPORT,"1");
-                ed.commit();
-                ((Game)getActivity()).transaction("rub","-",5000);
-                ((Game)getActivity()).NextDay();
+                if (Integer.parseInt(sPref.getString(LOAD_RUB, "")) < 5000) {
+                    ((Game) getActivity()).LowMoney("rub");
+                } else {
+                    SharedPreferences.Editor ed = sPref.edit();
+                    ed.putString(SAVED_TRANSPORT, "1");
+                    ed.commit();
+                    ((Game) getActivity()).transaction("rub", "-", 5000);
+                    ((Game) getActivity()).NextDay();
+                }
             }
         });
         btnNormalClothes.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                SharedPreferences.Editor ed = sPref.edit();
-                ed.putString(SAVED_CLOTCHES,"3");
-                ed.commit();
-                ((Game)getActivity()).transaction("rub","-",15000);
-                ((Game)getActivity()).NextDay();
+                if (Integer.parseInt(sPref.getString(LOAD_RUB, "")) < 15000) {
+                    ((Game) getActivity()).LowMoney("rub");
+                } else {
+                    SharedPreferences.Editor ed = sPref.edit();
+                    ed.putString(SAVED_CLOTCHES, "3");
+                    ed.commit();
+                    ((Game) getActivity()).transaction("rub", "-", 15000);
+                    ((Game) getActivity()).NextDay();
+                }
             }
         });
         btnCar.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                SharedPreferences.Editor ed = sPref.edit();
-                ed.putString(SAVED_TRANSPORT,"2");
-                ed.commit();
-                ((Game)getActivity()).transaction("rub","-",200000);
-                ((Game)getActivity()).NextDay();
+                if (Integer.parseInt(sPref.getString(LOAD_RUB, "")) < 200000) {
+                    ((Game) getActivity()).LowMoney("rub");
+                } else {
+                    SharedPreferences.Editor ed = sPref.edit();
+                    ed.putString(SAVED_TRANSPORT, "2");
+                    ed.commit();
+                    ((Game) getActivity()).transaction("rub", "-", 200000);
+                    ((Game) getActivity()).NextDay();
+                }
             }
         });
         btnSuit.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                SharedPreferences.Editor ed = sPref.edit();
-                ed.putString(SAVED_CLOTCHES,"4");
-                ed.commit();
-                ((Game)getActivity()).transaction("usd","-",3000);
-                ((Game)getActivity()).NextDay();
+                if (Integer.parseInt(sPref.getString(LOAD_USD, "")) < 3000) {
+                    ((Game) getActivity()).LowMoney("usd");
+                } else {
+                    SharedPreferences.Editor ed = sPref.edit();
+                    ed.putString(SAVED_CLOTCHES, "4");
+                    ed.commit();
+                    ((Game) getActivity()).transaction("usd", "-", 3000);
+                    ((Game) getActivity()).NextDay();
+                }
             }
         });
         btnWeapons.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                SharedPreferences.Editor ed = sPref.edit();
-                ed.putString(LOAD_PRWEAPON,"1");
-                ed.commit();
-                ((Game)getActivity()).transaction("usd","-",4000);
-                ((Game)getActivity()).NextDay();
+                if (Integer.parseInt(sPref.getString(LOAD_USD, "")) < 4000) {
+                    ((Game) getActivity()).LowMoney("usd");
+                } else {
+                    SharedPreferences.Editor ed = sPref.edit();
+                    ed.putString(LOAD_PRWEAPON, "1");
+                    ed.commit();
+                    ((Game) getActivity()).transaction("usd", "-", 4000);
+                    ((Game) getActivity()).NextDay();
+                }
             }
         });
         btnTV.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                SharedPreferences.Editor ed = sPref.edit();
-                ed.putString(LOAD_PRTV,"1");
-                ed.commit();
-                ((Game)getActivity()).transaction("rub","-",70000);
-                ((Game)getActivity()).NextDay();
+                if (Integer.parseInt(sPref.getString(LOAD_RUB, "")) < 70000) {
+                    ((Game) getActivity()).LowMoney("rub");
+                } else {
+                    SharedPreferences.Editor ed = sPref.edit();
+                    ed.putString(LOAD_PRTV, "1");
+                    ed.commit();
+                    ((Game) getActivity()).transaction("rub", "-", 70000);
+                    ((Game) getActivity()).NextDay();
+                }
             }
         });
         btnPC.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                SharedPreferences.Editor ed = sPref.edit();
-                ed.putString(LOAD_PRPC,"1");
-                ed.commit();
-                ((Game)getActivity()).transaction("rub","-",120000);
-                ((Game)getActivity()).NextDay();
+                if (Integer.parseInt(sPref.getString(LOAD_RUB, "")) < 120000) {
+                    ((Game) getActivity()).LowMoney("rub");
+                } else {
+                    SharedPreferences.Editor ed = sPref.edit();
+                    ed.putString(LOAD_PRPC, "1");
+                    ed.commit();
+                    ((Game) getActivity()).transaction("rub", "-", 120000);
+                    ((Game) getActivity()).NextDay();
+                }
             }
         });
         btnHelicopter.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                SharedPreferences.Editor ed = sPref.edit();
-                ed.putString(SAVED_TRANSPORT,"3");
-                ed.commit();
-                ((Game)getActivity()).transaction("usd","-",550000);
-                ((Game)getActivity()).NextDay();
+                if (Integer.parseInt(sPref.getString(LOAD_USD, "")) < 550000) {
+                    ((Game) getActivity()).LowMoney("usd");
+                } else {
+                    SharedPreferences.Editor ed = sPref.edit();
+                    ed.putString(SAVED_TRANSPORT, "3");
+                    ed.commit();
+                    ((Game) getActivity()).transaction("usd", "-", 550000);
+                    ((Game) getActivity()).NextDay();
+                }
             }
         });
         btnYacht.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                SharedPreferences.Editor ed = sPref.edit();
-                ed.putString(SAVED_TRANSPORT,"4");
-                ed.commit();
-                ((Game)getActivity()).transaction("usd","-",1500000);
-                ((Game)getActivity()).NextDay();
+                if (Integer.parseInt(sPref.getString(LOAD_USD, "")) < 1500000) {
+                    ((Game) getActivity()).LowMoney("usd");
+                } else {
+                    SharedPreferences.Editor ed = sPref.edit();
+                    ed.putString(SAVED_TRANSPORT, "4");
+                    ed.commit();
+                    ((Game) getActivity()).transaction("usd", "-", 1500000);
+                    ((Game) getActivity()).NextDay();
+                }
             }
         });
 

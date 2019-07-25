@@ -3,6 +3,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="@drawable/bgbusines"
     tools:context=".BusinessCafe">
 
     <!-- TODO: Update blank fragment layout -->
@@ -13,9 +14,6 @@
         android:orientation="vertical"
         android:visibility="visible"
         android:id="@+id/BCBis">
-
-
-
 
 
         <LinearLayout
@@ -29,13 +27,15 @@
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
                 android:text="TextView"
-                android:textSize="20dp"
+
+                style="@style/labelGame"
                 android:gravity="center"/>
 
             <Button
                 android:id="@+id/btnBCad"
                 android:layout_width="200dp"
                 android:layout_height="wrap_content"
+                android:background="@drawable/btngame"
                 android:text="@string/BCbuyAd" />
         </LinearLayout>
         <LinearLayout
@@ -49,13 +49,15 @@
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
                 android:text="TextView"
-                android:textSize="20dp"
+
+                style="@style/labelGame"
                 android:gravity="center"/>
 
             <Button
                 android:id="@+id/btnBCroom"
                 android:layout_width="200dp"
                 android:layout_height="wrap_content"
+                android:background="@drawable/btngame"
                 android:text="@string/BCbuyRoom" />
         </LinearLayout>
         <LinearLayout
@@ -69,13 +71,14 @@
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
                 android:text="TextView"
-                android:textSize="20dp"
+                style="@style/labelGame"
                 android:gravity="center"/>
 
             <Button
                 android:id="@+id/btnBCtable"
                 android:layout_width="200dp"
                 android:layout_height="wrap_content"
+                android:background="@drawable/btngame"
                 android:text="@string/BCbuyTable" />
         </LinearLayout>
         <LinearLayout
@@ -89,13 +92,15 @@
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
                 android:text="TextView"
-                android:textSize="20dp"
+
+                style="@style/labelGame"
                 android:gravity="center"/>
 
             <Button
                 android:id="@+id/btnBCwaiter"
                 android:layout_width="200dp"
                 android:layout_height="wrap_content"
+                android:background="@drawable/btngame"
                 android:text="@string/BCbuyWaiter" />
         </LinearLayout>
         <LinearLayout
@@ -109,13 +114,15 @@
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
                 android:text="TextView"
-                android:textSize="20dp"
+
+                style="@style/labelGame"
                 android:gravity="center"/>
 
             <Button
                 android:id="@+id/btnBCcook"
                 android:layout_width="200dp"
                 android:layout_height="wrap_content"
+                android:background="@drawable/btngame"
                 android:text="@string/BCbuyCook" />
         </LinearLayout>
         <LinearLayout
@@ -129,7 +136,8 @@
             android:layout_height="wrap_content"
             android:layout_weight="1"
             android:text="@string/BCvisitorsLastWeek"
-            android:textSize="20dp"
+
+            style="@style/labelGame"
             android:gravity="center"/>
         <TextView
             android:id="@+id/BCvisitorsLastWeek"
@@ -137,7 +145,8 @@
             android:layout_height="wrap_content"
             android:layout_weight="1"
             android:text="test"
-            android:textSize="20dp"
+
+            style="@style/labelGame"
             android:gravity="center"/>
 
     </LinearLayout>
@@ -152,7 +161,8 @@
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
                 android:text="@string/BCvisitors"
-                android:textSize="20dp"
+
+                style="@style/labelGame"
                 android:gravity="center"/>
             <TextView
                 android:id="@+id/BCvisitors"
@@ -160,7 +170,7 @@
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
                 android:text="test"
-                android:textSize="20dp"
+                style="@style/labelGame"
                 android:gravity="center"/>
 
         </LinearLayout>
@@ -175,7 +185,7 @@
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
                 android:text="@string/BCprofit"
-                android:textSize="20dp"
+                style="@style/labelGame"
                 android:gravity="center"/>
             <TextView
                 android:id="@+id/BCprofit"
@@ -183,7 +193,7 @@
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
                 android:text="test"
-                android:textSize="20dp"
+                style="@style/labelGame"
                 android:gravity="center"/>
 
         </LinearLayout>
@@ -200,6 +210,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
+                android:background="@drawable/btngame"
                 android:text="@string/BmFSellBusiness" />
             <!--
             <Button
@@ -227,6 +238,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:text="@string/BCBuyCafe"
+            android:background="@drawable/btngame"
             android:visibility="visible" />
     </LinearLayout>
 

@@ -3,6 +3,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="@drawable/bgholding"
     tools:context=".Holding">
 
     <!-- TODO: Update blank fragment layout -->
@@ -20,6 +21,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="70dp"
                 android:layout_weight="1"
+                android:background="@drawable/btngame"
                 android:text="@string/HoFCardboardBox" />
 
             <Button
@@ -27,6 +29,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="70dp"
                 android:layout_weight="1"
+                android:background="@drawable/btngame"
                 android:text="@string/HoFCamp" />
 
             <Button
@@ -34,18 +37,21 @@
                 android:layout_width="match_parent"
                 android:layout_height="70dp"
                 android:layout_weight="1"
+                android:background="@drawable/btngame"
                 android:text="@string/HoFRentRoom" />
             <Button
                 android:id="@+id/btnHoldingbuyApartment"
                 android:layout_width="match_parent"
                 android:layout_height="70dp"
                 android:layout_weight="1"
+                android:background="@drawable/btngame"
                 android:text="@string/HoFbuyApartment" />
             <Button
                 android:id="@+id/btnHoldingbuyHome"
                 android:layout_width="match_parent"
                 android:layout_height="70dp"
                 android:layout_weight="1"
+                android:background="@drawable/btngame"
                 android:text="@string/HoFbuyHome" />
 
             <Button
@@ -53,6 +59,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="70dp"
                 android:layout_weight="1"
+                android:background="@drawable/btngame"
                 android:text="@string/HoFbuyMansion" />
         </LinearLayout>
     </ScrollView>

@@ -3,6 +3,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="@drawable/bgfreelance"
     tools:context=".Freelance">
 
     <ScrollView
@@ -25,6 +26,7 @@
                     android:layout_width="match_parent"
                     android:layout_height="70dp"
                     android:layout_weight="1"
+                    android:background="@drawable/btngame"
                     android:text="@string/FrFScrap" />
 
                 <Button
@@ -32,6 +34,7 @@
                     android:layout_width="match_parent"
                     android:layout_height="70dp"
                     android:layout_weight="1"
+                    android:background="@drawable/btngame"
                     android:text="@string/FrFSellScrap" />
             </LinearLayout>
             <Button
@@ -39,21 +42,21 @@
                 android:layout_width="match_parent"
                 android:layout_height="70dp"
                 android:layout_weight="1"
+                android:background="@drawable/btngame"
                 android:text="@string/FrFHelpOld" />
             <Button
                 android:id="@+id/btnFreelanceBegForMoney"
                 android:layout_width="match_parent"
                 android:layout_height="70dp"
                 android:layout_weight="1"
+                android:background="@drawable/btngame"
                 android:text="@string/FrFBegForMoney" />
-
-
-
             <Button
                 android:id="@+id/btnFreelanceDistributeFlyers"
                 android:layout_width="match_parent"
                 android:layout_height="70dp"
                 android:layout_weight="1"
+                android:background="@drawable/btngame"
                 android:text="@string/FrFDistributeFlyers" />
 
             <Button
@@ -61,6 +64,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="70dp"
                 android:layout_weight="1"
+                android:background="@drawable/btngame"
                 android:text="@string/FrFRepairFlat" />
 
             <Button
@@ -68,6 +72,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="70dp"
                 android:layout_weight="1"
+                android:background="@drawable/btngame"
                 android:text="@string/FrFTaxi" />
         </LinearLayout>
     </ScrollView>

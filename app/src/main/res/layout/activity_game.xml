@@ -12,6 +12,7 @@
         android:layout_width="match_parent"
         android:layout_height="50dp"
         android:layout_weight="0"
+        android:background="@color/black"
         android:orientation="horizontal">
 
         <TextView
@@ -19,7 +20,8 @@
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:text="@string/NFPass"
-            android:textSize="30dp"
+            android:layout_marginLeft="5dp"
+            style="@style/textHeadline"
             android:layout_weight="1"/>
 
         <FrameLayout
@@ -39,28 +41,28 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text=""
-                    android:textSize="20dp" />
+                    style="@style/textStart"/>
 
                 <TextView
                     android:id="@+id/KgScrap"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text=""
-                    android:textSize="20dp" />
+                    style="@style/textStart"/>
 
                 <TextView
                     android:id="@+id/textCourseScrap"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text=""
-                    android:textSize="20dp" />
+                    style="@style/textStart"/>
 
                 <TextView
                     android:id="@+id/CourseScrap"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text=""
-                    android:textSize="20dp" />
+                    style="@style/textStart"/>
             </LinearLayout>
 
             <HorizontalScrollView
@@ -73,7 +75,6 @@
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
                     android:orientation="horizontal">
-
                     <ImageButton
                         android:id="@+id/topBtnMetalPoint"
                         android:layout_width="50dp"
@@ -206,21 +207,23 @@
                 android:layout_height="50dp"
                 android:layout_weight="1"
                 android:onClick="ChangeFragments"
-                android:src="@drawable/respico2" />
+                android:src="@drawable/bankico" />
+
             <ImageButton
                 android:id="@+id/btnCasino"
                 android:layout_width="50dp"
                 android:layout_height="50dp"
                 android:layout_weight="1"
                 android:onClick="ChangeFragments"
-                android:src="@drawable/respico2" />
+                android:src="@drawable/casinoico" />
+
             <ImageButton
                 android:id="@+id/btnAchivment"
                 android:layout_width="50dp"
                 android:layout_height="50dp"
                 android:layout_weight="1"
                 android:onClick="ChangeFragments"
-                android:src="@drawable/respico2" />
+                android:src="@drawable/achimentsico" />
         </LinearLayout>
     </HorizontalScrollView>
 
@@ -228,6 +231,7 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_weight="0"
+        android:background="@color/black"
         android:gravity="center|bottom"
         android:orientation="horizontal">
 
@@ -242,83 +246,69 @@
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
                 android:orientation="horizontal">
-
-
                 <FrameLayout
                     android:layout_width="30dp"
                     android:layout_height="30dp">
-
                     <ImageView
                         android:id="@+id/imgDay"
                         android:layout_width="30dp"
                         android:layout_height="30dp"
                         app:srcCompat="@drawable/day6" />
-
                     <TextView
                         android:id="@+id/TextHours"
                         android:layout_width="match_parent"
                         android:layout_height="match_parent"
                         android:text="6"
+                        style="@style/textDays"
                         android:gravity="center"/>
                 </FrameLayout>
-
                 <TextView
                     android:id="@+id/TotalDay"
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
                     android:layout_weight="1"
-                    android:textSize="17dp"
+                    style="@style/textStart"
                     android:gravity="center"
                     android:text="error" />
             </LinearLayout>
-
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:orientation="horizontal">
-
                 <ImageView
                     android:id="@+id/imgResp"
                     android:layout_width="30dp"
                     android:layout_height="30dp"
                     app:srcCompat="@drawable/respico" />
-
                 <TextView
                     android:id="@+id/TotalResp"
-                    android:layout_width="wrap_content"
+                    android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_weight="1"
-                    android:textSize="17dp"
+                    style="@style/textStart"
                     android:gravity="center"
                     android:text="error" />
-
             </LinearLayout>
         </LinearLayout>
 
         <LinearLayout
             android:layout_width="wrap_content"
             android:layout_height="match_parent"
-            android:layout_weight="1"
+
             android:orientation="vertical">
-
             <FrameLayout
-                android:layout_width="match_parent"
+                android:layout_width="150dp"
                 android:layout_height="match_parent"
-
                 android:layout_weight="1">
-
                 <ProgressBar
                     android:id="@+id/ProgressBarHP"
                     style="@android:style/Widget.ProgressBar.Horizontal"
-                    android:layout_width="match_parent"
+                    android:layout_width="150dp"
                     android:layout_height="wrap_content"
                     android:layout_weight="1"
-
+                    android:progressDrawable="@drawable/progress_bar_hp"
                     android:progress="100">
-
-
                 </ProgressBar>
-
                 <TextView
                     android:id="@+id/TextProgressBarHP"
                     android:layout_width="wrap_content"
@@ -326,20 +316,17 @@
                     android:layout_gravity="center"
                     android:text="error/error" />
             </FrameLayout>
-
-
             <FrameLayout
-                android:layout_width="match_parent"
+                android:layout_width="150dp"
                 android:layout_height="match_parent"
                 android:layout_weight="1">
-
                 <ProgressBar
                     android:id="@+id/ProgressBarMP"
                     style="@android:style/Widget.ProgressBar.Horizontal"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-
                     android:layout_weight="1"
+                    android:progressDrawable="@drawable/progress_bar_mp"
                     android:progress="100" />
                 <TextView
                     android:id="@+id/TextProgressBarMP"
@@ -347,20 +334,18 @@
                     android:layout_height="wrap_content"
                     android:layout_gravity="center"
                     android:text="error/error" />
-
             </FrameLayout>
-
             <FrameLayout
-                android:layout_width="match_parent"
+                android:layout_width="150dp"
                 android:layout_height="match_parent"
                 android:layout_weight="1">
-
                 <ProgressBar
                     android:id="@+id/ProgressBarSP"
                     style="@android:style/Widget.ProgressBar.Horizontal"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_weight="1"
+                    android:progressDrawable="@drawable/progress_bar_sp"
                     android:progress="100" />
                 <TextView
                     android:id="@+id/TextProgressBarSP"
@@ -369,7 +354,6 @@
                     android:layout_gravity="center"
                     android:text="error/error" />
             </FrameLayout>
-
         </LinearLayout>
 
         <LinearLayout
@@ -377,28 +361,23 @@
             android:layout_height="wrap_content"
             android:layout_weight="1"
             android:orientation="vertical">
-
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:orientation="horizontal">
-
                 <TextView
                     android:id="@+id/TotalRUB"
-                    android:layout_width="wrap_content"
+                    android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_weight="1"
-                    android:textSize="17dp"
+                    style="@style/textStart"
                     android:gravity="center"
-                    android:text="error" />
-
+                    android:text="error"/>
                 <ImageView
                     android:id="@+id/imgRub"
                     android:layout_width="30dp"
                     android:layout_height="30dp"
-
-                    app:srcCompat="@drawable/rubico" />
-
+                    app:srcCompat="@drawable/rubico"/>
             </LinearLayout>
 
             <LinearLayout
@@ -409,10 +388,10 @@
 
                 <TextView
                     android:id="@+id/TotalUSD"
-                    android:layout_width="wrap_content"
+                    android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_weight="1"
-                    android:textSize="17dp"
+                    style="@style/textStart"
                     android:gravity="center"
                     android:text="error" />
 
@@ -420,8 +399,7 @@
                     android:id="@+id/imgDoll"
                     android:layout_width="30dp"
                     android:layout_height="30dp"
-
-                    app:srcCompat="@drawable/dollarico" />
+                    app:srcCompat="@drawable/usdico" />
             </LinearLayout>
 
         </LinearLayout>

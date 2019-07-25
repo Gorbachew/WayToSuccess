@@ -4,7 +4,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context=".Mood"
-    android:background="@color/white">
+    android:background="@drawable/bgmood">
 
     <!-- TODO: Update blank fragment layout -->
     <ScrollView
@@ -21,12 +21,14 @@
                 android:layout_width="match_parent"
                 android:layout_height="70dp"
                 android:layout_weight="1"
+                android:background="@drawable/btngame"
                 android:text="@string/MFwatchAnimals" />
             <Button
                 android:id="@+id/btnMoodDrinkBeer"
                 android:layout_width="match_parent"
                 android:layout_height="70dp"
                 android:layout_weight="1"
+                android:background="@drawable/btngame"
                 android:text="@string/MFdrinkBeer" />
 
             <Button
@@ -34,6 +36,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="70dp"
                 android:layout_weight="1"
+                android:background="@drawable/btngame"
                 android:text="@string/MFdrinkVodka" />
 
 
@@ -43,6 +46,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="70dp"
                 android:layout_weight="1"
+                android:background="@drawable/btngame"
                 android:text="@string/MFgoCinema" />
 
             <Button
@@ -50,6 +54,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="70dp"
                 android:layout_weight="1"
+                android:background="@drawable/btngame"
                 android:text="@string/MFwatchTV" />
 
             <Button
@@ -57,24 +62,28 @@
                 android:layout_width="match_parent"
                 android:layout_height="70dp"
                 android:layout_weight="1"
+                android:background="@drawable/btngame"
                 android:text="@string/MFplayPC" />
             <Button
                 android:id="@+id/btnMoodgoConcert"
                 android:layout_width="match_parent"
                 android:layout_height="70dp"
                 android:layout_weight="1"
+                android:background="@drawable/btngame"
                 android:text="@string/MFgoConcert" />
             <Button
                 android:id="@+id/btnMoodOrderComedian"
                 android:layout_width="match_parent"
                 android:layout_height="70dp"
                 android:layout_weight="1"
+                android:background="@drawable/btngame"
                 android:text="@string/MForderComedian" />
             <Button
                 android:id="@+id/btnMoodPersonalComedian"
                 android:layout_width="match_parent"
                 android:layout_height="70dp"
                 android:layout_weight="1"
+                android:background="@drawable/btngame"
                 android:text="@string/MFpersonalComedian" />
 
         </LinearLayout>

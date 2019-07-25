@@ -5,6 +5,7 @@
     android:layout_height="match_parent"
     android:orientation="vertical"
     android:visibility="visible"
+    android:background="@drawable/bgbusines"
     tools:context=".BusinessMetal">
 
     <!-- TODO: Update blank fragment layout -->
@@ -33,13 +34,13 @@
                     android:layout_width="wrap_content"
                     android:layout_height="match_parent"
                     android:text="TextView"
-                    android:textSize="20dp"
+                    style="@style/labelGame"
                     android:gravity="center"/>
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="match_parent"
                     android:text="/"
-                    android:textSize="20dp"
+                    style="@style/labelGame"
                     android:gravity="center"
                     />
                 <TextView
@@ -47,7 +48,7 @@
                     android:layout_width="wrap_content"
                     android:layout_height="match_parent"
                     android:text="TextView"
-                    android:textSize="20dp"
+                    style="@style/labelGame"
                     android:gravity="center"
                     />
             </LinearLayout>
@@ -57,7 +58,7 @@
                 android:id="@+id/btnBMUpStock"
                 android:layout_width="200dp"
                 android:layout_height="wrap_content"
-
+                android:background="@drawable/btngame"
                 android:text="@string/BmFUPStock" />
         </LinearLayout>
         <LinearLayout
@@ -72,14 +73,14 @@
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
                 android:text="TextView"
-                android:textSize="20dp"
+                style="@style/labelGame"
                 android:gravity="center"/>
 
             <Button
                 android:id="@+id/btnBMUpAdvertising"
                 android:layout_width="200dp"
                 android:layout_height="wrap_content"
-
+                android:background="@drawable/btngame"
                 android:text="@string/BmFUPAdvertising" />
         </LinearLayout>
 
@@ -96,14 +97,14 @@
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
                 android:text="TextView"
-                android:textSize="20dp"
+                style="@style/labelGame"
                 android:gravity="center"/>
 
             <Button
                 android:id="@+id/BMNewWorker"
                 android:layout_width="200dp"
                 android:layout_height="wrap_content"
-
+                android:background="@drawable/btngame"
                 android:text="@string/BmFNewWorker" />
         </LinearLayout>
 
@@ -120,13 +121,14 @@
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
                 android:text="TextView"
-                android:textSize="20dp"
+                style="@style/labelGame"
                 android:gravity="center"/>
 
             <Button
                 android:id="@+id/btnBMSellFactory"
                 android:layout_width="200dp"
                 android:layout_height="wrap_content"
+                android:background="@drawable/btngame"
                 android:text="@string/BmFSellMetal" />
         </LinearLayout>
 
@@ -143,6 +145,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
+                android:background="@drawable/btngame"
                 android:text="@string/BmFSellBusiness" />
 
             <Button
@@ -150,6 +153,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
+                android:background="@drawable/btngame"
                 android:text="@string/BmFWork" />
         </LinearLayout>
 
@@ -167,6 +171,7 @@
             android:id="@+id/btnBMBuyMetalPoint"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:background="@drawable/btngame"
             android:text="@string/BmFBuyMetal" />
     </LinearLayout>
 

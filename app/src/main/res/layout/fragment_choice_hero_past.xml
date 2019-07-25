@@ -10,7 +10,8 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:orientation="vertical"
-        android:gravity="center_horizontal">
+        android:gravity="center_horizontal"
+        android:background="@color/black">
 
         <TextView
             android:id="@+id/textView2"
@@ -18,6 +19,11 @@
             android:layout_height="wrap_content"
             android:text="@string/StartText1"
             android:textSize="30dp"
+            android:textColor="@color/white"
+            android:shadowDx="2"
+            android:shadowDy="2"
+            android:shadowColor="#ff00f0"
+            android:shadowRadius="4"
             android:layout_gravity="center"
             />
         <TextView
@@ -25,27 +31,29 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="@string/StartText2"
-            android:textSize="18sp"
+            style="@style/textStart"
             />
         <EditText
             android:id="@+id/StartName"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
+            android:layout_width="180dp"
+            android:layout_height="40dp"
+            android:padding="5dp"
             android:hint="@string/StartText3"
             android:inputType="textPersonName"
+            android:textColor="@color/white"
+            android:background="@drawable/textboxstart"
             />
         <TextView
             android:id="@+id/TextAge"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="@string/StartText4"
-            android:textSize="18sp"
+            style="@style/textStart"
            />
         <Spinner
             android:id="@+id/SpinnerStartAge"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-
+            android:background="@color/white"
+            style="@style/spinersStart"
             />
 
         <TextView
@@ -53,25 +61,22 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="@string/textPoll1"
-            android:textSize="18sp"
+            style="@style/textStart"
             />
         <Spinner
             android:id="@+id/spinnerPoll1"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-
+            style="@style/spinersStart"
             />
         <TextView
             android:id="@+id/textPoll2"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="@string/textPoll2"
-            android:textSize="18sp"
+            style="@style/textStart"
             />
         <Spinner
             android:id="@+id/spinnerPoll2"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
+            style="@style/spinersStart"
 
             />
         <TextView
@@ -79,12 +84,11 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="@string/textPoll3"
-            android:textSize="18sp"
+            style="@style/textStart"
             />
         <Spinner
             android:id="@+id/spinnerPoll3"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
+            style="@style/spinersStart"
 
             />
         <TextView
@@ -92,12 +96,11 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="@string/textPoll4"
-            android:textSize="18sp"
+            style="@style/textStart"
             />
         <Spinner
             android:id="@+id/spinnerPoll4"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
+            style="@style/spinersStart"
 
             />
         <TextView
@@ -105,38 +108,23 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="@string/textPoll5"
-            android:textSize="18sp"
+            style="@style/textStart"
             />
         <Spinner
             android:id="@+id/spinnerPoll5"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
+            style="@style/spinersStart"
+            />
 
-            />
-        <TextView
-            android:id="@+id/textPoll6"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="@string/textPoll6"
-            android:textSize="18sp"
-            />
-        <Spinner
-            android:id="@+id/spinnerPoll6"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-
-            />
         <TextView
             android:id="@+id/textPoll7"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="@string/textPoll7"
-            android:textSize="18sp"
+            style="@style/textStart"
             />
         <Spinner
             android:id="@+id/spinnerPoll7"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
+            style="@style/spinersStart"
 
             />
     </LinearLayout>

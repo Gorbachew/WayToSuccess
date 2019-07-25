@@ -3,7 +3,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@color/white"
+    android:background="@drawable/bgfood"
     android:orientation="vertical"
     tools:context=".Food">
 
@@ -21,6 +21,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="70dp"
                 android:layout_weight="1"
+                android:background="@drawable/btngame"
                 android:text="@string/FFtrash" />
             <!--android:background="@xml/fields"-->
             <Button
@@ -28,6 +29,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="70dp"
                 android:layout_weight="1"
+                android:background="@drawable/btngame"
                 android:text="@string/FFhunt" />
 
             <Button
@@ -35,6 +37,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="70dp"
                 android:layout_weight="1"
+                android:background="@drawable/btngame"
                 android:text="@string/FFrobKiosk" />
 
             <Button
@@ -42,6 +45,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="70dp"
                 android:layout_weight="1"
+                android:background="@drawable/btngame"
                 android:text="@string/FFbuyKiosk" />
 
             <Button
@@ -49,6 +53,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="70dp"
                 android:layout_weight="1"
+                android:background="@drawable/btngame"
                 android:text="@string/FFeatCoffee" />
 
             <Button
@@ -56,6 +61,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="70dp"
                 android:layout_weight="1"
+                android:background="@drawable/btngame"
                 android:text="@string/FFbuyStore" />
 
             <Button
@@ -63,6 +69,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="70dp"
                 android:layout_weight="1"
+                android:background="@drawable/btngame"
                 android:text="@string/FFeatRestaurant" />
 
             <Button
@@ -70,6 +77,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="70dp"
                 android:layout_weight="1"
+                android:background="@drawable/btngame"
                 android:text="@string/FFpersonalChef" />
         </LinearLayout>
     </ScrollView>

@@ -4,6 +4,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
+    android:background="@drawable/bgbank"
     tools:context=".Bank" >
 
     <LinearLayout
@@ -18,7 +19,8 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:text="@string/BFtext1"
-            android:textSize="25dp"
+            style="@style/labelGame"
+
             android:gravity="center"/>
 
         <TextView
@@ -26,17 +28,17 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:text="TextView"
-            android:textSize="25dp"
+            style="@style/labelGame"
             android:gravity="center"/>
-
     </LinearLayout>
 
     <Spinner
         android:id="@+id/BankSpinner"
         android:layout_width="150dp"
-        android:layout_height="wrap_content"
+        android:layout_height="30dp"
         android:layout_weight="0"
         android:layout_gravity="center"
+        style="@style/labelGame"
         />
 
     <LinearLayout
@@ -52,6 +54,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_weight="1"
+            android:background="@drawable/btngame"
             android:text="@string/BFbtn2" />
 
         <Button
@@ -59,6 +62,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_weight="1"
+            android:background="@drawable/btngame"
             android:text="@string/BFbtn1" />
     </LinearLayout>
 

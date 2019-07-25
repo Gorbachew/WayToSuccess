@@ -42,7 +42,8 @@ public class Mood extends Fragment {
         btnMoodgoConcert = MoodFragment.findViewById(R.id.btnMoodgoConcert);
         btnMoodOrderComedian = MoodFragment.findViewById(R.id.btnMoodOrderComedian);
         btnMoodPersonalComedian = MoodFragment.findViewById(R.id.btnMoodPersonalComedian);
-
+        final String LOAD_RUB = "RUB";
+        final String LOAD_USD = "USD";
         CheckButton();
 
         btnMoodWatchAnimals.setOnClickListener(new View.OnClickListener() {
@@ -60,148 +61,165 @@ public class Mood extends Fragment {
         btnMoodDrinkBeer.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-
-
-
-
-                int var = Integer.parseInt(sPref.getString(SAVED_HOLDING,""));
-                if(var >= 1){
-                    ((Game)getActivity()).RandomStats("HP","-",0,5);
-                    ((Game)getActivity()).RandomStats("SP","-",0,10);
-                    ((Game)getActivity()).RandomStats("MP","+",0,30);
-                    ((Game)getActivity()).transaction("rub","-",50);
-
+                if (Integer.parseInt(sPref.getString(LOAD_RUB, "")) < 50) {
+                    ((Game) getActivity()).LowMoney("rub");
                 }
                 else {
-                    ((Game)getActivity()).transaction("rub","-",50);
-                    Toast.makeText(getActivity(),getResources().getString(R.string.MFerror1),Toast.LENGTH_LONG).show();
+
+                    int var = Integer.parseInt(sPref.getString(SAVED_HOLDING, ""));
+                    if (var >= 1) {
+                        ((Game) getActivity()).RandomStats("HP", "-", 0, 5);
+                        ((Game) getActivity()).RandomStats("SP", "-", 0, 10);
+                        ((Game) getActivity()).RandomStats("MP", "+", 0, 30);
+                        ((Game) getActivity()).transaction("rub", "-", 50);
+
+                    } else {
+                        ((Game) getActivity()).transaction("rub", "-", 50);
+                        Toast.makeText(getActivity(), getResources().getString(R.string.MFerror1), Toast.LENGTH_LONG).show();
+                    }
+
+                    ((Game) getActivity()).NextDay();
                 }
-
-                ((Game)getActivity()).NextDay();
-
             }
         });
         btnMoodDrinkVodka.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-
-
-
-
-                int var = Integer.parseInt(sPref.getString(SAVED_HOLDING,""));
-                if(var >= 2){
-                    ((Game)getActivity()).RandomStats("HP","-",0,10);
-                    ((Game)getActivity()).RandomStats("MP","+",0,60);
-                    ((Game)getActivity()).transaction("rub","-",200);
-
+                if (Integer.parseInt(sPref.getString(LOAD_RUB, "")) < 200) {
+                    ((Game) getActivity()).LowMoney("rub");
                 }
                 else {
-                    ((Game)getActivity()).RandomStats("HP","-",50,10);
-                    Toast.makeText(getActivity(),getResources().getString(R.string.MFerror2),Toast.LENGTH_LONG).show();
+
+
+                    int var = Integer.parseInt(sPref.getString(SAVED_HOLDING, ""));
+                    if (var >= 2) {
+                        ((Game) getActivity()).RandomStats("HP", "-", 0, 10);
+                        ((Game) getActivity()).RandomStats("MP", "+", 0, 60);
+                        ((Game) getActivity()).transaction("rub", "-", 200);
+
+                    } else {
+                        ((Game) getActivity()).RandomStats("HP", "-", 50, 10);
+                        Toast.makeText(getActivity(), getResources().getString(R.string.MFerror2), Toast.LENGTH_LONG).show();
+                    }
+
+                    ((Game) getActivity()).NextDay();
                 }
-
-                ((Game)getActivity()).NextDay();
-
             }
         });
         btnMoodGoCinema.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                if (Integer.parseInt(sPref.getString(LOAD_RUB, "")) < 500) {
+                    ((Game) getActivity()).LowMoney("rub");
+                } else {
+                    int var = Integer.parseInt(sPref.getString(SAVED_CLOTCHES, ""));
+                    if (var >= 3) {
+                        ((Game) getActivity()).RandomStats("HP", "-", 0, 5);
+                        ((Game) getActivity()).RandomStats("SP", "-", 0, 10);
+                        ((Game) getActivity()).RandomStats("MP", "+", 0, 40);
+                        ((Game) getActivity()).transaction("rub", "-", 500);
 
-                int var = Integer.parseInt(sPref.getString(SAVED_CLOTCHES,""));
-                if(var >= 3){
-                    ((Game)getActivity()).RandomStats("HP","-",0,5);
-                    ((Game)getActivity()).RandomStats("SP","-",0,10);
-                    ((Game)getActivity()).RandomStats("MP","+",0,40);
-                    ((Game)getActivity()).transaction("rub","-",500);
+                    } else {
+                        Toast.makeText(getActivity(), getResources().getString(R.string.MFerror3), Toast.LENGTH_LONG).show();
+                    }
 
+
+                    ((Game) getActivity()).NextDay();
                 }
-                else {
-                    Toast.makeText(getActivity(),getResources().getString(R.string.MFerror3),Toast.LENGTH_LONG).show();
-                }
-
-
-
-                ((Game)getActivity()).NextDay();
             }
         });
         btnMoodWatchTV.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                int var = Integer.parseInt(sPref.getString(LOAD_PRTV,""));
-                if(var >= 1){
-                    ((Game)getActivity()).RandomStats("MP","+",10,40);
-                    ((Game)getActivity()).transaction("rub","-",100);
+                if (Integer.parseInt(sPref.getString(LOAD_RUB, "")) < 100) {
+                    ((Game) getActivity()).LowMoney("rub");
                 }
                 else {
-                    Toast.makeText(getActivity(),getResources().getString(R.string.MFerror4),Toast.LENGTH_LONG).show();
+                    int var = Integer.parseInt(sPref.getString(LOAD_PRTV, ""));
+                    if (var >= 1) {
+                        ((Game) getActivity()).RandomStats("MP", "+", 10, 40);
+                        ((Game) getActivity()).transaction("rub", "-", 100);
+                    } else {
+                        Toast.makeText(getActivity(), getResources().getString(R.string.MFerror4), Toast.LENGTH_LONG).show();
+                    }
+                    ((Game) getActivity()).NextDay();
                 }
-                ((Game)getActivity()).NextDay();
             }
         });
         btnMoodPlayPC.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                int var = Integer.parseInt(sPref.getString(LOAD_PRPC,""));
-                if(var >= 1){
-                    ((Game)getActivity()).RandomStats("MP","+",20,20);
-                    ((Game)getActivity()).transaction("rub","-",300);
+                if (Integer.parseInt(sPref.getString(LOAD_RUB, "")) < 300) {
+                    ((Game) getActivity()).LowMoney("rub");
+                } else {
+                    int var = Integer.parseInt(sPref.getString(LOAD_PRPC, ""));
+                    if (var >= 1) {
+                        ((Game) getActivity()).RandomStats("MP", "+", 20, 20);
+                        ((Game) getActivity()).transaction("rub", "-", 300);
+                    } else {
+                        Toast.makeText(getActivity(), getResources().getString(R.string.MFerror5), Toast.LENGTH_LONG).show();
+                    }
+                    ((Game) getActivity()).NextDay();
                 }
-                else {
-                    Toast.makeText(getActivity(),getResources().getString(R.string.MFerror5),Toast.LENGTH_LONG).show();
-                }
-                ((Game)getActivity()).NextDay();
             }
         });
         btnMoodgoConcert.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-
-                ((Game)getActivity()).RandomStats("MP","+",0,100);
-                ((Game)getActivity()).transaction("rub","-",7000);
-                ((Game)getActivity()).NextDay();
-
+                if (Integer.parseInt(sPref.getString(LOAD_RUB, "")) < 7000) {
+                    ((Game) getActivity()).LowMoney("rub");
+                }
+                else {
+                    ((Game) getActivity()).RandomStats("MP", "+", 0, 100);
+                    ((Game) getActivity()).transaction("rub", "-", 7000);
+                    ((Game) getActivity()).NextDay();
+                }
             }
         });
         btnMoodOrderComedian.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                int var = Integer.parseInt(sPref.getString(SAVED_CLOTCHES,""));
-                if(var >= 4){
-                    ((Game)getActivity()).RandomStats("MP","+",100,10);
-                    ((Game)getActivity()).transaction("rub","-",15000);
+                if (Integer.parseInt(sPref.getString(LOAD_RUB, "")) < 15000) {
+                    ((Game) getActivity()).LowMoney("rub");
+                } else {
+                    int var = Integer.parseInt(sPref.getString(SAVED_CLOTCHES, ""));
+                    if (var >= 4) {
+                        ((Game) getActivity()).RandomStats("MP", "+", 100, 10);
+                        ((Game) getActivity()).transaction("rub", "-", 15000);
+                    } else {
+                        Toast.makeText(getActivity(), getResources().getString(R.string.MFerror6), Toast.LENGTH_LONG).show();
+                    }
+                    ((Game) getActivity()).NextDay();
                 }
-                else {
-                    Toast.makeText(getActivity(),getResources().getString(R.string.MFerror6),Toast.LENGTH_LONG).show();
-                }
-                ((Game)getActivity()).NextDay();
             }
         });
         btnMoodPersonalComedian.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                int var = Integer.parseInt(sPref.getString(SAVED_HOLDING,""));
-                String checkvar = sPref.getString(LOAD_BUFFCOMIC,"");
-                if (checkvar.equals("0")){
-                    if(var >= 6){
+                if (Integer.parseInt(sPref.getString(LOAD_RUB, "")) < 50000) {
+                    ((Game) getActivity()).LowMoney("rub");
+                } else {
+                    int var = Integer.parseInt(sPref.getString(SAVED_HOLDING, ""));
+                    String checkvar = sPref.getString(LOAD_BUFFCOMIC, "");
+                    if (checkvar.equals("0")) {
+                        if (var >= 6) {
 
-                        ((Game)getActivity()).transaction("rub","-",50000);
+                            ((Game) getActivity()).transaction("rub", "-", 50000);
+                            SharedPreferences.Editor ed = sPref.edit();
+                            ed.putString(LOAD_BUFFCOMIC, "1");
+                            ed.commit();
+
+                        } else {
+                            Toast.makeText(getActivity(), getResources().getString(R.string.MFerror7), Toast.LENGTH_LONG).show();
+                        }
+                    } else if (checkvar.equals("1")) {
                         SharedPreferences.Editor ed = sPref.edit();
-                        ed.putString(LOAD_BUFFCOMIC,"1");
+                        ed.putString(LOAD_BUFFCOMIC, "0");
                         ed.commit();
-
                     }
-                    else {
-                        Toast.makeText(getActivity(),getResources().getString(R.string.MFerror7),Toast.LENGTH_LONG).show();
-                    }
+                    CheckButton();
+                    ((Game) getActivity()).NextDay();
                 }
-                else if(checkvar.equals("1")){
-                    SharedPreferences.Editor ed = sPref.edit();
-                    ed.putString(LOAD_BUFFCOMIC,"0");
-                    ed.commit();
-                }
-                CheckButton();
-                ((Game)getActivity()).NextDay();
             }
         });
 

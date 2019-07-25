@@ -1,6 +1,7 @@
 package gorbachew.pythonanywhere.ru;
 
 import android.content.Context;
+import android.content.SharedPreferences;
 import android.net.Uri;
 import android.os.Bundle;
 import android.provider.Telephony;
@@ -26,20 +27,22 @@ public class Casino extends Fragment {
     TextView CasinoResult;
     Button btnCasinoPlay,btnCasinoClear;
     Spinner CasinoRate;
+    SharedPreferences sPref;
     int quantityRates;
     final Random random = new Random();
+    final String LOAD_USD = "USD";
+    final String SAVED_CLOTCHES = "Clothes";
+
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
         final View CasinoFragment = inflater.inflate(R.layout.fragment_casino, container, false);
-
-
+        sPref = this.getActivity().getSharedPreferences("Saved",Context.MODE_PRIVATE);
         CasinoResult = CasinoFragment.findViewById(R.id.CasinoResult);
         btnCasinoPlay = CasinoFragment.findViewById(R.id.btnCasinoPlay);
         btnCasinoClear = CasinoFragment.findViewById(R.id.btnCasinoClear);
         CasinoRate = CasinoFragment.findViewById(R.id.CasinoRate);
-
         CasinoRadioGroup1 = CasinoFragment.findViewById(R.id.CasinoRadioGroup1);
         CasinoRadioGroup1.setOnCheckedChangeListener(new RadioGroup.OnCheckedChangeListener() {
             @Override
@@ -82,7 +85,6 @@ public class Casino extends Fragment {
                     case R.id.rbSpace28:Check3 = "28";break;
                     case R.id.rbSpace31:Check3 = "31";break;
                     case R.id.rbSpace34:Check3 = "34";break;
-
                 }
             }
         });
@@ -143,8 +145,17 @@ public class Casino extends Fragment {
         btnCasinoPlay.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                checkPlay();
-
+                if(Integer.parseInt(sPref.getString(SAVED_CLOTCHES, "")) >= 4 ){
+                    if(Integer.parseInt(CasinoRate.getSelectedItem().toString()) > Integer.parseInt(sPref.getString(LOAD_USD, ""))){
+                        ((Game)getActivity()).LowMoney("usd");
+                    }
+                    else {
+                       checkPlay();
+                    }
+                }
+                else {
+                    Toast.makeText(getActivity(),getResources().getString(R.string.CFerror),Toast.LENGTH_SHORT).show();
+                }
 
                 ((Game)getActivity()).loadGame();
                 //Каждые 10 ставок проходит 6 часов игрового времени

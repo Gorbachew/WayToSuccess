@@ -67,7 +67,8 @@ public class BusinessCafe extends Fragment {
         btnTable = BusinessCafe.findViewById(R.id.btnBCtable);
         btnAd = BusinessCafe.findViewById(R.id.btnBCad);
         btnBCSellBusiness = BusinessCafe.findViewById(R.id.btnBCSellBusiness);
-
+        final String LOAD_RUB = "RUB";
+        final String LOAD_USD = "USD";
 //        work.setOnClickListener(new View.OnClickListener() {
 //            @Override
 //            public void onClick(View v) {
@@ -83,16 +84,21 @@ public class BusinessCafe extends Fragment {
 
                 String check = sPref.getString(SAVED_BUSINESS,"");
                 if (check.equals("0")){
-                    SharedPreferences.Editor ed = sPref.edit();
-                    ed.putString(LOAD_BC,"1");
-                    ed.putString(SAVED_BUSINESS,"2");
-                    ed.commit();
-                    btnBСBuyCafe.setVisibility(View.INVISIBLE);
-                    BCBis.setVisibility(View.VISIBLE);
+                    if (Integer.parseInt(sPref.getString(LOAD_USD, "")) < 50000) {
+                        ((Game) getActivity()).LowMoney("usd");
+                    }
+                    else {
+                        SharedPreferences.Editor ed = sPref.edit();
+                        ed.putString(LOAD_BC, "1");
+                        ed.putString(SAVED_BUSINESS, "2");
+                        ed.commit();
+                        btnBСBuyCafe.setVisibility(View.INVISIBLE);
+                        BCBis.setVisibility(View.VISIBLE);
 
-                    ((Game)getActivity()).transaction("usd","-",50000);
+                        ((Game) getActivity()).transaction("usd", "-", 50000);
 
-                    ((Game)getActivity()).NextDay();
+                        ((Game) getActivity()).NextDay();
+                    }
                 }
                 else {
                     Toast.makeText(getActivity(),getResources().getString(R.string.BCdontTime),Toast.LENGTH_LONG).show();
@@ -104,26 +110,31 @@ public class BusinessCafe extends Fragment {
         btnWaiter.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+
                 int tester = Integer.parseInt(sPref.getString(LOAD_BCC,""));
                 int testing = Integer.parseInt(sPref.getString(LOAD_BCW,""));
                 int vartest = tester * 3;
                 if (testing < vartest) {
                     int var = Integer.parseInt(sPref.getString(LOAD_BCW, ""));
                     int priceVar = Integer.parseInt(sPref.getString(LOAD_BCPW, ""));
+                    if (Integer.parseInt(sPref.getString(LOAD_RUB, "")) < priceVar) {
+                        ((Game) getActivity()).LowMoney("rub");
+                    }
+                    else {
+                        String saveVar = String.valueOf(var + 1);
+                        String savepriceVar = String.valueOf(priceVar + 1000);
 
-                    String saveVar = String.valueOf(var + 1);
-                    String savepriceVar = String.valueOf(priceVar + 1000);
-
-                    SharedPreferences.Editor ed = sPref.edit();
-                    ed.putString(LOAD_BCW, saveVar);
-                    ed.putString(LOAD_BCPW, savepriceVar);
-                    ed.commit();
+                        SharedPreferences.Editor ed = sPref.edit();
+                        ed.putString(LOAD_BCW, saveVar);
+                        ed.putString(LOAD_BCPW, savepriceVar);
+                        ed.commit();
 
 
-                    ((Game) getActivity()).transaction("rub", "-", priceVar);
+                        ((Game) getActivity()).transaction("rub", "-", priceVar);
 
-                    ((Game) getActivity()).NextDay();
-                    load_info();
+                        ((Game) getActivity()).NextDay();
+                        load_info();
+                    }
                 }
                 else {
                     Toast.makeText(getActivity(),getResources().getString(R.string.BCerrorWaiter),Toast.LENGTH_SHORT).show();
@@ -139,20 +150,24 @@ public class BusinessCafe extends Fragment {
                 if (testing < vartest) {
                     int var = Integer.parseInt(sPref.getString(LOAD_BCC, ""));
                     int priceVar = Integer.parseInt(sPref.getString(LOAD_BCPC, ""));
+                    if (Integer.parseInt(sPref.getString(LOAD_RUB, "")) < priceVar) {
+                        ((Game) getActivity()).LowMoney("rub");
+                    }
+                    else {
+                        String saveVar = String.valueOf(var + 1);
+                        String savepriceVar = String.valueOf(priceVar * 2);
 
-                    String saveVar = String.valueOf(var + 1);
-                    String savepriceVar = String.valueOf(priceVar * 2);
-
-                    SharedPreferences.Editor ed = sPref.edit();
-                    ed.putString(LOAD_BCC, saveVar);
-                    ed.putString(LOAD_BCPC, savepriceVar);
-                    ed.commit();
+                        SharedPreferences.Editor ed = sPref.edit();
+                        ed.putString(LOAD_BCC, saveVar);
+                        ed.putString(LOAD_BCPC, savepriceVar);
+                        ed.commit();
 
 
-                    ((Game) getActivity()).transaction("usd", "-", priceVar);
+                        ((Game) getActivity()).transaction("usd", "-", priceVar);
 
-                    ((Game) getActivity()).NextDay();
-                    load_info();
+                        ((Game) getActivity()).NextDay();
+                        load_info();
+                    }
                 }
                 else {
                     Toast.makeText(getActivity(),getResources().getString(R.string.BCerrorCook),Toast.LENGTH_SHORT).show();
@@ -164,20 +179,25 @@ public class BusinessCafe extends Fragment {
             public void onClick(View v) {
                 int var = Integer.parseInt(sPref.getString(LOAD_BCR,""));
                 int priceVar = Integer.parseInt(sPref.getString(LOAD_BCPR,""));
+                if (Integer.parseInt(sPref.getString(LOAD_USD, "")) < priceVar) {
+                    ((Game) getActivity()).LowMoney("usd");
+                }
+                else {
+                    String saveVar = String.valueOf(var + 1);
+                    String savepriceVar = String.valueOf(priceVar + 10000);
 
-                String saveVar = String.valueOf(var + 1);
-                String savepriceVar = String.valueOf(priceVar + 10000);
-
-                SharedPreferences.Editor ed = sPref.edit();
-                ed.putString(LOAD_BCR,saveVar);
-                ed.putString(LOAD_BCPR,savepriceVar);
-                ed.commit();
+                    SharedPreferences.Editor ed = sPref.edit();
+                    ed.putString(LOAD_BCR,saveVar);
+                    ed.putString(LOAD_BCPR,savepriceVar);
+                    ed.commit();
 
 
-                ((Game)getActivity()).transaction("usd","-",priceVar);
+                    ((Game)getActivity()).transaction("usd","-",priceVar);
 
-                ((Game)getActivity()).NextDay();
-                load_info();
+                    ((Game)getActivity()).NextDay();
+                    load_info();
+                }
+
             }
         });
         btnTable.setOnClickListener(new View.OnClickListener() {
@@ -187,19 +207,24 @@ public class BusinessCafe extends Fragment {
                 int testing = Integer.parseInt(sPref.getString(LOAD_BCT,""));
                 int vartest = tester * 2;
                 if (testing < vartest) {
-                    int tables = Integer.parseInt(sPref.getString(LOAD_BCT,""));
+                    if (Integer.parseInt(sPref.getString(LOAD_RUB, "")) < 5000) {
+                        ((Game) getActivity()).LowMoney("rub");
+                    }
+                    else {
+                        int tables = Integer.parseInt(sPref.getString(LOAD_BCT, ""));
 
-                    String saveTables = String.valueOf(tables + 1);
+                        String saveTables = String.valueOf(tables + 1);
 
-                    SharedPreferences.Editor ed = sPref.edit();
-                    ed.putString(LOAD_BCT,saveTables);
-                    ed.commit();
+                        SharedPreferences.Editor ed = sPref.edit();
+                        ed.putString(LOAD_BCT, saveTables);
+                        ed.commit();
 
 
-                    ((Game)getActivity()).transaction("rub","-",5000);
+                        ((Game) getActivity()).transaction("rub", "-", 5000);
 
-                    ((Game)getActivity()).NextDay();
-                    load_info();
+                        ((Game) getActivity()).NextDay();
+                        load_info();
+                    }
                 }
                 else {
                     Toast.makeText(getActivity(),getResources().getString(R.string.BCerrorTable),Toast.LENGTH_SHORT).show();
@@ -210,21 +235,25 @@ public class BusinessCafe extends Fragment {
             @Override
             public void onClick(View v) {
                 int var = Integer.parseInt(sPref.getString(LOAD_BCA,""));
+                if (Integer.parseInt(sPref.getString(LOAD_RUB, "")) < 100) {
+                    ((Game) getActivity()).LowMoney("usd");
+                }
+                else {
+
+                    String saveVar = String.valueOf(var + 1);
 
 
-                String saveVar = String.valueOf(var + 1);
+                    SharedPreferences.Editor ed = sPref.edit();
+                    ed.putString(LOAD_BCA, saveVar);
+
+                    ed.commit();
 
 
-                SharedPreferences.Editor ed = sPref.edit();
-                ed.putString(LOAD_BCA,saveVar);
+                    ((Game) getActivity()).transaction("usd", "-", 100);
 
-                ed.commit();
-
-
-                ((Game)getActivity()).transaction("usd","-",100);
-
-                ((Game)getActivity()).NextDay();
-                load_info();
+                    ((Game) getActivity()).NextDay();
+                    load_info();
+                }
             }
         });
 

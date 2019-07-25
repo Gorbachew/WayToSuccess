@@ -4,7 +4,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context=".Health"
-    android:background="@color/white">
+    android:background="@drawable/bghealth">
 
     <!-- TODO: Update blank fragment layout -->
     <ScrollView
@@ -21,35 +21,35 @@
                 android:layout_width="match_parent"
                 android:layout_height="70dp"
                 android:layout_weight="1"
+                android:background="@drawable/btngame"
                 android:text="@string/HFgrass" />
             <Button
                 android:id="@+id/btnHealthRobPharmacy"
                 android:layout_width="match_parent"
                 android:layout_height="70dp"
                 android:layout_weight="1"
+                android:background="@drawable/btngame"
                 android:text="@string/HFrobPharmacy" />
             <Button
                 android:id="@+id/btnHealthBuyPharmacy"
                 android:layout_width="match_parent"
                 android:layout_height="70dp"
                 android:layout_weight="1"
+                android:background="@drawable/btngame"
                 android:text="@string/HFbuyPharmacy" />
             <Button
                 android:id="@+id/btnHealthDistrictHospital"
                 android:layout_width="match_parent"
                 android:layout_height="70dp"
                 android:layout_weight="1"
+                android:background="@drawable/btngame"
                 android:text="@string/HFdistrictHospital" />
-
-
-
-
-
             <Button
                 android:id="@+id/btnHealthPrivateHospital"
                 android:layout_width="match_parent"
                 android:layout_height="70dp"
                 android:layout_weight="1"
+                android:background="@drawable/btngame"
                 android:text="@string/HFprivateHospital" />
 
             <Button
@@ -57,6 +57,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="70dp"
                 android:layout_weight="1"
+                android:background="@drawable/btngame"
                 android:text="@string/HFpersonalDoctor" />
 
         </LinearLayout>

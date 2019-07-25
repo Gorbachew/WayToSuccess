@@ -52,32 +52,32 @@ public class Start extends AppCompatActivity{
         Poll3 = (Spinner)findViewById(R.id.spinnerPoll3);
         Poll4 = (Spinner)findViewById(R.id.spinnerPoll4);
         Poll5 = (Spinner)findViewById(R.id.spinnerPoll5);
-        Poll6 = (Spinner)findViewById(R.id.spinnerPoll6);
+//        Poll6 = (Spinner)findViewById(R.id.spinnerPoll6);
         Poll7 = (Spinner)findViewById(R.id.spinnerPoll7);
 
         ArrayAdapter<?> adapter = ArrayAdapter.createFromResource(this,R.array.SpinnerAge,android.R.layout.simple_spinner_item);
-        adapter.setDropDownViewResource(android.R.layout.simple_spinner_item);
+        adapter.setDropDownViewResource(android.R.layout.select_dialog_item);
         intAge.setAdapter(adapter);
         ArrayAdapter<?> adapter1 = ArrayAdapter.createFromResource(this,R.array.SpinnerPull1,android.R.layout.simple_spinner_item);
-        adapter1.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
+        adapter1.setDropDownViewResource(android.R.layout.select_dialog_item);
         Poll1.setAdapter(adapter1);
         ArrayAdapter<?> adapter2 = ArrayAdapter.createFromResource(this,R.array.SpinnerPull2,android.R.layout.simple_spinner_item);
-        adapter2.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
+        adapter2.setDropDownViewResource(android.R.layout.select_dialog_item);
         Poll2.setAdapter(adapter2);
         ArrayAdapter<?> adapter3 = ArrayAdapter.createFromResource(this,R.array.SpinnerPull3,android.R.layout.simple_spinner_item);
-        adapter3.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
+        adapter3.setDropDownViewResource(android.R.layout.select_dialog_item);
         Poll3.setAdapter(adapter3);
         ArrayAdapter<?> adapter4 = ArrayAdapter.createFromResource(this,R.array.SpinnerPull4,android.R.layout.simple_spinner_item);
-        adapter4.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
+        adapter4.setDropDownViewResource(android.R.layout.select_dialog_item);
         Poll4.setAdapter(adapter4);
         ArrayAdapter<?> adapter5 = ArrayAdapter.createFromResource(this,R.array.SpinnerPull5,android.R.layout.simple_spinner_item);
-        adapter5.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
+        adapter5.setDropDownViewResource(android.R.layout.select_dialog_item);
         Poll5.setAdapter(adapter5);
-        ArrayAdapter<?> adapter6 = ArrayAdapter.createFromResource(this,R.array.SpinnerPull6,android.R.layout.simple_spinner_item);
-        adapter6.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
-        Poll6.setAdapter(adapter6);
+//        ArrayAdapter<?> adapter6 = ArrayAdapter.createFromResource(this,R.array.SpinnerPull6,android.R.layout.simple_spinner_item);
+//        adapter6.setDropDownViewResource(android.R.layout.select_dialog_item);
+//        Poll6.setAdapter(adapter6);
         ArrayAdapter<?> adapter7 = ArrayAdapter.createFromResource(this,R.array.SpinnerPull7,android.R.layout.simple_spinner_item);
-        adapter7.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
+        adapter7.setDropDownViewResource(android.R.layout.select_dialog_item);
         Poll7.setAdapter(adapter7);
 
         CHeroP = new ChoiceHeroPast();
@@ -125,12 +125,10 @@ public class Start extends AppCompatActivity{
                 fTrans.add(R.id.fr_place,HeroP);
                 saveСhoice();
                 varbtnHeroPast.setClickable(false);
-                varbtnHeroPast.setBackgroundColor(Color.GRAY);
-            break;
+                break;
             case R.id.btnChoiceHeroPast:
                 fTrans.remove(HeroP);
                 varbtnHeroPast.setClickable(true);
-                varbtnHeroPast.setBackgroundColor(Color.LTGRAY);
                 break;
         }
         fTrans.commit();
@@ -163,8 +161,8 @@ public class Start extends AppCompatActivity{
         String idPoll3 = String.valueOf(Poll3.getSelectedItemId());
         String idPoll4 = String.valueOf(Poll4.getSelectedItemId());
         String idPoll5 = String.valueOf(Poll5.getSelectedItemId());
-        String idPoll6 = String.valueOf(Poll6.getSelectedItemId());
-        String idPoll7= String.valueOf(Poll6.getSelectedItemId());
+//        String idPoll6 = String.valueOf(Poll6.getSelectedItemId());
+        String idPoll7= String.valueOf(Poll7.getSelectedItemId());
         switch (idPoll1){
             case "0":
                 TotalHP = TotalHP + 5;
@@ -268,7 +266,7 @@ public class Start extends AppCompatActivity{
         ed.putString(SAVED_POLL3,idPoll3 );
         ed.putString(SAVED_POLL4,idPoll4 );
         ed.putString(SAVED_POLL5,idPoll5 );
-        ed.putString(SAVED_POLL6,idPoll6 );
+//        ed.putString(SAVED_POLL6,idPoll6 );
         ed.putString(SAVED_POLL7,idPoll7 );
         ed.putString(SAVED_HP,String.valueOf(TotalHP));
         ed.putString(SAVED_MP,String.valueOf(TotalMP));
@@ -282,6 +280,7 @@ public class Start extends AppCompatActivity{
         ed.putString("SP","100");
         ed.putString("MP","100");
         ed.putString("SCRAP","0");
+        ed.putString("MAXSCRAP","30");
         ed.putString("CourseScrap","10");
         ed.putString("BusinessMetalPoint","0");
 
@@ -346,11 +345,21 @@ public class Start extends AppCompatActivity{
         ed.putString("PropertyPC","0");
         ed.putString("PropertyWeapon","0");
 
+        ed.putString("AchivmentBMetal","0");
+        ed.putString("AchivmentBCafe","0");
+        ed.putString("AchivmentMetal","0");
+        ed.putString("AchivmentMoney","0");
+        ed.putString("AchivmentRespect","0");
+
+        ed.putInt("LoseHP",0);
+        ed.putInt("LoseMP",0);
+        ed.putInt("LoseSP",0);
+        ed.putInt("First.javaney",0);
 
 
 
         ed.commit();
-        Toast.makeText(Start.this, "Text saved", Toast.LENGTH_SHORT).show();
+//        Toast.makeText(Start.this, "Text saved", Toast.LENGTH_SHORT).show();
     }
     private void loadText() {
         /*

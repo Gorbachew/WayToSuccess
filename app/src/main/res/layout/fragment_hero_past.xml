@@ -5,7 +5,7 @@
     android:layout_height="match_parent"
     android:orientation="vertical"
     tools:context=".HeroPast"
-    android:background="@color/white">
+    android:background="@color/black">
 
     <TextView
         android:id="@+id/textView3"
@@ -14,7 +14,12 @@
         android:gravity="center"
         android:text="@string/HistoryText1"
         android:textAllCaps="false"
-        android:textSize="30sp" />
+        android:textSize="30dp"
+        android:textColor="@color/white"
+        android:shadowDx="4"
+        android:shadowDy="4"
+        android:shadowColor="#fff000"
+        android:shadowRadius="6"/>
 
     <LinearLayout
         android:layout_width="match_parent"
@@ -27,9 +32,8 @@
             android:layout_height="wrap_content"
             android:layout_weight="1"
             android:text="1"
-            android:textSize="18sp"
             android:gravity="center"
-            android:layout_margin="30dp"/>
+            style="@style/textStart"/>
 
     </LinearLayout>
 

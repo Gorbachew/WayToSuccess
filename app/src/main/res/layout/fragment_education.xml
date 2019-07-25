@@ -4,6 +4,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
+    android:background="@drawable/bgeducation"
     tools:context=".Education">
 
     <ScrollView
@@ -20,6 +21,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="70dp"
                 android:layout_weight="1"
+                android:background="@drawable/btngame"
                 android:text="@string/EFSchool" />
 
             <Button
@@ -27,12 +29,14 @@
                 android:layout_width="match_parent"
                 android:layout_height="70dp"
                 android:layout_weight="1"
+                android:background="@drawable/btngame"
                 android:text="@string/EFCollege" />
             <Button
                 android:id="@+id/btnEducationCourses"
                 android:layout_width="match_parent"
                 android:layout_height="70dp"
                 android:layout_weight="1"
+                android:background="@drawable/btngame"
                 android:text="@string/EFCourses" />
 
             <Button
@@ -40,6 +44,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="72dp"
                 android:layout_weight="1"
+                android:background="@drawable/btngame"
                 android:text="@string/EFUniversity" />
 
             <Button
@@ -47,6 +52,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="70dp"
                 android:layout_weight="1"
+                android:background="@drawable/btngame"
                 android:text="@string/EFOverseasUniversity" />
         </LinearLayout>
     </ScrollView>

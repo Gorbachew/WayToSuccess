@@ -8,4 +8,63 @@
         <item name="colorAccent">@color/colorAccent</item>
     </style>
 
+    <style name="btnMenu">
+        <item name="android:textColor">@color/white</item>
+        <item name="android:textSize">20dp</item>
+        <item name="android:background">@color/alpha</item>
+        <item name="android:layout_width">200dp</item>
+        <item name="android:layout_height">60dp</item>
+        <item name="android:paddingBottom">10dp</item>
+    </style>
+    <style name="textStart">
+        <item name="android:textSize">20dp</item>
+        <item name="android:textColor">@color/white</item>
+        <item name="android:shadowRadius">2</item>
+        <item name="android:shadowColor">#ff00f0</item>
+        <item name="android:shadowDx">2</item>
+        <item name="android:shadowDy">2</item>
+    </style>
+    <style name="textLowMoney">
+        <item name="android:textSize">20dp</item>
+        <item name="android:textColor">@color/red</item>
+        <item name="android:shadowRadius">2</item>
+        <item name="android:shadowColor">#ffffff</item>
+        <item name="android:shadowDx">2</item>
+        <item name="android:shadowDy">2</item>
+    </style>
+    <style name="spinersStart">
+        <item name="android:background">@color/white</item>
+        <item name="android:layout_width">150dp</item>
+        <item name="android:layout_height">40dp</item>
+    </style>
+    <style name="textHeadline">
+        <item name="android:textSize">30dp</item>
+        <item name="android:textColor">@color/white</item>
+        <item name="android:shadowRadius">2</item>
+        <item name="android:shadowColor">#ffff00</item>
+        <item name="android:shadowDx">2</item>
+        <item name="android:shadowDy">2</item>
+    </style>
+    <style name="textDays">
+        <item name="android:textSize">15dp</item>
+        <item name="android:textColor">@color/white</item>
+        <item name="android:shadowRadius">2</item>
+        <item name="android:shadowColor">#000000</item>
+        <item name="android:shadowDx">2</item>
+        <item name="android:shadowDy">2</item>
+    </style>
+    <style name="textStats">
+        <item name="android:textSize">17dp</item>
+        <item name="android:textColor">@color/white</item>
+        <item name="android:shadowRadius">2</item>
+        <item name="android:shadowColor">#ff0000</item>
+        <item name="android:shadowDx">3</item>
+        <item name="android:shadowDy">3</item>
+    </style>
+
+    <style name="labelGame">
+        <item name="android:textSize">20dp</item>
+        <item name="android:background">@xml/borderlabel</item>
+        <item name="android:layout_margin">10dp</item>
+    </style>
 </resources>

@@ -18,25 +18,26 @@
 
 
             <FrameLayout
+                android:id="@+id/Ach1"
                 android:layout_width="match_parent"
                 android:layout_height="80dp"
-                android:background="@xml/border">
+                android:background="@xml/achborderoff">
 
                 <TextView
-                    android:id="@+id/Achivment1text"
+                    android:id="@+id/AchivmentFreelance11"
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
                     android:layout_marginLeft="80dp"
                     android:gravity="top"
-                    android:text="TextView"
+                    android:text="@string/AFfreelance11"
                     android:textSize="20dp" />
                 <TextView
-                    android:id="@+id/Achivment1text2"
+                    android:id="@+id/AchivmentFreelance12"
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
                     android:layout_marginLeft="80dp"
                     android:layout_marginTop="30dp"
-                    android:text="TextView"
+                    android:text="@string/AFfreelance12"
                     android:textSize="15dp" />
                 <ImageView
                     android:id="@+id/Achivment1"
@@ -45,25 +46,26 @@
                     android:src="@drawable/menupicture" />
             </FrameLayout>
             <FrameLayout
+                android:id="@+id/Ach2"
                 android:layout_width="match_parent"
                 android:layout_height="80dp"
-                android:background="@xml/border">
+                android:background="@xml/achborderoff">
 
                 <TextView
-                    android:id="@+id/Achivment2text"
+                    android:id="@+id/AchivmentFreelance21"
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
                     android:layout_marginLeft="80dp"
                     android:gravity="top"
-                    android:text="TextView"
+                    android:text="@string/AFfreelance21"
                     android:textSize="20dp" />
                 <TextView
-                    android:id="@+id/Achivment2text2"
+                    android:id="@+id/AchivmentFreelance22"
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
                     android:layout_marginLeft="80dp"
                     android:layout_marginTop="30dp"
-                    android:text="TextView"
+                    android:text="@string/AFfreelance22"
                     android:textSize="15dp" />
                 <ImageView
                     android:id="@+id/Achivment2"
@@ -72,25 +74,26 @@
                     android:src="@drawable/menupicture" />
             </FrameLayout>
             <FrameLayout
+                android:id="@+id/Ach3"
                 android:layout_width="match_parent"
                 android:layout_height="80dp"
-                android:background="@xml/border">
+                android:background="@xml/achborderoff">
 
                 <TextView
-                    android:id="@+id/Achivment3text"
+                    android:id="@+id/AchivmentFreelance31"
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
                     android:layout_marginLeft="80dp"
                     android:gravity="top"
-                    android:text="TextView"
+                    android:text="@string/AFfreelance31"
                     android:textSize="20dp" />
                 <TextView
-                    android:id="@+id/Achivment3text2"
+                    android:id="@+id/AchivmentFreelance32"
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
                     android:layout_marginLeft="80dp"
                     android:layout_marginTop="30dp"
-                    android:text="TextView"
+                    android:text="@string/AFfreelance32"
                     android:textSize="15dp" />
                 <ImageView
                     android:id="@+id/Achivment3"
@@ -99,25 +102,26 @@
                     android:src="@drawable/menupicture" />
             </FrameLayout>
             <FrameLayout
+                android:id="@+id/Ach4"
                 android:layout_width="match_parent"
                 android:layout_height="80dp"
-                android:background="@xml/border">
+                android:background="@xml/achborderoff">
 
                 <TextView
-                    android:id="@+id/Achivment4text"
+                    android:id="@+id/AchivmentbMetal11"
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
                     android:layout_marginLeft="80dp"
                     android:gravity="top"
-                    android:text="TextView"
+                    android:text="@string/AFbmetal11"
                     android:textSize="20dp" />
                 <TextView
-                    android:id="@+id/Achivment4text2"
+                    android:id="@+id/AchivmentMetal12"
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
                     android:layout_marginLeft="80dp"
                     android:layout_marginTop="30dp"
-                    android:text="TextView"
+                    android:text="@string/AFbmetal12"
                     android:textSize="15dp" />
                 <ImageView
                     android:id="@+id/Achivment4"
@@ -126,25 +130,26 @@
                     android:src="@drawable/menupicture" />
             </FrameLayout>
             <FrameLayout
+                android:id="@+id/Ach5"
                 android:layout_width="match_parent"
                 android:layout_height="80dp"
-                android:background="@xml/border">
+                android:background="@xml/achborderoff">
 
                 <TextView
-                    android:id="@+id/Achivment5text"
+                    android:id="@+id/AchivmentbMetal21"
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
                     android:layout_marginLeft="80dp"
                     android:gravity="top"
-                    android:text="TextView"
+                    android:text="@string/AFbmetal21"
                     android:textSize="20dp" />
                 <TextView
-                    android:id="@+id/Achivment5text2"
+                    android:id="@+id/AchivmentMetal22"
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
                     android:layout_marginLeft="80dp"
                     android:layout_marginTop="30dp"
-                    android:text="TextView"
+                    android:text="@string/AFbmetal22"
                     android:textSize="15dp" />
                 <ImageView
                     android:id="@+id/Achivment5"
@@ -153,25 +158,26 @@
                     android:src="@drawable/menupicture" />
             </FrameLayout>
             <FrameLayout
+                android:id="@+id/Ach6"
                 android:layout_width="match_parent"
                 android:layout_height="80dp"
-                android:background="@xml/border">
+                android:background="@xml/achborderoff">
 
                 <TextView
-                    android:id="@+id/Achivment6text"
+                    android:id="@+id/AchivmentbMetal31"
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
                     android:layout_marginLeft="80dp"
                     android:gravity="top"
-                    android:text="TextView"
+                    android:text="@string/AFbmetal31"
                     android:textSize="20dp" />
                 <TextView
-                    android:id="@+id/Achivment6text2"
+                    android:id="@+id/AchivmentMetal32"
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
                     android:layout_marginLeft="80dp"
                     android:layout_marginTop="30dp"
-                    android:text="TextView"
+                    android:text="@string/AFbmetal32"
                     android:textSize="15dp" />
                 <ImageView
                     android:id="@+id/Achivment6"
@@ -180,25 +186,26 @@
                     android:src="@drawable/menupicture" />
             </FrameLayout>
             <FrameLayout
+                android:id="@+id/Ach7"
                 android:layout_width="match_parent"
                 android:layout_height="80dp"
-                android:background="@xml/border">
+                android:background="@xml/achborderoff">
 
                 <TextView
-                    android:id="@+id/Achivment7text"
+                    android:id="@+id/AchivmentCafe11"
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
                     android:layout_marginLeft="80dp"
                     android:gravity="top"
-                    android:text="TextView"
+                    android:text="@string/AFcafe11"
                     android:textSize="20dp" />
                 <TextView
-                    android:id="@+id/Achivment7text2"
+                    android:id="@+id/AchivmentCafe12"
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
                     android:layout_marginLeft="80dp"
                     android:layout_marginTop="30dp"
-                    android:text="TextView"
+                    android:text="@string/AFcafe12"
                     android:textSize="15dp" />
                 <ImageView
                     android:id="@+id/Achivment7"
@@ -206,6 +213,313 @@
                     android:layout_height="80dp"
                     android:src="@drawable/menupicture" />
             </FrameLayout>
+            <FrameLayout
+                android:id="@+id/Ach8"
+                android:layout_width="match_parent"
+                android:layout_height="80dp"
+                android:background="@xml/achborderoff">
+
+                <TextView
+                    android:id="@+id/AchivmentCafe21"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_marginLeft="80dp"
+                    android:gravity="top"
+                    android:text="@string/AFcafe21"
+                    android:textSize="20dp" />
+                <TextView
+                    android:id="@+id/AchivmentCafe22"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_marginLeft="80dp"
+                    android:layout_marginTop="30dp"
+                    android:text="@string/AFcafe22"
+                    android:textSize="15dp" />
+                <ImageView
+                    android:id="@+id/Achivment8"
+                    android:layout_width="80dp"
+                    android:layout_height="80dp"
+                    android:src="@drawable/menupicture" />
+            </FrameLayout>
+            <FrameLayout
+                android:id="@+id/Ach9"
+                android:layout_width="match_parent"
+                android:layout_height="80dp"
+                android:background="@xml/achborderoff">
+
+                <TextView
+                    android:id="@+id/AchivmentCafe31"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_marginLeft="80dp"
+                    android:gravity="top"
+                    android:text="@string/AFcafe31"
+                    android:textSize="20dp" />
+                <TextView
+                    android:id="@+id/AchivmentCafe32"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_marginLeft="80dp"
+                    android:layout_marginTop="30dp"
+                    android:text="@string/AFcafe32"
+                    android:textSize="15dp" />
+                <ImageView
+                    android:id="@+id/Achivment9"
+                    android:layout_width="80dp"
+                    android:layout_height="80dp"
+                    android:src="@drawable/menupicture" />
+            </FrameLayout>
+            <FrameLayout
+                android:id="@+id/Ach10"
+                android:layout_width="match_parent"
+                android:layout_height="80dp"
+                android:background="@xml/achborderoff">
+
+                <TextView
+                    android:id="@+id/AchivmentMoney11"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_marginLeft="80dp"
+                    android:gravity="top"
+                    android:text="@string/AFmoney11"
+                    android:textSize="20dp" />
+                <TextView
+                    android:id="@+id/AchivmentMoney12"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_marginLeft="80dp"
+                    android:layout_marginTop="30dp"
+                    android:text="@string/AFmoney12"
+                    android:textSize="15dp" />
+                <ImageView
+                    android:id="@+id/Achivment10"
+                    android:layout_width="80dp"
+                    android:layout_height="80dp"
+                    android:src="@drawable/menupicture" />
+            </FrameLayout>
+            <FrameLayout
+                android:id="@+id/Ach11"
+                android:layout_width="match_parent"
+                android:layout_height="80dp"
+                android:background="@xml/achborderoff">
+
+                <TextView
+                    android:id="@+id/AchivmentMoney21"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_marginLeft="80dp"
+                    android:gravity="top"
+                    android:text="@string/AFmoney21"
+                    android:textSize="20dp" />
+                <TextView
+                    android:id="@+id/AchivmentMoney22"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_marginLeft="80dp"
+                    android:layout_marginTop="30dp"
+                    android:text="@string/AFmoney22"
+                    android:textSize="15dp" />
+                <ImageView
+                    android:id="@+id/Achivment11"
+                    android:layout_width="80dp"
+                    android:layout_height="80dp"
+                    android:src="@drawable/menupicture" />
+            </FrameLayout>
+            <FrameLayout
+                android:id="@+id/Ach12"
+                android:layout_width="match_parent"
+                android:layout_height="80dp"
+                android:background="@xml/achborderoff">
+
+                <TextView
+                    android:id="@+id/AchivmentMoney31"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_marginLeft="80dp"
+                    android:gravity="top"
+                    android:text="@string/AFmoney31"
+                    android:textSize="20dp" />
+                <TextView
+                    android:id="@+id/AchivmentMoney32"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_marginLeft="80dp"
+                    android:layout_marginTop="30dp"
+                    android:text="@string/AFmoney32"
+                    android:textSize="15dp" />
+                <ImageView
+                    android:id="@+id/Achivment12"
+                    android:layout_width="80dp"
+                    android:layout_height="80dp"
+                    android:src="@drawable/menupicture" />
+            </FrameLayout>
+            <FrameLayout
+                android:id="@+id/Ach13"
+                android:layout_width="match_parent"
+                android:layout_height="80dp"
+                android:background="@xml/achborderoff">
+
+                <TextView
+                    android:id="@+id/AchivmentMoney41"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_marginLeft="80dp"
+                    android:gravity="top"
+                    android:text="@string/AFmoney41"
+                    android:textSize="20dp" />
+                <TextView
+                    android:id="@+id/AchivmentMoney42"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_marginLeft="80dp"
+                    android:layout_marginTop="30dp"
+                    android:text="@string/AFmoney42"
+                    android:textSize="15dp" />
+                <ImageView
+                    android:id="@+id/Achivment13"
+                    android:layout_width="80dp"
+                    android:layout_height="80dp"
+                    android:src="@drawable/menupicture" />
+            </FrameLayout>
+            <FrameLayout
+                android:id="@+id/Ach14"
+                android:layout_width="match_parent"
+                android:layout_height="80dp"
+                android:background="@xml/achborderoff">
+
+                <TextView
+                    android:id="@+id/AchivmentMoney51"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_marginLeft="80dp"
+                    android:gravity="top"
+                    android:text="@string/AFmoney51"
+                    android:textSize="20dp" />
+                <TextView
+                    android:id="@+id/AchivmentMoney52"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_marginLeft="80dp"
+                    android:layout_marginTop="30dp"
+                    android:text="@string/AFmoney52"
+                    android:textSize="15dp" />
+                <ImageView
+                    android:id="@+id/Achivment14"
+                    android:layout_width="80dp"
+                    android:layout_height="80dp"
+                    android:src="@drawable/menupicture" />
+            </FrameLayout>
+            <FrameLayout
+                android:id="@+id/Ach15"
+                android:layout_width="match_parent"
+                android:layout_height="80dp"
+                android:background="@xml/achborderoff">
+                <TextView
+                    android:id="@+id/AchivmentMoney61"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_marginLeft="80dp"
+                    android:gravity="top"
+                    android:text="@string/AFmoney61"
+                    android:textSize="20dp" />
+                <TextView
+                    android:id="@+id/AchivmentMoney62"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_marginLeft="80dp"
+                    android:layout_marginTop="30dp"
+                    android:text="@string/AFmoney62"
+                    android:textSize="15dp" />
+                <ImageView
+                    android:id="@+id/Achivment15"
+                    android:layout_width="80dp"
+                    android:layout_height="80dp"
+                    android:src="@drawable/menupicture" />
+            </FrameLayout>
+            <FrameLayout
+                android:id="@+id/Ach16"
+                android:layout_width="match_parent"
+                android:layout_height="80dp"
+                android:background="@xml/achborderoff">
+
+                <TextView
+                    android:id="@+id/AchivmentRespect11"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_marginLeft="80dp"
+                    android:gravity="top"
+                    android:text="@string/AFrespect11"
+                    android:textSize="20dp" />
+                <TextView
+                    android:id="@+id/AchivmentRespect12"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_marginLeft="80dp"
+                    android:layout_marginTop="30dp"
+                    android:text="@string/AFrespect12"
+                    android:textSize="15dp" />
+                <ImageView
+                    android:id="@+id/Achivment16"
+                    android:layout_width="80dp"
+                    android:layout_height="80dp"
+                    android:src="@drawable/menupicture" />
+            </FrameLayout>
+            <FrameLayout
+                android:id="@+id/Ach17"
+                android:layout_width="match_parent"
+                android:layout_height="80dp"
+                android:background="@xml/achborderoff">
+                <TextView
+                    android:id="@+id/AchivmentRespect21"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_marginLeft="80dp"
+                    android:gravity="top"
+                    android:text="@string/AFrespect21"
+                    android:textSize="20dp" />
+                <TextView
+                    android:id="@+id/AchivmentRespect22"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_marginLeft="80dp"
+                    android:layout_marginTop="30dp"
+                    android:text="@string/AFrespect22"
+                    android:textSize="15dp" />
+                <ImageView
+                    android:id="@+id/Achivment17"
+                    android:layout_width="80dp"
+                    android:layout_height="80dp"
+                    android:src="@drawable/menupicture" />
+            </FrameLayout>
+            <FrameLayout
+                android:id="@+id/Ach18"
+                android:layout_width="match_parent"
+                android:layout_height="80dp"
+                android:background="@xml/achborderoff">
+
+                <TextView
+                    android:id="@+id/AchivmentRespect31"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_marginLeft="80dp"
+                    android:gravity="top"
+                    android:text="@string/AFrespect31"
+                    android:textSize="20dp" />
+                <TextView
+                    android:id="@+id/AchivmentRespect32"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_marginLeft="80dp"
+                    android:layout_marginTop="30dp"
+                    android:text="@string/AFrespect32"
+                    android:textSize="15dp" />
+                <ImageView
+                    android:id="@+id/Achivment18"
+                    android:layout_width="80dp"
+                    android:layout_height="80dp"
+                    android:src="@drawable/menupicture" />
+            </FrameLayout>
+
         </LinearLayout>
     </android.support.v4.widget.NestedScrollView>
 </FrameLayout>

@@ -35,7 +35,8 @@ public class BusinessMetal extends Fragment {
     final String LOAD_BMW = "BMWorker";
     final String LOAD_BMPW = "BMPriceWorker";
     final String LOAD_BMPB = "BMPriceBis";
-
+    final String LOAD_RUB = "RUB";
+    final String LOAD_USD = "USD";
     final String LOAD_COURSESCRAP = "CourseScrap";
     final String SAVED_BUSINESS = "Business";
     @Override
@@ -64,7 +65,8 @@ public class BusinessMetal extends Fragment {
 
         btnUpStock = Business.findViewById(R.id.btnBMUpStock);
         totalrub = getActivity().findViewById(R.id.TotalRUB);
-
+        final String LOAD_RUB = "RUB";
+        final String LOAD_USD = "USD";
 
         //ВЫвод инфы
         Load_info();
@@ -80,18 +82,23 @@ public class BusinessMetal extends Fragment {
             public void onClick(View v) {
                 String check = sPref.getString(SAVED_BUSINESS,"");
                 if (check.equals("0")) {
-                    BuyBis.setVisibility(View.INVISIBLE);
-                    Bis.setVisibility(View.VISIBLE);
+                    if (Integer.parseInt(sPref.getString(LOAD_RUB, "")) < 50000) {
+                        ((Game) getActivity()).LowMoney("rub");
+                    }
+                    else {
+                        BuyBis.setVisibility(View.INVISIBLE);
+                        Bis.setVisibility(View.VISIBLE);
 
-                    SharedPreferences.Editor ed = sPref.edit();
-                    ed.putString(LOAD_BMS, "1");
-                    ed.putString(SAVED_BUSINESS, "1");
-                    ed.commit();
+                        SharedPreferences.Editor ed = sPref.edit();
+                        ed.putString(LOAD_BMS, "1");
+                        ed.putString(SAVED_BUSINESS, "1");
+                        ed.commit();
 
 
-                    ((Game) getActivity()).transaction("rub", "-", 50000);
-                    Load_info();
-                    ((Game) getActivity()).NextDay();
+                        ((Game) getActivity()).transaction("rub", "-", 50000);
+                        Load_info();
+                        ((Game) getActivity()).NextDay();
+                    }
                 }
                 else {
                     Toast.makeText(getActivity(),getResources().getString(R.string.BCdontTime),Toast.LENGTH_LONG).show();
@@ -280,53 +287,83 @@ public class BusinessMetal extends Fragment {
         int MaxMet = Integer.parseInt(MaxStock.getText().toString());
 
         if (MaxMet == 100){
-            SharedPreferences.Editor ed = sPref.edit();
-            ed.putString(LOAD_BMMS,"300");
-            ed.commit();
-            btnUpStock.setText(getResources().getString(R.string.BmFUPStock) + "|5000р");
-            ((Game)getActivity()).transaction("rub","-",1000);
+            if (Integer.parseInt(sPref.getString(LOAD_RUB, "")) < 1000) {
+                ((Game) getActivity()).LowMoney("rub");
+            }
+            else {
+                SharedPreferences.Editor ed = sPref.edit();
+                ed.putString(LOAD_BMMS, "300");
+                ed.commit();
+                btnUpStock.setText(getResources().getString(R.string.BmFUPStock) + "|5000р");
+                ((Game) getActivity()).transaction("rub", "-", 1000);
+            }
         }
         else if (MaxMet == 300){
-            SharedPreferences.Editor ed = sPref.edit();
-            ed.putString(LOAD_BMMS,"1000");
-            ed.commit();
-            btnUpStock.setText(getResources().getString(R.string.BmFUPStock) + "|10000р");
-            ((Game)getActivity()).transaction("rub","-",5000);
+            if (Integer.parseInt(sPref.getString(LOAD_RUB, "")) < 5000) {
+                ((Game) getActivity()).LowMoney("rub");
+            }
+            else {
+                SharedPreferences.Editor ed = sPref.edit();
+                ed.putString(LOAD_BMMS, "1000");
+                ed.commit();
+                btnUpStock.setText(getResources().getString(R.string.BmFUPStock) + "|10000р");
+                ((Game) getActivity()).transaction("rub", "-", 5000);
+            }
         }
         else if (MaxMet == 1000){
-            SharedPreferences.Editor ed = sPref.edit();
-            ed.putString(LOAD_BMMS,"5000");
-            ed.commit();
-            btnUpStock.setText(getResources().getString(R.string.BmFUPStock) + "|50000р");
-            ((Game)getActivity()).transaction("rub","-",10000);
+            if (Integer.parseInt(sPref.getString(LOAD_RUB, "")) < 10000) {
+                ((Game) getActivity()).LowMoney("rub");
+            }
+            else {
+                SharedPreferences.Editor ed = sPref.edit();
+                ed.putString(LOAD_BMMS, "5000");
+                ed.commit();
+                btnUpStock.setText(getResources().getString(R.string.BmFUPStock) + "|50000р");
+                ((Game) getActivity()).transaction("rub", "-", 10000);
+            }
         }
         else if (MaxMet == 5000){
-            SharedPreferences.Editor ed = sPref.edit();
-            ed.putString(LOAD_BMMS,"10000");
-            ed.commit();
-            btnUpStock.setText(getResources().getString(R.string.BmFUPStock) + "|100000р");
-            ((Game)getActivity()).transaction("rub","-",50000);
+            if (Integer.parseInt(sPref.getString(LOAD_RUB, "")) < 50000) {
+                ((Game) getActivity()).LowMoney("rub");
+            }
+            else {
+                SharedPreferences.Editor ed = sPref.edit();
+                ed.putString(LOAD_BMMS, "10000");
+                ed.commit();
+                btnUpStock.setText(getResources().getString(R.string.BmFUPStock) + "|100000р");
+                ((Game) getActivity()).transaction("rub", "-", 50000);
+            }
         }
         else if (MaxMet == 10000){
-            MaxStock.setText(String.valueOf(MaxMet = 100000));
-            SharedPreferences.Editor ed = sPref.edit();
-            ed.putString(LOAD_BMMS,"50000");
-            ed.commit();
-            btnUpStock.setText(getResources().getString(R.string.NoUpdate));
-            ((Game)getActivity()).transaction("rub","-",100000);
+            if (Integer.parseInt(sPref.getString(LOAD_RUB, "")) < 100000) {
+                ((Game) getActivity()).LowMoney("rub");
+            }
+            else {
+                MaxStock.setText(String.valueOf(MaxMet = 100000));
+                SharedPreferences.Editor ed = sPref.edit();
+                ed.putString(LOAD_BMMS, "50000");
+                ed.commit();
+                btnUpStock.setText(getResources().getString(R.string.NoUpdate));
+                ((Game) getActivity()).transaction("rub", "-", 100000);
+            }
         }
     }
 
     public void AdAdvertising(){
-        int Advert = Integer.parseInt(Ad.getText().toString());
-        String SaveAd = String.valueOf(Advert + 1);
-        Ad.setText(SaveAd);
+        if (Integer.parseInt(sPref.getString(LOAD_RUB, "")) < 500) {
+            ((Game) getActivity()).LowMoney("rub");
+        }
+        else {
+            int Advert = Integer.parseInt(Ad.getText().toString());
+            String SaveAd = String.valueOf(Advert + 1);
+            Ad.setText(SaveAd);
 
-        SharedPreferences.Editor ed = sPref.edit();
-        ed.putString(LOAD_BMA,SaveAd);
-        ed.commit();
+            SharedPreferences.Editor ed = sPref.edit();
+            ed.putString(LOAD_BMA, SaveAd);
+            ed.commit();
 
-        ((Game)getActivity()).transaction("rub","-",500);
+            ((Game) getActivity()).transaction("rub", "-", 500);
+        }
     }
 
     public void SellMetal(){
@@ -347,15 +384,18 @@ public class BusinessMetal extends Fragment {
 
         int PriceWorker = Integer.parseInt(sPref.getString(LOAD_BMPW,""));
         int SavePriceWorker = PriceWorker + 1000;
+        if (Integer.parseInt(sPref.getString(LOAD_RUB, "")) < PriceWorker) {
+            ((Game) getActivity()).LowMoney("rub");
+        }
+        else {
+            ed.putString(LOAD_BMW, SaveWorker);
+            ed.putString(LOAD_BMPW, String.valueOf(SavePriceWorker));
+            ((Game) getActivity()).transaction("rub", "-", PriceWorker);
 
-        ed.putString(LOAD_BMW,SaveWorker);
-        ed.putString(LOAD_BMPW,String.valueOf(SavePriceWorker));
-        ((Game)getActivity()).transaction("rub","-",PriceWorker);
+            ed.commit();
 
-        ed.commit();
-
-        btnWorker.setText(getResources().getString(R.string.BmFNewWorker) + "|" + sPref.getString(LOAD_BMPW,"") +"р");
-
+            btnWorker.setText(getResources().getString(R.string.BmFNewWorker) + "|" + sPref.getString(LOAD_BMPW, "") + "р");
+        }
     }
 
     public void Load_info(){

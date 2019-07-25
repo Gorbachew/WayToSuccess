@@ -4,8 +4,14 @@
     <string name="main_title">Путь к Успеху</string>
     <string name="New_Game">Новая игра</string>
     <string name="Cont_game">Продолжить игру</string>
+    <string name="Authors">Создатели</string>
+    <string name="MessAuthor">Сообщение от автора</string>
+    <string name="Donate">Поддержать проект</string>
     <string name="Options">Настройки</string>
     <string name="Exit">Выход</string>
+    <string name="Back">Назад</string>
+    <string name="linkAuthor">Связаться с автором https://vk.com/gorbacheww</string>
+    <string name="linkDiscord">Связаться с автором https://vk.com/gorbacheww</string>
 
     <!--Старт-->
     <string name="StartText1">Выбери свою судьбу!</string>
@@ -297,7 +303,7 @@
     <string name="FrFScrap">Искать металлолом</string>
     <string name="FrFSellScrap">Сдать металлолом</string>
 
-    <string name="FrFSupportScrapQuantity">Кг металла:</string>
+    <string name="FrFSupportScrapQuantity">Кг:</string>
     <string name="FrFSupportScrapCourse">Курс:</string>
     <string name="FrFLotScrap">Вам негде больше складировать металлолом, купите помещение побольше</string>
 
@@ -418,11 +424,78 @@
         <item>1000000</item>
     </string-array>
     <!--Достижения-->
-    <string name="AF1">КУРС</string>
-    <string name="AF1dop">КУРС</string>
+
+    <string name="AFopen">Достижение открыто</string>
+
+    <string name="AFfreelance11">Металлоискатель</string>
+    <string name="AFfreelance12">Найти лично 200 кг металла</string>
+    <string name="AFfreelance21">Металлодетектор</string>
+    <string name="AFfreelance22">Найти лично 1000 кг металла</string>
+    <string name="AFfreelance31">Железный человек</string>
+    <string name="AFfreelance32">Найти лично 5000 кг металла</string>
+
+    <string name="AFbmetal11">Барыга</string>
+    <string name="AFbmetal12">Накопить 1000 кг металла в бизнесе</string>
+    <string name="AFbmetal21">Металург</string>
+    <string name="AFbmetal22">Накопить 5000 кг металла в бизнесе</string>
+    <string name="AFbmetal31">Железный трон</string>
+    <string name="AFbmetal32">Накопить 10000 кг металла в бизнесе</string>
+
+    <string name="AFcafe11">Бариста</string>
+    <string name="AFcafe12">Нанять 2 повара</string>
+    <string name="AFcafe21">Самилье</string>
+    <string name="AFcafe22">Нанять 6 поваров</string>
+    <string name="AFcafe31">Ресторатор</string>
+    <string name="AFcafe32">Нанять 10 поваров</string>
+
+    <string name="AFmoney11">Мечта детства</string>
+    <string name="AFmoney12">Заработать 100000р</string>
+    <string name="AFmoney21">Самозанятый</string>
+    <string name="AFmoney22">Заработать 500000р</string>
+    <string name="AFmoney31">Предприниматель</string>
+    <string name="AFmoney32">Заработать 1000000р</string>
+    <string name="AFmoney41">Бизнесмен</string>
+    <string name="AFmoney42">Заработать 5000000р</string>
+    <string name="AFmoney51">Олигарх</string>
+    <string name="AFmoney52">Заработать 1000000$</string>
+    <string name="AFmoney61">Агент Гос депа</string>
+    <string name="AFmoney62">Заработать 10000000$</string>
+
+    <string name="AFrespect11">Первый парень на деревне</string>
+    <string name="AFrespect12">Иметь 1000 респекта</string>
+    <string name="AFrespect21">Шоумен</string>
+    <string name="AFrespect22">Иметь 20000 респекта</string>
+    <string name="AFrespect31">ЖидоМасон</string>
+    <string name="AFrespect32">Иметь 100000 респекта</string>
+
+
+
     <!-- Казино -->
     <string name="CFyouZero">Вы ничего не выиграли</string>
     <string name="CFyouWin">Вы выиграли</string>
     <string name="CFyouLose">Вы проиграли</string>
     <string name="CFdollar">Долларов</string>
+    <string name="CFerror">Посмотрев на вас и ваше состояние охранники указали на выход. Вам нужно иметь костюм</string>
+
+    <!--Проигрыш-->
+    <string name="LoseTitle">Вы на грани смерти</string>
+    <string name="EndTitle">Вы умерли</string>
+    <string name="EndVideoReward">Воскреснуть</string>
+    <string name="EndText">Вы не смогли справиться с проблемами этого мира... Прощайте с миром.</string>
+    <string name="LoseHP">Вы серьезно заболели, чтобы не умереть вам нужно поднять здоровье выше 10% за сутки</string>
+    <string name="LoseMP">Вы на грани суецида, чтобы не умереть вам нужно поднять настроение выше 10% за сутки</string>
+    <string name="LoseSP">Вы валитесь от истощения, чтобы не умереть вам нужно поднять сытость выше 10% за сутки</string>
+    <string name="LoseMoney">Вы банкрот, если через 3 дня ваш баланс не станет положительным, за вами придут</string>
+
+
+    <!--Реклама-->
+    <string name="banner_ad_unit_id">ca-app-pub-6876201111676185/7399516322</string>
+
+    <!--Сообщение от автора -->
+    <string name="MAbody1">Это мой первый мобильный проект и мне будет очень приятно, если вы оцените его и поделитесь своим мнением. Про баги писать туда же. Discord: Gorbachew #1425</string>
+
+
+
+
+
 </resources>

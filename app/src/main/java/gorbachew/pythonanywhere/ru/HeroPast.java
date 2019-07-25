@@ -25,7 +25,6 @@ public class HeroPast extends Fragment {
     final String SAVED_POLL3 = "childhood";
     final String SAVED_POLL4 = "youth";
     final String SAVED_POLL5 = "AftSchool";
-    final String SAVED_POLL6 = "Purpose";
     final String SAVED_POLL7 = "Why";
 
     @SuppressLint("SetTextI18n")
@@ -45,7 +44,7 @@ public class HeroPast extends Fragment {
         String ChildId = sPref.getString(SAVED_POLL3,"");
         String YouthId = sPref.getString(SAVED_POLL4,"");
         String AftSchoolId = sPref.getString(SAVED_POLL5,"");
-        String PurposeId = sPref.getString(SAVED_POLL6,"");
+
         String WhyId = sPref.getString(SAVED_POLL7,"");
 
 
@@ -136,17 +135,17 @@ public class HeroPast extends Fragment {
                 AftSchoolText = getResources().getString(R.string.AftSchoolLazy);
                 break;
         }
-        switch (PurposeId) {
-            case "0":
-                PurposeText = getResources().getString(R.string.PurposeWheal);
-                break;
-            case "1":
-                PurposeText = getResources().getString(R.string.PurposePower);
-                break;
-            case "2":
-                PurposeText = getResources().getString(R.string.PurposeNoEnd);
-                break;
-        }
+//        switch (PurposeId) {
+//            case "0":
+//                PurposeText = getResources().getString(R.string.PurposeWheal);
+//                break;
+//            case "1":
+//                PurposeText = getResources().getString(R.string.PurposePower);
+//                break;
+//            case "2":
+//                PurposeText = getResources().getString(R.string.PurposeNoEnd);
+//                break;
+//        }
         switch (WhyId) {
             case "0":
                 WhyText = getResources().getString(R.string.WhyDead);

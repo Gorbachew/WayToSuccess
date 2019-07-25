@@ -1,8 +1,13 @@
 package gorbachew.pythonanywhere.ru;
 
+import android.annotation.SuppressLint;
+import android.content.DialogInterface;
+import android.content.Intent;
 import android.content.SharedPreferences;
+import android.os.CountDownTimer;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentTransaction;
+import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
@@ -14,10 +19,27 @@ import android.widget.ProgressBar;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.google.android.gms.ads.AdListener;
+import com.google.android.gms.ads.AdRequest;
+import com.google.android.gms.ads.InterstitialAd;
+import com.google.android.gms.ads.MobileAds;
+import com.google.android.gms.ads.reward.RewardItem;
+import com.google.android.gms.ads.reward.RewardedVideoAd;
+import com.google.android.gms.ads.reward.RewardedVideoAdListener;
+
+import java.io.File;
 import java.util.Random;
 import java.util.concurrent.ThreadLocalRandom;
 
-public class Game extends AppCompatActivity {
+
+
+
+public class Game extends AppCompatActivity implements RewardedVideoAdListener {
+
+    private RewardedVideoAd mRewardedVideoAd;
+    private InterstitialAd mInterstitialAd;
+    int advertisement = 0;
+
     SharedPreferences sPref;
     final String LOAD_NAME = "Name";
     final String LOAD_RUB = "RUB";
@@ -35,6 +57,7 @@ public class Game extends AppCompatActivity {
     final String LOAD_SP = "SP";
 
     final String LOAD_SCRAP = "SCRAP";
+    final String LOAD_MAXSCRAP = "MAXSCRAP";
 
     final String LOAD_COURSESCRAP = "CourseScrap";
     final String LOAD_BMS = "BusinessMetalPoint";
@@ -43,8 +66,6 @@ public class Game extends AppCompatActivity {
     final String LOAD_BMFS = "BMFullStock";
     final String LOAD_BMMS = "BMMaxStock";
     final String LOAD_BMA = "BMAd";
-
-
 
     final String LOAD_BCA = "BCad";
 
@@ -60,6 +81,12 @@ public class Game extends AppCompatActivity {
     final String LOAD_BUFFDOCK = "BuffDock";
     final String LOAD_BUFFMP = "BuffMP";
 
+    final String LOAD_ACHBM = "AchivmentBMetal";
+    final String LOAD_ACHBC = "AchivmentBCafe";
+    final String LOAD_ACHM = "AchivmentMetal";
+    final String LOAD_ACHMo = "AchivmentMoney";
+    final String LOAD_ACHR = "AchivmentRespect";
+
 
     final Random random = new Random();
 
@@ -70,8 +97,6 @@ public class Game extends AppCompatActivity {
     LinearLayout LayoutScrap;
     HorizontalScrollView ScrollBusiness;
 
-
-
     TextView totalrub,totalusd,totalresp,totalday,totaltexthp,totaltextmp,totaltextsp,namefragments,tvHours,textKgScrap,KgScrap,textCourseScrap,CourseScrap;
     ProgressBar ProgBarHP,ProgBarMP,ProgBarSP;
     ImageButton BtnMood,BtnFood,BtnHealth;
@@ -80,6 +105,7 @@ public class Game extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_game);
+        sPref = getSharedPreferences("Saved",MODE_PRIVATE);
         //Создает обьект Id элементов
         totalrub = findViewById(R.id.TotalRUB);
         totalusd = findViewById(R.id.TotalUSD);
@@ -104,9 +130,6 @@ public class Game extends AppCompatActivity {
         CourseScrap = findViewById(R.id.CourseScrap);
         ScrollBusiness = findViewById(R.id.ScrollBusiness);
 
-
-
-
         //Создаем обьект фрагментов
         FragmentPass = new Password();
         FragmentMood = new Mood();
@@ -125,13 +148,22 @@ public class Game extends AppCompatActivity {
         FragmentBank = new Bank();
         FragmentCasino = new Casino();
 
-
-
-
-        //Кнопки
-
-        //Копки закончились
-
+        //Видеореклама
+        mRewardedVideoAd = MobileAds.getRewardedVideoAdInstance(this);
+        mRewardedVideoAd.setRewardedVideoAdListener(this);
+        //Межстраничная реклама
+        mInterstitialAd = new InterstitialAd(this);
+        mInterstitialAd.setAdUnitId("ca-app-pub-3940256099942544/1033173712");
+        mInterstitialAd.loadAd(new AdRequest.Builder().build());
+        loadRewardedVideoAd();
+        mInterstitialAd.setAdListener(new AdListener() {
+            @Override
+            public void onAdClosed() {
+                // Load the next interstitial.
+                mInterstitialAd.loadAd(new AdRequest.Builder().build());
+            }
+        });
+        //Загрузка сохраненных параметров
         loadGame();
 
 
@@ -146,10 +178,275 @@ public class Game extends AppCompatActivity {
         fTrans.commit();
     }
 
+    private void loadRewardedVideoAd() {
+        mRewardedVideoAd.loadAd("ca-app-pub-3940256099942544/5224354917",
+                new AdRequest.Builder().build());
+    }
+
+
+    public void EndGame(){
+        int LoseHP = sPref.getInt("LoseHP",0),LoseMP = sPref.getInt("LoseMP",0),LoseSP= sPref.getInt("LoseSP",0),LoseMoney = sPref.getInt("LoseMoney",0);
+        if (LoseHP >= 4 || LoseMP >= 4 || LoseSP >= 4 || LoseMoney >= 12){
+            AlertDialog.Builder builder = new AlertDialog.Builder(Game.this);
+            builder.setTitle(getResources().getString(R.string.EndTitle))
+                    .setMessage(getResources().getString(R.string.EndText))
+                    .setIcon(R.drawable.loseico)
+                    .setCancelable(false)
+                    .setPositiveButton("Ok",
+                            new DialogInterface.OnClickListener() {
+                                @Override
+                                public void onClick(DialogInterface dialog, int which) {
+                                    Intent intent = new Intent(Game.this,MainActivity.class);
+                                    startActivity(intent);
+                                    File file = new File("/data/data/gorbachew.pythonanywhere.ru/shared_prefs/Saved.xml");
+                                    file.delete();
+                                }
+                            })
+                    .setNegativeButton(getResources().getString(R.string.EndVideoReward),
+                            new DialogInterface.OnClickListener() {
+                                @Override
+                                public void onClick(DialogInterface dialog, int which) {
+                                    if (mRewardedVideoAd.isLoaded()) {
+                                        mRewardedVideoAd.show();
+                                        SharedPreferences.Editor ed = sPref.edit();
+                                        ed.putInt("LoseHP",0);
+                                        ed.putInt("LoseMP",0);
+                                        ed.putInt("LoseSP",0);
+                                        ed.putInt("LoseMoney",0);
+                                        ed.commit();
+
+                                    }
+                                    else {
+                                        Intent intent = new Intent(Game.this,MainActivity.class);
+                                        startActivity(intent);
+                                        File file = new File("/data/data/gorbachew.pythonanywhere.ru/shared_prefs/Saved.xml");
+                                        file.delete();
+                                    }
+
+                                }
+                            });
+
+
+
+            AlertDialog alert = builder.create();
+            alert.show();
+
+
+
+
+        }
+
+    }
+
+    public void CheckStats(){
+           int LoseHP = sPref.getInt("LoseHP",0),LoseMP = sPref.getInt("LoseMP",0),LoseSP= sPref.getInt("LoseSP",0),LoseMoney = sPref.getInt("LoseMoney",0);
+           int HP = Integer.parseInt(sPref.getString(LOAD_HP,""));
+           int MP = Integer.parseInt(sPref.getString(LOAD_MP,""));
+           int SP = Integer.parseInt(sPref.getString(LOAD_SP,""));
+           int Rub = Integer.parseInt(sPref.getString(LOAD_RUB,""));
+           int Usd = Integer.parseInt(sPref.getString(LOAD_USD,""));
+
+           if(HP <= 0){
+               if(LoseHP == 0){
+                   AlertDialog.Builder builder = new AlertDialog.Builder(Game.this);
+                   builder.setTitle(getResources().getString(R.string.LoseTitle))
+                           .setMessage(getResources().getString(R.string.LoseHP))
+                           .setIcon(R.drawable.loseico)
+                           .setCancelable(false)
+                           .setNegativeButton("Ok",
+                                   new DialogInterface.OnClickListener() {
+                                       @Override
+                                       public void onClick(DialogInterface dialog, int which) {
+                                           dialog.cancel();
+                                       }
+                                   });
+                   AlertDialog alert = builder.create();
+                   alert.show();
+               }
+
+               LoseHP += 1;
+               SharedPreferences.Editor ed = sPref.edit();
+               ed.putInt("LoseHP",LoseHP);
+               ed.commit();
+           }
+           else if(LoseHP > 0){
+               SharedPreferences.Editor ed = sPref.edit();
+               ed.putInt("LoseHP",0);
+               ed.commit();
+           }
+            if(MP <= 0 ){
+                if(LoseMP == 0){
+                    AlertDialog.Builder builder = new AlertDialog.Builder(Game.this);
+                    builder.setTitle(getResources().getString(R.string.LoseTitle))
+                            .setMessage(getResources().getString(R.string.LoseMP))
+                            .setIcon(R.drawable.loseico)
+                            .setCancelable(false)
+                            .setNegativeButton("Ok",
+                                    new DialogInterface.OnClickListener() {
+                                        @Override
+                                        public void onClick(DialogInterface dialog, int which) {
+                                            dialog.cancel();
+                                        }
+                                    });
+                    AlertDialog alert = builder.create();
+                    alert.show();
+                }
+                LoseMP += 1;
+                SharedPreferences.Editor ed = sPref.edit();
+                ed.putInt("LoseMP",LoseMP);
+                ed.commit();
+            }
+            else if(LoseMP > 0){
+                SharedPreferences.Editor ed = sPref.edit();
+                ed.putInt("LoseMP",0);
+                ed.commit();
+            }
+            if(SP <= 0 ){
+                if(LoseSP == 0){
+                    AlertDialog.Builder builder = new AlertDialog.Builder(Game.this);
+                    builder.setTitle(getResources().getString(R.string.LoseTitle))
+                            .setMessage(getResources().getString(R.string.LoseSP))
+                            .setIcon(R.drawable.loseico)
+                            .setCancelable(false)
+                            .setNegativeButton("Ok",
+                                    new DialogInterface.OnClickListener() {
+                                        @Override
+                                        public void onClick(DialogInterface dialog, int which) {
+                                            dialog.cancel();
+                                        }
+                                    });
+                    AlertDialog alert = builder.create();
+                    alert.show();
+                }
+                LoseSP += 1;
+                SharedPreferences.Editor ed = sPref.edit();
+                ed.putInt("LoseSP",LoseSP);
+                ed.commit();
+            }
+            else if(LoseSP > 0){
+                SharedPreferences.Editor ed = sPref.edit();
+                ed.putInt("LoseSP",0);
+                ed.commit();
+            }
+            if(Rub < 0  || Usd < 0){
+                if(LoseMoney == 0){
+                    AlertDialog.Builder builder = new AlertDialog.Builder(Game.this);
+                    builder.setTitle(getResources().getString(R.string.LoseTitle))
+                            .setMessage(getResources().getString(R.string.LoseMoney))
+                            .setIcon(R.drawable.loseico)
+                            .setCancelable(false)
+                            .setNegativeButton("Ok",
+                                    new DialogInterface.OnClickListener() {
+                                        @Override
+                                        public void onClick(DialogInterface dialog, int which) {
+                                            dialog.cancel();
+                                        }
+                                    });
+                    AlertDialog alert = builder.create();
+                    alert.show();
+                }
+                LoseMoney += 1;
+                SharedPreferences.Editor ed = sPref.edit();
+                ed.putInt("LoseMoney",LoseMoney);
+                ed.commit();
+            }
+            else if(LoseMoney > 0){
+                SharedPreferences.Editor ed = sPref.edit();
+                ed.putInt("LoseMoney",0);
+                ed.commit();
+            }
+    }
+
+
+    public void Achivments(){
+        String rub = sPref.getString(LOAD_RUB,"");
+        String usd = sPref.getString(LOAD_USD,"");
+        String resp = sPref.getString(LOAD_RESPECT,"");
+        String metal = sPref.getString(LOAD_SCRAP,"");
+        String cook = sPref.getString(LOAD_BCC,"");
+        String businessmetal = sPref.getString(LOAD_BMFS,"");
+
+         if  (sPref.getString(LOAD_ACHBM,"").equals("2") && Integer.parseInt(businessmetal) >= 10000){
+            SharedPreferences.Editor ed = sPref.edit();ed.putString(LOAD_ACHBM,"3");ed.commit();
+            Toast.makeText(this,getResources().getString(R.string.AFopen) + " " + getResources().getString(R.string.AFbmetal31), Toast.LENGTH_LONG).show();
+        }
+        else if  (sPref.getString(LOAD_ACHBM,"").equals("1") && Integer.parseInt(businessmetal) >= 5000){
+            SharedPreferences.Editor ed = sPref.edit();ed.putString(LOAD_ACHBM,"2");ed.commit();
+            Toast.makeText(this,getResources().getString(R.string.AFopen) + " " + getResources().getString(R.string.AFbmetal21), Toast.LENGTH_LONG).show();
+        }
+        else if (sPref.getString(LOAD_ACHBM,"").equals("0") && Integer.parseInt(businessmetal) >= 1000){
+            SharedPreferences.Editor ed = sPref.edit();ed.putString(LOAD_ACHBM,"1");ed.commit();
+            Toast.makeText(this,getResources().getString(R.string.AFopen) + " " + getResources().getString(R.string.AFbmetal11), Toast.LENGTH_LONG).show();
+        }
+
+        if  (sPref.getString(LOAD_ACHBC,"").equals("2") && Integer.parseInt(cook) >= 10){
+            SharedPreferences.Editor ed = sPref.edit();ed.putString(LOAD_ACHBC,"3");ed.commit();
+            Toast.makeText(this,getResources().getString(R.string.AFopen) + " " + getResources().getString(R.string.AFcafe31), Toast.LENGTH_LONG).show();
+        }
+        else if  (sPref.getString(LOAD_ACHBC,"").equals("1") && Integer.parseInt(cook) >= 6){
+            SharedPreferences.Editor ed = sPref.edit();ed.putString(LOAD_ACHBC,"2");ed.commit();
+            Toast.makeText(this,getResources().getString(R.string.AFopen) + " " + getResources().getString(R.string.AFcafe21), Toast.LENGTH_LONG).show();
+        }
+        else if (sPref.getString(LOAD_ACHBC,"").equals("0") && Integer.parseInt(cook) >= 2){
+            SharedPreferences.Editor ed = sPref.edit();ed.putString(LOAD_ACHBC,"1");ed.commit();
+            Toast.makeText(this,getResources().getString(R.string.AFopen) + " " + getResources().getString(R.string.AFcafe11), Toast.LENGTH_LONG).show();
+        }
+
+        if  (sPref.getString(LOAD_ACHR,"").equals("2") && Integer.parseInt(resp) >= 100000){
+            SharedPreferences.Editor ed = sPref.edit();ed.putString(LOAD_ACHR,"3");ed.commit();
+            Toast.makeText(this,getResources().getString(R.string.AFopen) + " " + getResources().getString(R.string.AFrespect31), Toast.LENGTH_LONG).show();
+        }
+        else if  (sPref.getString(LOAD_ACHR,"").equals("1") && Integer.parseInt(resp) >= 20000){
+            SharedPreferences.Editor ed = sPref.edit();ed.putString(LOAD_ACHR,"2");ed.commit();
+            Toast.makeText(this,getResources().getString(R.string.AFopen) + " " + getResources().getString(R.string.AFrespect21), Toast.LENGTH_LONG).show();
+        }
+        else if  (sPref.getString(LOAD_ACHR,"").equals("0") && Integer.parseInt(resp) >= 1000){
+            SharedPreferences.Editor ed = sPref.edit();ed.putString(LOAD_ACHR,"1");ed.commit();
+            Toast.makeText(this,getResources().getString(R.string.AFopen) + " " + getResources().getString(R.string.AFrespect11), Toast.LENGTH_LONG).show();
+        }
+
+        if  (sPref.getString(LOAD_ACHMo,"").equals("5") && Integer.parseInt(usd) >= 10000000){
+            SharedPreferences.Editor ed = sPref.edit();ed.putString(LOAD_ACHMo,"6");ed.commit();
+            Toast.makeText(this,getResources().getString(R.string.AFopen) + " " + getResources().getString(R.string.AFmoney61), Toast.LENGTH_LONG).show();
+        }
+        else if  (sPref.getString(LOAD_ACHMo,"").equals("4") && Integer.parseInt(usd) >= 1000000){
+            SharedPreferences.Editor ed = sPref.edit();ed.putString(LOAD_ACHMo,"5");ed.commit();
+            Toast.makeText(this,getResources().getString(R.string.AFopen) + " " + getResources().getString(R.string.AFmoney51), Toast.LENGTH_LONG).show();
+        }
+        else if  (sPref.getString(LOAD_ACHMo,"").equals("3") && Integer.parseInt(rub) >= 5000000){
+            SharedPreferences.Editor ed = sPref.edit();ed.putString(LOAD_ACHMo,"4");ed.commit();
+            Toast.makeText(this,getResources().getString(R.string.AFopen) + " " + getResources().getString(R.string.AFmoney41), Toast.LENGTH_LONG).show();
+        }
+        else if  (sPref.getString(LOAD_ACHMo,"").equals("2") && Integer.parseInt(rub) >= 1000000){
+            SharedPreferences.Editor ed = sPref.edit();ed.putString(LOAD_ACHMo,"3");ed.commit();
+            Toast.makeText(this,getResources().getString(R.string.AFopen) + " " + getResources().getString(R.string.AFmoney31), Toast.LENGTH_LONG).show();
+        }
+        else if  (sPref.getString(LOAD_ACHMo,"").equals("1") && Integer.parseInt(rub) >= 500000){
+            SharedPreferences.Editor ed = sPref.edit();ed.putString(LOAD_ACHMo,"2");ed.commit();
+            Toast.makeText(this,getResources().getString(R.string.AFopen) + " " + getResources().getString(R.string.AFmoney21), Toast.LENGTH_LONG).show();
+        }
+        else if  (sPref.getString(LOAD_ACHMo,"").equals("0") && Integer.parseInt(rub) >= 100000){
+            SharedPreferences.Editor ed = sPref.edit();ed.putString(LOAD_ACHMo,"1");ed.commit();
+            Toast.makeText(this,getResources().getString(R.string.AFopen) + " " + getResources().getString(R.string.AFmoney11), Toast.LENGTH_LONG).show();
+        }
+
+        if  (sPref.getString(LOAD_ACHM,"").equals("2") && Integer.parseInt(metal) >= 1000){
+            SharedPreferences.Editor ed = sPref.edit();ed.putString(LOAD_ACHM,"3");ed.commit();
+            Toast.makeText(this,getResources().getString(R.string.AFopen) + " " + getResources().getString(R.string.AFfreelance31), Toast.LENGTH_LONG).show();
+        }
+        else if  (sPref.getString(LOAD_ACHM,"").equals("1") && Integer.parseInt(metal) >= 500){
+            SharedPreferences.Editor ed = sPref.edit();ed.putString(LOAD_ACHM,"2");ed.commit();
+            Toast.makeText(this,getResources().getString(R.string.AFopen) + " " + getResources().getString(R.string.AFfreelance21), Toast.LENGTH_LONG).show();
+        }
+        else if  (sPref.getString(LOAD_ACHM,"").equals("0") && Integer.parseInt(metal) >= 200){
+            SharedPreferences.Editor ed = sPref.edit();ed.putString(LOAD_ACHM,"1");ed.commit();
+            Toast.makeText(this,getResources().getString(R.string.AFopen) + " " + getResources().getString(R.string.AFfreelance11), Toast.LENGTH_LONG).show();
+        }
+    }
+
     public void ChangeCourseUSD(){
         int course = Integer.parseInt(sPref.getString(LOAD_CourseUSD,""));
         int rand = random.nextInt(6);
-
         switch (rand){
             case 0:
                 course -= 1;
@@ -221,8 +518,6 @@ public class Game extends AppCompatActivity {
 
        int table = Integer.parseInt(sPref.getString(LOAD_BCT,""));
 
-
-
        if (table >= 1){
            int ad = Integer.parseInt(sPref.getString(LOAD_BCA,""));
            int saveVisitors = Integer.parseInt(sPref.getString(LOAD_BCV,""));
@@ -285,17 +580,12 @@ public class Game extends AppCompatActivity {
                 int rub = Integer.parseInt(sPref.getString(LOAD_RUB, ""));
                 switch (sign){
                     case "+":
-
                         ed.putString(LOAD_RUB,String.valueOf(rub + sum));
-
                         break;
-
                     case "-":
                         ed.putString(LOAD_RUB,String.valueOf(rub - sum));
-
                         break;
                 }
-
                 break;
             case "usd":
                 int usd = Integer.parseInt(sPref.getString(LOAD_USD, ""));
@@ -303,9 +593,11 @@ public class Game extends AppCompatActivity {
                     case "+":
                         ed.putString(LOAD_USD,String.valueOf(usd + sum));
                         break;
-
                     case "-":
                         ed.putString(LOAD_USD,String.valueOf(usd - sum));
+
+
+
                         break;
                 }
                 break;
@@ -314,14 +606,42 @@ public class Game extends AppCompatActivity {
         ed.commit();
     }
 
+    public void LowMoney(String currency){
+        switch (currency){
+            case "rub":
+
+                new CountDownTimer(200,200){
+                    @Override
+                    public void onTick(long l) {
+                        totalrub.setTextColor(getResources().getColor(R.color.red));
+                    }
+                    @Override public void onFinish() {
+                        totalrub.setTextColor(getResources().getColor(R.color.white));
+                    }
+                }.start();
+                break;
+            case "usd":
+
+                new CountDownTimer(200,200){
+                    @Override
+                    public void onTick(long l) {
+                        totalusd.setTextColor(getResources().getColor(R.color.red));
+                    }
+                    @Override public void onFinish() {
+                        totalusd.setTextColor(getResources().getColor(R.color.white));
+                    }
+                }.start();
+                break;
+        }
+    }
 
     //Метод работы рабочих на пункте приема метала
     public void BMWorker(){
         int worker = Integer.parseInt(sPref.getString(LOAD_BMW, ""));
         int metal = Integer.parseInt(sPref.getString(LOAD_BMFS, ""));
         int ad = Integer.parseInt(sPref.getString(LOAD_BMA, ""));
-        SharedPreferences.Editor ed = sPref.edit();
         sPref = getSharedPreferences("Saved",MODE_PRIVATE);
+        SharedPreferences.Editor ed = sPref.edit();
         if (worker >= 1){
             //Получает информацию из файла сохранения
             int maxMetal = Integer.parseInt(sPref.getString(LOAD_BMMS, ""));
@@ -353,7 +673,6 @@ public class Game extends AppCompatActivity {
     //4 входящие переменные 1(HP,MP,SP)что изменяется 2 (Plus,Minus) прибавляем или вычитаем 3 100% прибавка или отнятие значения 4 Рандомная максимальная величина в добавок к основной
     public void RandomStats(String Stat, String Sign, int ExactChangeStat, int RandChangeStat){
         SharedPreferences.Editor ed = sPref.edit();
-
         switch (Stat){
             case "HP":
                 int varStatHP = ProgBarHP.getProgress();
@@ -417,7 +736,7 @@ public class Game extends AppCompatActivity {
 
     public void NextDay(){
         //Методы которые проверяются каждый ход
-
+        SharedPreferences.Editor ed = sPref.edit();
 
 
         if(tvHours.getText().equals("6") ){
@@ -437,13 +756,12 @@ public class Game extends AppCompatActivity {
             ivimgDay.setImageResource(R.drawable.day6);
             tvHours.setText("6");
 
-            RandomStats("HP","-",0,5);
-            RandomStats("SP","-",0,5);
-            RandomStats("MP","-",0,5);
+            RandomStats("HP","-",0,20);
+            RandomStats("SP","-",0,20);
+            RandomStats("MP","-",0,20);
 
 
             int load = Integer.parseInt(sPref.getString(LOAD_DAY,""));
-            SharedPreferences.Editor ed = sPref.edit();
             ed.putString(LOAD_DAY,String.valueOf(load + 1));
             ed.commit();
 
@@ -451,7 +769,9 @@ public class Game extends AppCompatActivity {
             BCafe();
             CheckBuff();
         }
-
+        EndGame();
+        CheckStats();
+        Achivments();
         CourseScrap();
         ChangeCourseUSD();
         loadGame();
@@ -462,7 +782,6 @@ public class Game extends AppCompatActivity {
     public void SellScrap(){
 //        Toast.makeText(this,CourseScrap.getText().toString() + " " + KgScrap.getText().toString() + " " + totalrub.getText().toString(),Toast.LENGTH_LONG).show();
         int intSellScrap = Integer.parseInt(CourseScrap.getText().toString()) * Integer.parseInt(KgScrap.getText().toString()) + Integer.parseInt(totalrub.getText().toString());
-
         SharedPreferences.Editor ed = sPref.edit();
         ed.putString(LOAD_RUB,String.valueOf(intSellScrap));
         ed.putString(LOAD_SCRAP, "0");
@@ -473,9 +792,9 @@ public class Game extends AppCompatActivity {
 
     public void FindScrup(){
         int Scrap = Integer.parseInt(KgScrap.getText().toString());
-        if(Scrap <= 30){
-            Scrap = Scrap + random.nextInt(5);
-
+        int maxScrap = Integer.parseInt(KgScrap.getText().toString());
+        if(Scrap <= maxScrap){
+            Scrap = Scrap + random.nextInt(6);
             SharedPreferences.Editor ed = sPref.edit();
             ed.putString(LOAD_SCRAP, String.valueOf(Scrap));
             ed.commit();
@@ -488,8 +807,8 @@ public class Game extends AppCompatActivity {
 
     }
     public void CourseScrap(){
-        int Course = 11 + random.nextInt(21 - 10);
         SharedPreferences.Editor ed = sPref.edit();
+        int Course = 11 + random.nextInt(21 - 10);
         ed.putString(LOAD_COURSESCRAP,String.valueOf(Course));
         ed.commit();
 
@@ -499,33 +818,27 @@ public class Game extends AppCompatActivity {
 
     public void ChangeFragments(View view){
         fTrans = getSupportFragmentManager().beginTransaction();
+
         switch (view.getId()){
             case R.id.btnPass:
                 namefragments.setText(getResources().getString(R.string.NFPass));
                 fTrans.replace(R.id.MainFragmentsWindow,FragmentPass);
                 break;
             case R.id.btnFood:
-
                 namefragments.setText(getResources().getString(R.string.NFFood));
                 fTrans.replace(R.id.MainFragmentsWindow,FragmentFood);
-
                 break;
             case R.id.btnMood:
-
                 namefragments.setText(getResources().getString(R.string.NFMood));
                 fTrans.replace(R.id.MainFragmentsWindow,FragmentMood);
-
                 break;
             case R.id.btnHealth:
-
                 namefragments.setText(getResources().getString(R.string.NFHealth));
                 fTrans.replace(R.id.MainFragmentsWindow,FragmentHealth);
-
                 break;
             case R.id.btnFreelance:
                 namefragments.setText(getResources().getString(R.string.NFFreelance));
                 fTrans.replace(R.id.MainFragmentsWindow,FragmentFreelance);
-
                 break;
             case R.id.btnWork:
                 namefragments.setText(getResources().getString(R.string.NFWork));
@@ -577,6 +890,15 @@ public class Game extends AppCompatActivity {
         fTrans.commit();
         //Отображает
 
+        advertisement += 1;
+
+        if(advertisement >= 20){
+            if (mInterstitialAd.isLoaded()) {
+                mInterstitialAd.show();
+            }
+            advertisement = 0;
+        }
+
         if(namefragments.getText().toString() == getResources().getString(R.string.NFFreelance)){
             LayoutScrap.setVisibility(View.VISIBLE);
         }
@@ -594,6 +916,7 @@ public class Game extends AppCompatActivity {
     }
 
 
+    @SuppressLint("SetTextI18n")
     public void loadGame(){
 
         sPref = getSharedPreferences("Saved",MODE_PRIVATE);
@@ -625,9 +948,11 @@ public class Game extends AppCompatActivity {
         ProgBarHP.setProgress(Integer.parseInt(HP));
         ProgBarSP.setProgress(Integer.parseInt(SP));
         ProgBarMP.setProgress(Integer.parseInt(MP));
+
         //Загрузка Металлолома
-        textKgScrap.setText(getResources().getString(R.string.FrFSupportScrapQuantity));
-        textCourseScrap.setText(getResources().getString(R.string.FrFSupportScrapCourse));
+
+        textKgScrap.setText(getResources().getString(R.string.FrFSupportScrapQuantity) + " ");
+        textCourseScrap.setText(getResources().getString(R.string.FrFSupportScrapCourse) + " ");
         KgScrap.setText(SCRAP);
         CourseScrap.setText(LoadCourseScrap);
 
@@ -642,29 +967,109 @@ public class Game extends AppCompatActivity {
 
 
     }
+
+
+    @Override
+    public void onRewarded(RewardItem reward) {
+        Toast.makeText(this, "onRewarded! currency: " + reward.getType() + "  amount: " +
+                reward.getAmount(), Toast.LENGTH_SHORT).show();
+        // Reward the user.
+    }
+
+    @Override
+    public void onRewardedVideoAdLeftApplication() {
+        Toast.makeText(this, "onRewardedVideoAdLeftApplication",
+                Toast.LENGTH_SHORT).show();
+    }
+
+    @Override
+    public void onRewardedVideoAdClosed() {
+//        Toast.makeText(this, "onRewardedVideoAdClosed", Toast.LENGTH_SHORT).show();
+        loadRewardedVideoAd();
+        int rub = Integer.parseInt(sPref.getString(LOAD_RUB,""));
+        int usd = Integer.parseInt(sPref.getString(LOAD_USD,""));
+        int hp = Integer.parseInt(sPref.getString(LOAD_HP,""));
+        int mp = Integer.parseInt(sPref.getString(LOAD_MP,""));
+        int sp = Integer.parseInt(sPref.getString(LOAD_SP,""));
+
+        SharedPreferences.Editor ed = sPref.edit();
+        if(hp < 0){
+            ed.putString(LOAD_HP,"10");
+        }
+        if(mp < 0){
+            ed.putString(LOAD_MP,"10");
+        }
+        if(mp < 0){
+            ed.putString(LOAD_SP,"10");
+        }
+        if(rub < 0){
+            rub += 2000;
+            ed.putString(LOAD_RUB,String.valueOf(rub));
+        }
+        if(usd < 0){
+            usd += 500;
+            ed.putString(LOAD_USD,String.valueOf(usd));
+        }
+        ed.commit();
+
+        loadGame();
+
+    }
+
+    @Override
+    public void onRewardedVideoAdFailedToLoad(int errorCode) {
+//        Toast.makeText(this, "onRewardedVideoAdFailedToLoad", Toast.LENGTH_SHORT).show();
+    }
+
+    @Override
+    public void onRewardedVideoAdLoaded() {
+//        Toast.makeText(this, "onRewardedVideoAdLoaded", Toast.LENGTH_SHORT).show();
+    }
+
+    @Override
+    public void onRewardedVideoAdOpened() {
+//        Toast.makeText(this, "onRewardedVideoAdOpened", Toast.LENGTH_SHORT).show();
+    }
+
+    @Override
+    public void onRewardedVideoStarted() {
+//        Toast.makeText(this, "onRewardedVideoStarted", Toast.LENGTH_SHORT).show();
+    }
+
+    @Override
+    public void onRewardedVideoCompleted() {
+//        Toast.makeText(this, "onRewardedVideoCompleted", Toast.LENGTH_SHORT).show();
+    }
+    @Override
+    public void onResume() {
+        mRewardedVideoAd.resume(this);
+        super.onResume();
+    }
+
+    @Override
+    public void onPause() {
+        mRewardedVideoAd.pause(this);
+        super.onPause();
+    }
+
+    @Override
+    public void onDestroy() {
+        mRewardedVideoAd.destroy(this);
+        super.onDestroy();
+    }
     /* Переделал все на локальные загрузки и сейвы
     public void SaveGame(String Load,String Save){
         sPref = getSharedPreferences("Saved",MODE_PRIVATE);
         SharedPreferences.Editor ed = sPref.edit();
-
-
-
-
-
-
-
         //Сохранение основных значений
         //ed.putString(LOAD_RUB, (String) totalrub.getText());
-
         ed.putString(LOAD_USD, (String) totalusd.getText());
         ed.putString(LOAD_RESPECT, (String) totalresp.getText());
         ed.putString(LOAD_DAY, (String) totalday.getText());
         ed.putString(LOAD_SCRAP, (String) KgScrap.getText());
         ed.putString(LOAD_COURSESCRAP, (String) CourseScrap.getText());
-
         //Сохранение состояния персонажа
         //Максимальное значение
-
         ed.putString(LOAD_TotalHP, String.valueOf(ProgBarHP.getMax()));
         ed.putString(LOAD_TotalSP, String.valueOf(ProgBarSP.getMax()));
         ed.putString(LOAD_TotalMP, String.valueOf(ProgBarMP.getMax()));
@@ -672,11 +1077,7 @@ public class Game extends AppCompatActivity {
         ed.putString(LOAD_HP, String.valueOf(ProgBarHP.getProgress()));
         ed.putString(LOAD_SP, String.valueOf(ProgBarSP.getProgress()));
         ed.putString(LOAD_MP, String.valueOf(ProgBarMP.getProgress()));
-
         ed.commit();
 //        Toast.makeText(this,String.valueOf(ProgBarHP.getProgress()),Toast.LENGTH_SHORT).show();
-
     }*/
-
-
 }

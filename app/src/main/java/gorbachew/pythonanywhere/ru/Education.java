@@ -26,7 +26,8 @@ public class Education extends Fragment {
     final String LOAD_UNIVERSITYHOUR = "EducationUniversityHour";
     final String LOAD_OVERSEASUNIVERSITY = "EducationOverseasUniversity";
     final String LOAD_OVERSEASUNIVERSITYHOUR = "EducationOverseasUniversityHour";
-
+    final String LOAD_RUB = "RUB";
+    final String LOAD_USD = "USD";
     final String SAVED_EDUCATION = "Education";
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
@@ -54,10 +55,15 @@ public class Education extends Fragment {
             public void onClick(View v) {
                 String checkEduc = sPref.getString(LOAD_SCHOOL,"");
                 if(checkEduc.equals("0")) {
-                    SharedPreferences.Editor ed = sPref.edit();
-                    ed.putString(LOAD_SCHOOL, "1");
-                    ed.commit();
-                    ((Game) getActivity()).transaction("rub", "-", 50000);
+                    if (Integer.parseInt(sPref.getString(LOAD_RUB, "")) < 10000) {
+                        ((Game) getActivity()).LowMoney("rub");
+                    }
+                    else {
+                        SharedPreferences.Editor ed = sPref.edit();
+                        ed.putString(LOAD_SCHOOL, "1");
+                        ed.commit();
+                        ((Game) getActivity()).transaction("rub", "-", 10000);
+                    }
                 }
                 else {
                     int hour = Integer.parseInt(sPref.getString(LOAD_SCHOOLHOUR,""));
@@ -74,6 +80,7 @@ public class Education extends Fragment {
         btnEducationCollege.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+
                 String checkEduc = sPref.getString(LOAD_COLLEGE,"");
                 int checkShcool = Integer.parseInt(sPref.getString(SAVED_EDUCATION,""));
                 if(checkShcool < 1){
@@ -81,10 +88,15 @@ public class Education extends Fragment {
                 }
                 else {
                     if(checkEduc.equals("0")) {
-                        SharedPreferences.Editor ed = sPref.edit();
-                        ed.putString(LOAD_COLLEGE, "1");
-                        ed.commit();
-                        ((Game) getActivity()).transaction("rub", "-", 10000);
+                        if (Integer.parseInt(sPref.getString(LOAD_RUB, "")) < 50000) {
+                            ((Game) getActivity()).LowMoney("rub");
+                        }
+                        else {
+                            SharedPreferences.Editor ed = sPref.edit();
+                            ed.putString(LOAD_COLLEGE, "1");
+                            ed.commit();
+                            ((Game) getActivity()).transaction("rub", "-", 50000);
+                        }
                     }
                     else {
                         int hour = Integer.parseInt(sPref.getString(LOAD_COLLEGEHOUR,""));
@@ -110,10 +122,15 @@ public class Education extends Fragment {
                 }
                 else {
                     if (checkEduc.equals("0")) {
-                        SharedPreferences.Editor ed = sPref.edit();
-                        ed.putString(LOAD_COURSES, "1");
-                        ed.commit();
-                        ((Game) getActivity()).transaction("usd", "-", 10000);
+                        if (Integer.parseInt(sPref.getString(LOAD_USD, "")) < 10000) {
+                            ((Game) getActivity()).LowMoney("usd");
+                        }
+                        else {
+                            SharedPreferences.Editor ed = sPref.edit();
+                            ed.putString(LOAD_COURSES, "1");
+                            ed.commit();
+                            ((Game) getActivity()).transaction("usd", "-", 10000);
+                        }
                     } else {
                         int hour = Integer.parseInt(sPref.getString(LOAD_COURSESHOUR, ""));
                         hour -= 6;
@@ -137,10 +154,15 @@ public class Education extends Fragment {
                 }
                 else {
                     if (checkEduc.equals("0")) {
-                        SharedPreferences.Editor ed = sPref.edit();
-                        ed.putString(LOAD_UNIVERSITY, "1");
-                        ed.commit();
-                        ((Game) getActivity()).transaction("rub", "-", 400000);
+                        if (Integer.parseInt(sPref.getString(LOAD_RUB, "")) < 400000) {
+                            ((Game) getActivity()).LowMoney("rub");
+                        }
+                        else {
+                            SharedPreferences.Editor ed = sPref.edit();
+                            ed.putString(LOAD_UNIVERSITY, "1");
+                            ed.commit();
+                            ((Game) getActivity()).transaction("rub", "-", 400000);
+                        }
                     } else {
                         int hour = Integer.parseInt(sPref.getString(LOAD_UNIVERSITYHOUR, ""));
                         hour -= 6;
@@ -164,10 +186,15 @@ public class Education extends Fragment {
                 }
                 else {
                     if (checkEduc.equals("0")) {
-                        SharedPreferences.Editor ed = sPref.edit();
-                        ed.putString(LOAD_OVERSEASUNIVERSITY, "1");
-                        ed.commit();
-                        ((Game) getActivity()).transaction("usd", "-", 100000);
+                        if (Integer.parseInt(sPref.getString(LOAD_USD, "")) < 100000) {
+                            ((Game) getActivity()).LowMoney("usd");
+                        }
+                        else {
+                            SharedPreferences.Editor ed = sPref.edit();
+                            ed.putString(LOAD_OVERSEASUNIVERSITY, "1");
+                            ed.commit();
+                            ((Game) getActivity()).transaction("usd", "-", 100000);
+                        }
                     } else {
                         int hour = Integer.parseInt(sPref.getString(LOAD_OVERSEASUNIVERSITYHOUR, ""));
                         hour -= 6;

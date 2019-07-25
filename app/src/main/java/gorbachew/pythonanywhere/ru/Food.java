@@ -27,7 +27,7 @@ public class Food extends Fragment {
     final String SAVED_TRANSPORT = "Transport";
     final String SAVED_HOLDING = "Holding";
     final String LOAD_BUFFCOOK = "BuffCook";
-
+    final String LOAD_RUB = "RUB";
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
@@ -56,7 +56,7 @@ public class Food extends Fragment {
             public void onClick(View v) {
 
                 ((Game)getActivity()).RandomStats("HP","-",0,5);
-                ((Game)getActivity()).RandomStats("SP","+",0,10);
+                ((Game)getActivity()).RandomStats("SP","+",0,20);
                 ((Game)getActivity()).RandomStats("MP","-",0,5);
 
                 ((Game)getActivity()).NextDay();
@@ -69,7 +69,7 @@ public class Food extends Fragment {
                 int var = Integer.parseInt(sPref.getString(SAVED_CLOTCHES,""));
                 if(var >= 1){
                     ((Game)getActivity()).RandomStats("HP","-",0,5);
-                    ((Game)getActivity()).RandomStats("SP","+",0,20);
+                    ((Game)getActivity()).RandomStats("SP","+",0,25);
                     ((Game)getActivity()).RandomStats("MP","-",0,5);
 
                 }
@@ -100,93 +100,114 @@ public class Food extends Fragment {
         btnBuyKiosk.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                int var = Integer.parseInt(sPref.getString(SAVED_CLOTCHES,""));
-                if(var >= 2){
-                    ((Game)getActivity()).RandomStats("SP","+",10,40);
-                    ((Game)getActivity()).transaction("rub","-",500);
+                if (Integer.parseInt(sPref.getString(LOAD_RUB, "")) < 500) {
+                    ((Game) getActivity()).LowMoney("rub");
                 }
                 else {
-                    Toast.makeText(getActivity(),getResources().getString(R.string.FFerror3),Toast.LENGTH_LONG).show();
-                }
+                    int var = Integer.parseInt(sPref.getString(SAVED_CLOTCHES, ""));
+                    if (var >= 2) {
+                        ((Game) getActivity()).RandomStats("SP", "+", 10, 40);
+                        ((Game) getActivity()).transaction("rub", "-", 500);
+                    } else {
+                        Toast.makeText(getActivity(), getResources().getString(R.string.FFerror3), Toast.LENGTH_LONG).show();
+                    }
 
-                ((Game)getActivity()).NextDay();
+                    ((Game) getActivity()).NextDay();
+                }
             }
         });
         btnEatCafe.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
 
-                int var = Integer.parseInt(sPref.getString(SAVED_CLOTCHES,""));
-                if(var >= 3){
-                    ((Game)getActivity()).RandomStats("SP","+",20,40);
-                    ((Game)getActivity()).transaction("rub","-",1500);
+                if (Integer.parseInt(sPref.getString(LOAD_RUB, "")) < 1500) {
+                    ((Game) getActivity()).LowMoney("rub");
+                } else {
+                    int var = Integer.parseInt(sPref.getString(SAVED_CLOTCHES, ""));
+                    if (var >= 3) {
+                        ((Game) getActivity()).RandomStats("SP", "+", 20, 40);
+                        ((Game) getActivity()).transaction("rub", "-", 1500);
+                    } else {
+                        Toast.makeText(getActivity(), getResources().getString(R.string.FFerror4), Toast.LENGTH_LONG).show();
+                    }
+                    ((Game) getActivity()).NextDay();
                 }
-                else {
-                    Toast.makeText(getActivity(),getResources().getString(R.string.FFerror4),Toast.LENGTH_LONG).show();
-                }
-                ((Game)getActivity()).NextDay();
             }
         });
 
         btnBuyStore.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-
-                int var = Integer.parseInt(sPref.getString(SAVED_TRANSPORT,""));
-                if(var >= 2){
-                    ((Game)getActivity()).RandomStats("SP","+",30,50);
-                    ((Game)getActivity()).transaction("rub","-",3000);
+                if (Integer.parseInt(sPref.getString(LOAD_RUB, "")) < 3000) {
+                    ((Game) getActivity()).LowMoney("rub");
                 }
                 else {
-                    Toast.makeText(getActivity(),getResources().getString(R.string.FFerror5),Toast.LENGTH_LONG).show();
+                    int var = Integer.parseInt(sPref.getString(SAVED_TRANSPORT,""));
+                    if(var >= 2){
+                        ((Game)getActivity()).RandomStats("SP","+",30,50);
+                        ((Game)getActivity()).transaction("rub","-",3000);
+                    }
+                    else {
+                        Toast.makeText(getActivity(),getResources().getString(R.string.FFerror5),Toast.LENGTH_LONG).show();
+                    }
+
+                    ((Game)getActivity()).NextDay();
                 }
 
-                ((Game)getActivity()).NextDay();
             }
         });
 
         btnEatRest.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-
-                int var = Integer.parseInt(sPref.getString(SAVED_CLOTCHES,""));
-                if(var >= 4){
-                    ((Game)getActivity()).RandomStats("SP","+",40,50);
-                    ((Game)getActivity()).transaction("rub","-",7500);
+                if (Integer.parseInt(sPref.getString(LOAD_RUB, "")) < 7500) {
+                    ((Game) getActivity()).LowMoney("rub");
                 }
                 else {
-                    Toast.makeText(getActivity(),getResources().getString(R.string.FFerror6),Toast.LENGTH_LONG).show();
+                    int var = Integer.parseInt(sPref.getString(SAVED_CLOTCHES,""));
+                    if(var >= 4){
+                        ((Game)getActivity()).RandomStats("SP","+",40,50);
+                        ((Game)getActivity()).transaction("rub","-",7500);
+                    }
+                    else {
+                        Toast.makeText(getActivity(),getResources().getString(R.string.FFerror6),Toast.LENGTH_LONG).show();
+                    }
+
+                    ((Game)getActivity()).NextDay();
                 }
 
-                ((Game)getActivity()).NextDay();
             }
         });
         btnPersChef.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                if (Integer.parseInt(sPref.getString(LOAD_RUB, "")) < 50000) {
+                    ((Game) getActivity()).LowMoney("rub");
+                }
+                else {
+                    int var = Integer.parseInt(sPref.getString(SAVED_HOLDING,""));
+                    String checkvar = sPref.getString(LOAD_BUFFCOOK,"");
+                    if (checkvar.equals("0")){
+                        if(var >= 6){
 
-                int var = Integer.parseInt(sPref.getString(SAVED_HOLDING,""));
-                String checkvar = sPref.getString(LOAD_BUFFCOOK,"");
-                if (checkvar.equals("0")){
-                    if(var >= 6){
+                            ((Game)getActivity()).transaction("rub","-",50000);
+                            SharedPreferences.Editor ed = sPref.edit();
+                            ed.putString(LOAD_BUFFCOOK,"1");
+                            ed.commit();
 
-                        ((Game)getActivity()).transaction("rub","-",50000);
+                        }
+                        else {
+                            Toast.makeText(getActivity(),getResources().getString(R.string.FFerror7),Toast.LENGTH_LONG).show();
+                        }
+                    }
+                    else if(checkvar.equals("1")){
                         SharedPreferences.Editor ed = sPref.edit();
-                        ed.putString(LOAD_BUFFCOOK,"1");
+                        ed.putString(LOAD_BUFFCOOK,"0");
                         ed.commit();
-
                     }
-                    else {
-                        Toast.makeText(getActivity(),getResources().getString(R.string.FFerror7),Toast.LENGTH_LONG).show();
-                    }
+                    CheckButton();
+                    ((Game)getActivity()).NextDay();
                 }
-                else if(checkvar.equals("1")){
-                    SharedPreferences.Editor ed = sPref.edit();
-                    ed.putString(LOAD_BUFFCOOK,"0");
-                    ed.commit();
-                }
-                CheckButton();
-                ((Game)getActivity()).NextDay();
             }
         });
         // Inflate the layout for this fragment
