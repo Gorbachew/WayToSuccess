@@ -1,0 +1,48 @@
+{
+  "project_info": {
+    "project_number": "982986118400",
+    "firebase_url": "https://waytosuccess-d3d04.firebaseio.com",
+    "project_id": "waytosuccess-d3d04",
+    "storage_bucket": "waytosuccess-d3d04.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:982986118400:android:82eddabcc52ce6da",
+        "android_client_info": {
+          "package_name": "gorbachew.pythonanywhere.ru"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "982986118400-gr3722ei3j8gb27tagmva58769p3b1gq.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "gorbachew.pythonanywhere.ru",
+            "certificate_hash": "6f2a80bb2edb9bfe70faf059bf427ca629484d5a"
+          }
+        },
+        {
+          "client_id": "982986118400-rjq3v9eh7doekjc8qq20qjvf4parf7i2.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyB8fpbb0QLMZqd-daNYsQwv37niInl7RyM"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "982986118400-rjq3v9eh7doekjc8qq20qjvf4parf7i2.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
