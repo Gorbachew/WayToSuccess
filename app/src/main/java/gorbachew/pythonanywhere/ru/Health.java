@@ -44,7 +44,7 @@ public class Health extends Fragment {
         btnHealthGrass.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                ((Game)getActivity()).RandomStats("HP","+",0,20);
+                ((Game)getActivity()).RandomStats("HP","+",5,20);
                 ((Game)getActivity()).RandomStats("SP","-",0,5);
                 ((Game)getActivity()).RandomStats("MP","-",0,5);
 
@@ -57,7 +57,7 @@ public class Health extends Fragment {
             public void onClick(View v) {
                 int var = Integer.parseInt(sPref.getString(SAVED_TRANSPORT,""));
                 if(var >= 1){
-                    ((Game)getActivity()).RandomStats("HP","+",0,25);
+                    ((Game)getActivity()).RandomStats("HP","+",10,25);
                     ((Game)getActivity()).RandomStats("SP","-",0,10);
                     ((Game)getActivity()).RandomStats("MP","-",0,5);
                 }
@@ -77,7 +77,7 @@ public class Health extends Fragment {
                 else {
                     int var = Integer.parseInt(sPref.getString(SAVED_CLOTCHES,""));
                     if(var >= 3){
-                        ((Game)getActivity()).RandomStats("HP","+",0,30);
+                        ((Game)getActivity()).RandomStats("HP","+",10,30);
                         ((Game)getActivity()).RandomStats("SP","-",0,5);
                         ((Game)getActivity()).RandomStats("MP","-",0,5);
                         ((Game)getActivity()).transaction("rub","-",1000);

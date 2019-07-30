@@ -1,7 +1,8 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
-    package="gorbachew.pythonanywhere.ru">
+    package="gorbachew.pythonanywhere.ru"
+    >
 
     <application
         android:allowBackup="true"
@@ -11,11 +12,9 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme"
         tools:ignore="GoogleAppIndexingWarning">
-
         <meta-data
             android:name="com.google.android.gms.ads.APPLICATION_ID"
             android:value="ca-app-pub-6876201111676185~1914776428" />
-
         <activity android:name=".AuthorsActivity">
             <intent-filter>
                 <action android:name=".AuthorsActivity" />
@@ -23,10 +22,6 @@
                 <category android:name="android.intent.category.DEFAULT" />
             </intent-filter>
         </activity>
-
-        <meta-data
-            android:name="com.google.android.actions"
-            android:resource="@xml/achborderoff" />
 
         <activity android:name=".Start">
             <intent-filter>

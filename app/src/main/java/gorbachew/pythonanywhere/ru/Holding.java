@@ -1,9 +1,12 @@
 package gorbachew.pythonanywhere.ru;
 
+import android.annotation.SuppressLint;
 import android.content.Context;
 import android.content.SharedPreferences;
 import android.net.Uri;
+import android.os.Build;
 import android.os.Bundle;
+import android.support.annotation.RequiresApi;
 import android.support.v4.app.Fragment;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -18,6 +21,7 @@ public class Holding extends Fragment {
     final String MAXSCRAP = "MAXSCRAP";
     final String LOAD_RUB = "RUB";
     final String LOAD_USD = "USD";
+
     Button btnCardboardBox,btnCamp, btnRentRoom,btnBuyApartment, btnBuyHome, btnBuyMansion;
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
@@ -28,6 +32,7 @@ public class Holding extends Fragment {
         sPref = getActivity().getSharedPreferences("Saved",Context.MODE_PRIVATE);
 
 
+
         btnCardboardBox = HoldingFr.findViewById(R.id.btnHoldingCardboardBox);
         btnCamp = HoldingFr.findViewById(R.id.btnHoldingCamp);
         btnRentRoom = HoldingFr.findViewById(R.id.btnHoldingRentRoom);
@@ -36,6 +41,8 @@ public class Holding extends Fragment {
         btnBuyMansion = HoldingFr.findViewById(R.id.btnHoldingbuyMansion);
 
         checkRent();
+        checkBuyed();
+
 
         btnCardboardBox.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -48,9 +55,11 @@ public class Holding extends Fragment {
                     ed.putString(SAVED_HOLDING, "1");
                     ed.putString(MAXSCRAP, "50");
                     ed.commit();
+                    checkBuyed();
                     ((Game) getActivity()).transaction("rub", "-", 300);
                     ((Game) getActivity()).NextDay();
                 }
+
             }
         });
         btnCamp.setOnClickListener(new View.OnClickListener() {
@@ -63,6 +72,7 @@ public class Holding extends Fragment {
                     ed.putString(SAVED_HOLDING, "2");
                     ed.putString(MAXSCRAP, "100");
                     ed.commit();
+                    checkBuyed();
                     ((Game) getActivity()).transaction("rub", "-", 3000);
                     ((Game) getActivity()).NextDay();
                 }
@@ -85,10 +95,9 @@ public class Holding extends Fragment {
                         SharedPreferences.Editor ed = sPref.edit();
                         ed.putString(SAVED_HOLDING, "3");
                         ed.commit();
+                        checkBuyed();
                         ((Game) getActivity()).transaction("rub", "-", 25000);
-
                     }
-
                     checkRent();
                     ((Game) getActivity()).NextDay();
                 }
@@ -104,6 +113,7 @@ public class Holding extends Fragment {
                     ed.putString(SAVED_HOLDING, "4");
                     ed.putString(MAXSCRAP, "500");
                     ed.commit();
+                    checkBuyed();
                     ((Game) getActivity()).transaction("rub", "-", 1500000);
                     ((Game) getActivity()).NextDay();
                 }
@@ -119,6 +129,7 @@ public class Holding extends Fragment {
                     ed.putString(SAVED_HOLDING, "5");
                     ed.putString(MAXSCRAP, "1000");
                     ed.commit();
+                    checkBuyed();
                     ((Game) getActivity()).transaction("rub", "-", 3000000);
                     ((Game) getActivity()).NextDay();
                 }
@@ -134,6 +145,7 @@ public class Holding extends Fragment {
                     ed.putString(SAVED_HOLDING, "6");
                     ed.putString(MAXSCRAP, "2000");
                     ed.commit();
+                    checkBuyed();
                     ((Game) getActivity()).transaction("usd", "-", 3000000);
                     ((Game) getActivity()).NextDay();
                 }
@@ -154,4 +166,16 @@ public class Holding extends Fragment {
         }
     }
 
-}
+    @SuppressLint("NewApi")
+    public void checkBuyed(){
+        int buyed;
+        buyed = Integer.parseInt(sPref.getString(SAVED_HOLDING,""));
+        if(buyed >= 1){btnCardboardBox.setBackground(getResources().getDrawable(R.drawable.btnbuyed));}
+        if(buyed >= 2){btnCamp.setBackground(getResources().getDrawable(R.drawable.btnbuyed));}
+        if(buyed >= 3){btnRentRoom.setBackground(getResources().getDrawable(R.drawable.btnbuyed));}
+        if(buyed >= 4){btnBuyApartment.setBackground(getResources().getDrawable(R.drawable.btnbuyed));}
+        if(buyed >= 5){btnBuyHome.setBackground(getResources().getDrawable(R.drawable.btnbuyed));}
+        if(buyed >= 6){btnBuyMansion.setBackground(getResources().getDrawable(R.drawable.btnbuyed));}
+        }
+    }
+

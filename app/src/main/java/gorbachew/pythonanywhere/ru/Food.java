@@ -56,7 +56,7 @@ public class Food extends Fragment {
             public void onClick(View v) {
 
                 ((Game)getActivity()).RandomStats("HP","-",0,5);
-                ((Game)getActivity()).RandomStats("SP","+",0,20);
+                ((Game)getActivity()).RandomStats("SP","+",5,20);
                 ((Game)getActivity()).RandomStats("MP","-",0,5);
 
                 ((Game)getActivity()).NextDay();
@@ -69,7 +69,7 @@ public class Food extends Fragment {
                 int var = Integer.parseInt(sPref.getString(SAVED_CLOTCHES,""));
                 if(var >= 1){
                     ((Game)getActivity()).RandomStats("HP","-",0,5);
-                    ((Game)getActivity()).RandomStats("SP","+",0,25);
+                    ((Game)getActivity()).RandomStats("SP","+",10,25);
                     ((Game)getActivity()).RandomStats("MP","-",0,5);
 
                 }
@@ -87,7 +87,7 @@ public class Food extends Fragment {
                 int var = Integer.parseInt(sPref.getString(SAVED_TRANSPORT,""));
                 if(var >= 1){
                     ((Game)getActivity()).RandomStats("HP","-",0,15);
-                    ((Game)getActivity()).RandomStats("SP","+",0,30);
+                    ((Game)getActivity()).RandomStats("SP","+",10,30);
                     ((Game)getActivity()).RandomStats("MP","+",0,5);
                 }
                 else {

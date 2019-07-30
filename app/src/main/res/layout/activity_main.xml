@@ -6,49 +6,60 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
-    android:theme="@android:style/Theme.Light.NoTitleBar"
+    android:theme="@android:style/Theme.Holo.NoActionBar"
     tools:context=".MainActivity"
     android:gravity="center_horizontal"
     android:background="@drawable/minebackgraund"
     >
-    <LinearLayout
+
+    <ScrollView
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:orientation="vertical"
-        android:gravity="center_horizontal"
         android:layout_weight="1">
-        <Button
-            android:id="@+id/BtnStartGame"
-            style="@style/btnMenu"
-            android:layout_marginTop="200dp"
-            android:background="@drawable/btnmenu"
-            android:text="@string/New_Game" />
-        <Button
-            android:id="@+id/BtnMenuContGame"
-            style="@style/btnMenu"
-            android:background="@drawable/btnmenu"
-            android:text="@string/Cont_game" />
-        <Button
-            android:id="@+id/BtnMenuAuthors"
-            style="@style/btnMenu"
-            android:background="@drawable/btnmenu"
-            android:text="@string/Authors" />
-        <Button
-            android:id="@+id/BtnMessageAuthor"
-            style="@style/btnMenu"
-            android:background="@drawable/btnmenu"
-            android:text="@string/MessAuthor" />
-        <Button
-            android:id="@+id/BtnMenuDonate"
-            style="@style/btnMenu"
-            android:background="@drawable/btnmenu"
-            android:text="@string/Donate" />
-        <Button
-            android:id="@+id/BtnMenuExit"
-            style="@style/btnMenu"
-            android:background="@drawable/btnmenu"
-            android:text="@string/Exit" />
-    </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="vertical"
+            android:gravity="center_horizontal"
+            android:layout_weight="1">
+            <Button
+                android:id="@+id/BtnStartGame"
+                style="@style/btnMenu"
+                android:layout_marginTop="200dp"
+                android:background="@drawable/btnmenu"
+                android:text="@string/New_Game" />
+
+            <Button
+                android:id="@+id/BtnMenuContGame"
+                style="@style/btnMenu"
+                android:background="@drawable/btnmenu"
+                android:text="@string/Cont_game" />
+            <Button
+                android:id="@+id/BtnMenuAuthors"
+                style="@style/btnMenu"
+                android:background="@drawable/btnmenu"
+                android:text="@string/Authors" />
+            <Button
+                android:id="@+id/BtnMenuDonate"
+                style="@style/btnMenu"
+                android:background="@drawable/btnmenu"
+                android:text="@string/Donate" />
+            <Button
+                android:id="@+id/BtnPrivacyPolicy"
+                style="@style/btnMenu"
+                android:background="@drawable/btnmenu"
+                android:text="Privacy Policy" />
+            <Button
+                android:id="@+id/BtnMenuExit"
+                style="@style/btnMenu"
+                android:background="@drawable/btnmenu"
+                android:text="@string/Exit" />
+
+        </LinearLayout>
+    </ScrollView>
+
+
     <com.google.android.gms.ads.AdView
         android:id="@+id/adView"
         android:layout_width="match_parent"

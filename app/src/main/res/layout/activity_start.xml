@@ -9,18 +9,30 @@
     android:background="@color/black">
 
 
-    <fragment
-        android:id="@+id/fr_place"
-        android:name="gorbachew.pythonanywhere.ru.ChoiceHeroPast"
+    <ScrollView
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
+        android:layout_height="match_parent"
+        android:layout_weight="1">
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+            <fragment
+                android:id="@+id/fr_place"
+                android:name="gorbachew.pythonanywhere.ru.ChoiceHeroPast"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
 
-        />
+                />
+        </LinearLayout>
+    </ScrollView>
+
+
 
     <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="0dip"
-        android:layout_weight="1"
+        android:layout_height="match_parent"
+        android:layout_weight="10"
         android:gravity="center|bottom"
         android:orientation="horizontal"
         >

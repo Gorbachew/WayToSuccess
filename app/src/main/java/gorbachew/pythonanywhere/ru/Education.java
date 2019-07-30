@@ -222,7 +222,7 @@ public class Education extends Fragment {
         String overseasuniversity = sPref.getString(LOAD_OVERSEASUNIVERSITY,"");
 
         if(school.equals("0")){
-            btnEducationSchool.setText(getResources().getString(R.string.EFSchool) + "|720 часов|10000р" );
+            btnEducationSchool.setText(getResources().getString(R.string.EFSchool) + "|360 часов|10000р" );
         }
         else {
             String hour = sPref.getString(LOAD_SCHOOLHOUR,"");
@@ -233,16 +233,13 @@ public class Education extends Fragment {
                 ed.putString(SAVED_EDUCATION, "1");
                 ed.putString(LOAD_SCHOOL, "2");
                 ed.commit();
-
             }
             else {
                 btnEducationSchool.setText(getResources().getString(R.string.EFSchool) +"|" + hour);
-
-
             }
         }
         if(college.equals("0")){
-            btnEducationCollege.setText(getResources().getString(R.string.EFCollege) + "|1440 часов|50000р" );
+            btnEducationCollege.setText(getResources().getString(R.string.EFCollege) + "|720 часов|50000р" );
         }
         else {
             String hour = sPref.getString(LOAD_COLLEGEHOUR,"");
@@ -256,12 +253,10 @@ public class Education extends Fragment {
             }
             else {
                 btnEducationCollege.setText(getResources().getString(R.string.EFCollege) +"|" + hour);
-
             }
-
         }
         if(courses.equals("0")){
-            btnEducationCourses.setText(getResources().getString(R.string.EFCourses) + "|720 часов|10000$" );
+            btnEducationCourses.setText(getResources().getString(R.string.EFCourses) + "|360 часов|10000$" );
         }
         else {
             String hour = sPref.getString(LOAD_COURSESHOUR,"");
@@ -278,7 +273,7 @@ public class Education extends Fragment {
             }
         }
         if(university.equals("0")){
-            btnEducationUniversity.setText(getResources().getString(R.string.EFUniversity) + "|2160 часов|400000р" );
+            btnEducationUniversity.setText(getResources().getString(R.string.EFUniversity) + "|1440 часов|400000р" );
         }
         else {
             String hour = sPref.getString(LOAD_UNIVERSITYHOUR,"");
@@ -296,7 +291,7 @@ public class Education extends Fragment {
 
         }
         if(overseasuniversity.equals("0")){
-            btnEducationOverseasUniversity.setText(getResources().getString(R.string.EFOverseasUniversity) + "|2400 часов|100000$" );
+            btnEducationOverseasUniversity.setText(getResources().getString(R.string.EFOverseasUniversity) + "|1200 часов|100000$" );
         }
         else {
             String hour = sPref.getString(LOAD_OVERSEASUNIVERSITYHOUR,"");

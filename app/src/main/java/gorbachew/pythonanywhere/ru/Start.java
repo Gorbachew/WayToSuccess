@@ -24,7 +24,7 @@ public class Start extends AppCompatActivity{
 
     EditText textName;
     SharedPreferences sPref;
-    Spinner intAge,Poll1,Poll2,Poll3,Poll4,Poll5,Poll6,Poll7;
+    Spinner intAge,Poll1,Poll2,Poll3,Poll4,Poll5,Poll7;
     FragmentTransaction fTrans;
     Fragment CHeroP,HeroP;
     //Константы в сохранение
@@ -52,9 +52,7 @@ public class Start extends AppCompatActivity{
         Poll3 = (Spinner)findViewById(R.id.spinnerPoll3);
         Poll4 = (Spinner)findViewById(R.id.spinnerPoll4);
         Poll5 = (Spinner)findViewById(R.id.spinnerPoll5);
-//        Poll6 = (Spinner)findViewById(R.id.spinnerPoll6);
         Poll7 = (Spinner)findViewById(R.id.spinnerPoll7);
-
         ArrayAdapter<?> adapter = ArrayAdapter.createFromResource(this,R.array.SpinnerAge,android.R.layout.simple_spinner_item);
         adapter.setDropDownViewResource(android.R.layout.select_dialog_item);
         intAge.setAdapter(adapter);
@@ -73,35 +71,12 @@ public class Start extends AppCompatActivity{
         ArrayAdapter<?> adapter5 = ArrayAdapter.createFromResource(this,R.array.SpinnerPull5,android.R.layout.simple_spinner_item);
         adapter5.setDropDownViewResource(android.R.layout.select_dialog_item);
         Poll5.setAdapter(adapter5);
-//        ArrayAdapter<?> adapter6 = ArrayAdapter.createFromResource(this,R.array.SpinnerPull6,android.R.layout.simple_spinner_item);
-//        adapter6.setDropDownViewResource(android.R.layout.select_dialog_item);
-//        Poll6.setAdapter(adapter6);
         ArrayAdapter<?> adapter7 = ArrayAdapter.createFromResource(this,R.array.SpinnerPull7,android.R.layout.simple_spinner_item);
         adapter7.setDropDownViewResource(android.R.layout.select_dialog_item);
         Poll7.setAdapter(adapter7);
 
         CHeroP = new ChoiceHeroPast();
         HeroP = new HeroPast();
-
-        /*
-        btnRead = (Button)findViewById(R.id.button);
-        btnRead.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-
-                TextView textTest1 = (TextView)findViewById(R.id.textView2);
-                TextView textTest2 = (TextView)findViewById(R.id.textView5);
-
-                String name = textName.getText().toString();
-                textTest1.setText((CharSequence) name);
-
-
-                String age = intAge.getSelectedItem().toString();
-                textTest2.setText((CharSequence) age);
-                loadText();
-            }
-
-        });*/
         btnSave = findViewById(R.id.btnSaveChoice);
         btnSave.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -113,8 +88,6 @@ public class Start extends AppCompatActivity{
             }
         });
     }
-
-
 //Смена фрагментов
     public void Change(View view){
         fTrans = getSupportFragmentManager().beginTransaction();
@@ -133,10 +106,6 @@ public class Start extends AppCompatActivity{
         }
         fTrans.commit();
     }
-
-
-
-
 //Сохранение выбранных настроек
     private void saveСhoice() {
         sPref = getSharedPreferences("Saved",MODE_PRIVATE);
@@ -260,13 +229,11 @@ public class Start extends AppCompatActivity{
                 TotalHP = TotalHP - 10;
                 break;
         }
-
         ed.putString(SAVED_POLL1,idPoll1 );
         ed.putString(SAVED_POLL2,idPoll2 );
         ed.putString(SAVED_POLL3,idPoll3 );
         ed.putString(SAVED_POLL4,idPoll4 );
         ed.putString(SAVED_POLL5,idPoll5 );
-//        ed.putString(SAVED_POLL6,idPoll6 );
         ed.putString(SAVED_POLL7,idPoll7 );
         ed.putString(SAVED_HP,String.valueOf(TotalHP));
         ed.putString(SAVED_MP,String.valueOf(TotalMP));
@@ -283,42 +250,31 @@ public class Start extends AppCompatActivity{
         ed.putString("MAXSCRAP","30");
         ed.putString("CourseScrap","10");
         ed.putString("BusinessMetalPoint","0");
-
         ed.putString("BMFullStock","0");
         ed.putString("BMMaxStock","100");
-
         ed.putString("BMAd","1");
         ed.putString("BMWorker","0");
         ed.putString("BMPriceWorker","1000");
         ed.putString("BMPriceBis","0");
-
-
         ed.putString("BusinessPC","0");
         ed.putString("Clothes","0");
         ed.putString("Education","0");
-
         ed.putString("EducationSchool","0");
-        ed.putString("EducationSchoolHour","720");
+        ed.putString("EducationSchoolHour","360");
         ed.putString("EducationCollage","0");
-        ed.putString("EducationCollageHour","1440");
+        ed.putString("EducationCollageHour","720");
         ed.putString("EducationCourses","0");
-        ed.putString("EducationCoursesHour","720");
+        ed.putString("EducationCoursesHour","360");
         ed.putString("EducationUniversity","0");
-        ed.putString("EducationUniversityHour","2160");
+        ed.putString("EducationUniversityHour","1440");
         ed.putString("EducationOverseasUniversity","0");
-        ed.putString("EducationOverseasUniversityHour","2400");
-
-
-
+        ed.putString("EducationOverseasUniversityHour","1200");
         ed.putString("Transport","0");
         ed.putString("Holding","0");
         ed.putString("Job","0");
         ed.putString("RankJob","0");
         ed.putString("Business","0");
         ed.putString("BusinessCafe","0");
-
-
-
         ed.putString("BusinessCafe","0");
         ed.putString("BCroom","1");
         ed.putString("BCad","1");
@@ -328,36 +284,27 @@ public class Start extends AppCompatActivity{
         ed.putString("BCvisitorsLastWeek","0");
         ed.putString("BCtables","0");
         ed.putString("BCprofit","0");
-
         ed.putString("BCPriceRoom","20000");
         ed.putString("BCPriceWaiter","5000");
         ed.putString("BCPriceCook","3000");
-
         ed.putString("BCPriceBusiness","0");
-
         ed.putString("BuffCook","0");
         ed.putString("BuffComic","0");
         ed.putString("BuffDock","0");
         ed.putString("BuffMP","0");
-
         ed.putString("PropertyTV","0");
         ed.putString("PropertyCamera","0");
         ed.putString("PropertyPC","0");
         ed.putString("PropertyWeapon","0");
-
         ed.putString("AchivmentBMetal","0");
         ed.putString("AchivmentBCafe","0");
         ed.putString("AchivmentMetal","0");
         ed.putString("AchivmentMoney","0");
         ed.putString("AchivmentRespect","0");
-
         ed.putInt("LoseHP",0);
         ed.putInt("LoseMP",0);
         ed.putInt("LoseSP",0);
         ed.putInt("First.javaney",0);
-
-
-
         ed.commit();
 //        Toast.makeText(Start.this, "Text saved", Toast.LENGTH_SHORT).show();
     }

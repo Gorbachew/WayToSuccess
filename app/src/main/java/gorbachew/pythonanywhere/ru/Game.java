@@ -105,6 +105,7 @@ public class Game extends AppCompatActivity implements RewardedVideoAdListener {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_game);
+
         sPref = getSharedPreferences("Saved",MODE_PRIVATE);
         //Создает обьект Id элементов
         totalrub = findViewById(R.id.TotalRUB);
@@ -153,7 +154,7 @@ public class Game extends AppCompatActivity implements RewardedVideoAdListener {
         mRewardedVideoAd.setRewardedVideoAdListener(this);
         //Межстраничная реклама
         mInterstitialAd = new InterstitialAd(this);
-        mInterstitialAd.setAdUnitId("ca-app-pub-3940256099942544/1033173712");
+        mInterstitialAd.setAdUnitId("ca-app-pub-6876201111676185/2696227248");
         mInterstitialAd.loadAd(new AdRequest.Builder().build());
         loadRewardedVideoAd();
         mInterstitialAd.setAdListener(new AdListener() {
@@ -179,7 +180,7 @@ public class Game extends AppCompatActivity implements RewardedVideoAdListener {
     }
 
     private void loadRewardedVideoAd() {
-        mRewardedVideoAd.loadAd("ca-app-pub-3940256099942544/5224354917",
+        mRewardedVideoAd.loadAd("ca-app-pub-6876201111676185/9057018825",
                 new AdRequest.Builder().build());
     }
 
@@ -237,7 +238,7 @@ public class Game extends AppCompatActivity implements RewardedVideoAdListener {
         }
 
     }
-
+    //Проверяет статистику на низкие показатели
     public void CheckStats(){
            int LoseHP = sPref.getInt("LoseHP",0),LoseMP = sPref.getInt("LoseMP",0),LoseSP= sPref.getInt("LoseSP",0),LoseMoney = sPref.getInt("LoseMoney",0);
            int HP = Integer.parseInt(sPref.getString(LOAD_HP,""));
@@ -357,7 +358,7 @@ public class Game extends AppCompatActivity implements RewardedVideoAdListener {
             }
     }
 
-
+    //Ачивки
     public void Achivments(){
         String rub = sPref.getString(LOAD_RUB,"");
         String usd = sPref.getString(LOAD_USD,"");
@@ -443,29 +444,38 @@ public class Game extends AppCompatActivity implements RewardedVideoAdListener {
             Toast.makeText(this,getResources().getString(R.string.AFopen) + " " + getResources().getString(R.string.AFfreelance11), Toast.LENGTH_LONG).show();
         }
     }
-
+    //Изменение курса в банке
     public void ChangeCourseUSD(){
         int course = Integer.parseInt(sPref.getString(LOAD_CourseUSD,""));
-        int rand = random.nextInt(6);
-        switch (rand){
-            case 0:
-                course -= 1;
-                break;
-            case 1:
-                course -= 2;
-                break;
-            case 2:
-                course -= 3;
-                break;
-            case 3:
-                course += 1;
-                break;
-            case 4:
-                course += 2;
-                break;
-            case 5:
-                course += 3;
-                break;
+
+        if (course > 60){
+            int rand = random.nextInt(4);
+            switch (rand){
+                case 0: course -= 1;break;
+                case 1: course -= 2;break;
+                case 2: course -= 3;break;
+                case 3: course += 1;break;
+            }
+        }
+        else if(course < 20){
+            int rand = random.nextInt(4);
+            switch (rand){
+                case 0: course += 1;break;
+                case 1: course += 2;break;
+                case 2: course += 3;break;
+                case 3: course -= 1;break;
+            }
+        }
+        else {
+            int rand = random.nextInt(6);
+            switch (rand){
+                case 0: course += 1;break;
+                case 1: course += 2;break;
+                case 2: course += 3;break;
+                case 3: course -= 1;break;
+                case 4: course -= 2;break;
+                case 5: course -= 3;break;
+            }
         }
         SharedPreferences.Editor ed = sPref.edit();
         ed.putString(LOAD_CourseUSD,String.valueOf(course));
@@ -605,7 +615,7 @@ public class Game extends AppCompatActivity implements RewardedVideoAdListener {
         }
         ed.commit();
     }
-
+    //Делает покраснение денег, если их нехватает
     public void LowMoney(String currency){
         switch (currency){
             case "rub":
@@ -733,7 +743,7 @@ public class Game extends AppCompatActivity implements RewardedVideoAdListener {
 
 
     }
-
+    //Переход на следующие 6 часов
     public void NextDay(){
         //Методы которые проверяются каждый ход
         SharedPreferences.Editor ed = sPref.edit();
@@ -778,7 +788,7 @@ public class Game extends AppCompatActivity implements RewardedVideoAdListener {
     }
 
 
-
+    //Продажа металла
     public void SellScrap(){
 //        Toast.makeText(this,CourseScrap.getText().toString() + " " + KgScrap.getText().toString() + " " + totalrub.getText().toString(),Toast.LENGTH_LONG).show();
         int intSellScrap = Integer.parseInt(CourseScrap.getText().toString()) * Integer.parseInt(KgScrap.getText().toString()) + Integer.parseInt(totalrub.getText().toString());
@@ -789,10 +799,10 @@ public class Game extends AppCompatActivity implements RewardedVideoAdListener {
 
 
     }
-
+    //Нахождение металла
     public void FindScrup(){
         int Scrap = Integer.parseInt(KgScrap.getText().toString());
-        int maxScrap = Integer.parseInt(KgScrap.getText().toString());
+        int maxScrap = Integer.parseInt(sPref.getString(LOAD_MAXSCRAP,""));
         if(Scrap <= maxScrap){
             Scrap = Scrap + random.nextInt(6);
             SharedPreferences.Editor ed = sPref.edit();
@@ -806,6 +816,7 @@ public class Game extends AppCompatActivity implements RewardedVideoAdListener {
 
 
     }
+    //Курс металла
     public void CourseScrap(){
         SharedPreferences.Editor ed = sPref.edit();
         int Course = 11 + random.nextInt(21 - 10);
@@ -815,7 +826,7 @@ public class Game extends AppCompatActivity implements RewardedVideoAdListener {
     }
 
 
-
+    //Изменение фрагментов игры
     public void ChangeFragments(View view){
         fTrans = getSupportFragmentManager().beginTransaction();
 
@@ -892,7 +903,7 @@ public class Game extends AppCompatActivity implements RewardedVideoAdListener {
 
         advertisement += 1;
 
-        if(advertisement >= 20){
+        if(advertisement >= 30){
             if (mInterstitialAd.isLoaded()) {
                 mInterstitialAd.show();
             }
@@ -915,7 +926,7 @@ public class Game extends AppCompatActivity implements RewardedVideoAdListener {
 
     }
 
-
+    //Загрузка игры
     @SuppressLint("SetTextI18n")
     public void loadGame(){
 
@@ -993,13 +1004,13 @@ public class Game extends AppCompatActivity implements RewardedVideoAdListener {
         int sp = Integer.parseInt(sPref.getString(LOAD_SP,""));
 
         SharedPreferences.Editor ed = sPref.edit();
-        if(hp < 0){
+        if(hp <= 0){
             ed.putString(LOAD_HP,"10");
         }
-        if(mp < 0){
+        if(mp <= 0){
             ed.putString(LOAD_MP,"10");
         }
-        if(mp < 0){
+        if(sp <= 0){
             ed.putString(LOAD_SP,"10");
         }
         if(rub < 0){
@@ -1013,7 +1024,6 @@ public class Game extends AppCompatActivity implements RewardedVideoAdListener {
         ed.commit();
 
         loadGame();
-
     }
 
     @Override
@@ -1039,6 +1049,7 @@ public class Game extends AppCompatActivity implements RewardedVideoAdListener {
     @Override
     public void onRewardedVideoCompleted() {
 //        Toast.makeText(this, "onRewardedVideoCompleted", Toast.LENGTH_SHORT).show();
+
     }
     @Override
     public void onResume() {

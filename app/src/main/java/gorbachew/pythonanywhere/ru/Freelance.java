@@ -80,10 +80,9 @@ public class Freelance extends Fragment {
         btnFreelanceBegForMoney.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-
                 int check = Integer.parseInt(sPref.getString(SAVED_RESPECT,""));
                 int check2 = Integer.parseInt(sPref.getString(SAVED_HOLDING,""));
-                if(check < 500 && check2 < 1){
+                if(check < 100 || check2 < 1){
                     Toast.makeText(getActivity(),getResources().getString(R.string.FrFerror1),Toast.LENGTH_SHORT).show();
                 }
                 else {
@@ -98,10 +97,9 @@ public class Freelance extends Fragment {
         btnFreelanceDistributeFlyers.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-
                 int check = Integer.parseInt(sPref.getString(SAVED_RESPECT,""));
 
-                if(check < 2000){
+                if(check < 500){
                     Toast.makeText(getActivity(),getResources().getString(R.string.FrFerror3),Toast.LENGTH_SHORT).show();
                 }
                 else {
@@ -118,7 +116,7 @@ public class Freelance extends Fragment {
 
                 int check = Integer.parseInt(sPref.getString(SAVED_RESPECT,""));
 
-                if(check < 10000){
+                if(check < 2000){
                     Toast.makeText(getActivity(),getResources().getString(R.string.FrFerror4),Toast.LENGTH_SHORT).show();
                 }
                 else {

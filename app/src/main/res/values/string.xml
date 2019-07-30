@@ -307,10 +307,10 @@
     <string name="FrFSupportScrapCourse">Курс:</string>
     <string name="FrFLotScrap">Вам негде больше складировать металлолом, купите помещение побольше</string>
 
-    <string name="FrFerror1">Без картонной коробки и уважения от местных бандитов вам никто не даст просить милостыню</string>
+    <string name="FrFerror1">Без картонной коробки и уважения от местных бандитов вам никто не даст просить милостыню(нужно 100 респекта)</string>
     <string name="FrFerror2">Без резиновых сапог вы не смогли активно бегать по грядкам</string>
-    <string name="FrFerror3">У вас нехватает уважения.Работодатель кинул вас на деньги</string>
-    <string name="FrFerror4">Без уважения вам никто не доверяет на площадке с заказами</string>
+    <string name="FrFerror3">У вас нехватает уважения.Работодатель кинул вас на деньги(нужно 500 респекта)</string>
+    <string name="FrFerror4">Без уважения вам никто не доверяет на площадке с заказами(нужно 2000 респекта)</string>
     <string name="FrFerror5">Пока вы не найдете машину, вы не сможете таксовать</string>
 
 
@@ -476,6 +476,7 @@
     <string name="CFyouLose">Вы проиграли</string>
     <string name="CFdollar">Долларов</string>
     <string name="CFerror">Посмотрев на вас и ваше состояние охранники указали на выход. Вам нужно иметь костюм</string>
+    <string name="CFRate">Ставка</string>
 
     <!--Проигрыш-->
     <string name="LoseTitle">Вы на грани смерти</string>

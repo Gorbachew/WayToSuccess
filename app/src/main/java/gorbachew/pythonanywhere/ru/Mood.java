@@ -52,7 +52,7 @@ public class Mood extends Fragment {
 
                 ((Game)getActivity()).RandomStats("HP","-",0,5);
                 ((Game)getActivity()).RandomStats("SP","-",0,10);
-                ((Game)getActivity()).RandomStats("MP","+",0,15);
+                ((Game)getActivity()).RandomStats("MP","+",5,15);
 
                 ((Game)getActivity()).NextDay();
 
@@ -70,7 +70,7 @@ public class Mood extends Fragment {
                     if (var >= 1) {
                         ((Game) getActivity()).RandomStats("HP", "-", 0, 5);
                         ((Game) getActivity()).RandomStats("SP", "-", 0, 10);
-                        ((Game) getActivity()).RandomStats("MP", "+", 0, 30);
+                        ((Game) getActivity()).RandomStats("MP", "+", 10, 30);
                         ((Game) getActivity()).transaction("rub", "-", 50);
 
                     } else {
@@ -94,7 +94,7 @@ public class Mood extends Fragment {
                     int var = Integer.parseInt(sPref.getString(SAVED_HOLDING, ""));
                     if (var >= 2) {
                         ((Game) getActivity()).RandomStats("HP", "-", 0, 10);
-                        ((Game) getActivity()).RandomStats("MP", "+", 0, 60);
+                        ((Game) getActivity()).RandomStats("MP", "+", 10, 60);
                         ((Game) getActivity()).transaction("rub", "-", 200);
 
                     } else {

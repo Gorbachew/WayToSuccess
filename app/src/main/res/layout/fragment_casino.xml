@@ -4,408 +4,114 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:orientation="vertical"
     android:background="@drawable/bgcasino"
-    tools:context=".Casino" >
+    android:orientation="vertical"
+    tools:context=".Casino">
 
-    <FrameLayout
+    <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="wrap_content">
-
-        <ImageView
-            android:id="@+id/imageView3"
-            android:layout_width="wrap_content"
-            android:layout_height="511dp"
-            android:src="@drawable/casinospace" />
-
+        android:layout_height="match_parent"
+        android:orientation="vertical"
+        android:gravity="bottom"
+        >
 
         <TextView
             android:id="@+id/CasinoResult"
-            android:layout_width="40dp"
-            android:layout_height="40dp"
-            android:layout_marginLeft="100dp"
-
-            android:textSize="35dp"
-            android:textColor="@color/white"
-            android:gravity="center"
+            android:layout_width="50dp"
+            android:layout_height="50dp"
+            android:layout_gravity="center"
             android:background="@color/green"
-
             android:text="0"
-            />
-
-        <Spinner
-            android:id="@+id/CasinoRate"
-            android:layout_width="80dp"
+            android:textAlignment="center"
+            android:textColor="@color/white"
+            android:textSize="35dp" />
+        <RadioGroup
+            android:id="@+id/CasinoRadioGroup2"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginLeft="80dp"
-            android:layout_marginTop="40dp"
-            android:background="@color/white"
-            android:dropDownWidth="match_parent"
-            android:entries="@array/BFspin"
-            android:spinnerMode="dropdown"
-            android:textAlignment="center" />
-
+            android:orientation="horizontal">
+            <RadioButton
+                android:id="@+id/rbSpace1and12"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:background="@drawable/btngame"
+                android:layout_weight="1"
+                android:text="1/12" />
+            <RadioButton
+                android:id="@+id/rbSpace2and12"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:background="@drawable/btngame"
+                android:layout_weight="1"
+                android:text="2/12" />
+            <RadioButton
+                android:id="@+id/rbSpace3and12"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:background="@drawable/btngame"
+                android:layout_weight="1"
+                android:text="3/12 " />
+        </RadioGroup>
+        <RadioGroup
+            android:id="@+id/CasinoRadioGroup1"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal">
+            <RadioButton
+                android:id="@+id/rbSpaceRED"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:background="@drawable/btngame"
+                android:textColor="@color/red"
+                android:layout_weight="1"
+                android:text="RED" />
+            <RadioButton
+                android:id="@+id/rbSpaceBLACK"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:background="@drawable/btngame"
+                android:layout_weight="1"
+                android:text="BLACK" />
+        </RadioGroup>
+        <TextView
+                android:id="@+id/textView"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:textSize="25dp"
+                android:gravity="center"
+                android:background="@color/black"
+                android:textColor="@color/white"
+                android:text="@string/CFRate" />
         <LinearLayout
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_marginLeft="80dp"
-                    android:layout_marginTop="30dp"
-                    android:orientation="horizontal">
-
-                    <RadioGroup
-                        android:id="@+id/CasinoRadioGroup1"
-                        android:layout_width="45dp"
-                        android:layout_height="wrap_content"
-                        android:layout_marginTop="30dp"
-                        android:orientation="vertical">
-
-                        <RadioButton
-                            android:id="@+id/rbSpace1and18"
-                            android:layout_width="wrap_content"
-                            android:layout_height="65dp" />
-
-                        <RadioButton
-                            android:id="@+id/rbSpaceEVEN"
-                            android:layout_width="wrap_content"
-                            android:layout_height="65dp" />
-
-                        <RadioButton
-                            android:id="@+id/rbSpaceRED"
-                            android:layout_width="wrap_content"
-                            android:layout_height="65dp" />
-
-                        <RadioButton
-                            android:id="@+id/rbSpaceBLACK"
-                            android:layout_width="wrap_content"
-                            android:layout_height="65dp" />
-
-                        <RadioButton
-                            android:id="@+id/rbSpaceODD"
-                            android:layout_width="wrap_content"
-                            android:layout_height="65dp" />
-
-                        <RadioButton
-                            android:id="@+id/rbSpace3and36"
-                            android:layout_width="wrap_content"
-                            android:layout_height="65dp" />
-                    </RadioGroup>
-
-                    <RadioGroup
-                        android:id="@+id/CasinoRadioGroup2"
-                        android:layout_width="45dp"
-                        android:layout_height="wrap_content"
-                        android:layout_marginTop="30dp"
-                        android:orientation="vertical">
-
-                        <RadioButton
-                            android:id="@+id/rbSpace1and12"
-                            android:layout_width="wrap_content"
-                            android:layout_height="130dp" />
-
-                        <RadioButton
-                            android:id="@+id/rbSpace2and12"
-                            android:layout_width="wrap_content"
-                            android:layout_height="130dp" />
-
-                        <RadioButton
-                            android:id="@+id/rbSpace3and12"
-                            android:layout_width="wrap_content"
-                            android:layout_height="130dp" />
-                    </RadioGroup>
-
-                    <RadioGroup
-                        android:id="@+id/CasinoRadioGroup3"
-                        android:layout_width="55dp"
-                        android:layout_height="wrap_content"
-                        android:layout_marginTop="30dp"
-                        android:orientation="vertical"
-                        >
-
-                        <RadioButton
-                            android:id="@+id/rbSpace1"
-                            android:layout_width="wrap_content"
-                            android:layout_height="33dp"
-                            android:layout_weight="1" />
-
-                        <RadioButton
-                            android:id="@+id/rbSpace4"
-                            android:layout_width="wrap_content"
-                            android:layout_height="33dp"
-                            android:layout_weight="1" />
-
-                        <RadioButton
-                            android:id="@+id/rbSpace7"
-                            android:layout_width="wrap_content"
-                            android:layout_height="33dp"
-                            android:layout_weight="1" />
-
-                        <RadioButton
-                            android:id="@+id/rbSpace10"
-                            android:layout_width="wrap_content"
-                            android:layout_height="33dp"
-                            android:layout_weight="1" />
-
-                        <RadioButton
-                            android:id="@+id/rbSpace13"
-                            android:layout_width="wrap_content"
-                            android:layout_height="33dp"
-                            android:layout_weight="1" />
-
-                        <RadioButton
-                            android:id="@+id/rbSpace16"
-                            android:layout_width="wrap_content"
-                            android:layout_height="32dp"
-                            android:layout_weight="1" />
-
-                        <RadioButton
-                            android:id="@+id/rbSpace19"
-                            android:layout_width="wrap_content"
-                            android:layout_height="33dp"
-                            android:layout_weight="1" />
-
-                        <RadioButton
-                            android:id="@+id/rbSpace22"
-                            android:layout_width="wrap_content"
-                            android:layout_height="33dp"
-                            android:layout_weight="1" />
-
-                        <RadioButton
-                            android:id="@+id/rbSpace25"
-                            android:layout_width="wrap_content"
-                            android:layout_height="33dp"
-                            android:layout_weight="1" />
-
-                        <RadioButton
-                            android:id="@+id/rbSpace28"
-                            android:layout_width="wrap_content"
-                            android:layout_height="33dp"
-                            android:layout_weight="1" />
-
-                        <RadioButton
-                            android:id="@+id/rbSpace31"
-                            android:layout_width="wrap_content"
-                            android:layout_height="33dp"
-                            android:layout_weight="1" />
-
-                        <RadioButton
-                            android:id="@+id/rbSpace34"
-                            android:layout_width="wrap_content"
-                            android:layout_height="33dp"
-                            android:layout_weight="1" />
-
-
-                    </RadioGroup>
-
-                    <RadioGroup
-                        android:id="@+id/CasinoRadioGroup4"
-                        android:layout_width="55dp"
-                        android:layout_height="wrap_content"
-                        android:orientation="vertical">
-                        <RadioButton
-                            android:id="@+id/rbSpace0"
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:layout_weight="1" />
-                        <RadioButton
-                            android:id="@+id/rbSpace2"
-                            android:layout_width="wrap_content"
-                            android:layout_height="33dp"
-                            android:layout_weight="1" />
-
-                        <RadioButton
-                            android:id="@+id/rbSpace5"
-                            android:layout_width="wrap_content"
-                            android:layout_height="33dp"
-                            android:layout_weight="1" />
-
-                        <RadioButton
-                            android:id="@+id/rbSpace8"
-                            android:layout_width="wrap_content"
-                            android:layout_height="33dp"
-                            android:layout_weight="1" />
-
-                        <RadioButton
-                            android:id="@+id/rbSpace11"
-                            android:layout_width="wrap_content"
-                            android:layout_height="33dp"
-                            android:layout_weight="1" />
-
-                        <RadioButton
-                            android:id="@+id/rbSpace14"
-                            android:layout_width="wrap_content"
-                            android:layout_height="33dp"
-                            android:layout_weight="1" />
-
-                        <RadioButton
-                            android:id="@+id/rbSpace17"
-                            android:layout_width="wrap_content"
-                            android:layout_height="33dp"
-                            android:layout_weight="1" />
-
-                        <RadioButton
-                            android:id="@+id/rbSpace20"
-                            android:layout_width="wrap_content"
-                            android:layout_height="33dp"
-                            android:layout_weight="1" />
-
-                        <RadioButton
-                            android:id="@+id/rbSpace23"
-                            android:layout_width="wrap_content"
-                            android:layout_height="33dp"
-                            android:layout_weight="1" />
-
-                        <RadioButton
-                            android:id="@+id/rbSpace26"
-                            android:layout_width="wrap_content"
-                            android:layout_height="33dp"
-                            android:layout_weight="1" />
-
-                        <RadioButton
-                            android:id="@+id/rbSpace29"
-                            android:layout_width="wrap_content"
-                            android:layout_height="33dp"
-                            android:layout_weight="1" />
-
-                        <RadioButton
-                            android:id="@+id/rbSpace32"
-                            android:layout_width="wrap_content"
-                            android:layout_height="33dp"
-                            android:layout_weight="1" />
-
-                        <RadioButton
-                            android:id="@+id/rbSpace35"
-                            android:layout_width="wrap_content"
-                            android:layout_height="33dp"
-                            android:layout_weight="1" />
-
-
-                    </RadioGroup>
-
-                    <RadioGroup
-                        android:id="@+id/CasinoRadioGroup5"
-                        android:layout_width="55dp"
-                        android:layout_height="wrap_content"
-                        android:layout_marginTop="30dp"
-                        android:orientation="vertical">
-
-                        <RadioButton
-                            android:id="@+id/rbSpace3"
-                            android:layout_width="wrap_content"
-                            android:layout_height="33dp"
-                            android:layout_weight="1" />
-
-                        <RadioButton
-                            android:id="@+id/rbSpace6"
-                            android:layout_width="wrap_content"
-                            android:layout_height="33dp"
-                            android:layout_weight="1" />
-
-                        <RadioButton
-                            android:id="@+id/rbSpace9"
-                            android:layout_width="wrap_content"
-                            android:layout_height="33dp"
-                            android:layout_weight="1" />
-
-                        <RadioButton
-                            android:id="@+id/rbSpace12"
-                            android:layout_width="wrap_content"
-                            android:layout_height="33dp"
-                            android:layout_weight="1" />
-
-                        <RadioButton
-                            android:id="@+id/rbSpace15"
-                            android:layout_width="wrap_content"
-                            android:layout_height="33dp"
-                            android:layout_weight="1" />
-
-                        <RadioButton
-                            android:id="@+id/rbSpace18"
-                            android:layout_width="wrap_content"
-                            android:layout_height="33dp"
-                            android:layout_weight="1" />
-
-                        <RadioButton
-                            android:id="@+id/rbSpace21"
-                            android:layout_width="wrap_content"
-                            android:layout_height="33dp"
-                            android:layout_weight="1" />
-
-                        <RadioButton
-                            android:id="@+id/rbSpace24"
-                            android:layout_width="wrap_content"
-                            android:layout_height="33dp"
-                            android:layout_weight="1" />
-
-                        <RadioButton
-                            android:id="@+id/rbSpace27"
-                            android:layout_width="wrap_content"
-                            android:layout_height="33dp"
-                            android:layout_weight="1" />
-
-                        <RadioButton
-                            android:id="@+id/rbSpace30"
-                            android:layout_width="wrap_content"
-                            android:layout_height="33dp"
-                            android:layout_weight="1" />
-
-                        <RadioButton
-                            android:id="@+id/rbSpace33"
-                            android:layout_width="wrap_content"
-                            android:layout_height="33dp"
-                            android:layout_weight="1" />
-
-                        <RadioButton
-                            android:id="@+id/rbSpace36"
-                            android:layout_width="wrap_content"
-                            android:layout_height="33dp"
-                            android:layout_weight="1" />
-
-                    </RadioGroup>
-                </LinearLayout>
-                <RadioGroup
-                    android:id="@+id/CasinoRadioGroup6"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_marginTop="457dp"
-                    android:layout_marginLeft="170dp"
-                    android:orientation="horizontal">
-                    <RadioButton
-                        android:id="@+id/rbSpace1and1"
-                        android:layout_width="55dp"
-                        android:layout_height="33dp"
-                        android:layout_weight="1" />
-                    <RadioButton
-                        android:id="@+id/rbSpace2and1"
-                        android:layout_width="55dp"
-                        android:layout_height="33dp"
-                        android:layout_weight="1" />
-                    <RadioButton
-                        android:id="@+id/rbSpace3and1"
-                        android:layout_width="55dp"
-                        android:layout_height="33dp"
-                        android:layout_weight="1" />
-                </RadioGroup>
-
-
-
-        <Button
-            android:id="@+id/btnCasinoPlay"
-            android:layout_width="wrap_content"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_gravity="bottom"
-            android:layout_marginLeft="70dp"
-            android:background="@drawable/btngame"
-            android:text="Play" />
+            android:orientation="horizontal">
+            <Button
+                android:id="@+id/btnCasinoClear"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                android:background="@drawable/btngame"
+                android:text="Clear" />
+            <Spinner
+                android:id="@+id/CasinoRate"
+                android:layout_width="80dp"
+                android:layout_height="30dp"
+                android:layout_gravity="center"
+                android:background="@drawable/btngame"
+                android:dropDownWidth="match_parent"
+                android:entries="@array/BFspin"
+                android:spinnerMode="dropdown"
+                android:textAlignment="center" />
+            <Button
+                android:id="@+id/btnCasinoPlay"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                android:background="@drawable/btngame"
+                android:text="Play" />
+        </LinearLayout>
+    </LinearLayout>
 
-        <Button
-            android:id="@+id/btnCasinoClear"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_gravity="right"
-            android:background="@drawable/btngame"
-            android:layout_marginRight="50dp"
-            android:text="Clear" />
-
-    </FrameLayout>
 
 </LinearLayout>
