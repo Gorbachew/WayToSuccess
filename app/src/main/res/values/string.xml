@@ -147,6 +147,9 @@
     <string name="NamePointHP">Здоровье</string>
     <string name="NamePointMP">Счастье</string>
     <string name="NamePointSP">Сытость</string>
+    <string name="HappyBirthdayTitle">С днем рождения!</string>
+    <string name="HappyBirthdayText">Ваши друзья поздравляют вас с праздником и дарят вам:%d рублей и %d долларов! За ваше застолье вы заслужили %d уважения!</string>
+    <string name="HappyBirthdaybtn1">Ура!</string>
     <!--Названия фрагментов-->
     <string name="NFPass">Паспорт</string>
     <string name="NFFood">Еда</string>

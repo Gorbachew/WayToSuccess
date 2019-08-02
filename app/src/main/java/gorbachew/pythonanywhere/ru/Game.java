@@ -505,6 +505,37 @@ public class Game extends AppCompatActivity implements RewardedVideoAdListener {
                 Toast.makeText(this,getResources().getString(R.string.HoFRentPayDay),Toast.LENGTH_SHORT).show();
             }
         }
+        if(day%1 == 365){
+            int resp = Integer.parseInt(sPref.getString(LOAD_RESPECT,""));
+            int rub = resp * 7;
+            int usd = (int) (resp * 0.2);
+            int newresp = (int) (resp * 0.1);
+            @SuppressLint("DefaultLocale")
+            String text = String.format(getResources().getString(R.string.HappyBirthdayText),rub,usd,newresp);
+            AlertDialog.Builder builder = new AlertDialog.Builder(Game.this);
+            builder.setTitle(getResources().getString(R.string.HappyBirthdayTitle))
+                    .setMessage(text)
+                    .setIcon(R.drawable.moodico)
+                    .setCancelable(false)
+                    .setPositiveButton("Ok",
+                            new DialogInterface.OnClickListener() {
+                                @Override
+                                public void onClick(DialogInterface dialog, int which) {
+                                    dialog.cancel();
+                                }
+                            });
+
+            AlertDialog alert = builder.create();
+            alert.show();
+            transaction("rub","+",rub);
+            transaction("usd","+",rub);
+            RandomStats("RESP","+",newresp,1);
+            RandomStats("HP", "+", 50, 1);
+            RandomStats("SP", "+", 50, 1);
+            RandomStats("MP", "+", 50, 1);
+        }
+
+
 
     }
 
@@ -592,7 +623,7 @@ public class Game extends AppCompatActivity implements RewardedVideoAdListener {
                 break;
 
         }
-        ed.commit();
+        ed.apply();
     }
     //Делает покраснение денег, если их нехватает
     public void LowMoney(String currency){
@@ -1043,6 +1074,9 @@ public class Game extends AppCompatActivity implements RewardedVideoAdListener {
         mRewardedVideoAd.destroy(this);
         super.onDestroy();
     }
+
+
+
     /* Переделал все на локальные загрузки и сейвы
     public void SaveGame(String Load,String Save){
         sPref = getSharedPreferences("Saved",MODE_PRIVATE);

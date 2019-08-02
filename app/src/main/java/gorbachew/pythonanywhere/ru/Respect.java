@@ -44,7 +44,7 @@ public class Respect extends Fragment {
         RFsing.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                ((Game)getActivity()).RandomStats("RESP","+",0,1);
+                ((Game)getActivity()).RandomStats("RESP","+",0,2);
                 ((Game)getActivity()).NextDay();
             }
         });
