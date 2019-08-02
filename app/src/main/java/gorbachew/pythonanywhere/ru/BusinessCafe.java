@@ -5,6 +5,7 @@ import android.content.DialogInterface;
 import android.content.SharedPreferences;
 import android.net.Uri;
 import android.os.Bundle;
+import android.support.annotation.NonNull;
 import android.support.v4.app.Fragment;
 import android.support.v7.app.AlertDialog;
 import android.view.LayoutInflater;
@@ -42,7 +43,7 @@ public class BusinessCafe extends Fragment {
         TextView textRoom,textAd,textWaiter,textCook,textVisitors,textVisitorsLastWeek,textTables,textProfit;
 
     @Override
-    public View onCreateView(LayoutInflater inflater, ViewGroup container,
+    public View onCreateView(@NonNull LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         View BusinessCafe = inflater.inflate(R.layout.fragment_business_cafe, container, false);
         sPref = this.getActivity().getSharedPreferences("Saved",Context.MODE_PRIVATE);

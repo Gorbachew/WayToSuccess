@@ -4,6 +4,7 @@ import android.content.Context;
 import android.content.SharedPreferences;
 import android.net.Uri;
 import android.os.Bundle;
+import android.support.annotation.NonNull;
 import android.support.v4.app.Fragment;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -18,7 +19,7 @@ public class Freelance extends Fragment {
     Button btnScrap,btnSellScrap,btnFreelanceBegForMoney,btnFreelanceHelpOld,btnFreelanceDistributeFlyers,btnFreelanceRepairFlat,btnFreelanceTaxi;
 
     @Override
-    public View onCreateView(LayoutInflater inflater, ViewGroup container,
+    public View onCreateView(@NonNull LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
         View FreelanceFr = inflater.inflate(R.layout.fragment_freelance, container, false);
@@ -88,9 +89,10 @@ public class Freelance extends Fragment {
                 else {
                     int var = 11 + random.nextInt(500 - 10);
                     ((Game)getActivity()).transaction("rub","+", var);
+                    ((Game)getActivity()).NextDay();
                 }
 
-                ((Game)getActivity()).NextDay();
+
             }
         });
 
@@ -122,9 +124,10 @@ public class Freelance extends Fragment {
                 else {
                     int var = 501 + random.nextInt(5000 - 500);
                     ((Game)getActivity()).transaction("rub","+", var);
+                    ((Game)getActivity()).NextDay();
                 }
 
-                ((Game)getActivity()).NextDay();
+
             }
         });
         btnFreelanceTaxi.setOnClickListener(new View.OnClickListener() {
@@ -139,9 +142,10 @@ public class Freelance extends Fragment {
                 else {
                     int var = 501 + random.nextInt(10000 - 500);
                     ((Game)getActivity()).transaction("rub","+", var);
+                    ((Game)getActivity()).NextDay();
                 }
 
-                ((Game)getActivity()).NextDay();
+
             }
         });
 

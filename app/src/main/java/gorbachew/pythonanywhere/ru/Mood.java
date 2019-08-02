@@ -4,12 +4,15 @@ import android.content.Context;
 import android.content.SharedPreferences;
 import android.net.Uri;
 import android.os.Bundle;
+import android.support.annotation.NonNull;
 import android.support.v4.app.Fragment;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.Toast;
+
+import java.util.Random;
 
 
 public class Mood extends Fragment {
@@ -26,7 +29,7 @@ public class Mood extends Fragment {
     final String LOAD_PRWEAPON = "PropertyWeapon";
 
     @Override
-    public View onCreateView(LayoutInflater inflater, ViewGroup container,
+    public View onCreateView(@NonNull LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
         View MoodFragment = inflater.inflate(R.layout.fragment_mood, container, false);
@@ -45,17 +48,20 @@ public class Mood extends Fragment {
         final String LOAD_RUB = "RUB";
         final String LOAD_USD = "USD";
         CheckButton();
-
+        final Random random = new Random();
         btnMoodWatchAnimals.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
 
-                ((Game)getActivity()).RandomStats("HP","-",0,5);
                 ((Game)getActivity()).RandomStats("SP","-",0,10);
                 ((Game)getActivity()).RandomStats("MP","+",5,15);
 
+                int rand = random.nextInt(10);
+                if (rand == 9){
+                    ((Game)getActivity()).RandomStats("SP","+",10,20);
+                    Toast.makeText(getActivity(),getResources().getString(R.string.MFprofit1),Toast.LENGTH_LONG).show();
+                }
                 ((Game)getActivity()).NextDay();
-
             }
         });
         btnMoodDrinkBeer.setOnClickListener(new View.OnClickListener() {
@@ -69,8 +75,8 @@ public class Mood extends Fragment {
                     int var = Integer.parseInt(sPref.getString(SAVED_HOLDING, ""));
                     if (var >= 1) {
                         ((Game) getActivity()).RandomStats("HP", "-", 0, 5);
-                        ((Game) getActivity()).RandomStats("SP", "-", 0, 10);
-                        ((Game) getActivity()).RandomStats("MP", "+", 10, 30);
+                        ((Game) getActivity()).RandomStats("SP", "+", 0, 10);
+                        ((Game) getActivity()).RandomStats("MP", "+", 20, 10);
                         ((Game) getActivity()).transaction("rub", "-", 50);
 
                     } else {
@@ -93,8 +99,9 @@ public class Mood extends Fragment {
 
                     int var = Integer.parseInt(sPref.getString(SAVED_HOLDING, ""));
                     if (var >= 2) {
-                        ((Game) getActivity()).RandomStats("HP", "-", 0, 10);
-                        ((Game) getActivity()).RandomStats("MP", "+", 10, 60);
+                        ((Game) getActivity()).RandomStats("HP", "-", 10, 30);
+                        ((Game) getActivity()).RandomStats("SP", "-", 10, 30);
+                        ((Game) getActivity()).RandomStats("MP", "+", 40, 40);
                         ((Game) getActivity()).transaction("rub", "-", 200);
 
                     } else {
@@ -114,11 +121,14 @@ public class Mood extends Fragment {
                 } else {
                     int var = Integer.parseInt(sPref.getString(SAVED_CLOTCHES, ""));
                     if (var >= 3) {
-                        ((Game) getActivity()).RandomStats("HP", "-", 0, 5);
-                        ((Game) getActivity()).RandomStats("SP", "-", 0, 10);
-                        ((Game) getActivity()).RandomStats("MP", "+", 0, 40);
-                        ((Game) getActivity()).transaction("rub", "-", 500);
 
+                        ((Game) getActivity()).RandomStats("MP", "+", 30, 30);
+                        ((Game) getActivity()).transaction("rub", "-", 500);
+                        int rand = random.nextInt(10);
+                        if (rand == 10){
+                            ((Game)getActivity()).RandomStats("SP","+",20,10);
+                            Toast.makeText(getActivity(),getResources().getString(R.string.MFprofit2),Toast.LENGTH_SHORT).show();
+                        }
                     } else {
                         Toast.makeText(getActivity(), getResources().getString(R.string.MFerror3), Toast.LENGTH_LONG).show();
                     }
@@ -137,12 +147,14 @@ public class Mood extends Fragment {
                 else {
                     int var = Integer.parseInt(sPref.getString(LOAD_PRTV, ""));
                     if (var >= 1) {
-                        ((Game) getActivity()).RandomStats("MP", "+", 10, 40);
+                        ((Game) getActivity()).RandomStats("MP", "+", 20, 10);
                         ((Game) getActivity()).transaction("rub", "-", 100);
+                        ((Game) getActivity()).NextDay();
                     } else {
                         Toast.makeText(getActivity(), getResources().getString(R.string.MFerror4), Toast.LENGTH_LONG).show();
+
                     }
-                    ((Game) getActivity()).NextDay();
+
                 }
             }
         });
@@ -154,12 +166,13 @@ public class Mood extends Fragment {
                 } else {
                     int var = Integer.parseInt(sPref.getString(LOAD_PRPC, ""));
                     if (var >= 1) {
-                        ((Game) getActivity()).RandomStats("MP", "+", 20, 20);
+                        ((Game) getActivity()).RandomStats("MP", "+", 30, 20);
                         ((Game) getActivity()).transaction("rub", "-", 300);
+                        ((Game) getActivity()).NextDay();
                     } else {
                         Toast.makeText(getActivity(), getResources().getString(R.string.MFerror5), Toast.LENGTH_LONG).show();
                     }
-                    ((Game) getActivity()).NextDay();
+
                 }
             }
         });

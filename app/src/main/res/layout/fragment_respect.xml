@@ -4,6 +4,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@drawable/bgrespect"
+    android:largeHeap="true"
     tools:context=".Respect">
 
     <ScrollView
@@ -24,36 +25,12 @@
                 android:text="@string/RFsing" />
 
             <Button
-                android:id="@+id/RFbecameMem"
-                android:layout_width="match_parent"
-                android:layout_height="70dp"
-                android:layout_weight="1"
-                android:background="@drawable/btngame"
-                android:text="@string/RFbecameMem" />
-
-            <Button
-                android:id="@+id/RFbecameMP"
-                android:layout_width="match_parent"
-                android:layout_height="70dp"
-                android:layout_weight="1"
-                android:background="@drawable/btngame"
-                android:text="@string/RFbecameMP" />
-
-            <Button
                 android:id="@+id/RFvideoPresident"
                 android:layout_width="match_parent"
                 android:layout_height="70dp"
                 android:layout_weight="1"
                 android:background="@drawable/btngame"
                 android:text="@string/RFvideoPresident" />
-
-            <Button
-                android:id="@+id/RFmeetingPresident"
-                android:layout_width="match_parent"
-                android:layout_height="70dp"
-                android:layout_weight="1"
-                android:background="@drawable/btngame"
-                android:text="@string/RFmeetingPresident" />
 
             <Button
                 android:id="@+id/RFstream"
@@ -78,6 +55,31 @@
                 android:layout_weight="1"
                 android:background="@drawable/btngame"
                 android:text="@string/RFbusinesslunch" />
+
+            <Button
+                android:id="@+id/RFbecameMem"
+                android:layout_width="match_parent"
+                android:layout_height="70dp"
+                android:layout_weight="1"
+                android:background="@drawable/btngame"
+                android:text="@string/RFbecameMem" />
+
+            <Button
+                android:id="@+id/RFmeetingPresident"
+                android:layout_width="match_parent"
+                android:layout_height="70dp"
+                android:layout_weight="1"
+                android:background="@drawable/btngame"
+                android:text="@string/RFmeetingPresident" />
+
+            <Button
+                android:id="@+id/RFbecameMP"
+                android:layout_width="match_parent"
+                android:layout_height="70dp"
+                android:layout_weight="1"
+                android:background="@drawable/btngame"
+                android:text="@string/RFbecameMP" />
+
         </LinearLayout>
     </ScrollView>
 

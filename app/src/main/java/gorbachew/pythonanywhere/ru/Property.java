@@ -5,6 +5,7 @@ import android.content.Context;
 import android.content.SharedPreferences;
 import android.net.Uri;
 import android.os.Bundle;
+import android.support.annotation.NonNull;
 import android.support.v4.app.Fragment;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -28,8 +29,9 @@ public class Property extends Fragment {
     final String LOAD_PRCAMERA = "PropertyCamera";
     final String LOAD_RUB = "RUB";
     final String LOAD_USD = "USD";
+
     @Override
-    public View onCreateView(LayoutInflater inflater, ViewGroup container,
+    public View onCreateView(@NonNull LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
         View PropertyFG = inflater.inflate(R.layout.fragment_property, container, false);
@@ -244,18 +246,18 @@ public class Property extends Fragment {
         int buyed4 = Integer.parseInt(sPref.getString(LOAD_PRPC,""));
         int buyed5 = Integer.parseInt(sPref.getString(LOAD_PRTV,""));
         int buyed6 = Integer.parseInt(sPref.getString(LOAD_PRWEAPON,""));
-        if(buyed1 >= 1){btnRubberBoots.setBackground(getResources().getDrawable(R.drawable.btnbuyed));}
-        if(buyed1 >= 2){btnCheapClothes.setBackground(getResources().getDrawable(R.drawable.btnbuyed));}
-        if(buyed1 >= 3){btnNormalClothes.setBackground(getResources().getDrawable(R.drawable.btnbuyed));}
-        if(buyed1 >= 4){btnSuit.setBackground(getResources().getDrawable(R.drawable.btnbuyed));}
-        if(buyed2 >= 1){btnBicycle.setBackground(getResources().getDrawable(R.drawable.btnbuyed));}
-        if(buyed2 >= 2){btnCar.setBackground(getResources().getDrawable(R.drawable.btnbuyed));}
-        if(buyed2 >= 3){btnHelicopter.setBackground(getResources().getDrawable(R.drawable.btnbuyed));}
-        if(buyed2 >= 4){btnYacht.setBackground(getResources().getDrawable(R.drawable.btnbuyed));}
-        if(buyed3 >= 1){btnCamera.setBackground(getResources().getDrawable(R.drawable.btnbuyed));}
-        if(buyed4 >= 1){btnPC.setBackground(getResources().getDrawable(R.drawable.btnbuyed));}
-        if(buyed5 >= 1){btnTV.setBackground(getResources().getDrawable(R.drawable.btnbuyed));}
-        if(buyed6 >= 1){btnWeapons.setBackground(getResources().getDrawable(R.drawable.btnbuyed));}
+        if(buyed1 >= 1){btnRubberBoots.setBackground(getResources().getDrawable(R.drawable.btnbuyed));btnRubberBoots.setEnabled(false);}
+        if(buyed1 >= 2){btnCheapClothes.setBackground(getResources().getDrawable(R.drawable.btnbuyed));btnCheapClothes.setEnabled(false);}
+        if(buyed1 >= 3){btnNormalClothes.setBackground(getResources().getDrawable(R.drawable.btnbuyed));btnNormalClothes.setEnabled(false);}
+        if(buyed1 >= 4){btnSuit.setBackground(getResources().getDrawable(R.drawable.btnbuyed));btnSuit.setEnabled(false);}
+        if(buyed2 >= 1){btnBicycle.setBackground(getResources().getDrawable(R.drawable.btnbuyed));btnBicycle.setEnabled(false);}
+        if(buyed2 >= 2){btnCar.setBackground(getResources().getDrawable(R.drawable.btnbuyed));btnCar.setEnabled(false);}
+        if(buyed2 >= 3){btnHelicopter.setBackground(getResources().getDrawable(R.drawable.btnbuyed));btnHelicopter.setEnabled(false);}
+        if(buyed2 >= 4){btnYacht.setBackground(getResources().getDrawable(R.drawable.btnbuyed));btnYacht.setEnabled(false);}
+        if(buyed3 >= 1){btnCamera.setBackground(getResources().getDrawable(R.drawable.btnbuyed));btnCamera.setEnabled(false);}
+        if(buyed4 >= 1){btnPC.setBackground(getResources().getDrawable(R.drawable.btnbuyed));btnPC.setEnabled(false);}
+        if(buyed5 >= 1){btnTV.setBackground(getResources().getDrawable(R.drawable.btnbuyed));btnTV.setEnabled(false);}
+        if(buyed6 >= 1){btnWeapons.setBackground(getResources().getDrawable(R.drawable.btnbuyed));btnWeapons.setEnabled(false);}
     }
 }
 

@@ -6,6 +6,7 @@ import android.content.Intent;
 import android.content.SharedPreferences;
 import android.net.Uri;
 import android.os.Bundle;
+import android.support.annotation.NonNull;
 import android.support.v4.app.Fragment;
 
 import android.support.v4.app.FragmentTransaction;
@@ -40,7 +41,7 @@ public class BusinessMetal extends Fragment {
     final String LOAD_COURSESCRAP = "CourseScrap";
     final String SAVED_BUSINESS = "Business";
     @Override
-    public View onCreateView(LayoutInflater inflater, ViewGroup container,
+    public View onCreateView(@NonNull LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
 
         View Business = inflater.inflate(R.layout.fragment_business, container, false);

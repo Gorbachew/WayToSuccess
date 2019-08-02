@@ -1,35 +1,49 @@
 package gorbachew.pythonanywhere.ru;
 
 import android.content.Context;
+import android.content.DialogInterface;
 import android.content.SharedPreferences;
 import android.net.Uri;
 import android.os.Bundle;
+import android.support.annotation.NonNull;
 import android.support.v4.app.Fragment;
+import android.support.v7.app.AlertDialog;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.Toast;
 
+import com.google.android.gms.ads.MobileAds;
+import com.google.android.gms.ads.reward.RewardedVideoAd;
+import com.google.android.gms.ads.reward.RewardedVideoAdListener;
+
+import java.util.Random;
+
 
 public class Health extends Fragment {
 
-    Button btnHealthGrass,btnHealthRobPharmacy,btnHealthDistrictHospital,btnHealthBuyPharmacy,btnHealthPrivateHospital,btnHealthPersonalDoctor;
+    Button btnHealthGrass,btnHealthRobPharmacy,btnHealthDistrictHospital,btnHealthBuyPharmacy,btnHealthPrivateHospital,btnHealthPersonalDoctor,btnHealthExpired,btnHealthGomeopat;
     SharedPreferences sPref;
+    private RewardedVideoAd mRewardedVideoAd;
     final String SAVED_CLOTCHES = "Clothes";
     final String SAVED_TRANSPORT = "Transport";
     final String SAVED_HOLDING = "Holding";
     final String LOAD_BUFFDOCK = "BuffDock";
     final String LOAD_RUB = "RUB";
     final String LOAD_USD = "USD";
+    final Random random = new Random();
     @Override
-    public View onCreateView(LayoutInflater inflater, ViewGroup container,
+    public View onCreateView(@NonNull LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
 
         View healthFragment = inflater.inflate(R.layout.fragment_health, container, false);
 
 
         sPref = this.getActivity().getSharedPreferences("Saved",Context.MODE_PRIVATE);
+
+        mRewardedVideoAd = MobileAds.getRewardedVideoAdInstance(getActivity());
+        mRewardedVideoAd.setRewardedVideoAdListener((RewardedVideoAdListener) getActivity());
 
 
 
@@ -39,6 +53,9 @@ public class Health extends Fragment {
         btnHealthBuyPharmacy = healthFragment.findViewById(R.id.btnHealthBuyPharmacy);
         btnHealthPrivateHospital = healthFragment.findViewById(R.id.btnHealthPrivateHospital);
         btnHealthPersonalDoctor = healthFragment.findViewById(R.id.btnHealthPersonalDoctor);
+        btnHealthExpired = healthFragment.findViewById(R.id.btnHealthExpired);
+        btnHealthGomeopat = healthFragment.findViewById(R.id.btnHealthGomeopat);
+
         CheckButton();
 
         btnHealthGrass.setOnClickListener(new View.OnClickListener() {
@@ -48,24 +65,113 @@ public class Health extends Fragment {
                 ((Game)getActivity()).RandomStats("SP","-",0,5);
                 ((Game)getActivity()).RandomStats("MP","-",0,5);
 
+
+                int rand = random.nextInt(10);
+                if (rand == 9){
+                    ((Game)getActivity()).RandomStats("MP","+",10,20);
+
+                    Toast.makeText(getActivity(),getResources().getString(R.string.HFprofit1),Toast.LENGTH_LONG).show();
+                }
                 ((Game)getActivity()).NextDay();
             }
         });
-
+        btnHealthExpired.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                if (Integer.parseInt(sPref.getString(LOAD_RUB, "")) < 50) {
+                    ((Game) getActivity()).LowMoney("rub");
+                }
+                else {
+                    ((Game)getActivity()).transaction("rub","-",50);
+                    ((Game)getActivity()).RandomStats("HP","+",0,20);
+                }
+            }
+        });
         btnHealthRobPharmacy.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                int var = Integer.parseInt(sPref.getString(SAVED_TRANSPORT,""));
+                int var = Integer.parseInt(sPref.getString(SAVED_TRANSPORT, ""));
+                int rand = random.nextInt(10);
                 if(var >= 1){
-                    ((Game)getActivity()).RandomStats("HP","+",10,25);
-                    ((Game)getActivity()).RandomStats("SP","-",0,10);
-                    ((Game)getActivity()).RandomStats("MP","-",0,5);
+                    if (rand >= 7) {
+                        AlertDialog.Builder builder = new AlertDialog.Builder(getActivity());
+                        builder.setTitle(getResources().getString(R.string.FFerror2_1title))
+                                .setMessage(getResources().getString(R.string.HFerror5text))
+                                .setIcon(R.drawable.loseico)
+                                .setCancelable(false)
+                                .setNegativeButton(getResources().getString(R.string.FFerror2_1_1),
+                                        new DialogInterface.OnClickListener() {
+                                            @Override
+                                            public void onClick(DialogInterface dialog, int which) {
+                                                int rand = random.nextInt(2);
+                                                if (rand < 1) {
+                                                    ((Game) getActivity()).RandomStats("HP", "-", 50, 50);
+                                                    ((Game)getActivity()).RandomStats("MP","-",0,100);
+                                                    Toast.makeText(getActivity(), getResources().getString(R.string.HFerror5_1_2), Toast.LENGTH_LONG).show();
+                                                } else {
+                                                    Toast.makeText(getActivity(), getResources().getString(R.string.HFerror5_1_1), Toast.LENGTH_LONG).show();
+                                                    dialog.cancel();
+                                                }
+                                                ((Game) getActivity()).NextDay();
+                                            }
+                                        })
+                                .setNeutralButton(R.string.FFerror2_1_2,
+                                        new DialogInterface.OnClickListener() {
+                                            @Override
+                                            public void onClick(DialogInterface dialog, int which) {
+
+                                                if (mRewardedVideoAd.isLoaded()) {
+                                                    mRewardedVideoAd.show();
+                                                    dialog.cancel();
+                                                    ((Game) getActivity()).NextDay();
+                                                } else {
+                                                    Toast.makeText(getActivity(), getResources().getString(R.string.FFerror2_1_2_2), Toast.LENGTH_LONG).show();
+                                                }
+                                            }
+                                        })
+                                .setPositiveButton(R.string.FFerror2_1_3,
+                                        new DialogInterface.OnClickListener() {
+                                            @Override
+                                            public void onClick(DialogInterface dialog, int which) {
+                                                ((Game) getActivity()).RandomStats("MP", "-", 0, 20);
+                                                ((Game) getActivity()).transaction("rub", "-", 1500);
+                                                dialog.cancel();
+                                                ((Game) getActivity()).NextDay();
+                                            }
+                                        });
+                        AlertDialog alert = builder.create();
+                        alert.show();
+                    } else {
+                        ((Game)getActivity()).RandomStats("HP","+",30,30);
+                        ((Game)getActivity()).RandomStats("MP","+",0,10);
+                        ((Game) getActivity()).NextDay();
+                    }
                 }
                 else {
                     Toast.makeText(getActivity(),getResources().getString(R.string.FFerror2),Toast.LENGTH_LONG).show();
                 }
 
-                ((Game)getActivity()).NextDay();
+
+            }
+        });
+
+        btnHealthGomeopat.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                if (Integer.parseInt(sPref.getString(LOAD_RUB, "")) < 500) {
+                    ((Game) getActivity()).LowMoney("rub");
+                }
+                else {
+                    int var = Integer.parseInt(sPref.getString(SAVED_CLOTCHES, ""));
+                    if (var >= 2) {
+                        ((Game) getActivity()).RandomStats("HP", "+", 30, 10);
+                        ((Game) getActivity()).transaction("rub", "-", 500);
+                    } else {
+                        Toast.makeText(getActivity(), getResources().getString(R.string.HFerror5), Toast.LENGTH_LONG).show();
+                    }
+
+                    ((Game) getActivity()).NextDay();
+                }
             }
         });
         btnHealthBuyPharmacy.setOnClickListener(new View.OnClickListener() {
@@ -77,9 +183,7 @@ public class Health extends Fragment {
                 else {
                     int var = Integer.parseInt(sPref.getString(SAVED_CLOTCHES,""));
                     if(var >= 3){
-                        ((Game)getActivity()).RandomStats("HP","+",10,30);
-                        ((Game)getActivity()).RandomStats("SP","-",0,5);
-                        ((Game)getActivity()).RandomStats("MP","-",0,5);
+                        ((Game)getActivity()).RandomStats("HP","+",30,30);
                         ((Game)getActivity()).transaction("rub","-",1000);
                     }
                     else {
@@ -94,15 +198,14 @@ public class Health extends Fragment {
         btnHealthDistrictHospital.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                if (Integer.parseInt(sPref.getString(LOAD_RUB, "")) < 3000) {
+                if (Integer.parseInt(sPref.getString(LOAD_RUB, "")) < 300) {
                     ((Game) getActivity()).LowMoney("rub");
                 }
                 else {
                     int var = Integer.parseInt(sPref.getString(SAVED_HOLDING,""));
                     if(var >= 3){
-                        ((Game)getActivity()).RandomStats("HP","+",10,30);
-                        ((Game)getActivity()).RandomStats("SP","-",0,5);
-                        ((Game)getActivity()).RandomStats("MP","-",0,5);
+                        ((Game)getActivity()).RandomStats("HP","+",15,40);
+                        ((Game)getActivity()).RandomStats("MP","-",0,10);
                         ((Game)getActivity()).transaction("rub","-",300);
                     }
                     else {
@@ -125,9 +228,9 @@ public class Health extends Fragment {
                 else {
                     int var = Integer.parseInt(sPref.getString(SAVED_TRANSPORT,""));
                     if(var >= 2){
-                        ((Game)getActivity()).RandomStats("HP","+",20,50);
-                        ((Game)getActivity()).RandomStats("SP","-",0,5);
-                        ((Game)getActivity()).RandomStats("MP","-",0,5);
+                        ((Game)getActivity()).RandomStats("HP","+",50,50);
+                        ((Game)getActivity()).RandomStats("SP","+",0,30);
+                        ((Game)getActivity()).RandomStats("MP","+",0,50);
                         ((Game)getActivity()).transaction("usd","-",1000);
                     }
                     else {

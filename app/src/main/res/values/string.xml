@@ -144,6 +144,9 @@
     <string name="WhyWanted">К вашему несчастью, за ваше прошлое на вас было составлено уголовное дело. Находиться в своем родном городе не было возможности, поэтому схватив первые под руку вещи вы отправились куда подальше</string>
 
     <!--Игра-->
+    <string name="NamePointHP">Здоровье</string>
+    <string name="NamePointMP">Счастье</string>
+    <string name="NamePointSP">Сытость</string>
     <!--Названия фрагментов-->
     <string name="NFPass">Паспорт</string>
     <string name="NFFood">Еда</string>
@@ -159,6 +162,7 @@
     <string name="NFBank">Банк</string>
     <string name="NFAchivment">Достижения</string>
     <string name="NFCasino">Казино</string>
+
     <!--Паспорт-->
     <string name="PFName">Имя:</string>
     <string name="PFAge">Возраст:</string>
@@ -204,6 +208,10 @@
 
     <string name="PFSjob0">Безработный</string>
     <string name="PFSjob1">Завод</string>
+    <string name="PFSjob2">Автосервис</string>
+    <string name="PFSjob3">Менеджер</string>
+    <string name="PFSjob4">Программист</string>
+    <string name="PFSjob5">Начальник</string>
 
 
 
@@ -221,24 +229,41 @@
     <!--Еда-->
     <string name="FFtrash">Покопаться в помойке|0р</string>
     <string name="FFhunt">Охотиться на голубей|0р</string>
+    <string name="FFkrekers">Перекусить крекерами|50р</string>
     <string name="FFrobKiosk">Ограбить ларек|0р</string>
-    <string name="FFbuyKiosk">Закупиться в ларьке|500р</string>
+    <string name="FFbuyKiosk">Закупиться в ларьке|350р</string>
     <string name="FFeatCoffee">Поесть в кафе|1500р</string>
     <string name="FFbuyStore">Закупиться в магазине|3000р</string>
     <string name="FFeatRestaurant">Поесть в ресторане|7500р</string>
     <string name="FFpersonalChef">Личный повар|50000р/м</string>
     <string name="FFfiredChef">Уволить повара</string>
 
-    <string name="FFerror1">Вы не сможете догнать голубей босиком, вам нужны хотя бы сапоги</string>
-    <string name="FFerror2">Вас догнал охранник и отобрал награбленное</string>
+    <string name="FFprofit1">Копаясь в помойке вы нашли лекарства, ваш желудок это оценил</string>
+
+    <string name="FFerror1_1">Голуби вас перехитрили и оставили ни с чем</string>
+    <string name="FFerror1_2">Вы разогнались за жирным голубем и случайно споткнулись поранив коленку</string>
+    <string name="FFerror1">Вы не смогли догнать голубей босиком, вам нужны хотя бы сапоги</string>
+    <string name="FFerror2">Без велосипеда вам не провернуть это дело</string>
+    <string name="FFerror2_1title">Вы попались</string>
+    <string name="FFerror2_1text">Рядом с ларьком проходил полицейский, увидев ограбление он быстро арестовал вас. Что вы будете делать?</string>
+    <string name="FFerror2_1_1">Сбежать</string>
+    <string name="FFerror2_1_1_1">Бросив в полицая награбленное вы отвлекли его и смогли сбежать</string>
+    <string name="FFerror2_1_1_2">Вы бросили в полицая награбленное, но он увернулся и заломив вас, избил</string>
+    <string name="FFerror2_1_2">Воспит видео</string>
+    <string name="FFerror2_1_2_2">Вы очень сильно напортачили, одним видео не отделаетесь</string>
+    <string name="FFerror2_1_3">Штраф</string>
     <string name="FFerror3">Смотря на ваши лохмотья вам отказались продавать еду </string>
     <string name="FFerror4">Охранник подумал, что вы наркоман в дешевой одежде и попросил выйти</string>
     <string name="FFerror5">Вы не смогли донести в руках еду до дома, вам нужна машина</string>
-    <string name="FFerror6">Охранник даже не пустил вас во внутрь поскольку у вас нет костюма</string>
-    <string name="FFerror7">Повар спросил, где он будет жить, вы не смогли ответить. Вам нужен дом побольше</string>
+    <string name="FFerror6">Охранник не пустил вас во внутрь, поскольку у вас нет костюма</string>
+    <string name="FFerror7">Повар спросил, где он будет жить? Вы не смогли ответить. Вам нужен дом побольше</string>
 
     <!--Здоровье-->
     <string name="HFgrass">Найти подорожник|0р</string>
+
+    <string name="HFexpired">Лечиться проскрочкой|50р</string>
+    <string name="HFGomeopat">Купить гомеопатических лекарств|500р</string>
+
     <string name="HFrobPharmacy">Ограбить аптеку|0р</string>
     <string name="HFdistrictHospital">Сходить в районную больницу|300р</string>
     <string name="HFbuyPharmacy">Закупиться в аптеке|1000р</string>
@@ -246,13 +271,22 @@
     <string name="HFpersonalDoctor">Личный врач|70000р/м</string>
     <string name="HFfiredDoctor">Уволить врача</string>
 
+    <string name="HFprofit1">Копаясь в кустах вы нашли вкусных грибов</string>
     <string name="HFerror1">В аптеке подумали, что вы пришли за боярышником и прогнали. Вам нужно выглядеть солиднее</string>
+    <string name="HFerror5">Женщина продающая гомеопатические препораты посчитала вас невменяемым из-за наряда и попросила выйти</string>
+    <string name="HFerror5text">Резко собрав с полок лекарства вы двинулись на выход, но толпа бабок преградила вам дорогу</string>
+    <string name="HFerror5_1_1">Рассказав бабкам о скидках в магазине вы смогли отвлечь толпу и выйти сухим из воды</string>
+    <string name="HFerror5_1_2">Вы попытались отвлечь бабок, но они были злы поскольку вы украили нужные им лекарства. Вас забили клюшками</string>
+
+
     <string name="HFerror2">Без прописки вас послали на 3 буквы, вам нужно хотя бы снимать комнату</string>
     <string name="HFerror3">В частную клинику можно попасть только на машине</string>
     <string name="HFerror4">Доктор поинтересовался об оборудованном помещении.Вы сказали, что у вас такого нет. Вам нужен дом побольше</string>
 
 
     <!--Настроение-->
+    <string name="MFprofit1">Один голубь подошел слишком близко к вам, вам удалось его схватить и полакомится деликатесом</string>
+    <string name="MFprofit2">В кинотеатре вы нашли ничейный пакет с попкорном, сеанс удался</string>
     <string name="MFwatchAnimals">Смотреть на голубей|0р</string>
     <string name="MFdrinkBeer">Выпить пива|50р</string>
     <string name="MFdrinkVodka">Выпить водки|200р</string>
@@ -401,6 +435,9 @@
     <string name="HoFCamp">Палатка|3000р</string>
     <string name="HoFRentRoom">Снимать комнату|25000р/м</string>
     <string name="HoFRentRoomOff">Перестать снимать комнату</string>
+    <string name="HoFRentAnswer">Вы действительно хотите перестать снимать комнату? В случае согласия хозяйка предлагает выдать вам палатку</string>
+    <string name="HoFRentAnswerTitle">Перестать снимать комнату?</string>
+    <string name="HoFRentPayDay">Вы заплатили за комнату 25000</string>
     <string name="HoFbuyApartment">Купить квартиру|1500000р</string>
     <string name="HoFbuyHome">Купить дом|3000000р</string>
     <string name="HoFbuyMansion">Купить особняк|3000000$</string>
@@ -480,6 +517,7 @@
 
     <!--Проигрыш-->
     <string name="LoseTitle">Вы на грани смерти</string>
+    <string name="EndNoVideo">У вас больше нет шанса на восстановление,смиритесь</string>
     <string name="EndTitle">Вы умерли</string>
     <string name="EndVideoReward">Воскреснуть</string>
     <string name="EndText">Вы не смогли справиться с проблемами этого мира... Прощайте с миром.</string>
@@ -491,12 +529,15 @@
 
     <!--Реклама-->
     <string name="banner_ad_unit_id">ca-app-pub-6876201111676185/7399516322</string>
+    <string name="videoadmessageOk">Можно воскреснуть</string>
+    <string name="videoadmessageError">В вашей жизни слишком много проблем, воскреснуть не получится</string>
 
     <!--Сообщение от автора -->
     <string name="MAbody1">Это мой первый мобильный проект и мне будет очень приятно, если вы оцените его и поделитесь своим мнением. Про баги писать туда же. Discord: Gorbachew #1425</string>
 
 
-
+    <string name="yes">Да</string>
+    <string name="no">Нет</string>
 
 
 </resources>

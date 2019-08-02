@@ -1,9 +1,11 @@
 package gorbachew.pythonanywhere.ru;
 
+import android.annotation.SuppressLint;
 import android.content.Context;
 import android.content.SharedPreferences;
 import android.net.Uri;
 import android.os.Bundle;
+import android.support.annotation.NonNull;
 import android.support.v4.app.Fragment;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -17,7 +19,7 @@ public class Password extends Fragment {
 
 
 
-    TextView textName,textAge,actAge,textClothes,textTransport,textHolding,textJob,textRankJob,textBusiness,textEducation,textChild;
+    TextView textName,textAge,textClothes,textTransport,textHolding,textJob,textBusiness,textEducation;
     SharedPreferences sPref;
     final String SAVED_AGE = "Age";
     final String SAVED_CLOTCHES = "Clothes";
@@ -27,13 +29,14 @@ public class Password extends Fragment {
     final String SAVED_RANKJOB = "RankJob";
     final String SAVED_BUSINESS = "Business";
     final String SAVED_EDUCATION = "Education";
+    final String LOAD_DAY = "DAY";
 
-    String VarAge,VarClothes,VarTransport, VarHolding, VarJob, VarRankJob, VarBusiness,VarEducation, VarChild;
-    int RestAge;
+    String VarClothes,VarTransport, VarHolding, VarJob, VarBusiness,VarEducation;
+    int VarAge,days;
 
     @Override
-    public View onCreateView(LayoutInflater inflater, ViewGroup container,
-            Bundle savedInstanceState) {
+    public View onCreateView(@NonNull LayoutInflater inflater, ViewGroup container,
+                             Bundle savedInstanceState) {
         View PassFr = inflater.inflate(R.layout.fragment_password, container, false);
         // Inflate the layout for this fragment
 
@@ -51,6 +54,7 @@ public class Password extends Fragment {
         return PassFr;
     }
 
+    @SuppressLint("SetTextI18n")
     @Override
     public void onStart() {
         super.onStart();
@@ -63,14 +67,12 @@ public class Password extends Fragment {
         }
 
         //Возраст
-        VarAge = sPref.getString(SAVED_AGE,"");
-
-        actAge = getActivity().findViewById(R.id.TotalDay);
-
-        for (RestAge = Integer.parseInt(actAge.getText().toString()); RestAge >= 365; RestAge = RestAge - 365){
-            VarAge = String.valueOf(Integer.parseInt(VarAge)+1);
+        VarAge = Integer.parseInt(sPref.getString(SAVED_AGE,""));
+        days = Integer.parseInt(sPref.getString(LOAD_DAY,""));
+        if (days >= 365){
+            days -= 365;VarAge += 1;
         }
-        textAge.setText(VarAge + " лет и " + String.valueOf(RestAge) + " День");
+        textAge.setText(String.format("%d л и %d д", VarAge, days));
 
         //Образование
         VarEducation = sPref.getString(SAVED_EDUCATION,"");
@@ -175,6 +177,18 @@ public class Password extends Fragment {
                 break;
             case "1":
                 textJob.setText(getResources().getString(R.string.PFSjob1));
+                break;
+            case "2":
+                textJob.setText(getResources().getString(R.string.PFSjob2));
+                break;
+            case "3":
+                textJob.setText(getResources().getString(R.string.PFSjob3));
+                break;
+            case "4":
+                textJob.setText(getResources().getString(R.string.PFSjob4));
+                break;
+            case "5":
+                textJob.setText(getResources().getString(R.string.PFSjob5));
                 break;
 
         }

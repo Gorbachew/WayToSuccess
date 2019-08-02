@@ -4,6 +4,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context=".Health"
+    android:largeHeap="true"
     android:background="@drawable/bghealth">
 
     <!-- TODO: Update blank fragment layout -->
@@ -24,12 +25,27 @@
                 android:background="@drawable/btngame"
                 android:text="@string/HFgrass" />
             <Button
+                android:id="@+id/btnHealthExpired"
+                android:layout_width="match_parent"
+                android:layout_height="70dp"
+                android:layout_weight="1"
+                android:background="@drawable/btngame"
+                android:text="@string/HFexpired" />
+            <Button
                 android:id="@+id/btnHealthRobPharmacy"
                 android:layout_width="match_parent"
                 android:layout_height="70dp"
                 android:layout_weight="1"
                 android:background="@drawable/btngame"
                 android:text="@string/HFrobPharmacy" />
+            <Button
+                android:id="@+id/btnHealthGomeopat"
+                android:layout_width="match_parent"
+                android:layout_height="70dp"
+                android:layout_weight="1"
+                android:background="@drawable/btngame"
+                android:text="@string/HFGomeopat" />
+
             <Button
                 android:id="@+id/btnHealthBuyPharmacy"
                 android:layout_width="match_parent"

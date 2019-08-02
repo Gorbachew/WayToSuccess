@@ -71,6 +71,7 @@
                 android:layout_height="wrap_content"
                 android:background="@drawable/btngame"
                 android:layout_weight="1"
+                android:largeHeap="true"
                 android:text="BLACK" />
         </RadioGroup>
         <TextView

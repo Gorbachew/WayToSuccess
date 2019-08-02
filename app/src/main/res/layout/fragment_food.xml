@@ -5,6 +5,7 @@
     android:layout_height="match_parent"
     android:background="@drawable/bgfood"
     android:orientation="vertical"
+    android:largeHeap="true"
     tools:context=".Food">
 
     <ScrollView
@@ -31,7 +32,13 @@
                 android:layout_weight="1"
                 android:background="@drawable/btngame"
                 android:text="@string/FFhunt" />
-
+            <Button
+                android:id="@+id/btnFoodKrekers"
+                android:layout_width="match_parent"
+                android:layout_height="70dp"
+                android:layout_weight="1"
+                android:background="@drawable/btngame"
+                android:text="@string/FFkrekers" />
             <Button
                 android:id="@+id/btnFoodRobKiosk"
                 android:layout_width="match_parent"

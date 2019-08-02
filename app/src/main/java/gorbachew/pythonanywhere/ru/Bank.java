@@ -4,6 +4,7 @@ import android.content.Context;
 import android.content.SharedPreferences;
 import android.net.Uri;
 import android.os.Bundle;
+import android.support.annotation.NonNull;
 import android.support.v4.app.Fragment;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -27,7 +28,7 @@ public class Bank extends Fragment {
     final String LOAD_RUB = "RUB";
     final String LOAD_USD = "USD";
     @Override
-    public View onCreateView(LayoutInflater inflater, ViewGroup container,
+    public View onCreateView(@NonNull LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
         View BankFr = inflater.inflate(R.layout.fragment_bank, container, false);
@@ -50,6 +51,7 @@ public class Bank extends Fragment {
 
 
                 int choise = Integer.parseInt(String.valueOf(spin.getSelectedItem()));
+
                 if(Integer.parseInt(sPref.getString(LOAD_USD,"")) < choise){
                     ((Game)getActivity()).LowMoney("usd");
                 }
@@ -70,7 +72,10 @@ public class Bank extends Fragment {
             @Override
             public void onClick(View view) {
                 int choise = Integer.parseInt(String.valueOf(spin.getSelectedItem()));
-                if(Integer.parseInt(sPref.getString(LOAD_RUB,"")) < choise){
+                int course = Integer.parseInt(sPref.getString(LOAD_CourseUSD,""));
+                int mult = choise * course;
+
+                if( mult >= Integer.parseInt(sPref.getString(LOAD_RUB,""))){
                     ((Game)getActivity()).LowMoney("rub");
                 }
                 else {

@@ -19,10 +19,9 @@
 
         <LinearLayout
             android:layout_width="match_parent"
-            android:layout_height="match_parent"
+            android:layout_height="wrap_content"
             android:orientation="vertical"
-            android:gravity="center_horizontal"
-            android:layout_weight="1">
+            android:gravity="center_horizontal">
             <Button
                 android:id="@+id/BtnStartGame"
                 style="@style/btnMenu"
@@ -49,7 +48,7 @@
                 android:id="@+id/BtnPrivacyPolicy"
                 style="@style/btnMenu"
                 android:background="@drawable/btnmenu"
-                android:text="Privacy Policy" />
+                android:text="@string/privacy_policy" />
             <Button
                 android:id="@+id/BtnMenuExit"
                 style="@style/btnMenu"
@@ -65,8 +64,6 @@
         android:layout_width="match_parent"
         android:layout_height="100dp"
         android:layout_weight="1"
-        android:layout_centerHorizontal="true"
-        android:layout_alignParentBottom="true"
         ads:adSize="BANNER"
         ads:adUnitId="@string/banner_ad_unit_id">
     </com.google.android.gms.ads.AdView>

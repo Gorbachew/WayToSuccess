@@ -11,6 +11,7 @@ import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
+import android.widget.Button;
 import android.widget.HorizontalScrollView;
 import android.widget.ImageButton;
 import android.widget.ImageView;
@@ -99,8 +100,6 @@ public class Game extends AppCompatActivity implements RewardedVideoAdListener {
 
     TextView totalrub,totalusd,totalresp,totalday,totaltexthp,totaltextmp,totaltextsp,namefragments,tvHours,textKgScrap,KgScrap,textCourseScrap,CourseScrap;
     ProgressBar ProgBarHP,ProgBarMP,ProgBarSP;
-    ImageButton BtnMood,BtnFood,BtnHealth;
-
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -119,9 +118,7 @@ public class Game extends AppCompatActivity implements RewardedVideoAdListener {
         ProgBarHP = findViewById(R.id.ProgressBarHP);
         ProgBarMP = findViewById(R.id.ProgressBarMP);
         ProgBarSP = findViewById(R.id.ProgressBarSP);
-        BtnMood = findViewById(R.id.btnMood);
-        BtnFood = findViewById(R.id.btnFood);
-        BtnHealth = findViewById(R.id.btnHealth);
+
         ivimgDay = findViewById(R.id.imgDay);
         tvHours = findViewById(R.id.TextHours);
         LayoutScrap = findViewById(R.id.LayoutScrap);
@@ -203,7 +200,7 @@ public class Game extends AppCompatActivity implements RewardedVideoAdListener {
                                     file.delete();
                                 }
                             })
-                    .setNegativeButton(getResources().getString(R.string.EndVideoReward),
+                    .setNeutralButton(getResources().getString(R.string.EndVideoReward),
                             new DialogInterface.OnClickListener() {
                                 @Override
                                 public void onClick(DialogInterface dialog, int which) {
@@ -215,28 +212,16 @@ public class Game extends AppCompatActivity implements RewardedVideoAdListener {
                                         ed.putInt("LoseSP",0);
                                         ed.putInt("LoseMoney",0);
                                         ed.commit();
-
                                     }
                                     else {
-                                        Intent intent = new Intent(Game.this,MainActivity.class);
-                                        startActivity(intent);
-                                        File file = new File("/data/data/gorbachew.pythonanywhere.ru/shared_prefs/Saved.xml");
-                                        file.delete();
+                                        Toast.makeText(Game.this, getResources().getString(R.string.EndNoVideo), Toast.LENGTH_LONG).show();
                                     }
-
                                 }
                             });
 
-
-
             AlertDialog alert = builder.create();
             alert.show();
-
-
-
-
         }
-
     }
     //Проверяет статистику на низкие показатели
     public void CheckStats(){
@@ -481,7 +466,7 @@ public class Game extends AppCompatActivity implements RewardedVideoAdListener {
         ed.putString(LOAD_CourseUSD,String.valueOf(course));
         ed.commit();
     }
-
+    //Все снятия\прибавления статистики через определенное кол-во времени
     public void CheckBuff(){
         String cook = sPref.getString(LOAD_BUFFCOOK,"");
         String dock = sPref.getString(LOAD_BUFFDOCK,"");
@@ -490,26 +475,26 @@ public class Game extends AppCompatActivity implements RewardedVideoAdListener {
         String rent = sPref.getString(SAVED_HOLDING,"");
         int day = Integer.parseInt(sPref.getString(LOAD_DAY,""));
         if(cook.equals("1")){
-            RandomStats("SP","+",10,50);
+            RandomStats("SP","+",30,70);
 
             if(day % 30 == 0){
                 transaction("rub","-",50000);
             }
         }
         if(dock.equals("1")){
-            RandomStats("HP","+",10,50);
+            RandomStats("HP","+",30,70);
             if(day % 30 == 0){
                 transaction("rub","-",70000);
             }
         }
         if(comic.equals("1")){
-            RandomStats("MP","+",10,50);
+            RandomStats("MP","+",30,70);
             if(day % 30 == 0){
                 transaction("rub","-",70000);
             }
         }
         if(mp.equals("1")){
-            RandomStats("RESP","+",0,100);
+            RandomStats("RESP","+",0,3000);
             if(day % 30 == 0){
                 transaction("usd","-",50000);
             }
@@ -517,12 +502,11 @@ public class Game extends AppCompatActivity implements RewardedVideoAdListener {
         if(rent.equals("3")){
             if(day % 30 == 0){
                 transaction("rub","-",25000);
+                Toast.makeText(this,getResources().getString(R.string.HoFRentPayDay),Toast.LENGTH_SHORT).show();
             }
         }
 
     }
-
-
 
     public void BCafe(){
 
@@ -576,11 +560,9 @@ public class Game extends AppCompatActivity implements RewardedVideoAdListener {
            }
 
            ed.commit();
-
        }
 
     }
-
 
     //Метод вычитания или прибавления рубля\доллара параметры Валюта, Знак, Значение
     public void transaction(String currency,String sign, int sum ){
@@ -605,9 +587,6 @@ public class Game extends AppCompatActivity implements RewardedVideoAdListener {
                         break;
                     case "-":
                         ed.putString(LOAD_USD,String.valueOf(usd - sum));
-
-
-
                         break;
                 }
                 break;
@@ -678,7 +657,6 @@ public class Game extends AppCompatActivity implements RewardedVideoAdListener {
         ed.commit();
     }
 
-
     //Метод случайного привабления или убавления статистики игрока
     //4 входящие переменные 1(HP,MP,SP)что изменяется 2 (Plus,Minus) прибавляем или вычитаем 3 100% прибавка или отнятие значения 4 Рандомная максимальная величина в добавок к основной
     public void RandomStats(String Stat, String Sign, int ExactChangeStat, int RandChangeStat){
@@ -739,9 +717,6 @@ public class Game extends AppCompatActivity implements RewardedVideoAdListener {
                 break;
         }
         ed.commit();
-
-
-
     }
     //Переход на следующие 6 часов
     public void NextDay(){
@@ -982,8 +957,8 @@ public class Game extends AppCompatActivity implements RewardedVideoAdListener {
 
     @Override
     public void onRewarded(RewardItem reward) {
-        Toast.makeText(this, "onRewarded! currency: " + reward.getType() + "  amount: " +
-                reward.getAmount(), Toast.LENGTH_SHORT).show();
+//        Toast.makeText(this, "onRewarded! currency: " + reward.getType() + "  amount: " +
+//                reward.getAmount(), Toast.LENGTH_SHORT).show();
         // Reward the user.
     }
 
@@ -1028,12 +1003,12 @@ public class Game extends AppCompatActivity implements RewardedVideoAdListener {
 
     @Override
     public void onRewardedVideoAdFailedToLoad(int errorCode) {
-//        Toast.makeText(this, "onRewardedVideoAdFailedToLoad", Toast.LENGTH_SHORT).show();
+//        Toast.makeText(this, getResources().getString(R.string.videoadmessageError), Toast.LENGTH_SHORT).show();
     }
 
     @Override
     public void onRewardedVideoAdLoaded() {
-//        Toast.makeText(this, "onRewardedVideoAdLoaded", Toast.LENGTH_SHORT).show();
+        Toast.makeText(this, getResources().getString(R.string.videoadmessageOk), Toast.LENGTH_SHORT).show();
     }
 
     @Override

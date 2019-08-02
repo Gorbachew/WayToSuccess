@@ -6,6 +6,7 @@
     android:layout_height="match_parent"
     android:orientation="vertical"
     tools:context=".Game"
+    android:largeHeap="true"
     android:background="@color/white">
 
     <LinearLayout
@@ -22,7 +23,9 @@
             android:text="@string/NFPass"
             android:layout_marginLeft="5dp"
             style="@style/textHeadline"
-            android:layout_weight="1"/>
+            android:layout_weight="1"
+            android:layout_marginStart="5dp"
+            tools:ignore="NestedWeights" />
 
         <FrameLayout
             android:layout_width="match_parent"
@@ -72,7 +75,7 @@
                 android:visibility="invisible">
 
                 <LinearLayout
-                    android:layout_width="match_parent"
+                    android:layout_width="wrap_content"
                     android:layout_height="match_parent"
                     android:orientation="horizontal">
                     <ImageButton
@@ -82,7 +85,8 @@
                         android:layout_weight="1"
                         android:onClick="ChangeFragments"
                         android:visibility="visible"
-                        app:srcCompat="@drawable/metalico" />
+                        app:srcCompat="@drawable/metalico"
+                        android:contentDescription="TODO" />
 
                     <ImageButton
                         android:id="@+id/topBtnCafe"
@@ -90,7 +94,8 @@
                         android:layout_height="match_parent"
                         android:layout_weight="1"
                         android:onClick="ChangeFragments"
-                        android:src="@drawable/cafeico" />
+                        android:src="@drawable/cafeico"
+                        android:contentDescription="TODO" />
                 </LinearLayout>
             </HorizontalScrollView>
         </FrameLayout>
@@ -176,7 +181,7 @@
                 android:layout_height="50dp"
                 android:layout_weight="1"
                 android:onClick="ChangeFragments"
-                app:srcCompat="@drawable/educationico" />
+                android:src="@drawable/educationico" />
 
             <ImageButton
                 android:id="@+id/btnProperty"
@@ -184,7 +189,7 @@
                 android:layout_height="50dp"
                 android:layout_weight="1"
                 android:onClick="ChangeFragments"
-                app:srcCompat="@drawable/propertyico" />
+                android:src="@drawable/propertyico" />
 
             <ImageButton
                 android:id="@+id/btnHolding"
@@ -192,7 +197,7 @@
                 android:layout_height="50dp"
                 android:layout_weight="1"
                 android:onClick="ChangeFragments"
-                app:srcCompat="@drawable/holdingico" />
+                android:src="@drawable/holdingico" />
 
             <ImageButton
                 android:id="@+id/btnRespect"
@@ -305,15 +310,21 @@
                     style="@android:style/Widget.ProgressBar.Horizontal"
                     android:layout_width="150dp"
                     android:layout_height="wrap_content"
-                    android:layout_weight="1"
                     android:progressDrawable="@drawable/progress_bar_hp"
                     android:progress="100">
                 </ProgressBar>
                 <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="left"
+                    android:layout_marginLeft="10dp"
+                    android:text="@string/NamePointHP" />
+                <TextView
                     android:id="@+id/TextProgressBarHP"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_gravity="center"
+                    android:layout_gravity="right"
+                    android:layout_marginRight="10dp"
                     android:text="error/error" />
             </FrameLayout>
             <FrameLayout
@@ -325,15 +336,22 @@
                     style="@android:style/Widget.ProgressBar.Horizontal"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:layout_weight="1"
                     android:progressDrawable="@drawable/progress_bar_mp"
                     android:progress="100" />
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="left"
+                    android:layout_marginLeft="10dp"
+                    android:text="@string/NamePointMP" />
                 <TextView
                     android:id="@+id/TextProgressBarMP"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_gravity="center"
+                    android:layout_gravity="right"
+                    android:layout_marginRight="10dp"
                     android:text="error/error" />
+
             </FrameLayout>
             <FrameLayout
                 android:layout_width="150dp"
@@ -344,14 +362,20 @@
                     style="@android:style/Widget.ProgressBar.Horizontal"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:layout_weight="1"
                     android:progressDrawable="@drawable/progress_bar_sp"
                     android:progress="100" />
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="left"
+                    android:layout_marginLeft="10dp"
+                    android:text="@string/NamePointSP" />
                 <TextView
                     android:id="@+id/TextProgressBarSP"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_gravity="center"
+                    android:layout_gravity="right"
+                    android:layout_marginRight="10dp"
                     android:text="error/error" />
             </FrameLayout>
         </LinearLayout>

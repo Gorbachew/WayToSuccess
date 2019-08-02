@@ -3,6 +3,7 @@ package gorbachew.pythonanywhere.ru;
 import android.content.Context;
 import android.net.Uri;
 import android.os.Bundle;
+import android.support.annotation.NonNull;
 import android.support.v4.app.Fragment;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -15,7 +16,7 @@ public class ChoiceHeroPast extends Fragment {
     // TODO: Rename parameter arguments, choose names that match
     Spinner intAge,intAge1,Poll1,Poll2,Poll3,Poll4,Poll5,Poll6,Poll7;
     @Override
-    public View onCreateView(LayoutInflater inflater, ViewGroup container,
+    public View onCreateView(@NonNull LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
       /*
        View v = inflater.inflate(R.layout.fragment_choice_hero_past, container,false);

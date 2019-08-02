@@ -5,6 +5,7 @@
     android:layout_height="match_parent"
     android:orientation="vertical"
     tools:context=".HeroPast"
+    android:largeHeap="true"
     android:background="@color/black">
 
     <TextView

@@ -4,6 +4,7 @@ import android.content.Context;
 import android.content.SharedPreferences;
 import android.net.Uri;
 import android.os.Bundle;
+import android.support.annotation.NonNull;
 import android.support.v4.app.Fragment;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -25,7 +26,7 @@ public class Respect extends Fragment {
     final String LOAD_USD = "USD";
 
     @Override
-    public View onCreateView(LayoutInflater inflater, ViewGroup container,
+    public View onCreateView(@NonNull LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
         View RespectFragment = inflater.inflate(R.layout.fragment_respect, container, false);
@@ -43,7 +44,7 @@ public class Respect extends Fragment {
         RFsing.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                ((Game)getActivity()).RandomStats("RESP","+",1,5);
+                ((Game)getActivity()).RandomStats("RESP","+",0,1);
                 ((Game)getActivity()).NextDay();
             }
         });
@@ -53,7 +54,7 @@ public class Respect extends Fragment {
 
                 int var = Integer.parseInt(sPref.getString(LOAD_PRCAMERA,""));
                 if(var >= 1){
-                    ((Game)getActivity()).RandomStats("RESP","+",3,5);
+                    ((Game)getActivity()).RandomStats("RESP","+",2,5);
 
                 }
                 else {
@@ -70,7 +71,7 @@ public class Respect extends Fragment {
                 } else {
                     int var = Integer.parseInt(sPref.getString(LOAD_PRPC, ""));
                     if (var >= 1) {
-                        ((Game) getActivity()).RandomStats("RESP", "+", 7, 5);
+                        ((Game) getActivity()).RandomStats("RESP", "+", 5, 5);
                         ((Game) getActivity()).transaction("rub", "-", 300);
 
                     } else {
@@ -88,7 +89,7 @@ public class Respect extends Fragment {
                 } else {
                     int var = Integer.parseInt(sPref.getString(SAVED_CLOTCHES, ""));
                     if (var >= 3) {
-                        ((Game) getActivity()).RandomStats("RESP", "+", 20, 5);
+                        ((Game) getActivity()).RandomStats("RESP", "+", 50, 5);
                         ((Game) getActivity()).transaction("rub", "-", 10000);
 
                     } else {
@@ -106,7 +107,7 @@ public class Respect extends Fragment {
                 } else {
                     int var = Integer.parseInt(sPref.getString(SAVED_CLOTCHES, ""));
                     if (var >= 4) {
-                        ((Game) getActivity()).RandomStats("RESP", "+", 30, 5);
+                        ((Game) getActivity()).RandomStats("RESP", "+", 200, 100);
                         ((Game) getActivity()).transaction("usd", "-", 3000);
                     } else {
                         Toast.makeText(getActivity(), getResources().getString(R.string.RFerror4), Toast.LENGTH_LONG).show();
@@ -125,7 +126,7 @@ public class Respect extends Fragment {
                     int rand = random.nextInt(10);
 
                     if (rand == 1) {
-                        ((Game) getActivity()).RandomStats("RESP", "+", 40, 5);
+                        ((Game) getActivity()).RandomStats("RESP", "+", 1000, 500);
                         Toast.makeText(getActivity(), getResources().getString(R.string.RFsuccess), Toast.LENGTH_LONG).show();
                         ((Game) getActivity()).transaction("rub", "-", 100000);
 
@@ -144,7 +145,7 @@ public class Respect extends Fragment {
                 } else {
                     int var = Integer.parseInt(sPref.getString(SAVED_TRANSPORT, ""));
                     if (var >= 3) {
-                        ((Game) getActivity()).RandomStats("RESP", "+", 100, 5);
+                        ((Game) getActivity()).RandomStats("RESP", "+", 50000, 20000);
                         ((Game) getActivity()).transaction("usd", "-", 50000);
                     } else {
                         Toast.makeText(getActivity(), getResources().getString(R.string.RFerror6), Toast.LENGTH_LONG).show();
@@ -161,7 +162,7 @@ public class Respect extends Fragment {
                 } else {
                     int var = Integer.parseInt(sPref.getString(SAVED_TRANSPORT, ""));
                     if (var >= 4) {
-                        ((Game) getActivity()).RandomStats("RESP", "+", 500, 5);
+                        ((Game) getActivity()).RandomStats("RESP", "+", 50000, 20000);
                         ((Game) getActivity()).transaction("usd", "-", 50000);
                     } else {
                         Toast.makeText(getActivity(), getResources().getString(R.string.RFerror7), Toast.LENGTH_LONG).show();

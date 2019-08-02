@@ -6,6 +6,7 @@
     android:layout_height="match_parent"
     android:gravity="bottom"
     android:background="@drawable/authors"
+    android:largeHeap="true"
     android:orientation="vertical"
     tools:context=".AuthorsActivity">
 
