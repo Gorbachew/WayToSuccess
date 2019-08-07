@@ -3,10 +3,10 @@ package gorbachew.pythonanywhere.ru;
 
         import android.content.Intent;
         import android.content.SharedPreferences;
-        import android.graphics.Color;
-        import android.support.v4.app.Fragment;
-        import android.support.v4.app.FragmentTransaction;
-        import android.support.v7.app.AppCompatActivity;
+
+        import androidx.fragment.app.Fragment;
+        import androidx.fragment.app.FragmentTransaction;
+        import androidx.appcompat.app.AppCompatActivity;
         import android.os.Bundle;
 
         import android.view.View;
@@ -15,8 +15,6 @@ package gorbachew.pythonanywhere.ru;
         import android.widget.Button;
         import android.widget.EditText;
         import android.widget.Spinner;
-
-        import android.widget.Toast;
 
 public class Start extends AppCompatActivity{
 
@@ -37,9 +35,9 @@ public class Start extends AppCompatActivity{
     final String SAVED_POLL5 = "AftSchool";
     final String SAVED_POLL6 = "Purpose";
     final String SAVED_POLL7 = "Why";
-    final String SAVED_HP = "TotalHP";
-    final String SAVED_MP = "TotalMP";
-    final String SAVED_SP = "TotalSP";
+    final String SAVED_MAXHP = "TotalHP";
+    final String SAVED_MAXMP = "TotalMP";
+    final String SAVED_MAXSP = "TotalSP";
     final String SAVED_RUB = "RUB";
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -235,20 +233,20 @@ public class Start extends AppCompatActivity{
         ed.putString(SAVED_POLL4,idPoll4 );
         ed.putString(SAVED_POLL5,idPoll5 );
         ed.putString(SAVED_POLL7,idPoll7 );
-        ed.putString(SAVED_HP,String.valueOf(TotalHP));
-        ed.putString(SAVED_MP,String.valueOf(TotalMP));
-        ed.putString(SAVED_SP,String.valueOf(TotalSP));
-        ed.putString(SAVED_RUB,String.valueOf(RUB));
-        ed.putString("USD","0");
-        ed.putString("CourseUSD","20");
-        ed.putString("RESPECT","0");
-        ed.putString("DAY","1");
-        ed.putString("HP","100");
-        ed.putString("SP","100");
-        ed.putString("MP","100");
-        ed.putString("SCRAP","0");
-        ed.putString("MAXSCRAP","30");
-        ed.putString("CourseScrap","10");
+        ed.putInt(SAVED_MAXHP,TotalHP);
+        ed.putInt(SAVED_MAXMP,TotalMP);
+        ed.putInt(SAVED_MAXSP,TotalSP);
+        ed.putInt(SAVED_RUB,RUB);
+        ed.putInt("USD",0);
+        ed.putInt("CourseUSD",20);
+        ed.putInt("RESPECT",0);
+        ed.putInt("DAY",0);
+        ed.putInt("HP",100);
+        ed.putInt("SP",100);
+        ed.putInt("MP",100);
+        ed.putInt("SCRAP",0);
+        ed.putInt("MAXSCRAP",30);
+        ed.putInt("CourseScrap",10);
         ed.putString("BusinessMetalPoint","0");
         ed.putString("BMFullStock","0");
         ed.putString("BMMaxStock","100");
@@ -260,15 +258,15 @@ public class Start extends AppCompatActivity{
         ed.putString("Clothes","0");
         ed.putString("Education","0");
         ed.putString("EducationSchool","0");
-        ed.putString("EducationSchoolHour","360");
+        ed.putInt("EducationSchoolHour",360);
         ed.putString("EducationCollage","0");
-        ed.putString("EducationCollageHour","720");
+        ed.putInt("EducationCollageHour",1000);
         ed.putString("EducationCourses","0");
-        ed.putString("EducationCoursesHour","360");
+        ed.putInt("EducationCoursesHour",720);
         ed.putString("EducationUniversity","0");
-        ed.putString("EducationUniversityHour","1440");
+        ed.putInt("EducationUniversityHour",1440);
         ed.putString("EducationOverseasUniversity","0");
-        ed.putString("EducationOverseasUniversityHour","1200");
+        ed.putInt("EducationOverseasUniversityHour",1200);
         ed.putString("Transport","0");
         ed.putString("Holding","0");
         ed.putString("Job","0");
@@ -286,7 +284,7 @@ public class Start extends AppCompatActivity{
         ed.putString("BCprofit","0");
         ed.putString("BCPriceRoom","20000");
         ed.putString("BCPriceWaiter","5000");
-        ed.putString("BCPriceCook","3000");
+        ed.putString("BCPriceCook","1000");
         ed.putString("BCPriceBusiness","0");
         ed.putString("BuffCook","0");
         ed.putString("BuffComic","0");
@@ -305,6 +303,8 @@ public class Start extends AppCompatActivity{
         ed.putInt("LoseMP",0);
         ed.putInt("LoseSP",0);
         ed.putInt("First.javaney",0);
+        ed.putInt("TestMode",0);
+        ed.putString("UserId","0");
         ed.commit();
 //        Toast.makeText(Start.this, "Text saved", Toast.LENGTH_SHORT).show();
     }

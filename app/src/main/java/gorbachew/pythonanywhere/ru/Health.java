@@ -3,11 +3,10 @@ package gorbachew.pythonanywhere.ru;
 import android.content.Context;
 import android.content.DialogInterface;
 import android.content.SharedPreferences;
-import android.net.Uri;
 import android.os.Bundle;
-import android.support.annotation.NonNull;
-import android.support.v4.app.Fragment;
-import android.support.v7.app.AlertDialog;
+import androidx.annotation.NonNull;
+import androidx.fragment.app.Fragment;
+import androidx.appcompat.app.AlertDialog;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -78,12 +77,13 @@ public class Health extends Fragment {
         btnHealthExpired.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                if (Integer.parseInt(sPref.getString(LOAD_RUB, "")) < 50) {
+                if (sPref.getInt(LOAD_RUB, 0) < 50) {
                     ((Game) getActivity()).LowMoney("rub");
                 }
                 else {
                     ((Game)getActivity()).transaction("rub","-",50);
-                    ((Game)getActivity()).RandomStats("HP","+",0,20);
+                    ((Game)getActivity()).RandomStats("HP","+",15,20);
+                    ((Game)getActivity()).NextDay();
                 }
             }
         });
@@ -158,7 +158,7 @@ public class Health extends Fragment {
         btnHealthGomeopat.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                if (Integer.parseInt(sPref.getString(LOAD_RUB, "")) < 500) {
+                if (sPref.getInt(LOAD_RUB, 0) < 500) {
                     ((Game) getActivity()).LowMoney("rub");
                 }
                 else {
@@ -177,7 +177,7 @@ public class Health extends Fragment {
         btnHealthBuyPharmacy.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                if (Integer.parseInt(sPref.getString(LOAD_RUB, "")) < 1000) {
+                if (sPref.getInt(LOAD_RUB, 0) < 1000) {
                     ((Game) getActivity()).LowMoney("rub");
                 }
                 else {
@@ -198,7 +198,7 @@ public class Health extends Fragment {
         btnHealthDistrictHospital.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                if (Integer.parseInt(sPref.getString(LOAD_RUB, "")) < 300) {
+                if (sPref.getInt(LOAD_RUB, 0) < 300) {
                     ((Game) getActivity()).LowMoney("rub");
                 }
                 else {
@@ -222,7 +222,7 @@ public class Health extends Fragment {
         btnHealthPrivateHospital.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                if (Integer.parseInt(sPref.getString(LOAD_USD, "")) < 1000) {
+                if (sPref.getInt(LOAD_USD, 0) < 1000) {
                     ((Game) getActivity()).LowMoney("usd");
                 }
                 else {
@@ -245,7 +245,7 @@ public class Health extends Fragment {
         btnHealthPersonalDoctor.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                if (Integer.parseInt(sPref.getString(LOAD_RUB, "")) < 70000) {
+                if (sPref.getInt(LOAD_RUB, 0) < 70000) {
                     ((Game) getActivity()).LowMoney("rub");
                 }
                 else {

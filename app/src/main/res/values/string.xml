@@ -150,6 +150,7 @@
     <string name="HappyBirthdayTitle">С днем рождения!</string>
     <string name="HappyBirthdayText">Ваши друзья поздравляют вас с праздником и дарят вам:%d рублей и %d долларов! За ваше застолье вы заслужили %d уважения!</string>
     <string name="HappyBirthdaybtn1">Ура!</string>
+    <string name="LowMoney">У вас нехватает денег</string>
     <!--Названия фрагментов-->
     <string name="NFPass">Паспорт</string>
     <string name="NFFood">Еда</string>
@@ -165,6 +166,7 @@
     <string name="NFBank">Банк</string>
     <string name="NFAchivment">Достижения</string>
     <string name="NFCasino">Казино</string>
+    <string name="NFGorbes">Gorbes</string>
 
     <!--Паспорт-->
     <string name="PFName">Имя:</string>
@@ -221,7 +223,7 @@
     <string name="PFSrankJob0">Отсутсвует</string>
 
     <string name="PFSbusiness0">Нет</string>
-    <string name="PFSbusiness1">Пункт приема металла</string>
+    <string name="PFSbusiness1">Пункт металла</string>
     <string name="PFSbusiness2">Кафе</string>
 
     <string name="PFSwife0">Хочется</string>
@@ -516,7 +518,7 @@
     <string name="CFyouLose">Вы проиграли</string>
     <string name="CFdollar">Долларов</string>
     <string name="CFerror">Посмотрев на вас и ваше состояние охранники указали на выход. Вам нужно иметь костюм</string>
-    <string name="CFRate">Ставка</string>
+    <string name="CFRate">Ставка $</string>
 
     <!--Проигрыш-->
     <string name="LoseTitle">Вы на грани смерти</string>
@@ -541,6 +543,16 @@
 
     <string name="yes">Да</string>
     <string name="no">Нет</string>
-
+    <!--Gorbes-->
+    <string name="GFname">Имя</string>
+    <string name="GFage">Возр</string>
+    <string name="GFusd">$</string>
+    <string name="GFresp">Уважение</string>
+    <string name="GFbtnJoin">Зарегистрироваться|1000$</string>
+    <string name="GFsendStats">Ваши данные были отправлены в список Gorbes</string>
+    <string name="GFsendError">Ваши данные не зарегистрированны в списке Gorbes</string>
+    <string name="GFplace">Вы на %d месте</string>
+    <string name="GFplaceReload">Обновите список</string>
+    <string name="GFnickError">Участник с данным именем уже зарегистрирован, поменяйте имя чтобы присудствовать в Gorbes</string>
 
 </resources>

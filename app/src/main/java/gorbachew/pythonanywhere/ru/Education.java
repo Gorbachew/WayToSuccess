@@ -2,10 +2,9 @@ package gorbachew.pythonanywhere.ru;
 
 import android.content.Context;
 import android.content.SharedPreferences;
-import android.net.Uri;
 import android.os.Bundle;
-import android.support.annotation.NonNull;
-import android.support.v4.app.Fragment;
+import androidx.annotation.NonNull;
+import androidx.fragment.app.Fragment;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -56,7 +55,7 @@ public class Education extends Fragment {
             public void onClick(View v) {
                 String checkEduc = sPref.getString(LOAD_SCHOOL,"");
                 if(checkEduc.equals("0")) {
-                    if (Integer.parseInt(sPref.getString(LOAD_RUB, "")) < 10000) {
+                    if (sPref.getInt(LOAD_RUB, 0) < 10000) {
                         ((Game) getActivity()).LowMoney("rub");
                     }
                     else {
@@ -67,11 +66,11 @@ public class Education extends Fragment {
                     }
                 }
                 else {
-                    int hour = Integer.parseInt(sPref.getString(LOAD_SCHOOLHOUR,""));
+                    int hour = sPref.getInt(LOAD_SCHOOLHOUR,0);
                     hour -= 6;
 
                     SharedPreferences.Editor ed = sPref.edit();
-                    ed.putString(LOAD_SCHOOLHOUR, String.valueOf(hour));
+                    ed.putInt(LOAD_SCHOOLHOUR, hour);
                     ed.commit();
                 }
                 CheckButton();
@@ -89,7 +88,7 @@ public class Education extends Fragment {
                 }
                 else {
                     if(checkEduc.equals("0")) {
-                        if (Integer.parseInt(sPref.getString(LOAD_RUB, "")) < 50000) {
+                        if (sPref.getInt(LOAD_RUB, 0) < 50000) {
                             ((Game) getActivity()).LowMoney("rub");
                         }
                         else {
@@ -100,11 +99,11 @@ public class Education extends Fragment {
                         }
                     }
                     else {
-                        int hour = Integer.parseInt(sPref.getString(LOAD_COLLEGEHOUR,""));
+                        int hour = sPref.getInt(LOAD_COLLEGEHOUR,0);
                         hour -= 6;
 
                         SharedPreferences.Editor ed = sPref.edit();
-                        ed.putString(LOAD_COLLEGEHOUR, String.valueOf(hour));
+                        ed.putInt(LOAD_COLLEGEHOUR, hour);
                         ed.commit();
                     }
                     CheckButton();
@@ -123,7 +122,7 @@ public class Education extends Fragment {
                 }
                 else {
                     if (checkEduc.equals("0")) {
-                        if (Integer.parseInt(sPref.getString(LOAD_USD, "")) < 10000) {
+                        if (sPref.getInt(LOAD_USD, 0) < 10000) {
                             ((Game) getActivity()).LowMoney("usd");
                         }
                         else {
@@ -133,11 +132,11 @@ public class Education extends Fragment {
                             ((Game) getActivity()).transaction("usd", "-", 10000);
                         }
                     } else {
-                        int hour = Integer.parseInt(sPref.getString(LOAD_COURSESHOUR, ""));
+                        int hour = sPref.getInt(LOAD_COURSESHOUR, 0);
                         hour -= 6;
 
                         SharedPreferences.Editor ed = sPref.edit();
-                        ed.putString(LOAD_COURSESHOUR, String.valueOf(hour));
+                        ed.putInt(LOAD_COURSESHOUR, hour);
                         ed.commit();
                     }
                     CheckButton();
@@ -155,7 +154,7 @@ public class Education extends Fragment {
                 }
                 else {
                     if (checkEduc.equals("0")) {
-                        if (Integer.parseInt(sPref.getString(LOAD_RUB, "")) < 400000) {
+                        if (sPref.getInt(LOAD_RUB, 0) < 400000) {
                             ((Game) getActivity()).LowMoney("rub");
                         }
                         else {
@@ -165,11 +164,11 @@ public class Education extends Fragment {
                             ((Game) getActivity()).transaction("rub", "-", 400000);
                         }
                     } else {
-                        int hour = Integer.parseInt(sPref.getString(LOAD_UNIVERSITYHOUR, ""));
+                        int hour = sPref.getInt(LOAD_UNIVERSITYHOUR, 0);
                         hour -= 6;
 
                         SharedPreferences.Editor ed = sPref.edit();
-                        ed.putString(LOAD_UNIVERSITYHOUR, String.valueOf(hour));
+                        ed.putInt(LOAD_UNIVERSITYHOUR, hour);
                         ed.commit();
                     }
                     CheckButton();
@@ -187,7 +186,7 @@ public class Education extends Fragment {
                 }
                 else {
                     if (checkEduc.equals("0")) {
-                        if (Integer.parseInt(sPref.getString(LOAD_USD, "")) < 100000) {
+                        if (sPref.getInt(LOAD_USD, 0) < 100000) {
                             ((Game) getActivity()).LowMoney("usd");
                         }
                         else {
@@ -197,11 +196,11 @@ public class Education extends Fragment {
                             ((Game) getActivity()).transaction("usd", "-", 100000);
                         }
                     } else {
-                        int hour = Integer.parseInt(sPref.getString(LOAD_OVERSEASUNIVERSITYHOUR, ""));
+                        int hour = sPref.getInt(LOAD_OVERSEASUNIVERSITYHOUR, 0);
                         hour -= 6;
 
                         SharedPreferences.Editor ed = sPref.edit();
-                        ed.putString(LOAD_OVERSEASUNIVERSITYHOUR, String.valueOf(hour));
+                        ed.putInt(LOAD_OVERSEASUNIVERSITYHOUR, hour);
                         ed.commit();
 
                     }
@@ -226,8 +225,9 @@ public class Education extends Fragment {
             btnEducationSchool.setText(getResources().getString(R.string.EFSchool) + "|360 часов|10000р" );
         }
         else {
-            String hour = sPref.getString(LOAD_SCHOOLHOUR,"");
-            if(hour.equals("0")){
+
+            int hour = sPref.getInt(LOAD_SCHOOLHOUR, 0);
+            if(hour <= 0){
                 btnEducationSchool.setEnabled(false);
                 btnEducationSchool.setText(getResources().getString(R.string.EFSchoolEnd));
                 SharedPreferences.Editor ed = sPref.edit();
@@ -239,17 +239,18 @@ public class Education extends Fragment {
                 btnEducationSchool.setText(getResources().getString(R.string.EFSchool) +"|" + hour);
             }
         }
+
         if(college.equals("0")){
-            btnEducationCollege.setText(getResources().getString(R.string.EFCollege) + "|720 часов|50000р" );
+            btnEducationCollege.setText(getResources().getString(R.string.EFCollege) + "|1000 часов|50000р" );
         }
         else {
-            String hour = sPref.getString(LOAD_COLLEGEHOUR,"");
-
-            if(hour.equals("0")){
+            int hour = sPref.getInt(LOAD_COLLEGEHOUR, 0);
+            if(hour <= 0){
                 btnEducationCollege.setEnabled(false);
                 btnEducationCollege.setText(getResources().getString(R.string.EFCollegeEnd));
                 SharedPreferences.Editor ed = sPref.edit();
                 ed.putString(SAVED_EDUCATION, "2");
+                ed.putString(LOAD_COLLEGE, "2");
                 ed.commit();
             }
             else {
@@ -257,15 +258,17 @@ public class Education extends Fragment {
             }
         }
         if(courses.equals("0")){
-            btnEducationCourses.setText(getResources().getString(R.string.EFCourses) + "|360 часов|10000$" );
+            btnEducationCourses.setText(getResources().getString(R.string.EFCourses) + "|720 часов|10000$" );
         }
         else {
-            String hour = sPref.getString(LOAD_COURSESHOUR,"");
-            if(hour.equals("0")){
+
+            int hour = sPref.getInt(LOAD_COURSESHOUR, 0);
+            if(hour <= 0){
                 btnEducationCourses.setEnabled(false);
                 btnEducationCourses.setText(getResources().getString(R.string.EFCoursesEnd));
                 SharedPreferences.Editor ed = sPref.edit();
                 ed.putString(SAVED_EDUCATION, "3");
+                ed.putString(LOAD_COURSES, "2");
                 ed.commit();
             }
             else {
@@ -277,12 +280,13 @@ public class Education extends Fragment {
             btnEducationUniversity.setText(getResources().getString(R.string.EFUniversity) + "|1440 часов|400000р" );
         }
         else {
-            String hour = sPref.getString(LOAD_UNIVERSITYHOUR,"");
-            if(hour.equals("0")){
+            int hour = sPref.getInt(LOAD_UNIVERSITYHOUR, 0);
+            if(hour <= 0){
                 btnEducationUniversity.setEnabled(false);
                 btnEducationUniversity.setText(getResources().getString(R.string.EFUniversityEnd));
                 SharedPreferences.Editor ed = sPref.edit();
                 ed.putString(SAVED_EDUCATION, "4");
+                ed.putString(LOAD_UNIVERSITY, "2");
                 ed.commit();
             }
             else {
@@ -295,12 +299,13 @@ public class Education extends Fragment {
             btnEducationOverseasUniversity.setText(getResources().getString(R.string.EFOverseasUniversity) + "|1200 часов|100000$" );
         }
         else {
-            String hour = sPref.getString(LOAD_OVERSEASUNIVERSITYHOUR,"");
-            if(hour.equals("0")){
+            int hour = sPref.getInt(LOAD_OVERSEASUNIVERSITYHOUR, 0);
+            if(hour <= 0){
                 btnEducationOverseasUniversity.setEnabled(false);
                 btnEducationOverseasUniversity.setText(getResources().getString(R.string.EFOverseasUniversityEnd));
                 SharedPreferences.Editor ed = sPref.edit();
                 ed.putString(SAVED_EDUCATION, "5");
+                ed.putString(LOAD_OVERSEASUNIVERSITY, "2");
                 ed.commit();
             }
             else {

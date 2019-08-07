@@ -5,6 +5,7 @@
     android:layout_height="match_parent"
     android:orientation="vertical"
     android:visibility="visible"
+
     android:background="@drawable/bgbusines"
     android:largeHeap="true"
     tools:context=".BusinessMetal">
@@ -12,168 +13,150 @@
     <!-- TODO: Update blank fragment layout -->
 
 
-    <LinearLayout
+    <ScrollView
+        android:id="@+id/Scroll"
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:orientation="vertical"
-        android:visibility="visible"
-        android:id="@+id/BMBis">
+        android:layout_height="match_parent">
 
         <LinearLayout
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:orientation="horizontal">
-
+            android:layout_height="match_parent"
+            android:orientation="vertical"
+            android:visibility="visible"
+            android:id="@+id/BMBis">
             <LinearLayout
-                android:layout_width="wrap_content"
-                android:layout_height="match_parent"
-                android:layout_weight="1"
-                android:gravity="center">
-                >
-                <TextView
-                    android:id="@+id/BMFStock"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal">
+
+                <LinearLayout
+                    style="@style/labelGame"
                     android:layout_width="wrap_content"
                     android:layout_height="match_parent"
-                    android:text="TextView"
-                    style="@style/labelGame"
-                    android:gravity="center"/>
+                    android:layout_weight="1"
+                    android:gravity="center">
+                    >
+                    <TextView
+                        android:id="@+id/BMFStock"
+                        android:layout_width="wrap_content"
+                        android:layout_height="match_parent"
+                        android:gravity="center"
+                        android:text="TextView" />
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="match_parent"
+                        android:gravity="center"
+                        android:text="/" />
+
+                    <TextView
+                        android:id="@+id/BMMStock"
+                        android:layout_width="wrap_content"
+                        android:layout_height="match_parent"
+                        android:gravity="center"
+                        android:text="TextView" />
+                </LinearLayout>
+
+
+                <Button
+                    android:id="@+id/btnBMUpStock"
+                    android:layout_width="200dp"
+                    android:layout_height="wrap_content"
+                    android:background="@drawable/btngame"
+                    android:text="@string/BmFUPStock" />
+            </LinearLayout>
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal">
                 <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="match_parent"
-                    android:text="/"
+                    android:id="@+id/BMAdvertising"
                     style="@style/labelGame"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
                     android:gravity="center"
-                    />
+                    android:text="TextView" />
+
+                <Button
+                    android:id="@+id/btnBMUpAdvertising"
+                    android:layout_width="200dp"
+                    android:layout_height="wrap_content"
+                    android:background="@drawable/btngame"
+                    android:text="@string/BmFUPAdvertising" />
+            </LinearLayout>
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal">
                 <TextView
-                    android:id="@+id/BMMStock"
-                    android:layout_width="wrap_content"
-                    android:layout_height="match_parent"
-                    android:text="TextView"
+                    android:id="@+id/BMWorker"
                     style="@style/labelGame"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
                     android:gravity="center"
-                    />
+                    android:text="TextView" />
+                <Button
+                    android:id="@+id/BMNewWorker"
+                    android:layout_width="200dp"
+                    android:layout_height="wrap_content"
+                    android:background="@drawable/btngame"
+                    android:text="@string/BmFNewWorker" />
+            </LinearLayout>
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal">
+                <TextView
+                    android:id="@+id/BMPriceFactory"
+                    style="@style/labelGame"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:gravity="center"
+                    android:text="TextView" />
+
+                <Button
+                    android:id="@+id/btnBMSellFactory"
+                    android:layout_width="200dp"
+                    android:layout_height="wrap_content"
+                    android:background="@drawable/btngame"
+                    android:text="@string/BmFSellMetal" />
             </LinearLayout>
 
-
-            <Button
-                android:id="@+id/btnBMUpStock"
-                android:layout_width="200dp"
-                android:layout_height="wrap_content"
-                android:background="@drawable/btngame"
-                android:text="@string/BmFUPStock" />
         </LinearLayout>
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:orientation="horizontal"
-            >
+    </ScrollView>
 
-            <TextView
-                android:id="@+id/BMAdvertising"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_weight="1"
-                android:text="TextView"
-                style="@style/labelGame"
-                android:gravity="center"/>
-
-            <Button
-                android:id="@+id/btnBMUpAdvertising"
-                android:layout_width="200dp"
-                android:layout_height="wrap_content"
-                android:background="@drawable/btngame"
-                android:text="@string/BmFUPAdvertising" />
-        </LinearLayout>
-
-
-
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:orientation="horizontal">
-
-            <TextView
-                android:id="@+id/BMWorker"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_weight="1"
-                android:text="TextView"
-                style="@style/labelGame"
-                android:gravity="center"/>
-
-            <Button
-                android:id="@+id/BMNewWorker"
-                android:layout_width="200dp"
-                android:layout_height="wrap_content"
-                android:background="@drawable/btngame"
-                android:text="@string/BmFNewWorker" />
-        </LinearLayout>
-
-
-
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:orientation="horizontal">
-
-            <TextView
-                android:id="@+id/BMPriceFactory"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_weight="1"
-                android:text="TextView"
-                style="@style/labelGame"
-                android:gravity="center"/>
-
-            <Button
-                android:id="@+id/btnBMSellFactory"
-                android:layout_width="200dp"
-                android:layout_height="wrap_content"
-                android:background="@drawable/btngame"
-                android:text="@string/BmFSellMetal" />
-        </LinearLayout>
-
-
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_weight="1"
-            android:gravity="bottom"
-            android:orientation="horizontal">
-
-            <Button
-                android:id="@+id/btnBMSellBusiness"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_weight="1"
-                android:background="@drawable/btngame"
-                android:text="@string/BmFSellBusiness" />
-
-            <Button
-                android:id="@+id/btnBMWork"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_weight="1"
-                android:background="@drawable/btngame"
-                android:text="@string/BmFWork" />
-        </LinearLayout>
-
-    </LinearLayout>
+    <Button
+        android:id="@+id/btnBMBuyMetalPoint"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:background="@drawable/btngame"
+        android:text="@string/BmFBuyMetal" />
 
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:orientation="vertical"
-        android:layout_gravity="center"
-        android:id="@+id/BMBuyBis"
+        android:layout_gravity="bottom"
+        android:orientation="horizontal"
         >
-
         <Button
-            android:id="@+id/btnBMBuyMetalPoint"
-            android:layout_width="match_parent"
+            android:id="@+id/btnBMSellBusiness"
+            android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:layout_weight="1"
             android:background="@drawable/btngame"
-            android:text="@string/BmFBuyMetal" />
+            android:text="@string/BmFSellBusiness" />
+        <Button
+            android:id="@+id/btnBMWork"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:background="@drawable/btngame"
+            android:text="@string/BmFWork" />
     </LinearLayout>
+
 
 </FrameLayout>

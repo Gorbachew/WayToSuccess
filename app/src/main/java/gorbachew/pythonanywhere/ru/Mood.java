@@ -2,10 +2,9 @@ package gorbachew.pythonanywhere.ru;
 
 import android.content.Context;
 import android.content.SharedPreferences;
-import android.net.Uri;
 import android.os.Bundle;
-import android.support.annotation.NonNull;
-import android.support.v4.app.Fragment;
+import androidx.annotation.NonNull;
+import androidx.fragment.app.Fragment;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -67,7 +66,7 @@ public class Mood extends Fragment {
         btnMoodDrinkBeer.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                if (Integer.parseInt(sPref.getString(LOAD_RUB, "")) < 50) {
+                if (sPref.getInt(LOAD_RUB, 0) < 50) {
                     ((Game) getActivity()).LowMoney("rub");
                 }
                 else {
@@ -91,7 +90,7 @@ public class Mood extends Fragment {
         btnMoodDrinkVodka.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                if (Integer.parseInt(sPref.getString(LOAD_RUB, "")) < 200) {
+                if (sPref.getInt(LOAD_RUB, 0) < 200) {
                     ((Game) getActivity()).LowMoney("rub");
                 }
                 else {
@@ -116,7 +115,7 @@ public class Mood extends Fragment {
         btnMoodGoCinema.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                if (Integer.parseInt(sPref.getString(LOAD_RUB, "")) < 500) {
+                if (sPref.getInt(LOAD_RUB, 0) < 500) {
                     ((Game) getActivity()).LowMoney("rub");
                 } else {
                     int var = Integer.parseInt(sPref.getString(SAVED_CLOTCHES, ""));
@@ -141,7 +140,7 @@ public class Mood extends Fragment {
         btnMoodWatchTV.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                if (Integer.parseInt(sPref.getString(LOAD_RUB, "")) < 100) {
+                if (sPref.getInt(LOAD_RUB, 0) < 100) {
                     ((Game) getActivity()).LowMoney("rub");
                 }
                 else {
@@ -161,7 +160,7 @@ public class Mood extends Fragment {
         btnMoodPlayPC.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                if (Integer.parseInt(sPref.getString(LOAD_RUB, "")) < 300) {
+                if (sPref.getInt(LOAD_RUB, 0) < 300) {
                     ((Game) getActivity()).LowMoney("rub");
                 } else {
                     int var = Integer.parseInt(sPref.getString(LOAD_PRPC, ""));
@@ -179,7 +178,7 @@ public class Mood extends Fragment {
         btnMoodgoConcert.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                if (Integer.parseInt(sPref.getString(LOAD_RUB, "")) < 7000) {
+                if (sPref.getInt(LOAD_RUB, 0) < 7000) {
                     ((Game) getActivity()).LowMoney("rub");
                 }
                 else {
@@ -192,7 +191,7 @@ public class Mood extends Fragment {
         btnMoodOrderComedian.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                if (Integer.parseInt(sPref.getString(LOAD_RUB, "")) < 15000) {
+                if (sPref.getInt(LOAD_RUB, 0) < 15000) {
                     ((Game) getActivity()).LowMoney("rub");
                 } else {
                     int var = Integer.parseInt(sPref.getString(SAVED_CLOTCHES, ""));
@@ -209,7 +208,7 @@ public class Mood extends Fragment {
         btnMoodPersonalComedian.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                if (Integer.parseInt(sPref.getString(LOAD_RUB, "")) < 50000) {
+                if (sPref.getInt(LOAD_RUB, 0) < 50000) {
                     ((Game) getActivity()).LowMoney("rub");
                 } else {
                     int var = Integer.parseInt(sPref.getString(SAVED_HOLDING, ""));

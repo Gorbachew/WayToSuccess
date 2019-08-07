@@ -3,11 +3,10 @@ package gorbachew.pythonanywhere.ru;
 import android.content.Context;
 import android.content.DialogInterface;
 import android.content.SharedPreferences;
-import android.net.Uri;
 import android.os.Bundle;
-import android.support.annotation.NonNull;
-import android.support.v4.app.Fragment;
-import android.support.v7.app.AlertDialog;
+import androidx.annotation.NonNull;
+import androidx.fragment.app.Fragment;
+import androidx.appcompat.app.AlertDialog;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -85,7 +84,7 @@ public class BusinessCafe extends Fragment {
 
                 String check = sPref.getString(SAVED_BUSINESS,"");
                 if (check.equals("0")){
-                    if (Integer.parseInt(sPref.getString(LOAD_USD, "")) < 50000) {
+                    if (sPref.getInt(LOAD_USD, 0) < 50000) {
                         ((Game) getActivity()).LowMoney("usd");
                     }
                     else {
@@ -94,8 +93,8 @@ public class BusinessCafe extends Fragment {
                         ed.putString(SAVED_BUSINESS, "2");
                         ed.commit();
                         btnBСBuyCafe.setVisibility(View.INVISIBLE);
+                        btnBCSellBusiness.setVisibility(View.VISIBLE);
                         BCBis.setVisibility(View.VISIBLE);
-
                         ((Game) getActivity()).transaction("usd", "-", 50000);
 
                         ((Game) getActivity()).NextDay();
@@ -118,7 +117,7 @@ public class BusinessCafe extends Fragment {
                 if (testing < vartest) {
                     int var = Integer.parseInt(sPref.getString(LOAD_BCW, ""));
                     int priceVar = Integer.parseInt(sPref.getString(LOAD_BCPW, ""));
-                    if (Integer.parseInt(sPref.getString(LOAD_RUB, "")) < priceVar) {
+                    if (sPref.getInt(LOAD_RUB, 0) < priceVar) {
                         ((Game) getActivity()).LowMoney("rub");
                     }
                     else {
@@ -151,7 +150,7 @@ public class BusinessCafe extends Fragment {
                 if (testing < vartest) {
                     int var = Integer.parseInt(sPref.getString(LOAD_BCC, ""));
                     int priceVar = Integer.parseInt(sPref.getString(LOAD_BCPC, ""));
-                    if (Integer.parseInt(sPref.getString(LOAD_RUB, "")) < priceVar) {
+                    if (sPref.getInt(LOAD_RUB, 0) < priceVar) {
                         ((Game) getActivity()).LowMoney("rub");
                     }
                     else {
@@ -180,7 +179,7 @@ public class BusinessCafe extends Fragment {
             public void onClick(View v) {
                 int var = Integer.parseInt(sPref.getString(LOAD_BCR,""));
                 int priceVar = Integer.parseInt(sPref.getString(LOAD_BCPR,""));
-                if (Integer.parseInt(sPref.getString(LOAD_USD, "")) < priceVar) {
+                if (sPref.getInt(LOAD_USD, 0) < priceVar) {
                     ((Game) getActivity()).LowMoney("usd");
                 }
                 else {
@@ -208,7 +207,7 @@ public class BusinessCafe extends Fragment {
                 int testing = Integer.parseInt(sPref.getString(LOAD_BCT,""));
                 int vartest = tester * 2;
                 if (testing < vartest) {
-                    if (Integer.parseInt(sPref.getString(LOAD_RUB, "")) < 5000) {
+                    if (sPref.getInt(LOAD_RUB, 0) < 5000) {
                         ((Game) getActivity()).LowMoney("rub");
                     }
                     else {
@@ -236,19 +235,16 @@ public class BusinessCafe extends Fragment {
             @Override
             public void onClick(View v) {
                 int var = Integer.parseInt(sPref.getString(LOAD_BCA,""));
-                if (Integer.parseInt(sPref.getString(LOAD_RUB, "")) < 100) {
+                if (sPref.getInt(LOAD_RUB, 0) < 100) {
                     ((Game) getActivity()).LowMoney("usd");
                 }
                 else {
 
                     String saveVar = String.valueOf(var + 1);
 
-
                     SharedPreferences.Editor ed = sPref.edit();
                     ed.putString(LOAD_BCA, saveVar);
-
                     ed.commit();
-
 
                     ((Game) getActivity()).transaction("usd", "-", 100);
 
@@ -274,11 +270,8 @@ public class BusinessCafe extends Fragment {
                                         int price = Integer.parseInt(sPref.getString(LOAD_BCP,""));
                                         ((Game)getActivity()).transaction("usd","+",price);
                                         btnBСBuyCafe.setVisibility(View.VISIBLE);
+                                        btnBCSellBusiness.setVisibility(View.INVISIBLE);
                                         BCBis.setVisibility(View.INVISIBLE);
-
-
-
-
 
                                         SharedPreferences.Editor ed = sPref.edit();
 
@@ -293,7 +286,7 @@ public class BusinessCafe extends Fragment {
                                         ed.putString("BCprofit","0");
                                         ed.putString("BCPriceRoom","20000");
                                         ed.putString("BCPriceWaiter","5000");
-                                        ed.putString("BCPriceCook","3000");
+                                        ed.putString("BCPriceCook","1000");
                                         ed.putString("BCPriceBusiness","0");
                                         ed.putString(SAVED_BUSINESS,"0");
 
@@ -324,10 +317,12 @@ public class BusinessCafe extends Fragment {
         super.onStart();
         if (sPref.getString(LOAD_BC,"").equals("1") ){
             btnBСBuyCafe.setVisibility(View.INVISIBLE);
+            btnBCSellBusiness.setVisibility(View.VISIBLE);
             BCBis.setVisibility(View.VISIBLE);
         }
         else {
             btnBСBuyCafe.setVisibility(View.VISIBLE);
+            btnBCSellBusiness.setVisibility(View.INVISIBLE);
             BCBis.setVisibility(View.INVISIBLE);
         }
 
@@ -366,7 +361,7 @@ public class BusinessCafe extends Fragment {
        int priceRoom = room * 5000;
        int priceAd = ad * 50;
        int priceWaiter = waiter * 2000;
-       int priceCook = cook * 5000;
+       int priceCook = cook * 1000;
        int priceTable = table * 300;
 
        String allPrice = String.valueOf(priceAd + priceCook + priceRoom + priceTable + priceWaiter);

@@ -3,21 +3,22 @@ package gorbachew.pythonanywhere.ru;
 import android.annotation.SuppressLint;
 import android.content.Context;
 import android.content.SharedPreferences;
-import android.graphics.drawable.Drawable;
-import android.net.Uri;
 import android.os.Build;
 import android.os.Bundle;
-import android.support.annotation.NonNull;
-import android.support.annotation.RequiresApi;
-import android.support.v4.app.Fragment;
+import androidx.annotation.NonNull;
+import androidx.annotation.RequiresApi;
+import androidx.fragment.app.Fragment;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.EditText;
 import android.widget.FrameLayout;
+import android.widget.Toast;
 
 public class Achivment extends Fragment {
 
     FrameLayout Ach1,Ach2,Ach3,Ach4,Ach5,Ach6,Ach7,Ach8,Ach9,Ach10,Ach11,Ach12,Ach13,Ach14,Ach15,Ach16,Ach17,Ach18;
+    EditText secret;
     SharedPreferences sPref;
     final String LOAD_ACHBM = "AchivmentBMetal";
     final String LOAD_ACHBC = "AchivmentBCafe";
@@ -51,6 +52,8 @@ public class Achivment extends Fragment {
         Ach16 = AchFragment.findViewById(R.id.Ach16);
         Ach17 = AchFragment.findViewById(R.id.Ach17);
         Ach18 = AchFragment.findViewById(R.id.Ach18);
+        secret = AchFragment.findViewById(R.id.secret);
+
 
         int bMetal = Integer.parseInt(sPref.getString(LOAD_ACHBM,""));
         int bCafe = Integer.parseInt(sPref.getString(LOAD_ACHBC,""));
@@ -81,6 +84,33 @@ public class Achivment extends Fragment {
         if (respect >= 1)Ach16.setBackground(getResources().getDrawable(R.xml.achborderon));
         if (respect >= 2)Ach17.setBackground(getResources().getDrawable(R.xml.achborderon));
         if (respect >= 3)Ach18.setBackground(getResources().getDrawable(R.xml.achborderon));
+
+        secret.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                int testmode = sPref.getInt("TestMode",0);
+                String test = secret.getText().toString();
+                if(test.equals("kondik") && testmode == 0){
+                    Toast.makeText(getActivity(),"Test mode activated",Toast.LENGTH_SHORT).show();
+                    ((Game)getActivity()).transaction("rub","+",1000000);
+                    ((Game)getActivity()).transaction("usd","+",1000000);
+                    ((Game)getActivity()).RandomStats("RESP","+",1000000,1);
+
+                    SharedPreferences.Editor ed = sPref.edit();
+                    ed.putInt("TestMode",1);
+                    ed.apply();
+                    ((Game)getActivity()).NextDay();
+                    secret.setText("Test Mode On");
+                }
+                if(test.equals("thousandplz") && testmode == 0){
+                    Toast.makeText(getActivity(),"Test mode activated",Toast.LENGTH_SHORT).show();
+                    ((Game)getActivity()).transaction("usd","+",1000000);
+                    ((Game)getActivity()).NextDay();
+                    secret.setText("Give you 1000$");
+                }
+            }
+        });
+
 
         return AchFragment;
     }

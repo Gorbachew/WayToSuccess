@@ -2,15 +2,12 @@ package gorbachew.pythonanywhere.ru;
 
 import android.content.Context;
 import android.content.DialogInterface;
-import android.content.Intent;
 import android.content.SharedPreferences;
-import android.net.Uri;
 import android.os.Bundle;
-import android.support.annotation.NonNull;
-import android.support.v4.app.Fragment;
+import androidx.annotation.NonNull;
+import androidx.fragment.app.Fragment;
 
-import android.support.v4.app.FragmentTransaction;
-import android.support.v7.app.AlertDialog;
+import androidx.appcompat.app.AlertDialog;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -23,9 +20,11 @@ import java.util.Random;
 
 
 public class BusinessMetal extends Fragment {
+
+    Toast toast = null,toast2 = null;
     Button BuyMetalPoint,btnBMWork,btnAd,btnWorker,btnSellMetal,btnUpStock,btnSellBis;
     SharedPreferences sPref;
-    LinearLayout BuyBis,Bis;
+    LinearLayout Bis;
     TextView FullStock,MaxStock,Ad,Worker,PriceFactrory,CourseScrap,totalrub;
     final String LOAD_BMS = "BusinessMetalPoint";
     final String LOAD_BMFS = "BMFullStock";
@@ -50,7 +49,6 @@ public class BusinessMetal extends Fragment {
 
 
         BuyMetalPoint = Business.findViewById(R.id.btnBMBuyMetalPoint);
-        BuyBis = Business.findViewById(R.id.BMBuyBis);
         Bis = Business.findViewById(R.id.BMBis);
         FullStock = Business.findViewById(R.id.BMFStock);
         MaxStock = Business.findViewById(R.id.BMMStock);
@@ -83,12 +81,14 @@ public class BusinessMetal extends Fragment {
             public void onClick(View v) {
                 String check = sPref.getString(SAVED_BUSINESS,"");
                 if (check.equals("0")) {
-                    if (Integer.parseInt(sPref.getString(LOAD_RUB, "")) < 50000) {
+                    if (sPref.getInt(LOAD_RUB, 0) < 50000) {
                         ((Game) getActivity()).LowMoney("rub");
                     }
                     else {
-                        BuyBis.setVisibility(View.INVISIBLE);
+                        BuyMetalPoint.setVisibility(View.INVISIBLE);
                         Bis.setVisibility(View.VISIBLE);
+                        btnSellBis.setVisibility(View.VISIBLE);
+                        btnBMWork.setVisibility(View.VISIBLE);
 
                         SharedPreferences.Editor ed = sPref.edit();
                         ed.putString(LOAD_BMS, "1");
@@ -98,7 +98,7 @@ public class BusinessMetal extends Fragment {
 
                         ((Game) getActivity()).transaction("rub", "-", 50000);
                         Load_info();
-                        ((Game) getActivity()).NextDay();
+                        ((Game)getActivity()).NextDay();
                     }
                 }
                 else {
@@ -112,7 +112,6 @@ public class BusinessMetal extends Fragment {
             public void onClick(View v) {
                 UpStock();
                 Load_info();
-
                 ((Game)getActivity()).NextDay();
             }
         });
@@ -121,12 +120,8 @@ public class BusinessMetal extends Fragment {
             @Override
             public void onClick(View v) {
                 AddStock();
-
-
-                PriceFactrory.setText(sPref.getString(LOAD_COURSESCRAP,""));
-
+                PriceFactrory.setText(String.valueOf(sPref.getInt(LOAD_COURSESCRAP,0)));
                 Load_info();
-
                 ((Game)getActivity()).NextDay();
 
             }
@@ -135,10 +130,8 @@ public class BusinessMetal extends Fragment {
             @Override
             public void onClick(View v) {
                 AdAdvertising();
-                ((Game)getActivity()).NextDay();
-                PriceFactrory.setText(sPref.getString(LOAD_COURSESCRAP,""));
+                PriceFactrory.setText(String.valueOf(sPref.getInt(LOAD_COURSESCRAP,0)));
                 Load_info();
-
                 ((Game)getActivity()).NextDay();
             }
         });
@@ -146,10 +139,8 @@ public class BusinessMetal extends Fragment {
             @Override
             public void onClick(View v) {
                 AddWorker();
-                ((Game)getActivity()).NextDay();
-                PriceFactrory.setText(sPref.getString(LOAD_COURSESCRAP,""));
+                PriceFactrory.setText(String.valueOf(sPref.getInt(LOAD_COURSESCRAP,0)));
                 Load_info();
-
                 ((Game)getActivity()).NextDay();
             }
         });
@@ -158,10 +149,8 @@ public class BusinessMetal extends Fragment {
             @Override
             public void onClick(View v) {
                 SellMetal();
-                ((Game)getActivity()).NextDay();
-                PriceFactrory.setText(sPref.getString(LOAD_COURSESCRAP,""));
+                PriceFactrory.setText(String.valueOf(sPref.getInt(LOAD_COURSESCRAP,0)));
                 Load_info();
-
                 ((Game)getActivity()).NextDay();
 
             }
@@ -169,8 +158,6 @@ public class BusinessMetal extends Fragment {
         btnSellBis.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-
-
 
                 //Всплывающее окно перед выходом
                 AlertDialog.Builder builder = new AlertDialog.Builder(getActivity());
@@ -185,8 +172,10 @@ public class BusinessMetal extends Fragment {
                                         ((Game)getActivity()).transaction("rub","+",price);
 
 
-                                        BuyBis.setVisibility(View.VISIBLE);
+                                        BuyMetalPoint.setVisibility(View.VISIBLE);
                                         Bis.setVisibility(View.INVISIBLE);
+                                        btnSellBis.setVisibility(View.INVISIBLE);
+                                        btnBMWork.setVisibility(View.INVISIBLE);
 
                                         SharedPreferences.Editor ed = sPref.edit();
                                         ed.putString("BMFullStock","0");
@@ -223,14 +212,18 @@ public class BusinessMetal extends Fragment {
     public void onStart() {
         super.onStart();
         if (sPref.getString(LOAD_BMS,"").equals("1") ){
-            BuyBis.setVisibility(View.INVISIBLE);
+            BuyMetalPoint.setVisibility(View.INVISIBLE);
             Bis.setVisibility(View.VISIBLE);
+            btnSellBis.setVisibility(View.VISIBLE);
+            btnBMWork.setVisibility(View.VISIBLE);
         }
         else {
-            BuyBis.setVisibility(View.VISIBLE);
+            BuyMetalPoint.setVisibility(View.VISIBLE);
             Bis.setVisibility(View.INVISIBLE);
+            btnSellBis.setVisibility(View.INVISIBLE);
+            btnBMWork.setVisibility(View.INVISIBLE);
         }
-        PriceFactrory.setText(sPref.getString(LOAD_COURSESCRAP,""));
+        PriceFactrory.setText(String.valueOf(sPref.getInt(LOAD_COURSESCRAP,0)));
 
 
         //Проверка на прогресс
@@ -250,6 +243,7 @@ public class BusinessMetal extends Fragment {
             btnUpStock.setText(getResources().getString(R.string.BmFUPStock) + "|100000р");
         }
         else if (MaxStock.getText().toString().equals("100000")){
+            btnUpStock.setEnabled(false);
             btnUpStock.setText(getResources().getString(R.string.NoUpdate));
         }
 
@@ -268,8 +262,12 @@ public class BusinessMetal extends Fragment {
 
             Random random = new Random();
             int randomMetal = random.nextInt(5);
-            if (randomMetal == 0){
-                Toast.makeText(getActivity(),getResources().getString(R.string.BmFDontFindMetal),Toast.LENGTH_LONG).show();
+            if (randomMetal == 0) {
+                if (toast != null) {
+                    toast.cancel();
+                }
+                toast = Toast.makeText(getActivity(), getResources().getString(R.string.BmFDontFindMetal), Toast.LENGTH_SHORT);
+                toast.show();
             }
             else{
                Met = Met + randomMetal;
@@ -277,10 +275,13 @@ public class BusinessMetal extends Fragment {
                ed.putString(LOAD_BMFS,String.valueOf(Met));
                ed.commit();
             }
-
         }
         else {
-            Toast.makeText(getActivity(),getResources().getString(R.string.BmFLowStock),Toast.LENGTH_LONG).show();
+            if (toast2 != null) {
+                toast2.cancel();
+            }
+            toast2 = Toast.makeText(getActivity(),getResources().getString(R.string.BmFLowStock),Toast.LENGTH_LONG);
+            toast2.show();
         }
     }
 
@@ -288,7 +289,7 @@ public class BusinessMetal extends Fragment {
         int MaxMet = Integer.parseInt(MaxStock.getText().toString());
 
         if (MaxMet == 100){
-            if (Integer.parseInt(sPref.getString(LOAD_RUB, "")) < 1000) {
+            if (sPref.getInt(LOAD_RUB, 0) < 1000) {
                 ((Game) getActivity()).LowMoney("rub");
             }
             else {
@@ -300,7 +301,7 @@ public class BusinessMetal extends Fragment {
             }
         }
         else if (MaxMet == 300){
-            if (Integer.parseInt(sPref.getString(LOAD_RUB, "")) < 5000) {
+            if (sPref.getInt(LOAD_RUB, 0) < 5000) {
                 ((Game) getActivity()).LowMoney("rub");
             }
             else {
@@ -312,7 +313,7 @@ public class BusinessMetal extends Fragment {
             }
         }
         else if (MaxMet == 1000){
-            if (Integer.parseInt(sPref.getString(LOAD_RUB, "")) < 10000) {
+            if (sPref.getInt(LOAD_RUB, 0) < 10000) {
                 ((Game) getActivity()).LowMoney("rub");
             }
             else {
@@ -324,7 +325,7 @@ public class BusinessMetal extends Fragment {
             }
         }
         else if (MaxMet == 5000){
-            if (Integer.parseInt(sPref.getString(LOAD_RUB, "")) < 50000) {
+            if (sPref.getInt(LOAD_RUB, 0) < 50000) {
                 ((Game) getActivity()).LowMoney("rub");
             }
             else {
@@ -336,7 +337,7 @@ public class BusinessMetal extends Fragment {
             }
         }
         else if (MaxMet == 10000){
-            if (Integer.parseInt(sPref.getString(LOAD_RUB, "")) < 100000) {
+            if (sPref.getInt(LOAD_RUB, 0) < 100000) {
                 ((Game) getActivity()).LowMoney("rub");
             }
             else {
@@ -345,13 +346,14 @@ public class BusinessMetal extends Fragment {
                 ed.putString(LOAD_BMMS, "50000");
                 ed.commit();
                 btnUpStock.setText(getResources().getString(R.string.NoUpdate));
+                btnUpStock.setEnabled(false);
                 ((Game) getActivity()).transaction("rub", "-", 100000);
             }
         }
     }
 
     public void AdAdvertising(){
-        if (Integer.parseInt(sPref.getString(LOAD_RUB, "")) < 500) {
+        if (sPref.getInt(LOAD_RUB, 0) < 500) {
             ((Game) getActivity()).LowMoney("rub");
         }
         else {
@@ -368,13 +370,15 @@ public class BusinessMetal extends Fragment {
     }
 
     public void SellMetal(){
-        int Met = Integer.parseInt(FullStock.getText().toString());
-        int Price = Integer.parseInt(PriceFactrory.getText().toString());
-        int rub = Integer.parseInt(totalrub.getText().toString());
+        int rub = sPref.getInt(LOAD_RUB,0);
+        int Price = sPref.getInt(LOAD_COURSESCRAP,0);
+        int Met = Integer.parseInt(sPref.getString(LOAD_BMFS,""));
+        int plusrub = Price * Met + rub;
 
-        SharedPreferences.Editor ed = sPref.edit();
+
+                SharedPreferences.Editor ed = sPref.edit();
         ed.putString(LOAD_BMFS,"0");
-        totalrub.setText(String.valueOf(rub + (Price * Met)));
+        ed.putInt(LOAD_RUB,plusrub);
         ed.commit();
     }
 
@@ -385,7 +389,7 @@ public class BusinessMetal extends Fragment {
 
         int PriceWorker = Integer.parseInt(sPref.getString(LOAD_BMPW,""));
         int SavePriceWorker = PriceWorker + 1000;
-        if (Integer.parseInt(sPref.getString(LOAD_RUB, "")) < PriceWorker) {
+        if (sPref.getInt(LOAD_RUB, 0) < PriceWorker) {
             ((Game) getActivity()).LowMoney("rub");
         }
         else {
@@ -404,7 +408,7 @@ public class BusinessMetal extends Fragment {
         MaxStock.setText(sPref.getString(LOAD_BMMS, ""));
         Ad.setText(sPref.getString(LOAD_BMA, ""));
         Worker.setText(sPref.getString(LOAD_BMW,""));
-        PriceFactrory.setText(sPref.getString(LOAD_COURSESCRAP,""));
+        PriceFactrory.setText(String.valueOf(sPref.getInt(LOAD_COURSESCRAP,0)));
 
         //Составление Цены продажи бизнеса
         PriceBis();

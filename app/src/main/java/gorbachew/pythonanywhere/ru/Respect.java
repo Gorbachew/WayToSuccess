@@ -2,10 +2,9 @@ package gorbachew.pythonanywhere.ru;
 
 import android.content.Context;
 import android.content.SharedPreferences;
-import android.net.Uri;
 import android.os.Bundle;
-import android.support.annotation.NonNull;
-import android.support.v4.app.Fragment;
+import androidx.annotation.NonNull;
+import androidx.fragment.app.Fragment;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -66,7 +65,7 @@ public class Respect extends Fragment {
         RFstream.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                if (Integer.parseInt(sPref.getString(LOAD_RUB, "")) < 300) {
+                if (sPref.getInt(LOAD_RUB, 0) < 300) {
                     ((Game) getActivity()).LowMoney("rub");
                 } else {
                     int var = Integer.parseInt(sPref.getString(LOAD_PRPC, ""));
@@ -84,7 +83,7 @@ public class Respect extends Fragment {
         RFtraining.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                if (Integer.parseInt(sPref.getString(LOAD_RUB, "")) < 10000) {
+                if (sPref.getInt(LOAD_RUB, 0) < 10000) {
                     ((Game) getActivity()).LowMoney("rub");
                 } else {
                     int var = Integer.parseInt(sPref.getString(SAVED_CLOTCHES, ""));
@@ -102,7 +101,7 @@ public class Respect extends Fragment {
         RFbusinesslunch.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                if (Integer.parseInt(sPref.getString(LOAD_USD, "")) < 3000) {
+                if (sPref.getInt(LOAD_USD, 0) < 3000) {
                     ((Game) getActivity()).LowMoney("usd");
                 } else {
                     int var = Integer.parseInt(sPref.getString(SAVED_CLOTCHES, ""));
@@ -119,7 +118,7 @@ public class Respect extends Fragment {
         RFbecameMem.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                if (Integer.parseInt(sPref.getString(LOAD_RUB, "")) < 100000) {
+                if (sPref.getInt(LOAD_RUB, 0) < 100000) {
                     ((Game) getActivity()).LowMoney("rub");
                 } else {
                     Random random = new Random();
@@ -132,6 +131,7 @@ public class Respect extends Fragment {
 
                     } else {
                         Toast.makeText(getActivity(), getResources().getString(R.string.RFerror5), Toast.LENGTH_LONG).show();
+                        ((Game) getActivity()).transaction("rub", "-", 100000);
                     }
                     ((Game) getActivity()).NextDay();
                 }
@@ -140,7 +140,7 @@ public class Respect extends Fragment {
         RFmeetingPresident.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                if (Integer.parseInt(sPref.getString(LOAD_USD, "")) < 50000) {
+                if (sPref.getInt(LOAD_USD, 0) < 50000) {
                     ((Game) getActivity()).LowMoney("usd");
                 } else {
                     int var = Integer.parseInt(sPref.getString(SAVED_TRANSPORT, ""));
@@ -157,7 +157,7 @@ public class Respect extends Fragment {
         RFbecameMP.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                if (Integer.parseInt(sPref.getString(LOAD_USD, "")) < 50000) {
+                if (sPref.getInt(LOAD_USD, 0) < 50000) {
                     ((Game) getActivity()).LowMoney("usd");
                 } else {
                     int var = Integer.parseInt(sPref.getString(SAVED_TRANSPORT, ""));

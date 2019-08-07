@@ -3,13 +3,15 @@ package gorbachew.pythonanywhere.ru;
 import android.annotation.SuppressLint;
 import android.content.Context;
 import android.content.SharedPreferences;
-import android.net.Uri;
 import android.os.Bundle;
-import android.support.annotation.NonNull;
-import android.support.v4.app.Fragment;
+import androidx.annotation.NonNull;
+import androidx.fragment.app.Fragment;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Button;
+import android.widget.EditText;
+import android.widget.ImageButton;
 import android.widget.TextView;
 
 
@@ -21,6 +23,8 @@ public class Password extends Fragment {
 
     TextView textName,textAge,textClothes,textTransport,textHolding,textJob,textBusiness,textEducation;
     SharedPreferences sPref;
+    final String SAVED_NAME = "Name";
+    final String LOAD_USD = "USD";
     final String SAVED_AGE = "Age";
     final String SAVED_CLOTCHES = "Clothes";
     final String SAVED_TRANSPORT = "Transport";
@@ -30,7 +34,8 @@ public class Password extends Fragment {
     final String SAVED_BUSINESS = "Business";
     final String SAVED_EDUCATION = "Education";
     final String LOAD_DAY = "DAY";
-
+    EditText passEditNameText;
+    ImageButton passEditNameBtn;
     String VarClothes,VarTransport, VarHolding, VarJob, VarBusiness,VarEducation;
     int VarAge,days;
 
@@ -41,7 +46,7 @@ public class Password extends Fragment {
         // Inflate the layout for this fragment
 
         sPref = getActivity().getSharedPreferences("Saved",Context.MODE_PRIVATE);
-        textName = PassFr.findViewById(R.id.passTextName);
+//        textName = PassFr.findViewById(R.id.passTextName);
         textAge = PassFr.findViewById(R.id.passAge);
         textClothes = PassFr.findViewById(R.id.passClothes);
         textTransport = PassFr.findViewById(R.id.passTransport);
@@ -50,7 +55,45 @@ public class Password extends Fragment {
         //textRankJob = PassFr.findViewById(R.id.passRank);
         textBusiness = PassFr.findViewById(R.id.passBusiness);
         textEducation = PassFr.findViewById(R.id.passEducation);
+        passEditNameBtn = PassFr.findViewById(R.id.passEditNameBtn);
+        passEditNameText = PassFr.findViewById(R.id.passEditNameText);
 
+
+        passEditNameBtn.setVisibility(View.INVISIBLE);
+
+        passEditNameBtn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                passEditNameText.getText();
+                if(!passEditNameText.equals(sPref.getString(SAVED_NAME, ""))){
+                    if (sPref.getInt(LOAD_USD, 0) < 1000) {
+                        ((Game) getActivity()).LowMoney("usd");
+                    }
+                    else {
+//                        passEditNameText.setVisibility(View.INVISIBLE);
+                        SharedPreferences.Editor ed = sPref.edit();
+                        ed.putString(SAVED_NAME, passEditNameText.getText().toString());
+                        ed.apply();
+                        ((Game) getActivity()).transaction("usd", "-", 1000);
+                        ((Game) getActivity()).NextDay();
+                        passEditNameBtn.setVisibility(View.INVISIBLE);
+
+                        String NameGamer = sPref.getString(SAVED_NAME, "");
+                        passEditNameText.getText().clear();
+                        passEditNameText.setHint(NameGamer);
+
+                    }
+                }
+
+
+            }
+        });
+        passEditNameText.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                passEditNameBtn.setVisibility(View.VISIBLE);
+            }
+        });
         return PassFr;
     }
 
@@ -59,18 +102,17 @@ public class Password extends Fragment {
     public void onStart() {
         super.onStart();
         //Имя
-        Bundle bundle = this.getArguments();
-        if (bundle != null){
+        String NameGamer = sPref.getString(SAVED_NAME, "");
+        passEditNameText.setHint(NameGamer);
 
-            String NameGamer = bundle.getString("Name", "");
-            textName.setText(NameGamer);
-        }
 
         //Возраст
         VarAge = Integer.parseInt(sPref.getString(SAVED_AGE,""));
-        days = Integer.parseInt(sPref.getString(LOAD_DAY,""));
-        if (days >= 365){
-            days -= 365;VarAge += 1;
+        days = sPref.getInt(LOAD_DAY,0);
+
+        for(int i = days;i >= 365;i -= 365){
+            VarAge += 1;
+            days -= 365;
         }
         textAge.setText(String.format("%d л и %d д", VarAge, days));
 
@@ -215,7 +257,6 @@ public class Password extends Fragment {
             case "2":
                 textBusiness.setText(getResources().getString(R.string.PFSbusiness2));
                 break;
-
         }
         //Жена
         //Ребенок

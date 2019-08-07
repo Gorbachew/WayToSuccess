@@ -3,10 +3,9 @@ package gorbachew.pythonanywhere.ru;
 import android.annotation.SuppressLint;
 import android.content.Context;
 import android.content.SharedPreferences;
-import android.net.Uri;
 import android.os.Bundle;
-import android.support.annotation.NonNull;
-import android.support.v4.app.Fragment;
+import androidx.annotation.NonNull;
+import androidx.fragment.app.Fragment;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -54,7 +53,7 @@ public class Property extends Fragment {
         btnRubberBoots.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                if (Integer.parseInt(sPref.getString(LOAD_RUB, "")) < 500) {
+                if (sPref.getInt(LOAD_RUB, 0) < 500) {
                     ((Game) getActivity()).LowMoney("rub");
                 }
                 else {
@@ -71,7 +70,7 @@ public class Property extends Fragment {
         btnCheapClothes.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                if (Integer.parseInt(sPref.getString(LOAD_RUB, "")) < 2000) {
+                if (sPref.getInt(LOAD_RUB, 0) < 2000) {
                     ((Game) getActivity()).LowMoney("rub");
                 } else {
                     SharedPreferences.Editor ed = sPref.edit();
@@ -86,7 +85,7 @@ public class Property extends Fragment {
         btnCamera.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                if (Integer.parseInt(sPref.getString(LOAD_RUB, "")) < 5000) {
+                if (sPref.getInt(LOAD_RUB, 0) < 5000) {
                     ((Game) getActivity()).LowMoney("rub");
                 } else {
                     SharedPreferences.Editor ed = sPref.edit();
@@ -102,7 +101,7 @@ public class Property extends Fragment {
         btnBicycle.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                if (Integer.parseInt(sPref.getString(LOAD_RUB, "")) < 5000) {
+                if (sPref.getInt(LOAD_RUB, 0) < 5000) {
                     ((Game) getActivity()).LowMoney("rub");
                 } else {
                     SharedPreferences.Editor ed = sPref.edit();
@@ -117,7 +116,7 @@ public class Property extends Fragment {
         btnNormalClothes.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                if (Integer.parseInt(sPref.getString(LOAD_RUB, "")) < 15000) {
+                if (sPref.getInt(LOAD_RUB, 0) < 15000) {
                     ((Game) getActivity()).LowMoney("rub");
                 } else {
                     SharedPreferences.Editor ed = sPref.edit();
@@ -132,7 +131,7 @@ public class Property extends Fragment {
         btnCar.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                if (Integer.parseInt(sPref.getString(LOAD_RUB, "")) < 200000) {
+                if (sPref.getInt(LOAD_RUB, 0) < 200000) {
                     ((Game) getActivity()).LowMoney("rub");
                 } else {
                     SharedPreferences.Editor ed = sPref.edit();
@@ -147,7 +146,7 @@ public class Property extends Fragment {
         btnSuit.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                if (Integer.parseInt(sPref.getString(LOAD_USD, "")) < 3000) {
+                if (sPref.getInt(LOAD_USD, 0) < 3000) {
                     ((Game) getActivity()).LowMoney("usd");
                 } else {
                     SharedPreferences.Editor ed = sPref.edit();
@@ -162,7 +161,7 @@ public class Property extends Fragment {
         btnWeapons.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                if (Integer.parseInt(sPref.getString(LOAD_USD, "")) < 4000) {
+                if (sPref.getInt(LOAD_USD, 0) < 4000) {
                     ((Game) getActivity()).LowMoney("usd");
                 } else {
                     SharedPreferences.Editor ed = sPref.edit();
@@ -177,7 +176,7 @@ public class Property extends Fragment {
         btnTV.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                if (Integer.parseInt(sPref.getString(LOAD_RUB, "")) < 70000) {
+                if (sPref.getInt(LOAD_RUB, 0) < 70000) {
                     ((Game) getActivity()).LowMoney("rub");
                 } else {
                     SharedPreferences.Editor ed = sPref.edit();
@@ -192,7 +191,7 @@ public class Property extends Fragment {
         btnPC.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                if (Integer.parseInt(sPref.getString(LOAD_RUB, "")) < 120000) {
+                if (sPref.getInt(LOAD_RUB, 0) < 120000) {
                     ((Game) getActivity()).LowMoney("rub");
                 } else {
                     SharedPreferences.Editor ed = sPref.edit();
@@ -207,7 +206,7 @@ public class Property extends Fragment {
         btnHelicopter.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                if (Integer.parseInt(sPref.getString(LOAD_USD, "")) < 550000) {
+                if (sPref.getInt(LOAD_USD, 0) < 550000) {
                     ((Game) getActivity()).LowMoney("usd");
                 } else {
                     SharedPreferences.Editor ed = sPref.edit();
@@ -222,7 +221,7 @@ public class Property extends Fragment {
         btnYacht.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                if (Integer.parseInt(sPref.getString(LOAD_USD, "")) < 1500000) {
+                if (sPref.getInt(LOAD_USD, 0) < 1500000) {
                     ((Game) getActivity()).LowMoney("usd");
                 } else {
                     SharedPreferences.Editor ed = sPref.edit();

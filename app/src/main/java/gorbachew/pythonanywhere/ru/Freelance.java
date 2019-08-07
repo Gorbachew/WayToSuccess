@@ -2,10 +2,9 @@ package gorbachew.pythonanywhere.ru;
 
 import android.content.Context;
 import android.content.SharedPreferences;
-import android.net.Uri;
 import android.os.Bundle;
-import android.support.annotation.NonNull;
-import android.support.v4.app.Fragment;
+import androidx.annotation.NonNull;
+import androidx.fragment.app.Fragment;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -72,7 +71,7 @@ public class Freelance extends Fragment {
                     Toast.makeText(getActivity(),getResources().getString(R.string.FrFerror2),Toast.LENGTH_SHORT).show();
                 }
                 else {
-                    int var = 11 + random.nextInt(200 - 10);
+                    int var = 6 + random.nextInt(50 - 5);
                     ((Game)getActivity()).transaction("rub","+", var);
                 }
                 ((Game)getActivity()).NextDay();
@@ -81,13 +80,13 @@ public class Freelance extends Fragment {
         btnFreelanceBegForMoney.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                int check = Integer.parseInt(sPref.getString(SAVED_RESPECT,""));
+                int check = sPref.getInt(SAVED_RESPECT,0);
                 int check2 = Integer.parseInt(sPref.getString(SAVED_HOLDING,""));
                 if(check < 100 || check2 < 1){
                     Toast.makeText(getActivity(),getResources().getString(R.string.FrFerror1),Toast.LENGTH_SHORT).show();
                 }
                 else {
-                    int var = 11 + random.nextInt(500 - 10);
+                    int var = 11 + random.nextInt(100 - 10);
                     ((Game)getActivity()).transaction("rub","+", var);
                     ((Game)getActivity()).NextDay();
                 }
@@ -99,13 +98,13 @@ public class Freelance extends Fragment {
         btnFreelanceDistributeFlyers.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                int check = Integer.parseInt(sPref.getString(SAVED_RESPECT,""));
+                int check = sPref.getInt(SAVED_RESPECT,0);
 
                 if(check < 500){
                     Toast.makeText(getActivity(),getResources().getString(R.string.FrFerror3),Toast.LENGTH_SHORT).show();
                 }
                 else {
-                    int var = 101 + random.nextInt(1000 - 100);
+                    int var = 11 + random.nextInt(200 - 10);
                     ((Game)getActivity()).transaction("rub","+", var);
                 }
 
@@ -116,13 +115,13 @@ public class Freelance extends Fragment {
             @Override
             public void onClick(View view) {
 
-                int check = Integer.parseInt(sPref.getString(SAVED_RESPECT,""));
+                int check = sPref.getInt(SAVED_RESPECT,0);
 
                 if(check < 2000){
                     Toast.makeText(getActivity(),getResources().getString(R.string.FrFerror4),Toast.LENGTH_SHORT).show();
                 }
                 else {
-                    int var = 501 + random.nextInt(5000 - 500);
+                    int var = 51 + random.nextInt(500 - 50);
                     ((Game)getActivity()).transaction("rub","+", var);
                     ((Game)getActivity()).NextDay();
                 }
@@ -140,7 +139,7 @@ public class Freelance extends Fragment {
                     Toast.makeText(getActivity(),getResources().getString(R.string.FrFerror5),Toast.LENGTH_SHORT).show();
                 }
                 else {
-                    int var = 501 + random.nextInt(10000 - 500);
+                    int var = 101 + random.nextInt(1000 - 100);
                     ((Game)getActivity()).transaction("rub","+", var);
                     ((Game)getActivity()).NextDay();
                 }

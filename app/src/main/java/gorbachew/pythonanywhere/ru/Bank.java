@@ -2,10 +2,9 @@ package gorbachew.pythonanywhere.ru;
 
 import android.content.Context;
 import android.content.SharedPreferences;
-import android.net.Uri;
 import android.os.Bundle;
-import android.support.annotation.NonNull;
-import android.support.v4.app.Fragment;
+import androidx.annotation.NonNull;
+import androidx.fragment.app.Fragment;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -52,18 +51,17 @@ public class Bank extends Fragment {
 
                 int choise = Integer.parseInt(String.valueOf(spin.getSelectedItem()));
 
-                if(Integer.parseInt(sPref.getString(LOAD_USD,"")) < choise){
+                if(sPref.getInt(LOAD_USD,0) < choise){
                     ((Game)getActivity()).LowMoney("usd");
                 }
                 else {
-                    int var = choise * Integer.parseInt(sPref.getString(LOAD_CourseUSD,""));
+                    int var = choise * sPref.getInt(LOAD_CourseUSD,0);
 
                     ((Game)getActivity()).transaction("rub","+",var);
                     ((Game)getActivity()).transaction("usd","-",choise);
 
-
                     ((Game)getActivity()).NextDay();
-                    BankCourse.setText(sPref.getString(LOAD_CourseUSD,""));
+                    BankCourse.setText(String.valueOf(sPref.getInt(LOAD_CourseUSD,0)));
                 }
 
             }
@@ -72,22 +70,22 @@ public class Bank extends Fragment {
             @Override
             public void onClick(View view) {
                 int choise = Integer.parseInt(String.valueOf(spin.getSelectedItem()));
-                int course = Integer.parseInt(sPref.getString(LOAD_CourseUSD,""));
+                int course = sPref.getInt(LOAD_CourseUSD,0);
                 int mult = choise * course;
 
-                if( mult >= Integer.parseInt(sPref.getString(LOAD_RUB,""))){
+                if( mult >= sPref.getInt(LOAD_RUB,0)){
                     ((Game)getActivity()).LowMoney("rub");
                 }
                 else {
-                    int var =  choise * Integer.parseInt(sPref.getString(LOAD_CourseUSD,""));
+                    int var =  choise * sPref.getInt(LOAD_CourseUSD,0);
 
                     ((Game)getActivity()).transaction("rub","-",var);
                     ((Game)getActivity()).transaction("usd","+",choise);
-                    Toast.makeText(getActivity(),String.valueOf(choise),Toast.LENGTH_LONG).show();
+//                    Toast.makeText(getActivity(),String.valueOf(choise),Toast.LENGTH_LONG).show();
 
 
                     ((Game)getActivity()).NextDay();
-                    BankCourse.setText(sPref.getString(LOAD_CourseUSD,""));
+                    BankCourse.setText(String.valueOf(sPref.getInt(LOAD_CourseUSD,0)));
                 }
             }
 
@@ -100,6 +98,6 @@ public class Bank extends Fragment {
     @Override
     public void onStart() {
         super.onStart();
-        BankCourse.setText(sPref.getString(LOAD_CourseUSD,""));
+        BankCourse.setText(String.valueOf(sPref.getInt(LOAD_CourseUSD,0)));
     }
 }

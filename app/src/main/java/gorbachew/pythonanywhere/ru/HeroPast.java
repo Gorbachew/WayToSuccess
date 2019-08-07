@@ -1,12 +1,10 @@
 package gorbachew.pythonanywhere.ru;
 
 import android.annotation.SuppressLint;
-import android.content.Context;
 import android.content.SharedPreferences;
-import android.net.Uri;
 import android.os.Bundle;
-import android.support.annotation.NonNull;
-import android.support.v4.app.Fragment;
+import androidx.annotation.NonNull;
+import androidx.fragment.app.Fragment;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -163,14 +161,14 @@ public class HeroPast extends Fragment {
 
         if (MotherHistId.equals("5") && FatherHistId.equals("5")){
             FAM = getResources().getString(R.string.FAMHistBum);
-            History.setText(FAM + " " + ChildText + " " + YouthText + " " + AftSchoolText + " " + PurposeText + " " + WhyText);
+            History.setText(FAM + " " + ChildText + " " + YouthText + " " + AftSchoolText + " " + " " + WhyText);
         }
         else if (MotherHistId.equals("6") && FatherHistId.equals("6")){
             FAM = getResources().getString(R.string.FAMHistNo);
-            History.setText(FAM + " " + ChildText + " " + YouthText + " " + AftSchoolText + " " + PurposeText + " " + WhyText);
+            History.setText(FAM + " " + ChildText + " " + YouthText + " " + AftSchoolText + " " + " " + WhyText);
         }
         else{
-            History.setText(FatherHistText + " " + MotherHistText + " " + ChildText + " " + YouthText + " " + AftSchoolText + " " + PurposeText + " " + WhyText);
+            History.setText(FatherHistText + " " + MotherHistText + " " + ChildText + " " + YouthText + " " + AftSchoolText + " " + " " + WhyText);
         }
 
 

@@ -2,10 +2,9 @@ package gorbachew.pythonanywhere.ru;
 
 import android.content.Context;
 import android.content.SharedPreferences;
-import android.net.Uri;
 import android.os.Bundle;
-import android.support.annotation.NonNull;
-import android.support.v4.app.Fragment;
+import androidx.annotation.NonNull;
+import androidx.fragment.app.Fragment;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -17,6 +16,13 @@ import java.util.Random;
 
 public class Work extends Fragment {
     Button btnFactory,btnAutoService,btnEngineer, btnManagerForSale, btnHeadOfDepartment;
+    final String LOAD_SCHOOL = "EducationSchool";
+    final String LOAD_COLLEGE = "EducationCollage";
+    final String LOAD_COURSES = "EducationCourses";
+    final String LOAD_UNIVERSITY = "EducationUniversity";
+    final String LOAD_OVERSEASUNIVERSITY = "EducationOverseasUniversity";
+
+
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
@@ -38,16 +44,20 @@ public class Work extends Fragment {
 
 
 
+
+
+
+
         btnFactory.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
 
-                int checkShcool = Integer.parseInt(sPref.getString(SAVED_EDUCATION,""));
-                if(checkShcool < 1){
+                String checkEduc = sPref.getString(LOAD_SCHOOL,"");
+                if(!checkEduc.equals("2")){
                     Toast.makeText(getActivity(),getResources().getString(R.string.EFSchoolError),Toast.LENGTH_SHORT).show();
                 }
                 else {
-                    int var = 500;
+                    int var = 250;
                     ((Game)getActivity()).transaction("rub","+", var);
                     SharedPreferences.Editor ed = sPref.edit();
                     ed.putString(SAVED_JOB,"1");
@@ -57,15 +67,17 @@ public class Work extends Fragment {
                 ((Game)getActivity()).NextDay();
             }
         });
+
         btnAutoService.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                int checkShcool = Integer.parseInt(sPref.getString(SAVED_EDUCATION,""));
-                if(checkShcool < 2){
+
+                String checkEduc = sPref.getString(LOAD_COLLEGE,"");
+                if(!checkEduc.equals("2")){
                     Toast.makeText(getActivity(),getResources().getString(R.string.EFCollegeError),Toast.LENGTH_SHORT).show();
                 }
                 else {
-                    int var = 801 + random.nextInt(3000 - 800);
+                    int var = 251 + random.nextInt(1000 - 250);
                     ((Game)getActivity()).transaction("rub","+", var);
                     SharedPreferences.Editor ed = sPref.edit();
                     ed.putString(SAVED_JOB,"2");
@@ -74,28 +86,12 @@ public class Work extends Fragment {
                 ((Game)getActivity()).NextDay();
             }
         });
-        btnEngineer.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                int checkShcool = Integer.parseInt(sPref.getString(SAVED_EDUCATION,""));
-                if(checkShcool < 3){
-                    Toast.makeText(getActivity(),getResources().getString(R.string.EFUniversityError),Toast.LENGTH_SHORT).show();
-                }
-                else {
-                    int var = 2001 + random.nextInt(5000 - 2000);
-                    ((Game)getActivity()).transaction("rub","+", var);
-                    SharedPreferences.Editor ed = sPref.edit();
-                    ed.putString(SAVED_JOB,"3");
-                    ed.commit();
-                }
-                ((Game)getActivity()).NextDay();
-            }
-        });
+
         btnManagerForSale.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                int checkShcool = Integer.parseInt(sPref.getString(SAVED_EDUCATION,""));
-                if(checkShcool < 4){
+                String checkEduc = sPref.getString(LOAD_COURSES,"");
+                if(!checkEduc.equals("2")){
                     Toast.makeText(getActivity(),getResources().getString(R.string.EFCoursesError),Toast.LENGTH_SHORT).show();
                 }
                 else {
@@ -108,11 +104,30 @@ public class Work extends Fragment {
                 ((Game)getActivity()).NextDay();
             }
         });
+
+        btnEngineer.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                String university = sPref.getString(LOAD_UNIVERSITY,"");
+                if(!university.equals("2")){
+                    Toast.makeText(getActivity(),getResources().getString(R.string.EFUniversityError),Toast.LENGTH_SHORT).show();
+                }
+                else {
+                    int var = 2001 + random.nextInt(5000 - 2000);
+                    ((Game)getActivity()).transaction("rub","+", var);
+                    SharedPreferences.Editor ed = sPref.edit();
+                    ed.putString(SAVED_JOB,"3");
+                    ed.commit();
+                }
+                ((Game)getActivity()).NextDay();
+            }
+        });
+
         btnHeadOfDepartment.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                int checkShcool = Integer.parseInt(sPref.getString(SAVED_EDUCATION,""));
-                if(checkShcool < 5){
+                String checkEduc = sPref.getString(LOAD_OVERSEASUNIVERSITY,"");
+                if(!checkEduc.equals("2")){
                     Toast.makeText(getActivity(),getResources().getString(R.string.EFOverseasUniversityError),Toast.LENGTH_SHORT).show();
                 }
                 else {
