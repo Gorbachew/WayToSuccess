@@ -97,7 +97,7 @@ public class Password extends Fragment {
         return PassFr;
     }
 
-    @SuppressLint("SetTextI18n")
+    @SuppressLint({"SetTextI18n", "DefaultLocale"})
     @Override
     public void onStart() {
         super.onStart();
@@ -114,7 +114,7 @@ public class Password extends Fragment {
             VarAge += 1;
             days -= 365;
         }
-        textAge.setText(String.format("%d л и %d д", VarAge, days));
+        textAge.setText(String.format("%d%s и %d%s", VarAge,getResources().getString(R.string.PFage), days,getResources().getString(R.string.PFdays)));
 
         //Образование
         VarEducation = sPref.getString(SAVED_EDUCATION,"");

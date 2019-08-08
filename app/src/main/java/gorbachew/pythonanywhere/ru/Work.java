@@ -131,7 +131,7 @@ public class Work extends Fragment {
                     Toast.makeText(getActivity(),getResources().getString(R.string.EFOverseasUniversityError),Toast.LENGTH_SHORT).show();
                 }
                 else {
-                    int var = 101 + random.nextInt(200 - 100);
+                    int var = 101 + random.nextInt(1000 - 100);
                     ((Game)getActivity()).transaction("usd","+", var);
                     SharedPreferences.Editor ed = sPref.edit();
                     ed.putString(SAVED_JOB,"5");

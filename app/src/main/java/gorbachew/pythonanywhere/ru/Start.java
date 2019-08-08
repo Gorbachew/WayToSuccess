@@ -302,7 +302,7 @@ public class Start extends AppCompatActivity{
         ed.putInt("LoseHP",0);
         ed.putInt("LoseMP",0);
         ed.putInt("LoseSP",0);
-        ed.putInt("First.javaney",0);
+        //ed.putInt("AntiCheat",0);
         ed.putInt("TestMode",0);
         ed.putString("UserId","0");
         ed.commit();

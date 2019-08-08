@@ -1,5 +1,6 @@
 package gorbachew.pythonanywhere.ru;
 
+import android.annotation.SuppressLint;
 import android.content.Context;
 import android.content.SharedPreferences;
 import android.os.Bundle;
@@ -19,6 +20,7 @@ import android.widget.Toast;
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
 import com.google.firebase.firestore.DocumentReference;
+import com.google.firebase.firestore.FieldValue;
 import com.google.firebase.firestore.FirebaseFirestore;
 import com.google.firebase.firestore.Query;
 import com.google.firebase.firestore.QueryDocumentSnapshot;
@@ -45,6 +47,7 @@ public class Gorbes extends Fragment {
     final String LOAD_RUB = "RUB";
     final String LOAD_USD = "USD";
     final String LOAD_RESPECT = "RESPECT";
+    final String LOAD_ANTICHEAT = "AntiCheat";
 
     //Соединение с бд firebase
     private FirebaseFirestore db = FirebaseFirestore.getInstance();
@@ -95,7 +98,9 @@ public class Gorbes extends Fragment {
                                             user.put("rub", sPref.getInt(LOAD_RUB,0));
                                             user.put("resp", sPref.getInt(LOAD_RESPECT,0));
                                             user.put("death", 0);
-
+                                            user.put("cheat", 0);
+                                            user.put("timestampcreate", FieldValue.serverTimestamp());
+                                            user.put("timestampupdate", FieldValue.serverTimestamp());
                                             DocumentReference addedDocRef = db.collection("Players").document();
                                             //Добавление строки
                                             addedDocRef.set(user);
@@ -104,6 +109,8 @@ public class Gorbes extends Fragment {
                                             ed.apply();
                                             CheckButton(0);
                                             ((Game)getActivity()).transaction("usd","-",1000);
+                                            ((Game)getActivity()).NextDay();
+
                                         }
                                         UpdateList();
                                     }
@@ -164,9 +171,16 @@ public class Gorbes extends Fragment {
 
 
     }
+    @SuppressLint("CommitPrefEdits")
     private void CheckButton(int indexPlayer){
+        SharedPreferences.Editor ed = sPref.edit();
         String userId = sPref.getString(LOAD_USERID,"");
-        if(userId.equals("0")){
+        int anticheat = sPref.getInt(LOAD_ANTICHEAT,0);
+
+        if(anticheat == 1){
+            GFbtn.setEnabled(false);
+        }
+        else if(userId.equals("0")){
             GFbtn.setText(getResources().getString(R.string.GFbtnJoin));
         }
         else {

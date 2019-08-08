@@ -100,7 +100,7 @@ public class Freelance extends Fragment {
             public void onClick(View view) {
                 int check = sPref.getInt(SAVED_RESPECT,0);
 
-                if(check < 500){
+                if(check < 250){
                     Toast.makeText(getActivity(),getResources().getString(R.string.FrFerror3),Toast.LENGTH_SHORT).show();
                 }
                 else {
@@ -117,7 +117,7 @@ public class Freelance extends Fragment {
 
                 int check = sPref.getInt(SAVED_RESPECT,0);
 
-                if(check < 2000){
+                if(check < 500){
                     Toast.makeText(getActivity(),getResources().getString(R.string.FrFerror4),Toast.LENGTH_SHORT).show();
                 }
                 else {
@@ -125,8 +125,6 @@ public class Freelance extends Fragment {
                     ((Game)getActivity()).transaction("rub","+", var);
                     ((Game)getActivity()).NextDay();
                 }
-
-
             }
         });
         btnFreelanceTaxi.setOnClickListener(new View.OnClickListener() {

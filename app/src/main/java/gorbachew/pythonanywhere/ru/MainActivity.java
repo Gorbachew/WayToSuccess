@@ -47,9 +47,9 @@ public class MainActivity extends AppCompatActivity {
             public void onClick(View v) {
                 //Всплывающее окно перед выходом
                 AlertDialog.Builder builder = new AlertDialog.Builder(MainActivity.this);
-                builder.setTitle("Вы действительно хотите начать новую игру?")
+                builder.setTitle(getResources().getString(R.string.Newgametitle))
 
-                        .setPositiveButton("Поехали!",
+                        .setPositiveButton(getResources().getString(R.string.Newgamego),
                                 new DialogInterface.OnClickListener() {
                                     @Override
                                     public void onClick(DialogInterface dialog, int which) {
@@ -58,7 +58,7 @@ public class MainActivity extends AppCompatActivity {
                                         startActivity(intent);
                                     }
                                 })
-                        .setNegativeButton("Я ошибся",
+                        .setNegativeButton(getResources().getString(R.string.Newgamecancel),
                         new DialogInterface.OnClickListener() {
                             @Override
                             public void onClick(DialogInterface dialog, int which) {

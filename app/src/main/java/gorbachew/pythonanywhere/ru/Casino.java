@@ -20,6 +20,7 @@ import java.util.Random;
 
 public class Casino extends Fragment {
 
+    Toast toast0;
     RadioGroup CasinoRadioGroup1,CasinoRadioGroup2;
     String Check1,Check2;
     TextView CasinoResult;
@@ -71,7 +72,7 @@ public class Casino extends Fragment {
             public void onClick(View view) {
 
                 if(Integer.parseInt(sPref.getString(SAVED_CLOTCHES, "")) >= 4 ){
-                    if(Integer.parseInt(CasinoRate.getSelectedItem().toString()) > Integer.parseInt(sPref.getString(LOAD_USD, ""))){
+                    if(Integer.parseInt(CasinoRate.getSelectedItem().toString()) > sPref.getInt(LOAD_USD, 0)){
                         ((Game)getActivity()).LowMoney("usd");
                     }
                     else {
@@ -104,7 +105,9 @@ public class Casino extends Fragment {
     private void checkPlay(){
         int AllRate = 0;
         int Result = random.nextInt(37);
-
+        if(toast0!=null){
+            toast0.cancel();
+        }
         //Проверка на цвет
         String color;
         if (Result == 0){
@@ -146,15 +149,19 @@ public class Casino extends Fragment {
         }
 
         if(AllRate == 0){
-            Toast.makeText(getActivity(),getResources().getString(R.string.CFyouZero),Toast.LENGTH_SHORT).show();
+
+            toast0 = Toast.makeText(getActivity(),getResources().getString(R.string.CFyouZero),Toast.LENGTH_SHORT);
+            toast0.show();
         }
         else if(AllRate > 0){
-            Toast.makeText(getActivity(),getResources().getString(R.string.CFyouWin) + " " + AllRate + " " + getResources().getString(R.string.CFdollar),Toast.LENGTH_SHORT).show();
+            toast0 = Toast.makeText(getActivity(),getResources().getString(R.string.CFyouWin) + " " + AllRate + " " + getResources().getString(R.string.CFdollar),Toast.LENGTH_SHORT);
+            toast0.show();
             ((Game)getActivity()).transaction("usd","+",AllRate);
         }
         else {
             int res = AllRate * -1;
-            Toast.makeText(getActivity(),getResources().getString(R.string.CFyouLose) + " " + AllRate + " " + getResources().getString(R.string.CFdollar),Toast.LENGTH_SHORT).show();
+            toast0 = Toast.makeText(getActivity(),getResources().getString(R.string.CFyouLose) + " " + AllRate + " " + getResources().getString(R.string.CFdollar),Toast.LENGTH_SHORT);
+            toast0.show();
             ((Game)getActivity()).transaction("usd","-",res);
         }
 

@@ -55,7 +55,7 @@ public class Holding extends Fragment {
                 else {
                     SharedPreferences.Editor ed = sPref.edit();
                     ed.putString(SAVED_HOLDING, "1");
-                    ed.putString(MAXSCRAP, "50");
+                    ed.putInt(MAXSCRAP, 50);
                     ed.commit();
                     checkBuyed();
                     ((Game) getActivity()).transaction("rub", "-", 300);
@@ -72,7 +72,7 @@ public class Holding extends Fragment {
                 } else {
                     SharedPreferences.Editor ed = sPref.edit();
                     ed.putString(SAVED_HOLDING, "2");
-                    ed.putString(MAXSCRAP, "100");
+                    ed.putInt(MAXSCRAP, 100);
                     ed.commit();
                     checkBuyed();
                     ((Game) getActivity()).transaction("rub", "-", 3000);
@@ -96,7 +96,7 @@ public class Holding extends Fragment {
                                         @Override
                                         public void onClick(DialogInterface dialog, int which) {
                                             SharedPreferences.Editor ed = sPref.edit();
-                                            ed.putString(MAXSCRAP, "100");
+                                            ed.putInt(MAXSCRAP, 150);
                                             ed.putString(SAVED_HOLDING, "2");
                                             ed.apply();
                                             checkRent();
@@ -120,7 +120,7 @@ public class Holding extends Fragment {
                     } else {
                         SharedPreferences.Editor ed = sPref.edit();
                         ed.putString(SAVED_HOLDING, "3");
-                        ed.putString(MAXSCRAP, "250");
+                        ed.putInt(MAXSCRAP, 250);
                         ed.apply();
                         ((Game) getActivity()).transaction("rub", "-", 25000);
                         checkRent();
@@ -138,7 +138,7 @@ public class Holding extends Fragment {
                 } else {
                     SharedPreferences.Editor ed = sPref.edit();
                     ed.putString(SAVED_HOLDING, "4");
-                    ed.putString(MAXSCRAP, "500");
+                    ed.putInt(MAXSCRAP, 500);
                     ed.apply();
                     checkBuyed();
                     ((Game) getActivity()).transaction("rub", "-", 1500000);
@@ -154,7 +154,7 @@ public class Holding extends Fragment {
                 } else {
                     SharedPreferences.Editor ed = sPref.edit();
                     ed.putString(SAVED_HOLDING, "5");
-                    ed.putString(MAXSCRAP, "1000");
+                    ed.putInt(MAXSCRAP, 1000);
                     ed.apply();
                     checkBuyed();
                     ((Game) getActivity()).transaction("rub", "-", 3000000);
@@ -170,7 +170,7 @@ public class Holding extends Fragment {
                 } else {
                     SharedPreferences.Editor ed = sPref.edit();
                     ed.putString(SAVED_HOLDING, "6");
-                    ed.putString(MAXSCRAP, "2000");
+                    ed.putInt(MAXSCRAP, 2000);
                     ed.apply();
                     checkBuyed();
                     ((Game) getActivity()).transaction("usd", "-", 3000000);

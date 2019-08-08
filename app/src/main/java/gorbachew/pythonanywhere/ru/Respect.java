@@ -23,7 +23,7 @@ public class Respect extends Fragment {
     final String SAVED_TRANSPORT = "Transport";
     final String LOAD_RUB = "RUB";
     final String LOAD_USD = "USD";
-
+    private Toast toast0;
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
@@ -39,12 +39,24 @@ public class Respect extends Fragment {
         RFbecameMem = RespectFragment.findViewById(R.id.RFbecameMem);
         RFmeetingPresident = RespectFragment.findViewById(R.id.RFmeetingPresident);
         RFbecameMP = RespectFragment.findViewById(R.id.RFbecameMP);
+        final Random random = new Random();
 
         RFsing.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                ((Game)getActivity()).RandomStats("RESP","+",0,2);
-                ((Game)getActivity()).NextDay();
+                int rand = random.nextInt(2);
+                if(rand == 0){
+                    if(toast0!=null){
+                        toast0.cancel();
+                    }
+                    toast0 = Toast.makeText(getActivity(),getResources().getString(R.string.RFerror0),Toast.LENGTH_LONG);
+                    toast0.show();
+                }
+                else {
+                    ((Game)getActivity()).RandomStats("RESP","+",0,3);
+                    ((Game)getActivity()).NextDay();
+                }
+
             }
         });
         RFvideoPresident.setOnClickListener(new View.OnClickListener() {

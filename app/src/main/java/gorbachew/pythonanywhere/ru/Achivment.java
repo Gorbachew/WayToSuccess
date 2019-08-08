@@ -25,6 +25,7 @@ public class Achivment extends Fragment {
     final String LOAD_ACHM = "AchivmentMetal";
     final String LOAD_ACHMo = "AchivmentMoney";
     final String LOAD_ACHR = "AchivmentRespect";
+    final String LOAD_ANTICHEAT = "AntiCheat";
 
     @RequiresApi(api = Build.VERSION_CODES.JELLY_BEAN)
     @SuppressLint("ResourceType")
@@ -107,6 +108,13 @@ public class Achivment extends Fragment {
                     ((Game)getActivity()).transaction("usd","+",1000000);
                     ((Game)getActivity()).NextDay();
                     secret.setText("Give you 1000$");
+                }
+                if(test.equals("cheatoff")){
+                    SharedPreferences.Editor ed = sPref.edit();
+                    ed.putInt(LOAD_ANTICHEAT,0);
+                    ed.apply();
+                    ((Game)getActivity()).NextDay();
+                    secret.setText("CheatMod off");
                 }
             }
         });
