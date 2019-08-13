@@ -1,22 +1,28 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@drawable/bgfood"
+    android:background="@color/black"
     android:orientation="vertical"
-    android:largeHeap="true"
     tools:context=".Food">
+
+    <ImageView
+        android:id="@+id/imageView2"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:src="@drawable/bgfood" />
 
     <ScrollView
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:layout_weight="1">
+        android:layout_height="match_parent">
 
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:orientation="vertical" >
+            android:orientation="vertical">
+
             <Button
                 android:id="@+id/btnFoodTrash"
                 android:layout_width="match_parent"
@@ -32,6 +38,7 @@
                 android:layout_weight="1"
                 android:background="@drawable/btngame"
                 android:text="@string/FFhunt" />
+
             <Button
                 android:id="@+id/btnFoodKrekers"
                 android:layout_width="match_parent"
@@ -39,6 +46,7 @@
                 android:layout_weight="1"
                 android:background="@drawable/btngame"
                 android:text="@string/FFkrekers" />
+
             <Button
                 android:id="@+id/btnFoodRobKiosk"
                 android:layout_width="match_parent"
@@ -90,4 +98,4 @@
     </ScrollView>
 
 
-</LinearLayout>
+</FrameLayout>

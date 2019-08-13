@@ -26,12 +26,16 @@ public class Holding extends Fragment {
 
     Button btnCardboardBox,btnCamp, btnRentRoom,btnBuyApartment, btnBuyHome, btnBuyMansion;
     @Override
+    public void onCreate(Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+        sPref = getActivity().getSharedPreferences("Saved",Context.MODE_PRIVATE);
+    }
+    @Override
     public View onCreateView(@NonNull LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
 
 
         View HoldingFr = inflater.inflate(R.layout.fragment_holding, container, false);
-        sPref = getActivity().getSharedPreferences("Saved",Context.MODE_PRIVATE);
 
 
 
@@ -56,7 +60,7 @@ public class Holding extends Fragment {
                     SharedPreferences.Editor ed = sPref.edit();
                     ed.putString(SAVED_HOLDING, "1");
                     ed.putInt(MAXSCRAP, 50);
-                    ed.commit();
+                    ed.apply();
                     checkBuyed();
                     ((Game) getActivity()).transaction("rub", "-", 300);
                     ((Game) getActivity()).NextDay();
@@ -73,7 +77,7 @@ public class Holding extends Fragment {
                     SharedPreferences.Editor ed = sPref.edit();
                     ed.putString(SAVED_HOLDING, "2");
                     ed.putInt(MAXSCRAP, 100);
-                    ed.commit();
+                    ed.apply();
                     checkBuyed();
                     ((Game) getActivity()).transaction("rub", "-", 3000);
                     ((Game) getActivity()).NextDay();
@@ -200,9 +204,9 @@ public class Holding extends Fragment {
         if(buyed >= 1){btnCardboardBox.setBackground(getResources().getDrawable(R.drawable.btnbuyed));btnCardboardBox.setEnabled(false);}
         if(buyed >= 2){btnCamp.setBackground(getResources().getDrawable(R.drawable.btnbuyed));btnCamp.setEnabled(false);}
         if(buyed >= 3){btnRentRoom.setBackground(getResources().getDrawable(R.drawable.btnbuyed));btnRentRoom.setEnabled(true);}
-        if(buyed >= 4){btnBuyApartment.setBackground(getResources().getDrawable(R.drawable.btnbuyed));btnBuyApartment.setEnabled(false);}
-        if(buyed >= 5){btnBuyHome.setBackground(getResources().getDrawable(R.drawable.btnbuyed));btnBuyHome.setEnabled(false);}
-        if(buyed >= 6){btnBuyMansion.setBackground(getResources().getDrawable(R.drawable.btnbuyed));btnBuyMansion.setEnabled(false);}
+        if(buyed >= 4){btnBuyApartment.setBackground(getResources().getDrawable(R.drawable.btnbuyed));btnBuyApartment.setEnabled(false);btnRentRoom.setEnabled(false);}
+        if(buyed >= 5){btnBuyHome.setBackground(getResources().getDrawable(R.drawable.btnbuyed));btnBuyHome.setEnabled(false);btnRentRoom.setEnabled(false);}
+        if(buyed >= 6){btnBuyMansion.setBackground(getResources().getDrawable(R.drawable.btnbuyed));btnBuyMansion.setEnabled(false);btnRentRoom.setEnabled(false);}
         }
     }
 

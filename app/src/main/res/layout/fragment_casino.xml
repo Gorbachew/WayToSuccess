@@ -1,20 +1,23 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@drawable/bgcasino"
+    android:background="@color/black"
     android:orientation="vertical"
     tools:context=".Casino">
-
+    <ImageView
+        android:id="@+id/imageView2"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:src="@drawable/bgcasino" />
     <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:orientation="vertical"
-        android:gravity="bottom"
-        >
-
+        android:layout_height="wrap_content"
+        android:layout_gravity="bottom"
+        android:orientation="vertical">
         <TextView
             android:id="@+id/CasinoResult"
             android:layout_width="50dp"
@@ -25,68 +28,78 @@
             android:textAlignment="center"
             android:textColor="@color/white"
             android:textSize="35dp" />
+
         <RadioGroup
             android:id="@+id/CasinoRadioGroup2"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:orientation="horizontal">
+
             <RadioButton
                 android:id="@+id/rbSpace1and12"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:background="@drawable/btngame"
                 android:layout_weight="1"
+                android:background="@drawable/btngame"
                 android:text="1/12" />
+
             <RadioButton
                 android:id="@+id/rbSpace2and12"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:background="@drawable/btngame"
                 android:layout_weight="1"
+                android:background="@drawable/btngame"
                 android:text="2/12" />
+
             <RadioButton
                 android:id="@+id/rbSpace3and12"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:background="@drawable/btngame"
                 android:layout_weight="1"
+                android:background="@drawable/btngame"
                 android:text="3/12 " />
         </RadioGroup>
+
         <RadioGroup
             android:id="@+id/CasinoRadioGroup1"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:orientation="horizontal">
+
             <RadioButton
                 android:id="@+id/rbSpaceRED"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:background="@drawable/btngame"
-                android:textColor="@color/red"
                 android:layout_weight="1"
-                android:text="RED" />
+                android:background="@drawable/btngame"
+                android:text="RED"
+                android:textColor="@color/red" />
+
             <RadioButton
                 android:id="@+id/rbSpaceBLACK"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:background="@drawable/btngame"
                 android:layout_weight="1"
+                android:background="@drawable/btngame"
                 android:largeHeap="true"
                 android:text="BLACK" />
         </RadioGroup>
+
         <TextView
-                android:id="@+id/textView"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:textSize="25dp"
-                android:gravity="center"
-                android:background="@color/black"
-                android:textColor="@color/white"
-                android:text="@string/CFRate" />
+            android:id="@+id/textView"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@color/black"
+            android:gravity="center"
+            android:text="@string/CFRate"
+            android:textColor="@color/white"
+            android:textSize="25dp" />
+
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:orientation="horizontal">
+
             <Button
                 android:id="@+id/btnCasinoClear"
                 android:layout_width="match_parent"
@@ -94,6 +107,7 @@
                 android:layout_weight="1"
                 android:background="@drawable/btngame"
                 android:text="Clear" />
+
             <Spinner
                 android:id="@+id/CasinoRate"
                 android:layout_width="80dp"
@@ -104,6 +118,7 @@
                 android:entries="@array/BFspin"
                 android:spinnerMode="dropdown"
                 android:textAlignment="center" />
+
             <Button
                 android:id="@+id/btnCasinoPlay"
                 android:layout_width="match_parent"
@@ -115,4 +130,4 @@
     </LinearLayout>
 
 
-</LinearLayout>
+</FrameLayout>

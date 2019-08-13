@@ -26,11 +26,9 @@ import com.google.android.gms.ads.MobileAds;
 import com.google.android.gms.ads.reward.RewardItem;
 import com.google.android.gms.ads.reward.RewardedVideoAd;
 import com.google.android.gms.ads.reward.RewardedVideoAdListener;
-import com.google.android.gms.tasks.Task;
 import com.google.firebase.firestore.DocumentReference;
 import com.google.firebase.firestore.FieldValue;
 import com.google.firebase.firestore.FirebaseFirestore;
-import com.google.firestore.v1.WriteResult;
 
 import java.io.File;
 import java.util.HashMap;
@@ -40,6 +38,7 @@ import java.util.Timer;
 import java.util.TimerTask;
 
 
+import static android.view.ViewGroup.LayoutParams.MATCH_PARENT;
 import static android.widget.Toast.LENGTH_SHORT;
 import static android.widget.Toast.makeText;
 
@@ -69,12 +68,15 @@ public class Game extends AppCompatActivity implements RewardedVideoAdListener {
     final String LOAD_HP = "HP";
     final String LOAD_MP = "MP";
     final String LOAD_SP = "SP";
+    final String LOAD_MAXHP = "TotalHP";
+    final String LOAD_MAXMP = "TotalMP";
+    final String LOAD_MAXSP = "TotalSP";
 
     final String LOAD_SCRAP = "SCRAP";
     final String LOAD_MAXSCRAP = "MAXSCRAP";
 
     final String LOAD_COURSESCRAP = "CourseScrap";
-    final String LOAD_BMS = "BusinessMetalPoint";
+//    final String LOAD_BMS = "BusinessMetalPoint";
 
     final String LOAD_BMW = "BMWorker";
     final String LOAD_BMFS = "BMFullStock";
@@ -95,6 +97,8 @@ public class Game extends AppCompatActivity implements RewardedVideoAdListener {
     final String LOAD_BUFFDOCK = "BuffDock";
     final String LOAD_BUFFMP = "BuffMP";
 
+    final String LOAD_ALCO = "Alco";
+
     final String LOAD_ACHBM = "AchivmentBMetal";
     final String LOAD_ACHBC = "AchivmentBCafe";
     final String LOAD_ACHM = "AchivmentMetal";
@@ -103,14 +107,14 @@ public class Game extends AppCompatActivity implements RewardedVideoAdListener {
 
     final String LOAD_ANTICHEAT = "AntiCheat";
 
-    Toast toastLowMoney;
+    Toast toast;
     final Random random = new Random();
     int TotalRub, TotalUsd, TotalResp, TotalDay, TotalHP, TotalSP, TotalMP, HP, SP, MP, SCRAP, LoadCourseScrap, AntiCheatHP,AntiCheatSP,AntiCheatMP,AntiCheatTimer;
     String NameGamer;
     FragmentTransaction fTrans;
     Fragment FragmentPass, FragmentFood, FragmentMood, FragmentHealth, FragmentFreelance, FragmentWork, FragmentBusinessMetal, FragmentRespect, FragmentBusinessCafe, FragmentProperty, FragmentHolding, FragmentEducation, FragmentAchivment, FragmentBank, FragmentCasino, FragmentGorbes;
-    ImageView ivimgDay;
-    LinearLayout LayoutScrap;
+    ImageView ivimgDay,cookico,dockico,mpico,comicico,flatico,alcoico;
+    LinearLayout LayoutScrap,icobar;
     HorizontalScrollView ScrollBusiness;
 
     TextView totalrub, totalusd, totalresp, totalday, totaltexthp, totaltextmp, totaltextsp, namefragments, tvHours, textKgScrap, KgScrap, textCourseScrap, CourseScrap;
@@ -120,12 +124,14 @@ public class Game extends AppCompatActivity implements RewardedVideoAdListener {
     TimerTask task;
 
 
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+
         setContentView(R.layout.activity_game);
         //Проверка добавления новых переменных в игру, чтобы не вылетало
-        UpdateGame();
+
 
         sPref = getSharedPreferences("Saved", MODE_PRIVATE);
         //Создает обьект Id элементов
@@ -141,6 +147,7 @@ public class Game extends AppCompatActivity implements RewardedVideoAdListener {
         ProgBarMP = findViewById(R.id.ProgressBarMP);
         ProgBarSP = findViewById(R.id.ProgressBarSP);
 
+
         ivimgDay = findViewById(R.id.imgDay);
         tvHours = findViewById(R.id.TextHours);
         LayoutScrap = findViewById(R.id.LayoutScrap);
@@ -150,7 +157,9 @@ public class Game extends AppCompatActivity implements RewardedVideoAdListener {
         CourseScrap = findViewById(R.id.CourseScrap);
         ScrollBusiness = findViewById(R.id.ScrollBusiness);
 
+
         //Создаем обьект фрагментов
+
         FragmentPass = new Password();
         FragmentMood = new Mood();
         FragmentFood = new Food();
@@ -170,6 +179,7 @@ public class Game extends AppCompatActivity implements RewardedVideoAdListener {
         FragmentGorbes = new Gorbes();
 
 
+
         //Видеореклама
         mRewardedVideoAd = MobileAds.getRewardedVideoAdInstance(this);
         mRewardedVideoAd.setRewardedVideoAdListener(this);
@@ -187,20 +197,85 @@ public class Game extends AppCompatActivity implements RewardedVideoAdListener {
         });
         //Загрузка сохраненных параметров
         loadGame();
+        checkIco();
 
-
-        //Передаем значения фрагменту Паспорт
-        Bundle bundle = new Bundle();
-        bundle.putString("Name", NameGamer);
-        FragmentPass.setArguments(bundle);
-        //К моему сожалению, я не смог сделать чтобы первый фрагмент Password работал. По этому есть костыль в виде фрагмента First, которые заменяется фрагментом Password при открытии приложения.
-        fTrans = getSupportFragmentManager().beginTransaction();
-        namefragments.setText(getResources().getString(R.string.NFPass));
-        fTrans.replace(R.id.MainFragmentsWindow, FragmentPass);
-        fTrans.commit();
-
+        if(savedInstanceState != null){
+            String fname = savedInstanceState.getString("fname");
+            namefragments.setText(fname);
+            if (namefragments.getText().toString().equals(getResources().getString(R.string.NFFreelance))) {
+                LayoutScrap.setVisibility(View.VISIBLE);
+            } else {
+                LayoutScrap.setVisibility(View.INVISIBLE);
+            }
+            if (namefragments.getText().toString().equals(getResources().getString(R.string.NFBusiness))) {
+                ScrollBusiness.setVisibility(View.VISIBLE);
+            } else {
+                ScrollBusiness.setVisibility(View.INVISIBLE);
+            }
+        }
+        else{
+            // при первом запуске программы
+            fTrans = getSupportFragmentManager().beginTransaction();
+            // добавляем в контейнер при помощи метода add()
+            fTrans.add(R.id.MainFragmentsWindow, FragmentPass);
+            fTrans.commit();
+        }
 
     }
+
+    //Переход на следующие 6 часов
+    @SuppressLint("SetTextI18n")
+    public void NextDay() {
+        //Методы которые проверяются каждый ход
+        SharedPreferences.Editor ed = sPref.edit();
+
+        if (tvHours.getText().equals("6")) {
+            ivimgDay.setImageResource(R.drawable.day12);
+
+            tvHours.setText("12");
+        } else if (tvHours.getText().equals("12")) {
+            ivimgDay.setImageResource(R.drawable.day18);
+            tvHours.setText("18");
+            int rand = random.nextInt(25);
+            switch (rand){
+                case 25:Events(0);break;
+                case 24:Events(1);break;
+            }
+        } else if (tvHours.getText().equals("18")) {
+            ivimgDay.setImageResource(R.drawable.day24);
+            tvHours.setText("0");
+        } else if (tvHours.getText().equals("0")) {
+            ivimgDay.setImageResource(R.drawable.day6);
+            tvHours.setText("6");
+            int load = sPref.getInt(LOAD_DAY, 0);
+            ed.putInt(LOAD_DAY, load + 1);
+            ed.apply();
+            AntiCheat();
+            BMWorker();
+            BCafe();
+            CheckBuff();
+        }
+        checkIco();
+        EndGame();
+        CheckStats();
+        Achivments();
+        CourseScrap();
+        ChangeCourseUSD();
+        loadGame();
+        ChangeParam("HP", "-", 1, 5);
+        ChangeParam("SP", "-", 1, 5);
+        ChangeParam("MP", "-", 1, 5);
+        //Проверка на похмелье, не придумал куда можно запихнуть
+        int alco = sPref.getInt(LOAD_ALCO,0);
+        if(alco > 0){
+            alco -= 1;
+            ChangeParam("HP", "-", 1, 5);
+            ed.putInt(LOAD_ALCO,alco);
+        }
+        ed.apply();
+
+    }
+
 
     private void loadRewardedVideoAd() {
         mRewardedVideoAd.loadAd("ca-app-pub-6876201111676185/9057018825",
@@ -225,7 +300,7 @@ public class Game extends AppCompatActivity implements RewardedVideoAdListener {
                                     }
                                     Intent intent = new Intent(Game.this, MainActivity.class);
                                     startActivity(intent);
-                                    File file = new File("/data/data/gorbachew.pythonanywhere.ru/shared_prefs/Saved.xml");
+                                    @SuppressLint("SdCardPath") File file = new File("/data/data/gorbachew.pythonanywhere.ru/shared_prefs/Saved.xml");
                                     file.delete();
                                 }
                             })
@@ -240,9 +315,16 @@ public class Game extends AppCompatActivity implements RewardedVideoAdListener {
                                         ed.putInt("LoseMP", 0);
                                         ed.putInt("LoseSP", 0);
                                         ed.putInt("LoseMoney", 0);
-                                        ed.commit();
+                                        ed.apply();
                                     } else {
                                         makeText(Game.this, getResources().getString(R.string.EndNoVideo), Toast.LENGTH_LONG).show();
+                                        if (!sPref.getString(LOAD_USERID, "").equals("0")) {
+                                            db.collection("Players").document(sPref.getString(LOAD_USERID, "")).update("death", 1);
+                                        }
+                                        Intent intent = new Intent(Game.this, MainActivity.class);
+                                        startActivity(intent);
+                                        @SuppressLint("SdCardPath") File file = new File("/data/data/gorbachew.pythonanywhere.ru/shared_prefs/Saved.xml");
+                                        file.delete();
                                     }
                                 }
                             });
@@ -281,11 +363,11 @@ public class Game extends AppCompatActivity implements RewardedVideoAdListener {
             LoseHP += 1;
             SharedPreferences.Editor ed = sPref.edit();
             ed.putInt("LoseHP", LoseHP);
-            ed.commit();
+            ed.apply();
         } else if (LoseHP > 0) {
             SharedPreferences.Editor ed = sPref.edit();
             ed.putInt("LoseHP", 0);
-            ed.commit();
+            ed.apply();
         }
         if (MP <= 0) {
             if (LoseMP == 0) {
@@ -307,11 +389,11 @@ public class Game extends AppCompatActivity implements RewardedVideoAdListener {
             LoseMP += 1;
             SharedPreferences.Editor ed = sPref.edit();
             ed.putInt("LoseMP", LoseMP);
-            ed.commit();
+            ed.apply();
         } else if (LoseMP > 0) {
             SharedPreferences.Editor ed = sPref.edit();
             ed.putInt("LoseMP", 0);
-            ed.commit();
+            ed.apply();
         }
         if (SP <= 0) {
             if (LoseSP == 0) {
@@ -333,11 +415,11 @@ public class Game extends AppCompatActivity implements RewardedVideoAdListener {
             LoseSP += 1;
             SharedPreferences.Editor ed = sPref.edit();
             ed.putInt("LoseSP", LoseSP);
-            ed.commit();
+            ed.apply();
         } else if (LoseSP > 0) {
             SharedPreferences.Editor ed = sPref.edit();
             ed.putInt("LoseSP", 0);
-            ed.commit();
+            ed.apply();
         }
         if (Rub < 0 || Usd < 0) {
             if (LoseMoney == 0) {
@@ -359,11 +441,11 @@ public class Game extends AppCompatActivity implements RewardedVideoAdListener {
             LoseMoney += 1;
             SharedPreferences.Editor ed = sPref.edit();
             ed.putInt("LoseMoney", LoseMoney);
-            ed.commit();
+            ed.apply();
         } else if (LoseMoney > 0) {
             SharedPreferences.Editor ed = sPref.edit();
             ed.putInt("LoseMoney", 0);
-            ed.commit();
+            ed.apply();
         }
     }
 
@@ -375,106 +457,70 @@ public class Game extends AppCompatActivity implements RewardedVideoAdListener {
         int metal = sPref.getInt(LOAD_SCRAP, 0);
         String cook = sPref.getString(LOAD_BCC, "");
         String businessmetal = sPref.getString(LOAD_BMFS, "");
-
+        SharedPreferences.Editor ed = sPref.edit();
         if (sPref.getString(LOAD_ACHBM, "").equals("2") && Integer.parseInt(businessmetal) >= 10000) {
-            SharedPreferences.Editor ed = sPref.edit();
             ed.putString(LOAD_ACHBM, "3");
-            ed.commit();
             makeText(this, getResources().getString(R.string.AFopen) + " " + getResources().getString(R.string.AFbmetal31), Toast.LENGTH_LONG).show();
         } else if (sPref.getString(LOAD_ACHBM, "").equals("1") && Integer.parseInt(businessmetal) >= 5000) {
-            SharedPreferences.Editor ed = sPref.edit();
             ed.putString(LOAD_ACHBM, "2");
-            ed.commit();
             makeText(this, getResources().getString(R.string.AFopen) + " " + getResources().getString(R.string.AFbmetal21), Toast.LENGTH_LONG).show();
         } else if (sPref.getString(LOAD_ACHBM, "").equals("0") && Integer.parseInt(businessmetal) >= 1000) {
-            SharedPreferences.Editor ed = sPref.edit();
             ed.putString(LOAD_ACHBM, "1");
-            ed.commit();
             makeText(this, getResources().getString(R.string.AFopen) + " " + getResources().getString(R.string.AFbmetal11), Toast.LENGTH_LONG).show();
         }
 
         if (sPref.getString(LOAD_ACHBC, "").equals("2") && Integer.parseInt(cook) >= 10) {
-            SharedPreferences.Editor ed = sPref.edit();
             ed.putString(LOAD_ACHBC, "3");
-            ed.commit();
             makeText(this, getResources().getString(R.string.AFopen) + " " + getResources().getString(R.string.AFcafe31), Toast.LENGTH_LONG).show();
         } else if (sPref.getString(LOAD_ACHBC, "").equals("1") && Integer.parseInt(cook) >= 6) {
-            SharedPreferences.Editor ed = sPref.edit();
             ed.putString(LOAD_ACHBC, "2");
-            ed.commit();
             makeText(this, getResources().getString(R.string.AFopen) + " " + getResources().getString(R.string.AFcafe21), Toast.LENGTH_LONG).show();
         } else if (sPref.getString(LOAD_ACHBC, "").equals("0") && Integer.parseInt(cook) >= 2) {
-            SharedPreferences.Editor ed = sPref.edit();
             ed.putString(LOAD_ACHBC, "1");
-            ed.commit();
             makeText(this, getResources().getString(R.string.AFopen) + " " + getResources().getString(R.string.AFcafe11), Toast.LENGTH_LONG).show();
         }
 
         if (sPref.getString(LOAD_ACHR, "").equals("2") && resp >= 100000) {
-            SharedPreferences.Editor ed = sPref.edit();
             ed.putString(LOAD_ACHR, "3");
-            ed.commit();
             makeText(this, getResources().getString(R.string.AFopen) + " " + getResources().getString(R.string.AFrespect31), Toast.LENGTH_LONG).show();
         } else if (sPref.getString(LOAD_ACHR, "").equals("1") && resp >= 20000) {
-            SharedPreferences.Editor ed = sPref.edit();
             ed.putString(LOAD_ACHR, "2");
-            ed.commit();
             makeText(this, getResources().getString(R.string.AFopen) + " " + getResources().getString(R.string.AFrespect21), Toast.LENGTH_LONG).show();
         } else if (sPref.getString(LOAD_ACHR, "").equals("0") && resp >= 1000) {
-            SharedPreferences.Editor ed = sPref.edit();
             ed.putString(LOAD_ACHR, "1");
-            ed.commit();
             makeText(this, getResources().getString(R.string.AFopen) + " " + getResources().getString(R.string.AFrespect11), Toast.LENGTH_LONG).show();
         }
-
         if (sPref.getString(LOAD_ACHMo, "").equals("5") && usd >= 10000000) {
-            SharedPreferences.Editor ed = sPref.edit();
             ed.putString(LOAD_ACHMo, "6");
-            ed.commit();
             makeText(this, getResources().getString(R.string.AFopen) + " " + getResources().getString(R.string.AFmoney61), Toast.LENGTH_LONG).show();
         } else if (sPref.getString(LOAD_ACHMo, "").equals("4") && usd >= 1000000) {
-            SharedPreferences.Editor ed = sPref.edit();
             ed.putString(LOAD_ACHMo, "5");
-            ed.commit();
             makeText(this, getResources().getString(R.string.AFopen) + " " + getResources().getString(R.string.AFmoney51), Toast.LENGTH_LONG).show();
         } else if (sPref.getString(LOAD_ACHMo, "").equals("3") && usd >= 5000000) {
-            SharedPreferences.Editor ed = sPref.edit();
             ed.putString(LOAD_ACHMo, "4");
-            ed.commit();
             makeText(this, getResources().getString(R.string.AFopen) + " " + getResources().getString(R.string.AFmoney41), Toast.LENGTH_LONG).show();
         } else if (sPref.getString(LOAD_ACHMo, "").equals("2") && rub >= 1000000) {
-            SharedPreferences.Editor ed = sPref.edit();
             ed.putString(LOAD_ACHMo, "3");
-            ed.commit();
             makeText(this, getResources().getString(R.string.AFopen) + " " + getResources().getString(R.string.AFmoney31), Toast.LENGTH_LONG).show();
         } else if (sPref.getString(LOAD_ACHMo, "").equals("1") && rub >= 500000) {
-            SharedPreferences.Editor ed = sPref.edit();
             ed.putString(LOAD_ACHMo, "2");
-            ed.commit();
             makeText(this, getResources().getString(R.string.AFopen) + " " + getResources().getString(R.string.AFmoney21), Toast.LENGTH_LONG).show();
         } else if (sPref.getString(LOAD_ACHMo, "").equals("0") && rub >= 100000) {
-            SharedPreferences.Editor ed = sPref.edit();
             ed.putString(LOAD_ACHMo, "1");
-            ed.commit();
             makeText(this, getResources().getString(R.string.AFopen) + " " + getResources().getString(R.string.AFmoney11), Toast.LENGTH_LONG).show();
         }
 
         if (sPref.getString(LOAD_ACHM, "").equals("2") && metal >= 1000) {
-            SharedPreferences.Editor ed = sPref.edit();
             ed.putString(LOAD_ACHM, "3");
-            ed.commit();
             makeText(this, getResources().getString(R.string.AFopen) + " " + getResources().getString(R.string.AFfreelance31), Toast.LENGTH_LONG).show();
         } else if (sPref.getString(LOAD_ACHM, "").equals("1") && metal >= 500) {
-            SharedPreferences.Editor ed = sPref.edit();
             ed.putString(LOAD_ACHM, "2");
-            ed.commit();
             makeText(this, getResources().getString(R.string.AFopen) + " " + getResources().getString(R.string.AFfreelance21), Toast.LENGTH_LONG).show();
         } else if (sPref.getString(LOAD_ACHM, "").equals("0") && metal >= 200) {
-            SharedPreferences.Editor ed = sPref.edit();
             ed.putString(LOAD_ACHM, "1");
-            ed.commit();
             makeText(this, getResources().getString(R.string.AFopen) + " " + getResources().getString(R.string.AFfreelance11), Toast.LENGTH_LONG).show();
         }
+        ed.apply();
     }
 
     //Изменение курса в банке
@@ -538,48 +584,57 @@ public class Game extends AppCompatActivity implements RewardedVideoAdListener {
         }
         SharedPreferences.Editor ed = sPref.edit();
         ed.putInt(LOAD_CourseUSD, course);
-        ed.commit();
+        ed.apply();
     }
 
     //Все снятия\прибавления статистики через определенное кол-во времени
+    @SuppressLint("ResourceType")
     public void CheckBuff() {
         String cook = sPref.getString(LOAD_BUFFCOOK, "");
         String dock = sPref.getString(LOAD_BUFFDOCK, "");
         String comic = sPref.getString(LOAD_BUFFCOMIC, "");
         String mp = sPref.getString(LOAD_BUFFMP, "");
         String rent = sPref.getString(SAVED_HOLDING, "");
+        int allpay = 0;
         int day = sPref.getInt(LOAD_DAY, 0);
-        if (cook.equals("1")) {
-            RandomStats("SP", "+", 30, 70);
 
+        if (cook.equals("1")) {
+            ChangeParam("SP", "+", 10, 20);
             if (day % 30 == 0) {
                 transaction("rub", "-", 50000);
+                allpay += 50000;
             }
         }
         if (dock.equals("1")) {
-            RandomStats("HP", "+", 30, 70);
+            ChangeParam("HP", "+", 10, 20);
             if (day % 30 == 0) {
                 transaction("rub", "-", 70000);
+                allpay += 70000;
             }
         }
         if (comic.equals("1")) {
-            RandomStats("MP", "+", 30, 70);
+           ChangeParam("MP", "+", 10, 20);
             if (day % 30 == 0) {
-                transaction("rub", "-", 70000);
+                transaction("rub", "-", 50000);
+                allpay += 50000;
             }
         }
         if (mp.equals("1")) {
-            RandomStats("RESP", "+", 0, 3000);
+            ChangeParam("RESP", "+", 0, 3000);
             if (day % 30 == 0) {
                 transaction("usd", "-", 50000);
+                allpay += 50000;
             }
         }
         if (rent.equals("3")) {
             if (day % 30 == 0) {
                 transaction("rub", "-", 25000);
                 makeText(this, getResources().getString(R.string.HoFRentPayDay), LENGTH_SHORT).show();
+                allpay += 25000;
             }
         }
+        if(allpay > 0) Toast.makeText(this,getResources().getString(R.string.payday) + " " +String.valueOf(allpay),Toast.LENGTH_LONG).show();
+
         if (day % 365 == 0) {
             int resp = sPref.getInt(LOAD_RESPECT, 0);
             int rub = resp * 7;
@@ -604,13 +659,69 @@ public class Game extends AppCompatActivity implements RewardedVideoAdListener {
             alert.show();
             transaction("rub", "+", rub);
             transaction("usd", "+", usd);
-            RandomStats("RESP", "+", newresp, 1);
-            RandomStats("HP", "+", 50, 1);
-            RandomStats("SP", "+", 50, 1);
-            RandomStats("MP", "+", 50, 1);
+            ChangeParam("HP", "+",  50,1);
+            ChangeParam("SP", "+",  50,1);
+            ChangeParam("MP", "+",  50,1);
+            ChangeParam("MP", "+",  newresp,1);
         }
+    }
+    private void checkIco(){
+        String cook = sPref.getString(LOAD_BUFFCOOK, "");
+        String dock = sPref.getString(LOAD_BUFFDOCK, "");
+        String comic = sPref.getString(LOAD_BUFFCOMIC, "");
+        String mp = sPref.getString(LOAD_BUFFMP, "");
+        int alco = sPref.getInt(LOAD_ALCO, 0);
+        int flat = Integer.parseInt(sPref.getString(SAVED_HOLDING, ""));
+        icobar = findViewById(R.id.icobar);
 
-
+        if(cook.equals("1") && cookico == null){
+            cookico = new ImageView(getApplicationContext());cookico.setImageResource(R.drawable.chefico);
+            cookico.setLayoutParams(new LinearLayout.LayoutParams(LinearLayout.LayoutParams.WRAP_CONTENT,MATCH_PARENT));
+            icobar.addView(cookico);
+        }
+        else if(cook.equals("0") && cookico != null){
+            icobar.removeView(cookico);cookico = null;
+        }
+        if(dock.equals("1") && dockico == null){
+            dockico = new ImageView(getApplicationContext());dockico.setImageResource(R.drawable.doctorico);
+            dockico.setLayoutParams(new LinearLayout.LayoutParams(LinearLayout.LayoutParams.WRAP_CONTENT,MATCH_PARENT));
+            icobar.addView(dockico);
+        }
+        else if(dock.equals("0") && dockico != null){
+            icobar.removeView(dockico);dockico = null;
+        }
+        if(comic.equals("1") && comicico == null){
+            comicico = new ImageView(getApplicationContext());comicico.setImageResource(R.drawable.comicico);
+            comicico.setLayoutParams(new LinearLayout.LayoutParams(LinearLayout.LayoutParams.WRAP_CONTENT,MATCH_PARENT));
+            icobar.addView(comicico);
+        }
+        else if(comic.equals("0") && comicico != null){
+            icobar.removeView(comicico);comicico = null;
+        }
+        if(mp.equals("1") && mpico == null){
+            mpico = new ImageView(getApplicationContext());mpico.setImageResource(R.drawable.mpico);
+            mpico.setLayoutParams(new LinearLayout.LayoutParams(LinearLayout.LayoutParams.WRAP_CONTENT,MATCH_PARENT));
+            icobar.addView(mpico);
+        }
+        else if(mp.equals("0") && mpico != null){
+            icobar.removeView(mpico);mpico = null;
+        }
+        if(flat == 3 && flatico == null){
+            flatico = new ImageView(getApplicationContext());flatico.setImageResource(R.drawable.flatico);
+            flatico.setLayoutParams(new LinearLayout.LayoutParams(LinearLayout.LayoutParams.WRAP_CONTENT,MATCH_PARENT));
+            icobar.addView(flatico);
+        }
+        else if(flat < 3 || flat > 3  && flatico != null){
+            icobar.removeView(flatico);flatico = null;
+        }
+        if(alco > 0 && alcoico == null){
+            alcoico = new ImageView(getApplicationContext());alcoico.setImageResource(R.drawable.alcoico);
+            alcoico.setLayoutParams(new LinearLayout.LayoutParams(LinearLayout.LayoutParams.WRAP_CONTENT,MATCH_PARENT));
+            icobar.addView(alcoico);
+        }
+        else if(alco == 0 && alcoico != null){
+            icobar.removeView(alcoico);alcoico = null;
+        }
     }
 
     public void BCafe() {
@@ -664,7 +775,7 @@ public class Game extends AppCompatActivity implements RewardedVideoAdListener {
                 makeText(this, getResources().getString(R.string.BCPayDay) + " " + salaryCook + "$," + salaryWaiter + "р", Toast.LENGTH_LONG).show();
             }
 
-            ed.commit();
+            ed.apply();
         }
 
     }
@@ -717,7 +828,6 @@ public class Game extends AppCompatActivity implements RewardedVideoAdListener {
 
                 break;
             case "usd":
-
                 new CountDownTimer(200, 200) {
                     @Override
                     public void onTick(long l) {
@@ -732,11 +842,11 @@ public class Game extends AppCompatActivity implements RewardedVideoAdListener {
 
                 break;
         }
-        if (toastLowMoney != null) {
-            toastLowMoney.cancel();
+        if (toast != null) {
+            toast.cancel();
         }
-        toastLowMoney = Toast.makeText(Game.this, getResources().getString(R.string.LowMoney), Toast.LENGTH_LONG);
-        toastLowMoney.show();
+        toast = Toast.makeText(Game.this, getResources().getString(R.string.LowMoney), Toast.LENGTH_LONG);
+        toast.show();
     }
 
     //Метод работы рабочих на пункте приема метала
@@ -760,7 +870,6 @@ public class Game extends AppCompatActivity implements RewardedVideoAdListener {
             }
             //Каждые 30 дней списывает по 5к за каждого рабочего
             if (day % 30 == 0) {
-                int rub = Integer.parseInt(totalrub.getText().toString());
                 int pd = worker * 5000;
                 transaction("rub", "-", pd);
                 makeText(this, getResources().getString(R.string.BmPayDay) + " " + pd + "р", LENGTH_SHORT).show();
@@ -768,110 +877,13 @@ public class Game extends AppCompatActivity implements RewardedVideoAdListener {
         }
         metal = metal + random.nextInt(ad);
         ed.putString(LOAD_BMFS, String.valueOf(metal));
-        ed.commit();
+        ed.apply();
     }
 
-    //Метод случайного привабления или убавления статистики игрока
-    //4 входящие переменные 1(HP,MP,SP)что изменяется 2 (Plus,Minus) прибавляем или вычитаем 3 100% прибавка или отнятие значения 4 Рандомная максимальная величина в добавок к основной
-    public void RandomStats(String Stat, String Sign, int ExactChangeStat, int RandChangeStat) {
-        SharedPreferences.Editor ed = sPref.edit();
-        int TestMode = sPref.getInt("TestMode", 0);
-        if (TestMode == 0) {
-            switch (Stat) {
-                case "HP":
-                    int varStatHP = ProgBarHP.getProgress();
-                    if (Sign.equals("+")) {
-                        varStatHP = varStatHP + ExactChangeStat + random.nextInt(RandChangeStat);
-                        ed.putInt(LOAD_HP, varStatHP);
-                    }
-                    if (Sign.equals("-")) {
-                        varStatHP = varStatHP - ExactChangeStat - random.nextInt(RandChangeStat);
-                        ed.putInt(LOAD_HP, varStatHP);
-                    }
-                    break;
-                case "MP":
-                    int varStatMP = ProgBarMP.getProgress();
-                    if (Sign.equals("+")) {
-                        varStatMP = varStatMP + ExactChangeStat + random.nextInt(RandChangeStat);
-                        ed.putInt(LOAD_MP, varStatMP);
-                    }
-                    if (Sign.equals("-")) {
-                        varStatMP = varStatMP - ExactChangeStat - random.nextInt(RandChangeStat);
-                        ed.putInt(LOAD_MP, varStatMP);
-                    }
-                    break;
-                case "SP":
-                    int varStatSP = ProgBarSP.getProgress();
-                    if (Sign.equals("+")) {
-                        varStatSP = varStatSP + ExactChangeStat + random.nextInt(RandChangeStat);
-                        ed.putInt(LOAD_SP, varStatSP);
-                    }
-                    if (Sign.equals("-")) {
-                        varStatSP = varStatSP - ExactChangeStat - random.nextInt(RandChangeStat);
-                        ed.putInt(LOAD_SP, varStatSP);
-                    }
-                    break;
-                case "RESP":
-                    int var = sPref.getInt(LOAD_RESPECT, 0);
-                    if (Sign.equals("+")) {
-                        varStatSP = var + ExactChangeStat + random.nextInt(RandChangeStat);
-                        ed.putInt(LOAD_RESPECT, varStatSP);
-                    }
-                    if (Sign.equals("-")) {
-                        varStatSP = var - ExactChangeStat - random.nextInt(RandChangeStat);
-                        ed.putInt(LOAD_RESPECT, varStatSP);
-                    }
-                    break;
-            }
-            ed.commit();
-        }
-
-    }
-
-    //Переход на следующие 6 часов
-    public void NextDay() {
-        //Методы которые проверяются каждый ход
-        SharedPreferences.Editor ed = sPref.edit();
-
-        if (tvHours.getText().equals("6")) {
-            ivimgDay.setImageResource(R.drawable.day12);
-            tvHours.setText("12");
-        } else if (tvHours.getText().equals("12")) {
-            ivimgDay.setImageResource(R.drawable.day18);
-            tvHours.setText("18");
-            int rand = random.nextInt(25);
-            switch (rand){
-                case 25:Events(0);break;
-                case 24:Events(1);break;
-            }
-        } else if (tvHours.getText().equals("18")) {
-            ivimgDay.setImageResource(R.drawable.day24);
-            tvHours.setText("0");
-        } else if (tvHours.getText().equals("0")) {
-            ivimgDay.setImageResource(R.drawable.day6);
-            tvHours.setText("6");
-
-            RandomStats("HP", "-", 1, 15);
-            RandomStats("SP", "-", 1, 15);
-            RandomStats("MP", "-", 1, 15);
 
 
-            int load = sPref.getInt(LOAD_DAY, 0);
-            ed.putInt(LOAD_DAY, load + 1);
-            ed.commit();
-            AntiCheat();
-            BMWorker();
-            BCafe();
-            CheckBuff();
-        }
-        EndGame();
-        CheckStats();
-        Achivments();
-        CourseScrap();
-        ChangeCourseUSD();
-        loadGame();
 
-    }
+
 
 
     //Продажа металла
@@ -881,23 +893,25 @@ public class Game extends AppCompatActivity implements RewardedVideoAdListener {
         SharedPreferences.Editor ed = sPref.edit();
         ed.putInt(LOAD_RUB, intSellScrap);
         ed.putInt(LOAD_SCRAP, 0);
-        ed.commit();
+        ed.apply();
 
 
     }
 
     //Нахождение металла
     public void FindScrup() {
+        if(toast!=null)toast.cancel();
         int Scrap = sPref.getInt(LOAD_SCRAP, 0);
         int maxScrap = sPref.getInt(LOAD_MAXSCRAP, 0);
         if (Scrap <= maxScrap) {
             Scrap = Scrap + random.nextInt(6);
             SharedPreferences.Editor ed = sPref.edit();
             ed.putInt(LOAD_SCRAP, Scrap);
-            ed.commit();
+            ed.apply();
 
         } else {
-            makeText(this, getResources().getString(R.string.FrFLotScrap), Toast.LENGTH_LONG).show();
+            toast = Toast.makeText(this, getResources().getString(R.string.FrFLotScrap), Toast.LENGTH_LONG);
+            toast.show();
         }
 
 
@@ -908,7 +922,7 @@ public class Game extends AppCompatActivity implements RewardedVideoAdListener {
         SharedPreferences.Editor ed = sPref.edit();
         int Course = 11 + random.nextInt(21 - 10);
         ed.putInt(LOAD_COURSESCRAP, Course);
-        ed.commit();
+        ed.apply();
 
     }
 
@@ -916,7 +930,6 @@ public class Game extends AppCompatActivity implements RewardedVideoAdListener {
     //Изменение фрагментов игры
     public void ChangeFragments(View view) {
         fTrans = getSupportFragmentManager().beginTransaction();
-
         switch (view.getId()) {
             case R.id.btnPass:
                 namefragments.setText(getResources().getString(R.string.NFPass));
@@ -987,17 +1000,22 @@ public class Game extends AppCompatActivity implements RewardedVideoAdListener {
                 namefragments.setText(getResources().getString(R.string.NFGorbes));
                 fTrans.replace(R.id.MainFragmentsWindow, FragmentGorbes);
                 break;
+            case R.id.btnExit:
+                Intent intent = new Intent(Game.this, MainActivity.class);
+                startActivity(intent);
+                break;
 
         }
+        fTrans.addToBackStack(null);
         fTrans.commit();
         //Отображает
 
-        if (namefragments.getText().toString() == getResources().getString(R.string.NFFreelance)) {
+        if (namefragments.getText().toString().equals(getResources().getString(R.string.NFFreelance))) {
             LayoutScrap.setVisibility(View.VISIBLE);
         } else {
             LayoutScrap.setVisibility(View.INVISIBLE);
         }
-        if (namefragments.getText().toString() == getResources().getString(R.string.NFBusiness)) {
+        if (namefragments.getText().toString().equals(getResources().getString(R.string.NFBusiness))) {
             ScrollBusiness.setVisibility(View.VISIBLE);
         } else {
             ScrollBusiness.setVisibility(View.INVISIBLE);
@@ -1118,7 +1136,7 @@ public class Game extends AppCompatActivity implements RewardedVideoAdListener {
             usd += 500;
             ed.putInt(LOAD_USD, usd);
         }
-        ed.commit();
+        ed.apply();
 
         loadGame();
     }
@@ -1164,7 +1182,7 @@ public class Game extends AppCompatActivity implements RewardedVideoAdListener {
                         .setMessage(getResources().getString(R.string.EventVideoAdText))
                         .setIcon(R.drawable.holdingico)
                         .setCancelable(false)
-                        .setPositiveButton(getResources().getString(R.string.Agree) + " " + String.valueOf(resp) + "$",
+                        .setPositiveButton(getResources().getString(R.string.Agree) + " +" + String.valueOf(resp) + "$",
                                 new DialogInterface.OnClickListener() {
                                     @Override
                                     public void onClick(DialogInterface dialog, int which) {
@@ -1193,7 +1211,7 @@ public class Game extends AppCompatActivity implements RewardedVideoAdListener {
                         .setMessage(getResources().getString(R.string.EventAdText))
                         .setIcon(R.drawable.holdingico)
                         .setCancelable(false)
-                        .setPositiveButton(getResources().getString(R.string.Agree) + " " + String.valueOf(resp)+ "р",
+                        .setPositiveButton(getResources().getString(R.string.Agree) + " +" + String.valueOf(resp)+ "р",
                                 new DialogInterface.OnClickListener() {
                                     @Override
                                     public void onClick(DialogInterface dialog, int which) {
@@ -1225,7 +1243,7 @@ public class Game extends AppCompatActivity implements RewardedVideoAdListener {
        if(AntiCheatHP == ProgBarHP.getProgress() || AntiCheatSP == ProgBarSP.getProgress() || AntiCheatMP == ProgBarMP.getProgress()){
 //           Toast.makeText(this,"Подумал, что есть читы",LENGTH_SHORT).show();
            AntiCheatTimer++;
-           if(AntiCheatTimer >= 5){
+           if(AntiCheatTimer >= 20 && sPref.getInt("TestMode",0) == 0){
                AlertDialog.Builder builder = new AlertDialog.Builder(Game.this);
                builder.setTitle(getResources().getString(R.string.YouCheaterTitle))
                        .setMessage(getResources().getString(R.string.YouCheaterText))
@@ -1257,18 +1275,6 @@ public class Game extends AppCompatActivity implements RewardedVideoAdListener {
             AntiCheatMP = ProgBarMP.getProgress();
         }
     }
-    public void UpdateGame(){
-        try {
-            sPref.getInt("AntiCheat",0);
-        }
-        catch(Exception e){
-            sPref = getSharedPreferences("Saved", MODE_PRIVATE);
-            SharedPreferences.Editor ed = sPref.edit();
-            ed.putInt("AntiCheat",0);
-            ed.apply();
-        }
-
-    }
 
     @Override
     public void onResume() {
@@ -1281,7 +1287,6 @@ public class Game extends AppCompatActivity implements RewardedVideoAdListener {
                 public void run() {
                     runOnUiThread(new Runnable() {
                         public void run() {
-
                             if (sPref.getString(LOAD_USERID, "").equals("0")) {
                                 //                            Toast.makeText(Game.this,getResources().getString(R.string.GFsendError), LENGTH_SHORT).show();
                             } else {
@@ -1302,18 +1307,102 @@ public class Game extends AppCompatActivity implements RewardedVideoAdListener {
             };
             timer.scheduleAtFixedRate(task, 0, 60000);
             //        Log.i("1111111111111111","Активити видно");
-
         }
         else {
             Toast.makeText(Game.this, getResources().getString(R.string.YouCheaterToast), LENGTH_SHORT).show();
         }
     }
+    public void ChangeParam(String Stat, String Sign, int ExactChangeStat, int RandChangeStat) {
+        SharedPreferences.Editor ed = sPref.edit();
+        int maxHp = sPref.getInt(LOAD_MAXHP,0);
+        int maxSp = sPref.getInt(LOAD_MAXSP,0);
+        int maxMp = sPref.getInt(LOAD_MAXMP,0);
+
+        int TestMode = sPref.getInt("TestMode", 0);
+        if (TestMode == 0) {
+            switch (Stat){
+                case "HP":
+                    int varStatHP = sPref.getInt(LOAD_HP,0);
+                    switch (Sign){
+                        case"+":
+                            varStatHP = varStatHP + ExactChangeStat + random.nextInt(RandChangeStat);
+                            if(varStatHP > maxHp)ed.putInt(LOAD_HP, maxHp);
+                            else ed.putInt(LOAD_HP, varStatHP);
+
+                            break;
+                        case"-":
+                            varStatHP = varStatHP - ExactChangeStat - random.nextInt(RandChangeStat);
+                            if(varStatHP < 0)ed.putInt(LOAD_HP, 0);
+                            else ed.putInt(LOAD_HP, varStatHP);
+                            break;
+                    }
+                    break;
+                case "MP":
+                    int varStatMP = sPref.getInt(LOAD_MP,0);
+                    switch (Sign){
+                        case"+":
+                            varStatMP = varStatMP + ExactChangeStat + random.nextInt(RandChangeStat);
+                            if(varStatMP > maxMp)ed.putInt(LOAD_MP, maxMp);
+                            else ed.putInt(LOAD_MP, varStatMP);
+                            break;
+                        case"-":
+                            varStatMP = varStatMP - ExactChangeStat - random.nextInt(RandChangeStat);
+                            if(varStatMP < 0)ed.putInt(LOAD_MP, 0);
+                            else ed.putInt(LOAD_MP, varStatMP);
+                            break;
+                    }
+                    break;
+                case "SP":
+                    int varStatSP = sPref.getInt(LOAD_SP,0);
+                    switch (Sign){
+                        case"+":
+                            varStatSP = varStatSP + ExactChangeStat + random.nextInt(RandChangeStat);
+                            if(varStatSP > maxSp)ed.putInt(LOAD_SP, maxSp);
+                            else ed.putInt(LOAD_SP, varStatSP);
+                            break;
+                        case"-":
+                            varStatSP = varStatSP - ExactChangeStat - random.nextInt(RandChangeStat);
+                            if(varStatSP < 0)ed.putInt(LOAD_SP, 0);
+                            else ed.putInt(LOAD_SP, varStatSP);
+                            break;
+                    }
+                    break;
+                case "RESP":
+                    int var = sPref.getInt(LOAD_RESPECT, 0);
+                    switch (Sign){
+                        case"+":
+                            varStatSP = var + ExactChangeStat + random.nextInt(RandChangeStat);
+                            ed.putInt(LOAD_RESPECT, varStatSP);
+                            break;
+                        case"-":
+                            varStatSP = var - ExactChangeStat - random.nextInt(RandChangeStat);
+                            ed.putInt(LOAD_RESPECT, varStatSP);
+                            break;
+                    }
+                    break;
+            }
+            ed.apply();
+
+        }
+    }
+    @Override
+    protected void onSaveInstanceState(Bundle outState) {
+        super.onSaveInstanceState(outState);
+        outState.putString("fname", namefragments.getText().toString());
+    }
+
+
 
     @Override
     public void onPause() {
         mRewardedVideoAd.pause(this);
         super.onPause();
-        timer.cancel();
+        try{
+            timer.cancel();
+        }
+        catch(Exception ignored){
+
+        }
 //        Log.i("1111111111111111","Активити в паузе");
     }
 
@@ -1321,9 +1410,14 @@ public class Game extends AppCompatActivity implements RewardedVideoAdListener {
     public void onDestroy() {
         mRewardedVideoAd.destroy(this);
         super.onDestroy();
-        timer.cancel();
+        try{
+            timer.cancel();
+        }
+        catch(Exception ignored){
+
+        }
 //        Log.i("1111111111111111","Не видно");
     }
-}
 
+}
 

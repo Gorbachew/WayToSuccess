@@ -5,6 +5,7 @@ import android.content.DialogInterface;
 import android.content.SharedPreferences;
 import android.os.Bundle;
 import androidx.annotation.NonNull;
+import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
 import androidx.appcompat.app.AlertDialog;
 import android.view.LayoutInflater;
@@ -42,10 +43,15 @@ public class BusinessCafe extends Fragment {
         TextView textRoom,textAd,textWaiter,textCook,textVisitors,textVisitorsLastWeek,textTables,textProfit;
 
     @Override
+    public void onCreate(Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+        sPref = getActivity().getSharedPreferences("Saved",Context.MODE_PRIVATE);
+    }
+
+    @Override
     public View onCreateView(@NonNull LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         View BusinessCafe = inflater.inflate(R.layout.fragment_business_cafe, container, false);
-        sPref = this.getActivity().getSharedPreferences("Saved",Context.MODE_PRIVATE);
 
         btnBСBuyCafe = BusinessCafe.findViewById(R.id.btnBСBuyCafe);
         BCBis = BusinessCafe.findViewById(R.id.BCBis);
@@ -91,7 +97,7 @@ public class BusinessCafe extends Fragment {
                         SharedPreferences.Editor ed = sPref.edit();
                         ed.putString(LOAD_BC, "1");
                         ed.putString(SAVED_BUSINESS, "2");
-                        ed.commit();
+                        ed.apply();
                         btnBСBuyCafe.setVisibility(View.INVISIBLE);
                         btnBCSellBusiness.setVisibility(View.VISIBLE);
                         BCBis.setVisibility(View.VISIBLE);
@@ -127,7 +133,7 @@ public class BusinessCafe extends Fragment {
                         SharedPreferences.Editor ed = sPref.edit();
                         ed.putString(LOAD_BCW, saveVar);
                         ed.putString(LOAD_BCPW, savepriceVar);
-                        ed.commit();
+                        ed.apply();
 
 
                         ((Game) getActivity()).transaction("rub", "-", priceVar);
@@ -160,7 +166,7 @@ public class BusinessCafe extends Fragment {
                         SharedPreferences.Editor ed = sPref.edit();
                         ed.putString(LOAD_BCC, saveVar);
                         ed.putString(LOAD_BCPC, savepriceVar);
-                        ed.commit();
+                        ed.apply();
 
 
                         ((Game) getActivity()).transaction("usd", "-", priceVar);
@@ -189,7 +195,7 @@ public class BusinessCafe extends Fragment {
                     SharedPreferences.Editor ed = sPref.edit();
                     ed.putString(LOAD_BCR,saveVar);
                     ed.putString(LOAD_BCPR,savepriceVar);
-                    ed.commit();
+                    ed.apply();
 
 
                     ((Game)getActivity()).transaction("usd","-",priceVar);
@@ -217,7 +223,7 @@ public class BusinessCafe extends Fragment {
 
                         SharedPreferences.Editor ed = sPref.edit();
                         ed.putString(LOAD_BCT, saveTables);
-                        ed.commit();
+                        ed.apply();
 
 
                         ((Game) getActivity()).transaction("rub", "-", 5000);
@@ -244,7 +250,7 @@ public class BusinessCafe extends Fragment {
 
                     SharedPreferences.Editor ed = sPref.edit();
                     ed.putString(LOAD_BCA, saveVar);
-                    ed.commit();
+                    ed.apply();
 
                     ((Game) getActivity()).transaction("usd", "-", 100);
 
@@ -260,9 +266,9 @@ public class BusinessCafe extends Fragment {
 
                 //Всплывающее окно перед выходом
                 AlertDialog.Builder builder = new AlertDialog.Builder(getActivity());
-                builder.setTitle("Вы действительно хотите продать бизнес?")
+                builder.setTitle(getResources().getString(R.string.BFsaleBis))
 
-                        .setPositiveButton("Продать",
+                        .setPositiveButton(getResources().getString(R.string.yes),
                                 new DialogInterface.OnClickListener() {
                                     @Override
                                     public void onClick(DialogInterface dialog, int which) {
@@ -274,7 +280,6 @@ public class BusinessCafe extends Fragment {
                                         BCBis.setVisibility(View.INVISIBLE);
 
                                         SharedPreferences.Editor ed = sPref.edit();
-
                                         ed.putString("BusinessCafe","0");
                                         ed.putString("BCroom","1");
                                         ed.putString("BCad","1");
@@ -291,13 +296,13 @@ public class BusinessCafe extends Fragment {
                                         ed.putString(SAVED_BUSINESS,"0");
 
 
-                                        ed.commit();
+                                        ed.apply();
 
                                         ((Game)getActivity()).NextDay();
 
                                     }
                                 })
-                        .setNegativeButton("Отложить",
+                        .setNegativeButton(getResources().getString(R.string.no),
                                 new DialogInterface.OnClickListener() {
                                     @Override
                                     public void onClick(DialogInterface dialog, int which) {
@@ -368,7 +373,7 @@ public class BusinessCafe extends Fragment {
 
        SharedPreferences.Editor ed = sPref.edit();
        ed.putString(LOAD_BCP,allPrice);
-       ed.commit();
+       ed.apply();
        btnBCSellBusiness.setText(getResources().getString(R.string.BmFSellBusiness) + "|" + allPrice + "$");
 
     }

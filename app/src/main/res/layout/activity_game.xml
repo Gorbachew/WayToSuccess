@@ -41,31 +41,31 @@
 
                 <TextView
                     android:id="@+id/textKgScrap"
+                    style="@style/textStart"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text=""
-                    style="@style/textStart"/>
+                    android:text="" />
 
                 <TextView
                     android:id="@+id/KgScrap"
+                    style="@style/textStart"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text=""
-                    style="@style/textStart"/>
+                    android:text="" />
 
                 <TextView
                     android:id="@+id/textCourseScrap"
+                    style="@style/textStart"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text=""
-                    style="@style/textStart"/>
+                    android:text="" />
 
                 <TextView
                     android:id="@+id/CourseScrap"
+                    style="@style/textStart"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text=""
-                    style="@style/textStart"/>
+                    android:text="" />
             </LinearLayout>
 
             <HorizontalScrollView
@@ -78,36 +78,50 @@
                     android:layout_width="wrap_content"
                     android:layout_height="match_parent"
                     android:orientation="horizontal">
+
                     <ImageButton
                         android:id="@+id/topBtnMetalPoint"
                         android:layout_width="50dp"
                         android:layout_height="match_parent"
                         android:layout_weight="1"
+                        android:contentDescription="TODO"
                         android:onClick="ChangeFragments"
                         android:visibility="visible"
-                        app:srcCompat="@drawable/metalico"
-                        android:contentDescription="TODO" />
+                        app:srcCompat="@drawable/metalico" />
 
                     <ImageButton
                         android:id="@+id/topBtnCafe"
                         android:layout_width="50dp"
                         android:layout_height="match_parent"
                         android:layout_weight="1"
+                        android:contentDescription="TODO"
                         android:onClick="ChangeFragments"
-                        android:src="@drawable/cafeico"
-                        android:contentDescription="TODO" />
+                        android:src="@drawable/cafeico" />
                 </LinearLayout>
             </HorizontalScrollView>
         </FrameLayout>
 
     </LinearLayout>
 
-
-    <fragment class="gorbachew.pythonanywhere.ru.First"
-        android:id="@+id/MainFragmentsWindow"
+    <FrameLayout
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_weight="1" />
+        android:layout_height="match_parent"
+        android:layout_weight="1">
+
+        <FrameLayout
+            android:id="@+id/MainFragmentsWindow"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content" />
+        <!--Здесь отображаются эффекты-->
+        <LinearLayout
+            android:id="@+id/icobar"
+            android:layout_width="match_parent"
+            android:layout_height="25dp"
+            android:layout_gravity="bottom"
+            android:layout_marginLeft="15dp"
+            android:orientation="horizontal" />
+
+    </FrameLayout>
 
     <HorizontalScrollView
         android:layout_width="wrap_content"
@@ -117,6 +131,7 @@
         <LinearLayout
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:background="#00000000"
             android:orientation="horizontal">
 
             <ImageButton
@@ -236,7 +251,13 @@
                 android:layout_weight="1"
                 android:onClick="ChangeFragments"
                 android:src="@drawable/gorbesico" />
-
+            <ImageButton
+                android:id="@+id/btnExit"
+                android:layout_width="50dp"
+                android:layout_height="50dp"
+                android:layout_weight="1"
+                android:onClick="ChangeFragments"
+                android:src="@drawable/exitico" />
         </LinearLayout>
     </HorizontalScrollView>
 

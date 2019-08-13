@@ -1,0 +1,591 @@
+<resources>
+    <string name="app_name">Way To Success</string>
+    <!--Меню-->
+    <string name = "main_title"> Path to Success </string>
+    <string name = "New_Game"> New game </string>
+    <string name = "Cont_game"> Continue game </string>
+    <string name = "Authors"> Creators </string>
+    <string name = "MessAuthor"> Message from the author </string>
+    <string name = "Donate"> Support the project </string>
+    <string name = "Options"> Settings </string>
+    <string name = "Exit"> Exit </string>
+    <string name = "Back"> Back </string>
+    <string name = "linkAuthor"> Contact the author https://vk.com/gorbacheww </string>
+    <string name = "linkDiscord"> Contact the author https://vk.com/gorbacheww </string>
+
+    <string name = "Newgametitle"> Do you really want to start a new game? </string>
+    <string name = "Newgamego"> Lets go! </string>
+    <string name = "Newgamecancel"> I made a mistake </string>
+
+    <!--Старт-->
+    <string name = "StartText1"> Choose your fate! </string>
+    <string name = "StartText2"> Name: </string>
+    <string name = "StartText3"> Enter your name </string>
+    <string name = "StartText4"> Age: </string>
+    <string name = "textPoll1"> Your father was: </string>
+    <string name = "textPoll2"> Your mother was: </string>
+    <string name = "textPoll3"> As a child, you were: </string>
+    <string name = "textPoll4"> In your youth you were: </string>
+    <string name = "textPoll5"> After school, you became: </string>
+    <string name = "textPoll6"> Your goal in life: </string>
+    <string name = "textPoll7"> What made me move to another city? </string>
+    <string name = "btnHeroPast"> History </string>
+    <string name = "btnChoiceHeroPast"> Edit </string>
+    <string name = "btnStartGame"> Get Started </string>
+    <string name = "UserName"> Untitled </string>
+    <string-array name = "SpinnerAge">
+        <item> 18 </item>
+        <item> 19 </item>
+        <item> 20 </item>
+        <item> 21 </item>
+        <item> 22 </item>
+        <item> 23 </item>
+        <item> 24 </item>
+        <item> 25 </item>
+        <item> 26 </item>
+        <item> 27 </item>
+        <item> 28 </item>
+        <item> 29 </item>
+        <item> 30 </item>
+        <item> 31 </item>
+        <item> 32 </item>
+        <item> 33 </item>
+        <item> 34 </item>
+        <item> 35 </item>
+        <item> 36 </item>
+        <item> 37 </item>
+        <item> 38 </item>
+        <item> 39 </item>
+        <item> 40 </item>
+    </string-array>
+    <string-array name = "SpinnerPull1">
+        <item> Military </item>
+        <item> Scientists </item>
+        <item> Engineer </item>
+        <item> Workers </item>
+        <item> Criminal </item>
+        <item> Homeless </item>
+        <item> He was gone </item>
+    </string-array>
+    <string-array name = "SpinnerPull2">
+        <item> Military </item>
+        <item> Scientists </item>
+        <item> Engineer </item>
+        <item> Workers </item>
+        <item> Criminal </item>
+        <item> Homeless </item>
+        <item> She was gone </item>
+    </string-array>
+    <string-array name = "SpinnerPull3">
+        <item> Pet </item>
+        <item> Quiet </item>
+        <item> Active </item>
+        <item> Jester </item>
+    </string-array>
+    <string-array name = "SpinnerPull4">
+        <item> Self-taught </item>
+        <item> Thief </item>
+        <item> Volunteer </item>
+    </string-array>
+    <string-array name = "SpinnerPull5">
+        <item> Soldier </item>
+        <item> Student </item>
+        <item> Workers </item>
+        <item> Lazy </item>
+    </string-array>
+    <string-array name = "SpinnerPull6">
+        <item> Wealth </item>
+        <item> Power </item>
+        <item> Endless game </item>
+    </string-array>
+    <string-array name = "SpinnerPull7">
+        <item> The death of a loved one </item>
+        <item> Dismissal from work </item>
+        <item> Criminal Institution </item>
+    </string-array>
+
+
+    <string name = "HistoryText1"> Your story </string>
+    <string name = "FatherHistArmy"> You were born in the Ensigns family </string>
+    <string name = "FatherHistSci"> You were born in the Math family </string>
+    <string name = "FatherHistEng"> You were born in the Architect’s family </string>
+    <string name = "FatherHistWork"> You were born in the Ordinary Worker family </string>
+    <string name = "FatherHistCri"> You were born in a race car family </string>
+    <string name = "FatherHistBum"> You were born in the Homeless family </string>
+    <string name = "FatherHistNo"> You were born in a family without a father </string>
+
+    <string name = "MotherHistArmy"> and Lieutenant </string>
+    <string name = "MotherHistSci"> and Biologist </string>
+    <string name = "MotherHistEng"> and Programmer </string>
+    <string name = "MotherHistWork"> and the Accountant </string>
+    <string name = "MotherHistCri"> and Thieves </string>
+    <string name = "MotherHistBum"> and Homeless </string>
+    <string name = "MotherHistNo"> You didn’t have a mother </string>
+
+    <string name = "FAMHistBum"> You were born in the Homeless family </string>
+    <string name = "FAMHistNo"> You were sent to an orphanage </string>
+
+    <string name = "ChildHistLove"> Loving parents loved and protected you from adversity </string>
+    <string name = "ChildHistSil"> You eschewed the public with only one friend </string>
+    <string name = "ChildHistActive"> Held on the site with his friends </string>
+    <string name = "ChildHistJoker"> You acted as a laughing stock in front of your peers </string>
+
+<string name = "YouthSelfEduc"> But childhood ended sooner or later, and as you grew older you were attracted to the unknown, you spent days on end with books and scientific articles becoming an excellent student at school </string>
+    <string name = "YouthCri"> But childhood sooner or later ended and growing up attracted you to the free acquisition of everything and everything. All the guards knew you in person and didn’t let you in </string>
+    <string name = "YouthVol"> But childhood sooner or later ended and growing up attracted to help those in need, you were constantly in youth organizations helping old people and people with disabilities </string>
+
+    <string name = "AftSchoolSold"> After school, you immediately received a subpoena, arriving at the military registration and enlistment office you were immediately taken into the army. During the year, you learned all the tricks of survival in the most difficult conditions for humans </string>
+    <string name = "AftSchoolStud"> After school, you entered the University in the hope of becoming a significant person for society </string>
+    <string name = "AftSchoolWork"> After school, you decided not to continue studying, but to start practicing right away. You found a job closer to home and started the life of an adult </string>
+    <string name = "AftSchoolLazy"> After school, you scored for study and work. Sowing at home you watched TV shows and played computer games </string>
+
+    <string name = "PurposeWheal"> You were always attracted to money and wanted to get it all </string>
+    <string name = "PurposePower"> You have always been attracted to power, each time in front of a mirror you presented yourself as the president of your country broadcasting to vast masses </string>
+    <string name = "PurposeNoEnd"> You do not have a goal, you just do what you can </string>
+    
+    <string name = "WhyDead"> The death of your father made you quit; you could no longer live in a place that reminds you of him. You left everything and went on an adventure meeting </string>
+    <string name = "WhyJob"> You started to achieve some success at work. But one day you were set up by a colleague who wanted to get your position. He accused you of theft and the authorities took his side. It was no longer possible to work in your city; therefore, having collected the remaining things, you went to meet adventures </string>
+    <string name = "WhyWanted"> Unfortunately, a criminal case has been filed against you for your past. It was not possible to be in your hometown, so grabbing the first things handy you went to hell </string>
+
+    <!--Игра-->
+    <string name = "NamePointHP"> Health </string>
+    <string name = "NamePointMP"> Happiness </string>
+    <string name = "NamePointSP"> Satiety </string>
+    <string name = "HappyBirthdayTitle"> Happy Birthday! </string>
+    <string name = "HappyBirthdayText"> Your friends wish you a happy holiday and give you:% d rubles and% d dollars! For your feast you earned% d respect! </string>
+    <string name = "HappyBirthdaybtn1"> Hurray! </string>
+    <string name = "LowMoney"> You do not have enough money </string>
+    <string name="payday">You paid for rent and mercenaries: </string>
+     <!--Названия фрагментов-->
+    <string name = "NFPass"> Passport </string>
+    <string name = "NFFood"> Food </string>
+    <string name = "NFMood"> Mood </string>
+    <string name = "NFHealth"> Health </string>
+    <string name = "NFFreelance"> Quickie </string>
+    <string name = "NFWork"> Work </string>
+    <string name = "NFBusiness"> Business </string>
+    <string name = "NFEducation"> Education </string>
+    <string name = "NFProperty"> Property </string>
+    <string name = "NFHolding"> Real Estate </string>
+    <string name = "NFRespect"> Respect </string>
+    <string name = "NFBank"> Bank </string>
+    <string name = "NFAchivment"> Achievements </string>
+    <string name = "NFCasino"> Casino </string>
+    <string name = "NFGorbes"> GORBES </string>
+
+    <!--Паспорт-->
+    <string name = "PFName"> Name: </string>
+    <string name = "PFAge"> Age: </string>
+    <string name = "PFEducation"> Education: </string>
+    <string name = "PFClothes"> Clothing: </string>
+    <string name = "PFTransport"> Transport: </string>
+    <string name = "PFProperty"> Property: </string>
+    <string name = "PFJob"> Job: </string>
+    <string name = "PFRank"> Position: </string>
+    <string name = "PFBusiness"> Business: </string>
+    <string name = "PFWife"> Wife: </string>
+    <string name = "PFChild"> Child: </string>
+
+    <string name = "PFage"> age </string>
+    <string name = "PFdays"> days </string>
+
+
+
+    <string name = "PFSeducation0"> Without a certificate </string>
+    <string name = "PFSeducation1"> Certificate </string>
+    <string name = "PFSeducation2"> Certificate of ACT </string>
+    <string name = "PFSeducation3"> Diploma from courses </string>
+    <string name = "PFSeducation4"> Moscow State University Diploma </string>
+    <string name = "PFSeducation5"> Harvard Diploma </string>
+
+    <string name = "PFSclothes0"> Windings </string>
+    <string name = "PFSclothes1"> Rubber boots </string>
+    <string name = "PFSclothes2"> From second-hand </string>
+    <string name = "PFSclothes3"> Brand </string>
+    <string name = "PFSclothes4"> Costume </string>
+
+
+    <string name = "PFStransport0"> Dreaming about wheels </string>
+    <string name = "PFStransport1"> Bicycle </string>
+    <string name = "PFStransport2"> Machine </string>
+    <string name = "PFStransport3"> Helicopter </string>
+    <string name = "PFStransport4"> Yacht </string>
+
+    <string name = "PFSholding0"> Bushes </string>
+    <string name = "PFSholding1"> Cardboard box </string>
+    <string name = "PFSholding2"> Tent </string>
+    <string name = "PFSholding3"> Removable room </string>
+    <string name = "PFSholding4"> Apartment </string>
+    <string name = "PFSholding5"> Home </string>
+    <string name = "PFSholding6"> Mansion </string>
+
+    <string name = "PFSjob0"> Unemployed </string>
+    <string name = "PFSjob1"> Factory </string>
+    <string name = "PFSjob2"> Car service </string>
+    <string name = "PFSjob3"> Bank </string>
+    <string name = "PFSjob4"> IT firm </string>
+    <string name = "PFSjob5"> Lab </string>
+
+    <string name = "PFSrankJob0"> Missing </string>
+    <string name = "PFSrankJob1"> Стажер </string>
+    <string name = "PFSrankJob2"> Рабочий </string>
+    <string name = "PFSrankJob3"> Управляющий </string>
+    <string name = "PFSrankJob4"> Заместитель </string>
+    <string name = "PFSrankJob5"> Директор </string>
+
+    <string name = "PFSbusiness0"> No </string>
+    <string name = "PFSbusiness1"> Metal item </string>
+    <string name = "PFSbusiness2"> Cafe </string>
+
+    <string name = "PFSwife0"> Wanted </string>
+
+    <string name = "PFSchild0"> Plans </string>
+
+
+    <!--Еда-->
+    <string name = "FFtrash"> Rummage through the trash | 0rub </string>
+    <string name = "FFhunt"> Pigeon hunting | 0rub </string>
+    <string name = "FFkrekers"> Snack crackers | 50rub </string>
+    <string name = "FFrobKiosk"> Rob the stall | 0rub </string>
+    <string name = "FFbuyKiosk"> Buy in a stall | 350rub </string>
+    <string name = "FFeatCoffee"> Eat at a cafe | 1500rub </string>
+    <string name = "FFbuyStore"> Buy at the store | 3000rub </string>
+    <string name = "FFeatRestaurant"> Eat at the restaurant | 7500rub </string>
+    <string name = "FFpersonalChef"> Personal cook | 50000rub / m </string>
+    <string name = "FFfiredChef"> Dismiss the cook </string>
+
+    <string name = "FFprofit1"> Digging in the trash you found the medicine, your stomach appreciated it </string>
+
+    <string name = "FFerror1_1"> The pigeons outwitted you and left you with nothing </string>
+    <string name = "FFerror1_2"> You ran after a fat pigeon and accidentally stumbled injuring your knee </string>
+    <string name = "FFerror1"> You couldn’t catch the pigeons barefoot, you need at least boots </string>
+    <string name = "FFerror2"> Without a bike, you won’t do this thing </string>
+    <string name = "FFerror2_1title"> You are caught </string>
+    <string name = "FFerror2_1text"> A policeman walked next to the stall, and when he saw the robbery he quickly arrested you. What will you do? </string>
+    <string name = "FFerror2_1_1"> Escape </string>
+    <string name = "FFerror2_1_1_1"> Throwing a loot into a policeman you distracted him and managed to escape </string>
+    <string name = "FFerror2_1_1_2"> You threw a loot into a policeman, but he dodged and beat you up, beat you up </string>
+    <string name = "FFerror2_1_2"> Raised a video </string>
+    <string name = "FFerror2_1_2_2"> You messed up a lot, one video won’t get off </string>
+    <string name = "FFerror2_1_3"> Fine </string>
+    <string name = "FFerror3"> Looking at your rags, you were refused to sell food </string>
+    <string name = "FFerror4"> The guard thought you were a junkie in cheap clothes and asked to leave </string>
+    <string name = "FFerror5"> You couldn’t bring food to your house, you need a car </string>
+    <string name = "FFerror6"> The guard didn’t let you in because you don’t have a suit </string>
+    <string name = "FFerror7"> The cook asked where he will live? You could not answer. You need a bigger house </string>
+
+
+    <!--Здоровье-->
+    <string name = "HFgrass"> Find Plantain | 0rub </string>
+
+    <string name = "HFexpired"> Treated overdue | 50rub </string>
+    <string name = "HFGomeopat"> Buy homeopathic medicine | 500rub </string>
+
+    <string name = "HFrobPharmacy"> Rob pharmacy | 0rub </string>
+    <string name = "HFdistrictHospital"> Go to the district hospital | 300 rub </string>
+    <string name = "HFbuyPharmacy"> Buy at a pharmacy | 1000rub </string>
+    <string name = "HFprivateHospital"> Go to a private hospital | 1000$ </string>
+    <string name = "HFpersonalDoctor"> Personal physician | 70000 rub / m </string>
+    <string name = "HFfiredDoctor"> Dismiss a doctor </string>
+
+    <string name = "HFprofit1"> Digging in the bushes you found delicious mushrooms </string>
+    <string name = "HFerror1"> At the pharmacy we thought that you came for hawthorn and drove away. You need to look more solid </string>
+    <string name = "HFerror5"> A woman selling homeopathic medicines found you insane because of her outfit and asked to leave </string>
+    <string name = "HFerror5text"> Suddenly collecting medicine from the shelves, you moved out, but a crowd of grandmas blocked your way </string>
+    <string name = "HFerror5_1_1"> Telling grandmas about discounts at the store you were able to distract the crowd and get out of the water dry </string>
+    <string name = "HFerror5_1_2"> You tried to distract the grandmas, but they were angry because you stole the medicines they needed. You were beaten with clubs </string>
+
+
+    <string name = "HFerror2"> Without registration, you were sent 3 letters, you need to at least rent a room </string>
+    <string name = "HFerror3"> You can only get to a private clinic by car </string>
+    <string name = "HFerror4"> The doctor asked about the equipped room. You said that you don’t have one. You need a bigger house </string>
+
+
+    <!--Настроение-->
+    <string name = "MFprofit1"> One pigeon came too close to you, you managed to grab it and enjoy the delicacy </string>
+    <string name = "MFprofit2"> In the movie theater you found a draw package with popcorn, the session was successful </string>
+    <string name = "MFwatchAnimals"> Watch the pigeons | 0rub </string>
+    <string name = "MFdrinkBeer"> Drink beer | 50rub </string>
+    <string name = "MFdrinkVodka"> Drink vodka | 200rub </string>
+    <string name = "MFgoCinema"> Go to the cinema | 500rub </string>
+    <string name = "MFwatchTV"> Watch TV | 100rub </string>
+    <string name = "MFplayPC"> Play computer games | 300rub </string>
+    <string name = "MFgoConcert"> Go to concert | 7000rub </string>
+    <string name = "MForderComedian"> Order a comedian | 15000rub </string>
+    <string name = "MFpersonalComedian"> Personal comedian | 50000rub / m </string>
+    <string name = "MFfiredComedian"> Dismiss the comedian </string>
+
+    <string name = "MFerror1"> You took a bottle of beer, but Leo opposed it right away. You need at least a cardboard box to hide </string>
+    <string name = "MFerror2"> You took a bottle of vodka and after drinking it you had nowhere to spend the night. You almost died sleeping in the open air </string>
+    <string name = "MFerror3"> You came to the cinema, but the guard sniffed you and suggested you leave. You need to get better dressed </string>
+
+    <string name = "MFerror4"> You do not have a TV </string>
+    <string name = "MFerror5"> You do not have a computer </string>
+
+    <string name = "MFerror6"> The comedian thought you wanted to rob him and escaped. Buy a suit to look solid </string>
+    <string name = "MFerror7"> The comedian asked if there was a scene in your house, you burst into tears and he left </string>
+
+
+
+
+    <!-- Респект -->
+    <string name = "RFsing"> Sing near the stop | 0rub </string>
+
+    <string name = "RFvideoPresident"> Record a video appeal to the president | 0rub </string>
+    <string name = "RFstream"> Stream minecraft | 300rub </string>
+    <string name = "RFtraining"> Attend training | 10000rub </string>
+    <string name = "RFbusinesslunch"> Lunch with businessmen | 3000$ </string>
+    <string name = "RFbecameMem"> Become a meme | 100000rub </string>
+    <string name = "RFmeetingPresident"> Meet with the President | 50,000$ </string>
+    <string name = "RFbecameMP"> Become a Member | 50,000 $ / m </string>
+    <string name="RFbecameMPoff">Take off your position</string>
+
+    <string name = "RFerror0"> Your voice scared people </string>
+    <string name = "RFerror1"> You found a beautiful place to shoot video, but found that you do not have a camera </string>
+    <string name = "RFerror2"> Thinking of a square world, you realized that you have nowhere to create it </string>
+    <string name = "RFerror3"> You were laughed at while approaching the training, dress more decent </string>
+    <string name = "RFerror4"> Rich people in beautiful clothes chose another restaurant, you were left alone with yourself </string>
+    <string name = "RFsuccess"> They began to recognize you on the streets </string>
+    <string name = "RFerror5"> Your video is not overloaded, try again </string>
+    <string name = "RFerror6"> You were not perceived as an influential person, it seems a personal helicopter will correct the situation </string>
+    <string name = "RFerror7"> What deputy are you without a yacht </string>
+
+
+
+    <!--Бизнес-->
+    <!--Металл-->
+    <string name = "FrFScrap"> Search for scrap </string>
+    <string name = "FrFSellScrap"> Scrap metal </string>
+
+    <string name = "FrFSupportScrapQuantity"> Kg: </string>
+    <string name = "FrFSupportScrapCourse"> Course: </string>
+    <string name = "FrFLotScrap"> You have nowhere else to store scrap metal, buy a bigger room </string>
+
+    <string name = "FrFerror1"> Without a cardboard box and respect from local bandits, no one will let you beg for alms (you need 100 respect) </string>
+    <string name = "FrFerror2"> Without rubber boots, you could not actively run along the beds </string>
+    <string name = "FrFerror3"> You do not have enough respect. The employer threw you money (you need 250 respect) </string>
+    <string name = "FrFerror4"> Without respect, no one trusts you on the site with orders (you need 500 respect) </string>
+    <string name = "FrFerror5"> Until you find a car, you cannot tax </string>
+    <string name = "FrFerror6"> You haven’t figured out how to start the car, sober up </string>
+
+
+    <!--Халтура-->
+    <string name = "FrFBegForMoney"> Begging </string>
+    <string name = "FrFHelpOld"> Help the housewife </string>
+    <string name = "FrFDistributeFlyers"> Hand out flyers </string>
+    <string name = "FrFRepairFlat"> Repair an apartment by ad </string>
+    <string name = "FrFTaxi"> Tax </string>
+    <!--Работа-->
+    <string name = "WFInFactory"> Work in the factory </string>
+    <string name = "WFInAutoService"> Work in a car service </string>
+    <string name = "WFInBank"> Work at the Bank </string>
+    <string name = "WFInIT"> Work in an IT company </string>
+    <string name = "WFInLaboratories"> Work in the Laboratory </string>
+
+    <string name="WTrank">Position:</string>
+    <string name="WTsalary">Salary:</string>
+    <string name="WTloyalty">Loyalty:</string>
+    <string name="WTjob">Work</string>
+    <string name="WTquit">Quit</string>
+    <string name = "WTquitText"> Are you sure you want to quit? </string>
+    <string name = "WTerror0"> You are drunk, you were not allowed into the entrance. </string>
+
+   
+
+    <string name = "BmFUPStock"> Improve Warehouse </string>
+    <string name = "BmFUPAdvertising"> Buy ad | 500r </string>
+    <string name = "BmFNewWorker"> Hire a worker </string>
+    <string name = "BmFSellMetal"> Sell metal </string>
+    <string name = "BmFAutomatic"> Work automatically </string>
+    <string name = "BmFLS"> Low salary </string>
+    <string name = "BmFNS"> Normal salary </string>
+    <string name = "BmFHS"> High salary </string>
+    <string name = "BmFSellBusiness"> Sell a business </string>
+    <string name = "BmFWork"> Work </string>
+    <string name = "BmFBuyMetal"> Buy Item for receiving metal | 50000rub </string>
+    <string name = "BmFDontFindMetal"> You rummaged and found nothing </string>
+    <string name = "BmFLowStock"> You have nowhere else to store the scrap metal, buy a bigger room </string>
+    <string name = "BmPayDay"> You paid workers a month </string>
+    <string name = "NoUpdate"> No improvements </string>
+
+    <!-- Кафе -->
+    <string name = "BCBuyCafe"> Buy cafe | 50,000$ </string>
+    <string name = "BCbuyAd"> Buy ad | 100$ </string>
+    <string name = "BCbuyRoom"> Enlarge the room </string>
+    <string name = "BCbuyTable"> Buy a table | 5000rub </string>
+    <string name = "BCbuyWaiter"> Hire waiters </string>
+    <string name = "BCbuyCook"> Hire cooks </string>
+    <string name = "BCvisitorsLastWeek"> Visitors last week: </string>
+    <string name = "BCvisitors"> Visitors for the current week: </string>
+    <string name = "BCprofit"> Last Day Profit: </string>
+    <string name = "BCerrorTable"> You do not have enough waiters, 1 waiter - 2 tables </string>
+    <string name = "BCerrorWaiter"> You do not have enough cooks, 1 cook - 3 waiters </string>
+    <string name = "BCerrorCook"> You have a small room, 1 room - 2 cooks </string>
+    <string name = "BCPayDay"> You paid workers a month </string>
+    <string name = "BCdontTime"> You can’t buy 1 more business, you don’t have enough time to follow everything </string>
+    
+    <string name = "BFsaleBis"> Are you sure you want to sell the business? </string>
+
+
+    <string name = "BFMetalReceptionPoint"> Metal receiving point </string>
+    <string name = "BFComputerRepairShop"> Computer Repair Shop </string>
+    <string name = "BFCafe"> Cafe </string>
+    <string name = "BFCarRepairShop"> Auto repair shop </string>
+    <string name = "BFClub"> Club </string>
+    <!--Образование-->
+    <string name = "EFSchool"> School </string>
+    <string name = "EFSchoolError"> Graduate first </string>
+    <string name = "EFSchoolEnd"> You graduated from school </string>
+    <string name = "EFCollege"> College </string>
+    <string name = "EFCollegeError"> First graduate from college </string>
+    <string name = "EFCollegeEnd"> You graduated from college </string>
+    <string name = "EFUniversity"> University </string>
+    <string name = "EFUniversityEnd"> You graduated from university </string>
+    <string name = "EFUniversityError"> First graduate from university </string>
+    <string name = "EFOverseasUniversity"> Overseas University </string>
+    <string name = "EFOverseasUniversityEnd"> You graduated from a foreign university </string>
+    <string name = "EFOverseasUniversityError"> First graduate from a foreign university </string>
+    <string name = "EFCourses"> Business Training </string>
+    <string name = "EFCoursesEnd"> You graduated from business training </string>
+    <string name = "EFCoursesError"> First complete the business training </string>
+    <!--Имущество-->
+    <string name = "PrFRubberBoots"> Rubber boots | 500rub </string>
+    <string name = "PrFCheapClothes"> Cheap clothing | 2000rub </string>
+    <string name = "PrFCamera"> Camera | 5000rub </string>
+    <string name = "PrFBicycle"> Bicycle | 5000rub </string>
+    <string name = "PrFNormalClothes"> Normal clothing | 15000rub </string>
+    <string name = "PrFCar"> Machine | 200000rub </string>
+    <string name = "PrFSuit"> Costume | 3000$ </string>
+    <string name = "PrFWeapons"> Weapon | 4000$ </string>
+    <string name = "PrFTV"> TV | 70000rub </string>
+    <string name = "PrFPC"> Computer | 120000rub </string>
+    <string name = "PrFHelicopter"> Helicopter | 550,000$ </string>
+    <string name = "PrFYacht"> Yacht |  1,500,000$ </string>
+    <!--Недвижимость-->
+    <string name = "HoFCardboardBox"> Cardboard box | 300rub </string>
+    <string name = "HoFCamp"> Tent | 3000rub </string>
+    <string name = "HoFRentRoom"> Rent a room | 25000rub / m </string>
+    <string name = "HoFRentRoomOff"> Stop renting a room </string>
+    <string name = "HoFRentAnswer"> Do you really want to stop renting a room? If agreed, the hostess offers to give you a tent </string>
+    <string name = "HoFRentAnswerTitle"> Stop renting a room? </string>
+    <string name = "HoFRentPayDay"> You paid for the room 25000 </string>
+    <string name = "HoFbuyApartment"> Buy an apartment | 1500000rub </string>
+    <string name = "HoFbuyHome"> Buy a house | 3000000rub </string>
+    <string name = "HoFbuyMansion"> Buy a mansion | 3,000,000$ </string>
+    <!--Банк-->
+    <string name = "BFtext1"> COURSE </string>
+    <string name = "BFbtn1"> Buy </string>
+    <string name = "BFbtn2"> Sell </string>
+    <string-array name = "BFspin">
+        <item> 1 </item>
+        <item> 5 </item>
+        <item> 10 </item>
+        <item> 50 </item>
+        <item> 100 </item>
+        <item> 500 </item>
+        <item> 1000 </item>
+        <item> 5000 </item>
+        <item> 10000 </item>
+        <item> 50000 </item>
+        <item> 100000 </item>
+        <item> 500000 </item>
+        <item> 1,000,000 </item>
+    </string-array>
+
+    <!--Достижения-->
+    <string name = "AFopen"> Achievement open </string>
+
+    <string name = "AFfreelance11"> Metal Detector </string>
+    <string name = "AFfreelance12"> Find personally 200 kg of metal </string>
+    <string name = "AFfreelance21"> Metal detector </string>
+    <string name = "AFfreelance22"> Find personally 1000 kg of metal </string>
+    <string name = "AFfreelance31"> Iron Man </string>
+    <string name = "AFfreelance32"> Find personally 5,000 kg of metal </string>
+
+    <string name = "AFbmetal11"> Huckster </string>
+    <string name = "AFbmetal12"> Accumulate 1000 kg of metal in the business </string>
+    <string name = "AFbmetal21"> Metallurgist </string>
+    <string name = "AFbmetal22"> Accumulate 5,000 kg of metal in business </string>
+    <string name = "AFbmetal31"> Iron Throne </string>
+    <string name = "AFbmetal32"> Accumulate 10,000 kg of metal in the business </string>
+
+    <string name = "AFcafe11"> Barista </string>
+    <string name = "AFcafe12"> Hire 2 cooks </string>
+    <string name = "AFcafe21"> Sommelier </string>
+    <string name = "AFcafe22"> Hire 6 cooks </string>
+    <string name = "AFcafe31"> Restaurateur </string>
+    <string name = "AFcafe32"> Hire 10 chefs </string>
+
+    <string name = "AFmoney11"> Dream of childhood </string>
+    <string name = "AFmoney12"> Earn $ 100,000 </string>
+    <string name = "AFmoney21"> Self-employed </string>
+    <string name = "AFmoney22"> Earn 500000 rub </string>
+    <string name = "AFmoney31"> Entrepreneur </string>
+    <string name = "AFmoney32"> Earn $ 1,000,000 </string>
+    <string name = "AFmoney41"> Businessman </string>
+    <string name = "AFmoney42"> Earn $ 5,000,000 </string>
+    <string name = "AFmoney51"> Oligarch </string>
+    <string name = "AFmoney52"> Earn $ 1,000,000 </string>
+    <string name = "AFmoney61"> Agent of the State Depot </string>
+    <string name = "AFmoney62"> Earn $ 10,000,000 </string>
+
+    <string name = "AFrespect11"> First guy in the village </string>
+    <string name = "AFrespect12"> Have 1000 respect </string>
+    <string name = "AFrespect21"> Showman </string>
+    <string name = "AFrespect22"> Have 20,000 respect </string>
+    <string name = "AFrespect31"> LiquidMason </string>
+    <string name = "AFrespect32"> Have 100,000 respect </string>
+
+
+    <!-- Казино -->
+    <string name = "CFyouZero"> You won nothing </string>
+    <string name = "CFyouWin"> You won </string>
+    <string name = "CFyouLose"> You lost </string>
+    <string name = "CFdollar"> Dollars </string>
+    <string name = "CFerror"> After looking at you and your condition, the guards pointed to the exit. You need to have a costume </string>
+    <string name = "CFRate"> Bid $ </string>
+    <!--Проигрыш-->
+    <string name = "LoseTitle"> Youre on the verge of death </string>
+    <string name = "EndNoVideo"> You no longer have a chance to recover, reconcile </string>
+    <string name = "EndTitle"> You are dead </string>
+    <string name = "EndVideoReward"> Resurrect </string>
+    <string name = "EndText"> You could not cope with the problems of this world … Goodbye to the world. </string>
+    <string name = "LoseHP"> You are seriously ill so as not to die you need to raise your health above 10% per day </string>
+    <string name = "LoseMP"> You are on the verge of suicide, in order not to die, you need to raise your mood above 10% per day </string>
+    <string name = "LoseSP"> You fall out of exhaustion, so as not to die you need to raise satiety above 10% per day </string>
+    <string name = "LoseMoney"> You are bankrupt, if after 3 days your balance does not become positive, they will come for you </string>
+
+
+    <!--Реклама-->
+    <string name = "banner_ad_unit_id"> ca-app-pub-6876201111676185/7399516322 </string>
+    <string name = "videoadmessageOk"> Can be resurrected </string>
+    <string name = "videoadmessageError"> There are too many problems in your life, you won’t be able to rise again </string>
+
+    <string name = "EventAdTitle"> Street Meeting </string>
+    <string name = "EventVideoAdText"> You went around shooting a movie. A director ran out to meet you and offered to star in extras for a fee </string>
+    <string name = "EventVideoAdError"> Unfortunately you were too clumsy for your role </string>
+    <string name = "EventAdError"> Unfortunately the volunteers got wet cards and they have nothing to show you </string>
+    <string name = "EventAdText"> On the street you were met by volunteers and asked to take a survey Favorite company for a fee </string>
+
+    <!--Сообщение от автора -->
+    <string name = "MAbody1"> This is my first mobile project and I will be very pleased if you rate it and share your opinion. To write about bugs there too. Discord: Gorbachew # 1425 </string>
+    <string name = "YouCheaterTitle"> Suspicion of cheating </string>
+    <string name = "YouCheaterText"> You are suspected of changing game parameters. Your game session is disconnected from the multiplayer. If you want to dispute, contact the author of the application </string>
+    <string name = "YouCheaterToast"> You are suspected of changing game parameters </string>
+
+    <string name = "yes"> Yes </string>
+    <string name = "no"> No </string>
+    <string name = "Agree"> Agree </string>
+    <string name = "Disagree"> Disagree </string>
+
+    <string name = "GFname"> Name </string>
+    <string name = "GFage"> Age </string>
+    <string name = "GFusd"> $ </string>
+    <string name = "GFresp"> Respect </string>
+    <string name = "GFbtnJoin"> Register | 1000$ </string>
+    <string name = "GFsendStats"> Your data has been sent to the Gorbes list </string>
+    <string name = "GFsendError"> Your data is not registered in the Gorbes list </string>
+    <string name = "GFplace"> You are in% d place </string>
+    <string name = "GFplaceReload"> Refresh the list </string>
+    <string name = "GFnickError"> A participant with this name is already registered, change the name to be present in GORBES </string>
+</resources>

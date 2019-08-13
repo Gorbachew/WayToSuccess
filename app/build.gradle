@@ -7,8 +7,8 @@ android {
         applicationId "gorbachew.pythonanywhere.ru"
         minSdkVersion 23
         targetSdkVersion 29
-        versionCode 8
-        versionName "1.5.2"
+        versionCode 9
+        versionName "1.6"
         testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
     }
     buildTypes {

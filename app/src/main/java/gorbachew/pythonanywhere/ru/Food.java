@@ -5,6 +5,7 @@ import android.content.DialogInterface;
 import android.content.SharedPreferences;
 import android.os.Bundle;
 import androidx.annotation.NonNull;
+import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
 import androidx.appcompat.app.AlertDialog;
 import android.view.LayoutInflater;
@@ -24,7 +25,7 @@ import java.util.Random;
 
 
 public class Food extends Fragment {
-
+    Toast toast;
     private RewardedVideoAd mRewardedVideoAd;
     Button BtnTrash,BtnHunt,btnRobKiosk,btnBuyKiosk,btnBuyStore,btnEatCafe,btnEatRest,btnPersChef,btnFoodKrekers;
     TextView RUB;
@@ -36,13 +37,18 @@ public class Food extends Fragment {
     final String SAVED_HOLDING = "Holding";
     final String LOAD_BUFFCOOK = "BuffCook";
     final String LOAD_RUB = "RUB";
+
+    @Override
+    public void onCreate(Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+        sPref = getActivity().getSharedPreferences("Saved",Context.MODE_PRIVATE);
+    }
+
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         View FoodtFr = inflater.inflate(R.layout.fragment_food, container, false);
 
-
-        sPref = this.getActivity().getSharedPreferences("Saved",Context.MODE_PRIVATE);
 
         mRewardedVideoAd = MobileAds.getRewardedVideoAdInstance(getActivity());
         mRewardedVideoAd.setRewardedVideoAdListener((RewardedVideoAdListener) getActivity());
@@ -65,16 +71,18 @@ public class Food extends Fragment {
         BtnTrash.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-
-                ((Game)getActivity()).RandomStats("HP","-",0,5);
-                ((Game)getActivity()).RandomStats("SP","+",5,20);
-                ((Game)getActivity()).RandomStats("MP","-",0,5);
+                if(toast != null)toast.cancel();
+                ((Game)getActivity()).ChangeParam("HP","-",0,5);
+                ((Game)getActivity()).ChangeParam("SP","+",5,20);
+                ((Game)getActivity()).ChangeParam("MP","-",0,5);
 
                 int rand = random.nextInt(10);
                 if (rand == 9){
-                    ((Game)getActivity()).RandomStats("HP","+",10,20);
+                    ((Game)getActivity()).ChangeParam("HP","+",10,20);
 
-                    Toast.makeText(getActivity(),getResources().getString(R.string.FFprofit1),Toast.LENGTH_LONG).show();
+                    toast = Toast.makeText(getActivity(),getResources().getString(R.string.FFprofit1),Toast.LENGTH_LONG);
+                    toast.show();
+
                 }
                 ((Game)getActivity()).NextDay();
             }
@@ -83,28 +91,33 @@ public class Food extends Fragment {
         BtnHunt.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                if(toast != null)toast.cancel();
                 int var = Integer.parseInt(sPref.getString(SAVED_CLOTCHES,""));
                 if(var >= 1){
 
                     int rand = random.nextInt(10);
                     if(rand == 9){
-                        ((Game)getActivity()).RandomStats("MP","-",0,20);
-                        ((Game)getActivity()).RandomStats("HP","-",5,20);
-                        Toast.makeText(getActivity(),getResources().getString(R.string.FFerror1_1),Toast.LENGTH_SHORT).show();
+                        ((Game)getActivity()).ChangeParam("MP","-",0,20);
+                        ((Game)getActivity()).ChangeParam("HP","-",5,20);
+
+                        toast = Toast.makeText(getActivity(),getResources().getString(R.string.FFerror1_1),Toast.LENGTH_SHORT);
+                        toast.show();
                     }
                     else if (rand >= 5){
-                        ((Game)getActivity()).RandomStats("MP","-",0,20);
+                        ((Game)getActivity()).ChangeParam("MP","-",0,20);
 
-                        Toast.makeText(getActivity(),getResources().getString(R.string.FFerror1_2),Toast.LENGTH_SHORT).show();
+                        toast = Toast.makeText(getActivity(),getResources().getString(R.string.FFerror1_2),Toast.LENGTH_SHORT);
+                        toast.show();
                     }
                     else {
-                        ((Game)getActivity()).RandomStats("HP","-",0,5);
-                        ((Game)getActivity()).RandomStats("SP","+",10,25);
+                        ((Game)getActivity()).ChangeParam("HP","-",0,5);
+                        ((Game)getActivity()).ChangeParam("SP","+",10,25);
                     }
 
                 }
                 else {
-                    Toast.makeText(getActivity(),getResources().getString(R.string.FFerror1),Toast.LENGTH_LONG).show();
+                    toast = Toast.makeText(getActivity(),getResources().getString(R.string.FFerror1),Toast.LENGTH_LONG);
+                    toast.show();
                 }
 
                 ((Game)getActivity()).NextDay();
@@ -114,12 +127,13 @@ public class Food extends Fragment {
         btnFoodKrekers.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
+                if(toast != null)toast.cancel();
                 if (sPref.getInt(LOAD_RUB, 0) < 50) {
                     ((Game) getActivity()).LowMoney("rub");
                 }
                 else {
                     ((Game)getActivity()).transaction("rub","-",50);
-                    ((Game)getActivity()).RandomStats("SP","+",15,20);
+                    ((Game)getActivity()).ChangeParam("SP","+",15,20);
                     ((Game)getActivity()).NextDay();
                 }
 
@@ -129,6 +143,7 @@ public class Food extends Fragment {
         btnRobKiosk.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                if(toast != null)toast.cancel();
                 int var = Integer.parseInt(sPref.getString(SAVED_TRANSPORT,""));
                 if(var >= 1){
                     int rand = random.nextInt(10);
@@ -144,12 +159,14 @@ public class Food extends Fragment {
                                             public void onClick(DialogInterface dialog, int which) {
                                                 int rand = random.nextInt(2);
                                                 if(rand < 1){
-                                                    ((Game)getActivity()).RandomStats("HP","-",50,50);
-                                                    ((Game)getActivity()).RandomStats("MP","-",0,100);
-                                                    Toast.makeText(getActivity(),getResources().getString(R.string.FFerror2_1_1_2),Toast.LENGTH_LONG).show();
+                                                    ((Game)getActivity()).ChangeParam("HP","-",50,50);
+                                                    ((Game)getActivity()).ChangeParam("MP","-",0,100);
+                                                    toast = Toast.makeText(getActivity(),getResources().getString(R.string.FFerror2_1_1_2),Toast.LENGTH_LONG);
+                                                    toast.show();
                                                 }
                                                 else {
-                                                    Toast.makeText(getActivity(),getResources().getString(R.string.FFerror2_1_1_1),Toast.LENGTH_LONG).show();
+                                                    toast = Toast.makeText(getActivity(),getResources().getString(R.string.FFerror2_1_1_1),Toast.LENGTH_LONG);
+                                                    toast.show();
                                                     dialog.cancel();
                                                 }
                                                 ((Game)getActivity()).NextDay();
@@ -166,7 +183,8 @@ public class Food extends Fragment {
                                                     ((Game)getActivity()).NextDay();
                                                 }
                                                 else {
-                                                    Toast.makeText(getActivity(),getResources().getString(R.string.FFerror2_1_2_2),Toast.LENGTH_LONG).show();
+                                                    toast = Toast.makeText(getActivity(),getResources().getString(R.string.FFerror2_1_2_2),Toast.LENGTH_LONG);
+                                                    toast.show();
                                                 }
                                             }
                                         })
@@ -174,7 +192,7 @@ public class Food extends Fragment {
                                         new DialogInterface.OnClickListener() {
                                             @Override
                                             public void onClick(DialogInterface dialog, int which) {
-                                                ((Game)getActivity()).RandomStats("MP","-",0,20);
+                                                ((Game)getActivity()).ChangeParam("MP","-",0,20);
                                                 ((Game)getActivity()).transaction("rub","-",1500);
                                                 dialog.cancel();
                                                 ((Game)getActivity()).NextDay();
@@ -184,13 +202,14 @@ public class Food extends Fragment {
                         alert.show();
                     }
                     else {
-                        ((Game)getActivity()).RandomStats("SP","+",30,30);
-                        ((Game)getActivity()).RandomStats("MP","+",0,5);
+                        ((Game)getActivity()).ChangeParam("SP","+",30,30);
+                        ((Game)getActivity()).ChangeParam("MP","+",0,5);
                         ((Game)getActivity()).NextDay();
                     }
                 }
                 else {
-                    Toast.makeText(getActivity(),getResources().getString(R.string.FFerror2),Toast.LENGTH_LONG).show();
+                    toast = Toast.makeText(getActivity(),getResources().getString(R.string.FFerror2),Toast.LENGTH_LONG);
+                    toast.show();
                 }
 
 
@@ -199,16 +218,18 @@ public class Food extends Fragment {
         btnBuyKiosk.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                if(toast != null)toast.cancel();
                 if (sPref.getInt(LOAD_RUB, 0) < 350) {
                     ((Game) getActivity()).LowMoney("rub");
                 }
                 else {
                     int var = Integer.parseInt(sPref.getString(SAVED_CLOTCHES, ""));
                     if (var >= 2) {
-                        ((Game) getActivity()).RandomStats("SP", "+", 30, 10);
+                        ((Game)getActivity()).ChangeParam("SP", "+", 30, 10);
                         ((Game) getActivity()).transaction("rub", "-", 350);
                     } else {
-                        Toast.makeText(getActivity(), getResources().getString(R.string.FFerror3), Toast.LENGTH_LONG).show();
+                        toast = Toast.makeText(getActivity(), getResources().getString(R.string.FFerror3), Toast.LENGTH_LONG);
+                        toast.show();
                     }
 
                     ((Game) getActivity()).NextDay();
@@ -218,16 +239,17 @@ public class Food extends Fragment {
         btnEatCafe.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-
+                if(toast != null)toast.cancel();
                 if (sPref.getInt(LOAD_RUB, 0) < 1500) {
                     ((Game) getActivity()).LowMoney("rub");
                 } else {
                     int var = Integer.parseInt(sPref.getString(SAVED_CLOTCHES, ""));
                     if (var >= 3) {
-                        ((Game) getActivity()).RandomStats("SP", "+", 40, 20);
+                        ((Game)getActivity()).ChangeParam("SP", "+", 40, 20);
                         ((Game) getActivity()).transaction("rub", "-", 1500);
                     } else {
-                        Toast.makeText(getActivity(), getResources().getString(R.string.FFerror4), Toast.LENGTH_LONG).show();
+                        toast = Toast.makeText(getActivity(), getResources().getString(R.string.FFerror4), Toast.LENGTH_LONG);
+                        toast.show();
                     }
                     ((Game) getActivity()).NextDay();
                 }
@@ -237,18 +259,20 @@ public class Food extends Fragment {
         btnBuyStore.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                if(toast != null)toast.cancel();
                 if (sPref.getInt(LOAD_RUB, 0) < 3000) {
                     ((Game) getActivity()).LowMoney("rub");
                 }
                 else {
                     int var = Integer.parseInt(sPref.getString(SAVED_TRANSPORT,""));
                     if(var >= 2){
-                        ((Game)getActivity()).RandomStats("SP","+",50,20);
+                        ((Game)getActivity()).ChangeParam("SP","+",50,20);
                         ((Game)getActivity()).transaction("rub","-",3000);
                     }
                     else {
                         ((Game)getActivity()).transaction("rub","-",1000);
-                        Toast.makeText(getActivity(),getResources().getString(R.string.FFerror5),Toast.LENGTH_LONG).show();
+                        toast = Toast.makeText(getActivity(),getResources().getString(R.string.FFerror5),Toast.LENGTH_LONG);
+                        toast.show();
                     }
 
                     ((Game)getActivity()).NextDay();
@@ -260,17 +284,19 @@ public class Food extends Fragment {
         btnEatRest.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                if(toast != null)toast.cancel();
                 if (sPref.getInt(LOAD_RUB, 0) < 7500) {
                     ((Game) getActivity()).LowMoney("rub");
                 }
                 else {
                     int var = Integer.parseInt(sPref.getString(SAVED_CLOTCHES,""));
                     if(var >= 4){
-                        ((Game)getActivity()).RandomStats("SP","+",50,50);
+                        ((Game)getActivity()).ChangeParam("SP","+",50,50);
                         ((Game)getActivity()).transaction("rub","-",7500);
                     }
                     else {
-                        Toast.makeText(getActivity(),getResources().getString(R.string.FFerror6),Toast.LENGTH_LONG).show();
+                        toast = Toast.makeText(getActivity(),getResources().getString(R.string.FFerror6),Toast.LENGTH_LONG);
+                        toast.show();
                     }
 
                     ((Game)getActivity()).NextDay();
@@ -281,40 +307,40 @@ public class Food extends Fragment {
         btnPersChef.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                if (sPref.getInt(LOAD_RUB, 0) < 50000) {
-                    ((Game) getActivity()).LowMoney("rub");
-                }
-                else {
+                if(toast != null)toast.cancel();
+
+
                     int var = Integer.parseInt(sPref.getString(SAVED_HOLDING,""));
                     String checkvar = sPref.getString(LOAD_BUFFCOOK,"");
                     if (checkvar.equals("0")){
                         if(var >= 6){
-
-                            ((Game)getActivity()).transaction("rub","-",50000);
-                            SharedPreferences.Editor ed = sPref.edit();
-                            ed.putString(LOAD_BUFFCOOK,"1");
-                            ed.commit();
+                            if (sPref.getInt(LOAD_RUB, 0) < 50000) {
+                                ((Game) getActivity()).LowMoney("rub");
+                            }
+                            else {
+                                ((Game) getActivity()).transaction("rub", "-", 50000);
+                                SharedPreferences.Editor ed = sPref.edit();
+                                ed.putString(LOAD_BUFFCOOK, "1");
+                                ed.apply();
+                            }
 
                         }
                         else {
-                            Toast.makeText(getActivity(),getResources().getString(R.string.FFerror7),Toast.LENGTH_LONG).show();
+                            toast = Toast.makeText(getActivity(),getResources().getString(R.string.FFerror7),Toast.LENGTH_LONG);
+                            toast.show();
                         }
                     }
                     else if(checkvar.equals("1")){
                         SharedPreferences.Editor ed = sPref.edit();
                         ed.putString(LOAD_BUFFCOOK,"0");
-                        ed.commit();
+                        ed.apply();
                     }
                     CheckButton();
                     ((Game)getActivity()).NextDay();
-                }
             }
         });
         // Inflate the layout for this fragment
         return FoodtFr;
-
-
-
 
     }
 

@@ -6,6 +6,7 @@ import android.content.SharedPreferences;
 import android.os.Build;
 import android.os.Bundle;
 import androidx.annotation.NonNull;
+import androidx.annotation.Nullable;
 import androidx.annotation.RequiresApi;
 import androidx.fragment.app.Fragment;
 import android.view.LayoutInflater;
@@ -27,6 +28,12 @@ public class Achivment extends Fragment {
     final String LOAD_ACHR = "AchivmentRespect";
     final String LOAD_ANTICHEAT = "AntiCheat";
 
+    @Override
+    public void onCreate(Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+        sPref = getActivity().getSharedPreferences("Saved",Context.MODE_PRIVATE);
+    }
+
     @RequiresApi(api = Build.VERSION_CODES.JELLY_BEAN)
     @SuppressLint("ResourceType")
     @Override
@@ -34,7 +41,6 @@ public class Achivment extends Fragment {
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
         View AchFragment = inflater.inflate(R.layout.fragment_achivment, container, false);
-        sPref = this.getActivity().getSharedPreferences("Saved",Context.MODE_PRIVATE);
         Ach1 = AchFragment.findViewById(R.id.Ach1);
         Ach2 = AchFragment.findViewById(R.id.Ach2);
         Ach3 = AchFragment.findViewById(R.id.Ach3);
@@ -95,26 +101,29 @@ public class Achivment extends Fragment {
                     Toast.makeText(getActivity(),"Test mode activated",Toast.LENGTH_SHORT).show();
                     ((Game)getActivity()).transaction("rub","+",1000000);
                     ((Game)getActivity()).transaction("usd","+",1000000);
-                    ((Game)getActivity()).RandomStats("RESP","+",1000000,1);
+                    ((Game)getActivity()).ChangeParam("RESP","+",1000000,1);
 
                     SharedPreferences.Editor ed = sPref.edit();
                     ed.putInt("TestMode",1);
                     ed.apply();
                     ((Game)getActivity()).NextDay();
-                    secret.setText("Test Mode On");
+                    secret.getText().clear();
+                    secret.setHint("Test Mode On");
                 }
-                if(test.equals("thousandplz") && testmode == 0){
+                if(test.equals("thousandplz")){
                     Toast.makeText(getActivity(),"Test mode activated",Toast.LENGTH_SHORT).show();
                     ((Game)getActivity()).transaction("usd","+",1000000);
                     ((Game)getActivity()).NextDay();
-                    secret.setText("Give you 1000$");
+                    secret.getText().clear();
+                    secret.setHint("Give you 1000$");
                 }
                 if(test.equals("cheatoff")){
                     SharedPreferences.Editor ed = sPref.edit();
                     ed.putInt(LOAD_ANTICHEAT,0);
                     ed.apply();
                     ((Game)getActivity()).NextDay();
-                    secret.setText("CheatMod off");
+                    secret.getText().clear();
+                    secret.setHint("CheatMod off");
                 }
             }
         });

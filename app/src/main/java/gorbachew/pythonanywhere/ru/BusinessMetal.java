@@ -5,6 +5,7 @@ import android.content.DialogInterface;
 import android.content.SharedPreferences;
 import android.os.Bundle;
 import androidx.annotation.NonNull;
+import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
 
 import androidx.appcompat.app.AlertDialog;
@@ -39,12 +40,19 @@ public class BusinessMetal extends Fragment {
     final String LOAD_USD = "USD";
     final String LOAD_COURSESCRAP = "CourseScrap";
     final String SAVED_BUSINESS = "Business";
+
+    @Override
+    public void onCreate(Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+        sPref = getActivity().getSharedPreferences("Saved",Context.MODE_PRIVATE);
+    }
+
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
 
         View Business = inflater.inflate(R.layout.fragment_business, container, false);
-        sPref = this.getActivity().getSharedPreferences("Saved",Context.MODE_PRIVATE);
+
 
 
 
@@ -93,7 +101,7 @@ public class BusinessMetal extends Fragment {
                         SharedPreferences.Editor ed = sPref.edit();
                         ed.putString(LOAD_BMS, "1");
                         ed.putString(SAVED_BUSINESS, "1");
-                        ed.commit();
+                        ed.apply();
 
 
                         ((Game) getActivity()).transaction("rub", "-", 50000);
@@ -161,9 +169,9 @@ public class BusinessMetal extends Fragment {
 
                 //Всплывающее окно перед выходом
                 AlertDialog.Builder builder = new AlertDialog.Builder(getActivity());
-                builder.setTitle("Вы действительно хотите продать бизнес?")
+                builder.setTitle(getResources().getString(R.string.BFsaleBis))
 
-                        .setPositiveButton("Продать",
+                        .setPositiveButton(getResources().getString(R.string.yes),
                                 new DialogInterface.OnClickListener() {
                                     @Override
                                     public void onClick(DialogInterface dialog, int which) {
@@ -186,13 +194,13 @@ public class BusinessMetal extends Fragment {
                                         ed.putString("BMPriceBis","0");
                                         ed.putString(SAVED_BUSINESS,"0");
                                         ed.putString(LOAD_BMS,"0");
-                                        ed.commit();
+                                        ed.apply();
 
                                         ((Game)getActivity()).NextDay();
 
                                     }
                                 })
-                        .setNegativeButton("Отложить",
+                        .setNegativeButton(getResources().getString(R.string.no),
                                 new DialogInterface.OnClickListener() {
                                     @Override
                                     public void onClick(DialogInterface dialog, int which) {
@@ -273,7 +281,7 @@ public class BusinessMetal extends Fragment {
                Met = Met + randomMetal;
                SharedPreferences.Editor ed = sPref.edit();
                ed.putString(LOAD_BMFS,String.valueOf(Met));
-               ed.commit();
+               ed.apply();
             }
         }
         else {
@@ -295,7 +303,7 @@ public class BusinessMetal extends Fragment {
             else {
                 SharedPreferences.Editor ed = sPref.edit();
                 ed.putString(LOAD_BMMS, "300");
-                ed.commit();
+                ed.apply();
                 btnUpStock.setText(getResources().getString(R.string.BmFUPStock) + "|5000р");
                 ((Game) getActivity()).transaction("rub", "-", 1000);
             }
@@ -307,7 +315,7 @@ public class BusinessMetal extends Fragment {
             else {
                 SharedPreferences.Editor ed = sPref.edit();
                 ed.putString(LOAD_BMMS, "1000");
-                ed.commit();
+                ed.apply();
                 btnUpStock.setText(getResources().getString(R.string.BmFUPStock) + "|10000р");
                 ((Game) getActivity()).transaction("rub", "-", 5000);
             }
@@ -319,7 +327,7 @@ public class BusinessMetal extends Fragment {
             else {
                 SharedPreferences.Editor ed = sPref.edit();
                 ed.putString(LOAD_BMMS, "5000");
-                ed.commit();
+                ed.apply();
                 btnUpStock.setText(getResources().getString(R.string.BmFUPStock) + "|50000р");
                 ((Game) getActivity()).transaction("rub", "-", 10000);
             }
@@ -331,7 +339,7 @@ public class BusinessMetal extends Fragment {
             else {
                 SharedPreferences.Editor ed = sPref.edit();
                 ed.putString(LOAD_BMMS, "10000");
-                ed.commit();
+                ed.apply();
                 btnUpStock.setText(getResources().getString(R.string.BmFUPStock) + "|100000р");
                 ((Game) getActivity()).transaction("rub", "-", 50000);
             }
@@ -344,7 +352,7 @@ public class BusinessMetal extends Fragment {
                 MaxStock.setText(String.valueOf(MaxMet = 100000));
                 SharedPreferences.Editor ed = sPref.edit();
                 ed.putString(LOAD_BMMS, "50000");
-                ed.commit();
+                ed.apply();
                 btnUpStock.setText(getResources().getString(R.string.NoUpdate));
                 btnUpStock.setEnabled(false);
                 ((Game) getActivity()).transaction("rub", "-", 100000);
@@ -363,7 +371,7 @@ public class BusinessMetal extends Fragment {
 
             SharedPreferences.Editor ed = sPref.edit();
             ed.putString(LOAD_BMA, SaveAd);
-            ed.commit();
+            ed.apply();
 
             ((Game) getActivity()).transaction("rub", "-", 500);
         }
@@ -379,7 +387,7 @@ public class BusinessMetal extends Fragment {
                 SharedPreferences.Editor ed = sPref.edit();
         ed.putString(LOAD_BMFS,"0");
         ed.putInt(LOAD_RUB,plusrub);
-        ed.commit();
+        ed.apply();
     }
 
     public void AddWorker(){
@@ -397,7 +405,7 @@ public class BusinessMetal extends Fragment {
             ed.putString(LOAD_BMPW, String.valueOf(SavePriceWorker));
             ((Game) getActivity()).transaction("rub", "-", PriceWorker);
 
-            ed.commit();
+            ed.apply();
 
             btnWorker.setText(getResources().getString(R.string.BmFNewWorker) + "|" + sPref.getString(LOAD_BMPW, "") + "р");
         }
@@ -430,7 +438,7 @@ public class BusinessMetal extends Fragment {
 
         SharedPreferences.Editor ed = sPref.edit();
         ed.putString(LOAD_BMPB,String.valueOf(allprice));
-        ed.commit();
+        ed.apply();
     }
 
 

@@ -5,6 +5,7 @@ import android.content.Context;
 import android.content.SharedPreferences;
 import android.os.Bundle;
 import androidx.annotation.NonNull;
+import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -21,7 +22,7 @@ public class Password extends Fragment {
 
 
 
-    TextView textName,textAge,textClothes,textTransport,textHolding,textJob,textBusiness,textEducation;
+    TextView textAge,textClothes,textTransport,textHolding,textJob,textBusiness,textEducation,textRankJob;
     SharedPreferences sPref;
     final String SAVED_NAME = "Name";
     final String LOAD_USD = "USD";
@@ -29,30 +30,43 @@ public class Password extends Fragment {
     final String SAVED_CLOTCHES = "Clothes";
     final String SAVED_TRANSPORT = "Transport";
     final String SAVED_HOLDING = "Holding";
-    final String SAVED_JOB = "Job";
-    final String SAVED_RANKJOB = "RankJob";
+    final String LOAD_JOB = "Job";
+    final String LOAD_RANKJOB = "RankJob";
     final String SAVED_BUSINESS = "Business";
     final String SAVED_EDUCATION = "Education";
     final String LOAD_DAY = "DAY";
     EditText passEditNameText;
     ImageButton passEditNameBtn;
-    String VarClothes,VarTransport, VarHolding, VarJob, VarBusiness,VarEducation;
+    String VarClothes,VarTransport, VarHolding, VarJob,VarRankJob, VarBusiness,VarEducation;
     int VarAge,days;
+
+    @Override
+    public void onCreate(Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+        sPref = getActivity().getSharedPreferences("Saved",Context.MODE_PRIVATE);
+    }
+
+    @Override
+    public void onActivityCreated(@Nullable Bundle savedInstanceState) {
+        super.onActivityCreated(savedInstanceState);
+        sPref = getActivity().getSharedPreferences("Saved",Context.MODE_PRIVATE);
+    }
 
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
+
         View PassFr = inflater.inflate(R.layout.fragment_password, container, false);
+
         // Inflate the layout for this fragment
 
-        sPref = getActivity().getSharedPreferences("Saved",Context.MODE_PRIVATE);
 //        textName = PassFr.findViewById(R.id.passTextName);
         textAge = PassFr.findViewById(R.id.passAge);
         textClothes = PassFr.findViewById(R.id.passClothes);
         textTransport = PassFr.findViewById(R.id.passTransport);
         textHolding = PassFr.findViewById(R.id.passHolding);
         textJob = PassFr.findViewById(R.id.passJob);
-        //textRankJob = PassFr.findViewById(R.id.passRank);
+        textRankJob = PassFr.findViewById(R.id.passRankJob);
         textBusiness = PassFr.findViewById(R.id.passBusiness);
         textEducation = PassFr.findViewById(R.id.passEducation);
         passEditNameBtn = PassFr.findViewById(R.id.passEditNameBtn);
@@ -211,7 +225,7 @@ public class Password extends Fragment {
                 break;
         }
         //Работа
-        VarJob = sPref.getString(SAVED_JOB,"");
+        VarJob = sPref.getString(LOAD_JOB,"");
 
         switch (VarJob){
             case "0":
@@ -234,16 +248,30 @@ public class Password extends Fragment {
                 break;
 
         }
-        //Должность
-        /*
-        VarRankJob = sPref.getString(SAVED_RANKJOB,"");
+
+        VarRankJob = sPref.getString(LOAD_RANKJOB,"");
 
         switch (VarRankJob){
             case "0":
                 textRankJob.setText(getResources().getString(R.string.PFSrankJob0));
                 break;
+            case "1":
+                textRankJob.setText(getResources().getString(R.string.PFSrankJob1));
+                break;
+            case "2":
+                textRankJob.setText(getResources().getString(R.string.PFSrankJob2));
+                break;
+            case "3":
+                textRankJob.setText(getResources().getString(R.string.PFSrankJob3));
+                break;
+            case "4":
+                textJob.setText(getResources().getString(R.string.PFSrankJob4));
+                break;
+            case "5":
+                textRankJob.setText(getResources().getString(R.string.PFSrankJob5));
+                break;
 
-        }*/
+        }
         //Бизнес
         VarBusiness = sPref.getString(SAVED_BUSINESS,"");
 

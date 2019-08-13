@@ -5,6 +5,7 @@ import android.content.Context;
 import android.content.SharedPreferences;
 import android.os.Bundle;
 import androidx.annotation.NonNull;
+import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -28,7 +29,11 @@ public class Property extends Fragment {
     final String LOAD_PRCAMERA = "PropertyCamera";
     final String LOAD_RUB = "RUB";
     final String LOAD_USD = "USD";
-
+    @Override
+    public void onCreate(Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+        sPref = getActivity().getSharedPreferences("Saved",Context.MODE_PRIVATE);
+    }
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
@@ -46,8 +51,6 @@ public class Property extends Fragment {
         btnPC = PropertyFG.findViewById(R.id.btnPropertyPC);
         btnHelicopter = PropertyFG.findViewById(R.id.btnPropertyHelicopter);
         btnYacht = PropertyFG.findViewById(R.id.btnPropertyYacht);
-        sPref = this.getActivity().getSharedPreferences("Saved",Context.MODE_PRIVATE);
-
         checkBuyed();
 
         btnRubberBoots.setOnClickListener(new View.OnClickListener() {
@@ -60,7 +63,7 @@ public class Property extends Fragment {
                     SharedPreferences.Editor ed = sPref.edit();
                     ed.putString(SAVED_CLOTCHES, "1");
 
-                    ed.commit();
+                    ed.apply();
                     checkBuyed();
                     ((Game) getActivity()).transaction("rub", "-", 500);
                     ((Game) getActivity()).NextDay();
@@ -75,7 +78,7 @@ public class Property extends Fragment {
                 } else {
                     SharedPreferences.Editor ed = sPref.edit();
                     ed.putString(SAVED_CLOTCHES, "2");
-                    ed.commit();
+                    ed.apply();
                     checkBuyed();
                     ((Game) getActivity()).transaction("rub", "-", 2000);
                     ((Game) getActivity()).NextDay();
@@ -90,7 +93,7 @@ public class Property extends Fragment {
                 } else {
                     SharedPreferences.Editor ed = sPref.edit();
                     ed.putString(LOAD_PRCAMERA, "1");
-                    ed.commit();
+                    ed.apply();
                     checkBuyed();
                     ((Game) getActivity()).transaction("rub", "-", 5000);
                     ((Game) getActivity()).NextDay();
@@ -106,7 +109,7 @@ public class Property extends Fragment {
                 } else {
                     SharedPreferences.Editor ed = sPref.edit();
                     ed.putString(SAVED_TRANSPORT, "1");
-                    ed.commit();
+                    ed.apply();
                     checkBuyed();
                     ((Game) getActivity()).transaction("rub", "-", 5000);
                     ((Game) getActivity()).NextDay();
@@ -121,7 +124,7 @@ public class Property extends Fragment {
                 } else {
                     SharedPreferences.Editor ed = sPref.edit();
                     ed.putString(SAVED_CLOTCHES, "3");
-                    ed.commit();
+                    ed.apply();
                     checkBuyed();
                     ((Game) getActivity()).transaction("rub", "-", 15000);
                     ((Game) getActivity()).NextDay();
@@ -136,7 +139,7 @@ public class Property extends Fragment {
                 } else {
                     SharedPreferences.Editor ed = sPref.edit();
                     ed.putString(SAVED_TRANSPORT, "2");
-                    ed.commit();
+                    ed.apply();
                     checkBuyed();
                     ((Game) getActivity()).transaction("rub", "-", 200000);
                     ((Game) getActivity()).NextDay();
@@ -151,7 +154,7 @@ public class Property extends Fragment {
                 } else {
                     SharedPreferences.Editor ed = sPref.edit();
                     ed.putString(SAVED_CLOTCHES, "4");
-                    ed.commit();
+                    ed.apply();
                     checkBuyed();
                     ((Game) getActivity()).transaction("usd", "-", 3000);
                     ((Game) getActivity()).NextDay();
@@ -166,7 +169,7 @@ public class Property extends Fragment {
                 } else {
                     SharedPreferences.Editor ed = sPref.edit();
                     ed.putString(LOAD_PRWEAPON, "1");
-                    ed.commit();
+                    ed.apply();
                     checkBuyed();
                     ((Game) getActivity()).transaction("usd", "-", 4000);
                     ((Game) getActivity()).NextDay();
@@ -181,7 +184,7 @@ public class Property extends Fragment {
                 } else {
                     SharedPreferences.Editor ed = sPref.edit();
                     ed.putString(LOAD_PRTV, "1");
-                    ed.commit();
+                    ed.apply();
                     checkBuyed();
                     ((Game) getActivity()).transaction("rub", "-", 70000);
                     ((Game) getActivity()).NextDay();
@@ -196,7 +199,7 @@ public class Property extends Fragment {
                 } else {
                     SharedPreferences.Editor ed = sPref.edit();
                     ed.putString(LOAD_PRPC, "1");
-                    ed.commit();
+                    ed.apply();
                     checkBuyed();
                     ((Game) getActivity()).transaction("rub", "-", 120000);
                     ((Game) getActivity()).NextDay();
@@ -211,7 +214,7 @@ public class Property extends Fragment {
                 } else {
                     SharedPreferences.Editor ed = sPref.edit();
                     ed.putString(SAVED_TRANSPORT, "3");
-                    ed.commit();
+                    ed.apply();
                     checkBuyed();
                     ((Game) getActivity()).transaction("usd", "-", 550000);
                     ((Game) getActivity()).NextDay();
@@ -226,7 +229,7 @@ public class Property extends Fragment {
                 } else {
                     SharedPreferences.Editor ed = sPref.edit();
                     ed.putString(SAVED_TRANSPORT, "4");
-                    ed.commit();
+                    ed.apply();
                     checkBuyed();
                     ((Game) getActivity()).transaction("usd", "-", 1500000);
                     ((Game) getActivity()).NextDay();

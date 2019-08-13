@@ -5,6 +5,7 @@ import android.content.Context;
 import android.content.SharedPreferences;
 import android.os.Bundle;
 import androidx.annotation.NonNull;
+import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
 
 import android.view.LayoutInflater;
@@ -51,14 +52,17 @@ public class Gorbes extends Fragment {
 
     //Соединение с бд firebase
     private FirebaseFirestore db = FirebaseFirestore.getInstance();
-
+    @Override
+    public void onCreate(Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+        sPref = getActivity().getSharedPreferences("Saved",Context.MODE_PRIVATE);
+    }
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         //Обьявление визуальной части XML фрагмента и соединение с внутренней бд
         final View GorbesFr = inflater.inflate(R.layout.fragment_gorbes, container, false);
-        sPref = this.getActivity().getSharedPreferences("Saved", Context.MODE_PRIVATE);
 
         //Find находим элементы XML
         GFbtn = GorbesFr.findViewById(R.id.GFbtn);

@@ -1,9 +1,11 @@
 package gorbachew.pythonanywhere.ru;
 
 import android.annotation.SuppressLint;
+import android.content.Context;
 import android.content.SharedPreferences;
 import android.os.Bundle;
 import androidx.annotation.NonNull;
+import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -25,17 +27,17 @@ public class HeroPast extends Fragment {
     final String SAVED_POLL4 = "youth";
     final String SAVED_POLL5 = "AftSchool";
     final String SAVED_POLL7 = "Why";
-
+    @Override
+    public void onCreate(Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+        sPref = getActivity().getSharedPreferences("Saved",Context.MODE_PRIVATE);
+    }
     @SuppressLint("SetTextI18n")
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         // Распознаем id обьектов в фрагменте
         View HeroPastFr = inflater.inflate(R.layout.fragment_hero_past, container, false);
-
-
-
-        sPref = getActivity().getSharedPreferences("Saved",MODE_PRIVATE);
 
 
         String FatherHistId = sPref.getString(SAVED_POLL1,"");

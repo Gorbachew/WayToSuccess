@@ -5,6 +5,7 @@ import android.content.SharedPreferences;
 import android.os.Bundle;
 
 import androidx.annotation.NonNull;
+import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -31,31 +32,36 @@ public class Casino extends Fragment {
     final Random random = new Random();
     final String LOAD_USD = "USD";
     final String SAVED_CLOTCHES = "Clothes";
-
+    @Override
+    public void onCreate(Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+        sPref = getActivity().getSharedPreferences("Saved",Context.MODE_PRIVATE);
+    }
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
         final View CasinoFragment = inflater.inflate(R.layout.fragment_casino, container, false);
 
-        sPref = this.getActivity().getSharedPreferences("Saved",Context.MODE_PRIVATE);
+
         CasinoResult = CasinoFragment.findViewById(R.id.CasinoResult);
         btnCasinoPlay = CasinoFragment.findViewById(R.id.btnCasinoPlay);
         btnCasinoClear = CasinoFragment.findViewById(R.id.btnCasinoClear);
         CasinoRate = CasinoFragment.findViewById(R.id.CasinoRate);
         CasinoRadioGroup1 = CasinoFragment.findViewById(R.id.CasinoRadioGroup1);
+        CasinoRadioGroup2 = CasinoFragment.findViewById(R.id.CasinoRadioGroup2);
+
         CasinoRadioGroup1.setOnCheckedChangeListener(new RadioGroup.OnCheckedChangeListener() {
             @Override
             public void onCheckedChanged(RadioGroup radioGroup, int i) {
                 switch (i){
-
                     case R.id.rbSpaceRED:Check1 = "RED";break;
                     case R.id.rbSpaceBLACK:Check1 = "BLACK";break;
 
                 }
+
             }
         });
-        CasinoRadioGroup2 = CasinoFragment.findViewById(R.id.CasinoRadioGroup2);
         CasinoRadioGroup2.setOnCheckedChangeListener(new RadioGroup.OnCheckedChangeListener() {
             @Override
             public void onCheckedChanged(RadioGroup radioGroup, int i) {
@@ -64,6 +70,7 @@ public class Casino extends Fragment {
                     case R.id.rbSpace2and12:Check2 = "2and12";break;
                     case R.id.rbSpace3and12:Check2 = "3and12";break;
                 }
+
             }
         });
 

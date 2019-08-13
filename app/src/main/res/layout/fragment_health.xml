@@ -5,8 +5,13 @@
     android:layout_height="match_parent"
     tools:context=".Health"
     android:largeHeap="true"
-    android:background="@drawable/bghealth">
-
+    android:background="@color/black">
+    <ImageView
+        android:id="@+id/imageView2"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:src="@drawable/bghealth" />
     <!-- TODO: Update blank fragment layout -->
     <ScrollView
         android:layout_width="match_parent"

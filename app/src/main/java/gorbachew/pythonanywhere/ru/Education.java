@@ -4,6 +4,7 @@ import android.content.Context;
 import android.content.SharedPreferences;
 import android.os.Bundle;
 import androidx.annotation.NonNull;
+import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -30,12 +31,17 @@ public class Education extends Fragment {
     final String LOAD_USD = "USD";
     final String SAVED_EDUCATION = "Education";
     @Override
+    public void onCreate(Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+        sPref = getActivity().getSharedPreferences("Saved",Context.MODE_PRIVATE);
+    }
+    @Override
     public View onCreateView(@NonNull LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
 
         View EducFr = inflater.inflate(R.layout.fragment_education, container, false);
-        sPref = this.getActivity().getSharedPreferences("Saved",Context.MODE_PRIVATE);
+
 
 
 
@@ -61,7 +67,7 @@ public class Education extends Fragment {
                     else {
                         SharedPreferences.Editor ed = sPref.edit();
                         ed.putString(LOAD_SCHOOL, "1");
-                        ed.commit();
+                        ed.apply();
                         ((Game) getActivity()).transaction("rub", "-", 10000);
                     }
                 }
@@ -71,7 +77,7 @@ public class Education extends Fragment {
 
                     SharedPreferences.Editor ed = sPref.edit();
                     ed.putInt(LOAD_SCHOOLHOUR, hour);
-                    ed.commit();
+                    ed.apply();
                 }
                 CheckButton();
                 ((Game)getActivity()).NextDay();
@@ -94,7 +100,7 @@ public class Education extends Fragment {
                         else {
                             SharedPreferences.Editor ed = sPref.edit();
                             ed.putString(LOAD_COLLEGE, "1");
-                            ed.commit();
+                            ed.apply();
                             ((Game) getActivity()).transaction("rub", "-", 50000);
                         }
                     }
@@ -104,7 +110,7 @@ public class Education extends Fragment {
 
                         SharedPreferences.Editor ed = sPref.edit();
                         ed.putInt(LOAD_COLLEGEHOUR, hour);
-                        ed.commit();
+                        ed.apply();
                     }
                     CheckButton();
                     ((Game)getActivity()).NextDay();
@@ -128,7 +134,7 @@ public class Education extends Fragment {
                         else {
                             SharedPreferences.Editor ed = sPref.edit();
                             ed.putString(LOAD_COURSES, "1");
-                            ed.commit();
+                            ed.apply();
                             ((Game) getActivity()).transaction("usd", "-", 10000);
                         }
                     } else {
@@ -137,7 +143,7 @@ public class Education extends Fragment {
 
                         SharedPreferences.Editor ed = sPref.edit();
                         ed.putInt(LOAD_COURSESHOUR, hour);
-                        ed.commit();
+                        ed.apply();
                     }
                     CheckButton();
                     ((Game) getActivity()).NextDay();
@@ -160,7 +166,7 @@ public class Education extends Fragment {
                         else {
                             SharedPreferences.Editor ed = sPref.edit();
                             ed.putString(LOAD_UNIVERSITY, "1");
-                            ed.commit();
+                            ed.apply();
                             ((Game) getActivity()).transaction("rub", "-", 400000);
                         }
                     } else {
@@ -169,7 +175,7 @@ public class Education extends Fragment {
 
                         SharedPreferences.Editor ed = sPref.edit();
                         ed.putInt(LOAD_UNIVERSITYHOUR, hour);
-                        ed.commit();
+                        ed.apply();
                     }
                     CheckButton();
                     ((Game) getActivity()).NextDay();
@@ -192,7 +198,7 @@ public class Education extends Fragment {
                         else {
                             SharedPreferences.Editor ed = sPref.edit();
                             ed.putString(LOAD_OVERSEASUNIVERSITY, "1");
-                            ed.commit();
+                            ed.apply();
                             ((Game) getActivity()).transaction("usd", "-", 100000);
                         }
                     } else {
@@ -201,7 +207,7 @@ public class Education extends Fragment {
 
                         SharedPreferences.Editor ed = sPref.edit();
                         ed.putInt(LOAD_OVERSEASUNIVERSITYHOUR, hour);
-                        ed.commit();
+                        ed.apply();
 
                     }
                     CheckButton();
@@ -233,7 +239,7 @@ public class Education extends Fragment {
                 SharedPreferences.Editor ed = sPref.edit();
                 ed.putString(SAVED_EDUCATION, "1");
                 ed.putString(LOAD_SCHOOL, "2");
-                ed.commit();
+                ed.apply();
             }
             else {
                 btnEducationSchool.setText(getResources().getString(R.string.EFSchool) +"|" + hour);
@@ -251,7 +257,7 @@ public class Education extends Fragment {
                 SharedPreferences.Editor ed = sPref.edit();
                 ed.putString(SAVED_EDUCATION, "2");
                 ed.putString(LOAD_COLLEGE, "2");
-                ed.commit();
+                ed.apply();
             }
             else {
                 btnEducationCollege.setText(getResources().getString(R.string.EFCollege) +"|" + hour);
@@ -269,7 +275,7 @@ public class Education extends Fragment {
                 SharedPreferences.Editor ed = sPref.edit();
                 ed.putString(SAVED_EDUCATION, "3");
                 ed.putString(LOAD_COURSES, "2");
-                ed.commit();
+                ed.apply();
             }
             else {
                 btnEducationCourses.setText(getResources().getString(R.string.EFCourses) + "|" + hour);
@@ -287,7 +293,7 @@ public class Education extends Fragment {
                 SharedPreferences.Editor ed = sPref.edit();
                 ed.putString(SAVED_EDUCATION, "4");
                 ed.putString(LOAD_UNIVERSITY, "2");
-                ed.commit();
+                ed.apply();
             }
             else {
                 btnEducationUniversity.setText(getResources().getString(R.string.EFUniversity) + "|" + hour);
@@ -306,7 +312,7 @@ public class Education extends Fragment {
                 SharedPreferences.Editor ed = sPref.edit();
                 ed.putString(SAVED_EDUCATION, "5");
                 ed.putString(LOAD_OVERSEASUNIVERSITY, "2");
-                ed.commit();
+                ed.apply();
             }
             else {
                 btnEducationOverseasUniversity.setText(getResources().getString(R.string.EFOverseasUniversity) + "|" + hour);

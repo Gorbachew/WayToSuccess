@@ -4,6 +4,7 @@ import android.content.Context;
 import android.content.SharedPreferences;
 import android.os.Bundle;
 import androidx.annotation.NonNull;
+import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -27,11 +28,16 @@ public class Bank extends Fragment {
     final String LOAD_RUB = "RUB";
     final String LOAD_USD = "USD";
     @Override
+    public void onCreate(Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+        sPref = getActivity().getSharedPreferences("Saved",Context.MODE_PRIVATE);
+    }
+    @Override
     public View onCreateView(@NonNull LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
         View BankFr = inflater.inflate(R.layout.fragment_bank, container, false);
-        sPref = this.getActivity().getSharedPreferences("Saved",Context.MODE_PRIVATE);
+
         spin = BankFr.findViewById(R.id.BankSpinner);
         BankCourse = BankFr.findViewById(R.id.BankCourse);
 
@@ -46,9 +52,6 @@ public class Bank extends Fragment {
         btnBankSell.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-
-
-
                 int choise = Integer.parseInt(String.valueOf(spin.getSelectedItem()));
 
                 if(sPref.getInt(LOAD_USD,0) < choise){
