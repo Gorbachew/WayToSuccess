@@ -11,7 +11,7 @@
     </style>
 
     <style name="btnMenu">
-        <item name="android:textColor">@color/white</item>
+<!--        <item name="android:textColor">@color/white</item>-->
         <item name="android:textSize">20dp</item>
         <item name="android:background">@color/alpha</item>
         <item name="android:layout_width">200dp</item>
@@ -20,7 +20,7 @@
     </style>
     <style name="textStart">
         <item name="android:textSize">20dp</item>
-        <item name="android:textColor">@color/white</item>
+<!--        <item name="android:textColor">@color/white</item>-->
         <item name="android:shadowRadius">2</item>
         <item name="android:shadowColor">#ff00f0</item>
         <item name="android:shadowDx">2</item>
@@ -31,18 +31,18 @@
         <item name="android:textSize">20dp</item>
         <item name="android:textColor">@color/red</item>
         <item name="android:shadowRadius">2</item>
-        <item name="android:shadowColor">#ffffff</item>
+<!--        <item name="android:shadowColor">#ffffff</item>-->
         <item name="android:shadowDx">2</item>
         <item name="android:shadowDy">2</item>
     </style>
     <style name="spinersStart">
-        <item name="android:background">@color/white</item>
+<!--        <item name="android:background">@color/white</item>-->
         <item name="android:layout_width">150dp</item>
         <item name="android:layout_height">40dp</item>
     </style>
     <style name="textHeadline">
         <item name="android:textSize">20dp</item>
-        <item name="android:textColor">@color/white</item>
+<!--        <item name="android:textColor">@color/white</item>-->
         <item name="android:gravity">center</item>
         <item name="android:shadowRadius">2</item>
         <item name="android:shadowColor">#ffff00</item>
@@ -51,7 +51,7 @@
     </style>
     <style name="textDays">
         <item name="android:textSize">15dp</item>
-        <item name="android:textColor">@color/white</item>
+<!--        <item name="android:textColor">@color/white</item>-->
         <item name="android:shadowRadius">2</item>
         <item name="android:shadowColor">#000000</item>
         <item name="android:shadowDx">2</item>
@@ -59,7 +59,7 @@
     </style>
     <style name="textStats">
         <item name="android:textSize">17dp</item>
-        <item name="android:textColor">@color/white</item>
+<!--        <item name="android:textColor">@color/white</item>-->
         <item name="android:shadowRadius">2</item>
         <item name="android:shadowColor">#ff0000</item>
         <item name="android:shadowDx">3</item>
@@ -67,7 +67,7 @@
     </style>
     <style name="textGorbesTopLine">
         <item name="android:textSize">17dp</item>
-        <item name="android:textColor">@color/white</item>
+<!--        <item name="android:textColor">@color/white</item>-->
         <item name="android:shadowRadius">2</item>
         <item name="android:gravity">center</item>
         <item name="android:shadowColor">#92cdd4</item>
@@ -78,7 +78,6 @@
         <item name="android:textSize">20dp</item>
         <item name="android:background">@xml/borderlabel</item>
         <item name="android:gravity">center</item>
-
     </style>
 
 </resources>

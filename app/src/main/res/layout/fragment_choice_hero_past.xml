@@ -42,7 +42,6 @@
             android:hint="@string/StartText3"
             android:inputType="textPersonName"
             android:textColor="@color/white"
-            android:background="@drawable/textboxstart"
             />
         <TextView
             android:id="@+id/TextAge"
@@ -53,7 +52,6 @@
            />
         <Spinner
             android:id="@+id/SpinnerStartAge"
-            android:background="@color/white"
             style="@style/spinersStart"
             />
 
